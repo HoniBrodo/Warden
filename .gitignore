@@ -1,0 +1,32 @@
+# ---- Visual Studio user/cache files ----
+.vs/
+*.suo
+*.user
+*.userosscache
+*.VC.db
+*.VC.opendb
+
+# ---- Build outputs ----
+[Bb]in/
+[Oo]bj/
+Debug*/
+Release*/
+x64/
+x86/
+ipch/
+*.obj
+*.pch
+*.pdb
+*.idb
+*.ilk
+*.tlog
+*.log
+*.tmp
+*.cache
+
+# ---- Crash dumps ----
+*.dmp
+
+# ---- IMPORTANT: Keep project + library files ----
+# Do NOT ignore .sln, .vcxproj, .filters
+# Do NOT ignore raylib.lib
