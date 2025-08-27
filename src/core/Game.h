@@ -14,4 +14,7 @@ class Game {
 public:
     Game();
     ~Game();
+
+    void Init();
+    void Run();
 };
