@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "raylib.h"
 
-Game::Game() {}
+Game::Game() : state(GameState::DEBUG_WINDOW){}
 
 Game::~Game() {}
 
@@ -14,10 +14,19 @@ void Game::Init()
 void Game::Run()
 {
     while (!WindowShouldClose()) {
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-        DrawText("Hello from Warden!", 320, 280, 20, BLACK);
-        EndDrawing();
+
+        if (state == GameState::DEBUG_WINDOW)
+        {
+            BeginDrawing();
+            ClearBackground(RAYWHITE);
+            DrawText("Hello from Warden!", 320, 280, 20, BLACK);
+            EndDrawing();
+        }
     }
     CloseWindow();
+}
+
+void Game::ChangeState(GameState NewState)
+{
+    state = NewState;
 }

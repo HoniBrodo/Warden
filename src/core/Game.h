@@ -3,6 +3,7 @@
 
 enum class GameState
 {
+    DEBUG_WINDOW,
     MAIN_MENU,
     PLAYING,
     PAUSED,
@@ -17,4 +18,8 @@ public:
 
     void Init();
     void Run();
+
+private: 
+    void ChangeState(GameState newState);
+    GameState state;
 };
