@@ -1,5 +1,6 @@
 #pragma once
 #include "Renderer.h"
+#include "raylib.h"
 
 enum class GameState
 {
@@ -22,4 +23,5 @@ public:
 private: 
     void ChangeState(GameState newState);
     GameState state;
+    Renderer render;
 };
