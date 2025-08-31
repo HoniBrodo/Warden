@@ -20,7 +20,7 @@ void Game::Run()
         {
             BeginDrawing();
             ClearBackground(BLACK);
-            render.DrawTextCentred("Hello from Warden", render.TextRow(0), render.fontSize, DARKGREEN);
+            render.DrawTextCentred("Hello from Warden", render.TextRow(15), render.fontSize, DARKGREEN);
             EndDrawing();
         }
 
