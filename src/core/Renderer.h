@@ -5,18 +5,32 @@
 class Renderer {
 public:
     Renderer();
+    Renderer(int cols, int rows, int screenWidth, int screenHeight);
     ~Renderer();
+
 
     int fontSize = 20;
     int rowHeight = fontSize + fontSize / 2;
     int lineStart = fontSize;
     int leftBorderIndent = 20;
 
+    float GridX(int gx) const;
+    float GridY(int gy) const;
+    void DrawGrid(bool showCoords = false) const;
+    void SetScreenSize(int width, int height);
+    void SetGrid(int cols, int rows);
     void DrawTextCentred(const std::string& text, int posY, int fontSize, Color color);
     void DrawTextAlignLeft(const std::string& text, int posY, int fontSize, Color color);
     void DrawTextBlock(const std::string& text);
-    int TextRow(int row);
 
-private: 
-    
+private:
+
+    int cols = 20;
+    int rows = 20;
+    float cellWidth{};
+    float cellHeight{};
+    int screenWidth{};
+    int screenHeight{};
+    void UpdateCellSize();
+
 };

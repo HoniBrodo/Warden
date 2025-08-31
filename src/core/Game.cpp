@@ -8,7 +8,8 @@ Game::~Game() {}
 
 void Game::Init()
 {
-	InitWindow(1920, 1080, "Warden");
+	InitWindow(screenWidth, screenHeight, "Warden");
+    render.SetScreenSize(screenWidth, screenHeight);
 	SetTargetFPS(120);
 }
 
@@ -20,7 +21,12 @@ void Game::Run()
         {
             BeginDrawing();
             ClearBackground(BLACK);
-            render.DrawTextCentred("Hello from Warden", render.TextRow(15), render.fontSize, DARKGREEN);
+            render.SetGrid(24, 16);
+            if (IsKeyDown(KEY_G)) 
+            {
+                render.DrawGrid(true);
+            }
+            render.DrawTextCentred("Hello from Warden", render.GridY(8), render.fontSize, DARKGREEN);
             EndDrawing();
         }
 

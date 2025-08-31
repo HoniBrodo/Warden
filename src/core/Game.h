@@ -21,7 +21,12 @@ public:
     void Run();
 
 private: 
+
     void ChangeState(GameState newState);
+
     GameState state;
     Renderer render;
+
+    int screenWidth = 1920;
+    int screenHeight = 1080;
 };
