@@ -69,13 +69,16 @@ void Renderer::DrawTextCentred(const std::string& text, int posY, int fontSize, 
 
 void Renderer::DrawTextAlignLeft(const std::string& text, int posY, int fontSize, Color color)
 {
-		int posX = leftBorderIndent;
+		int posX = indent;
 		DrawText(text.c_str(), posX, posY, fontSize, color);
 }
 
-void Renderer::DrawTextBlock(const std::string& text)
+void Renderer::DrawTextBlock(const std::string& text, int posX, int posY)
 {
-	// implement logic for drawing text within a certain area
+	int textWidth = MeasureText(text.c_str(), fontSize);
+	Rectangle textPadding{ posX, posY, textWidth + fontSize * 2, fontSize * 2 };
+	DrawRectangleRec(textPadding, LIGHTGRAY);
+	DrawText(text.c_str(), posX + fontSize, posY + fontSize / 2, fontSize, textColor);
 }
 
 

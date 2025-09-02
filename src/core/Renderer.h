@@ -9,10 +9,12 @@ public:
     ~Renderer();
 
 
-    int fontSize = 20;
+    int fontSize = 30;
     int rowHeight = fontSize + fontSize / 2;
     int lineStart = fontSize;
-    int leftBorderIndent = 20;
+    int indent = 20;
+
+    Color textColor = DARKGREEN;
 
     float GridX(int gx) const;
     float GridY(int gy) const;
@@ -21,7 +23,7 @@ public:
     void SetGrid(int cols, int rows);
     void DrawTextCentred(const std::string& text, int posY, int fontSize, Color color);
     void DrawTextAlignLeft(const std::string& text, int posY, int fontSize, Color color);
-    void DrawTextBlock(const std::string& text);
+    void DrawTextBlock(const std::string& text, int posX, int posY);
 
 private:
 
