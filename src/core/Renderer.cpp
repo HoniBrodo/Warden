@@ -96,5 +96,28 @@ std::vector<std::string> Renderer::WrapText(const Font& font, const std::string&
 	std::string word;
 	std::string currentLine;
 
-	return std::vector<std::string>();
+	while (iss >> word) // this will loop through each word in the input text. If there is a word, it will return true and 
+	//we can use it. If we run out of words (reach the end of the string), it will return false and the while loop will end.
+	{
+		// if currentLine is empty, start a new line with the current word, if not, append to the end. 
+		std::string testLine = currentLine.empty() ? word : currentLine + " " + word;
+		// this if/else statement will measure the size of the string so far and compare it to a max width
+		float lineWidth = MeasureTextEx(font, testLine.c_str(), fontSize, spacing).x;
+		if (lineWidth > maxWidth)
+		{
+		// if currentLine has text, push it into the lines vector (its now a completed line). It could be 
+		// possible that the first word was already too long, this check avoids adding empty line unnecessarily
+			if (!currentLine.empty()) lines.push_back(currentLine);
+			// start a new line with the word that didn't fit
+			currentLine = word;
+		}
+		else
+			// if it does fit, update currentLine to include it (testLine already has currentLine + " " + word)
+		{
+			currentLine = testLine;
+		}
+	}
+	// If there’s any leftover text after the loop, save it as the last line. Then return the full list of lines.
+	if (!currentLine.empty()) lines.push_back(currentLine);
+	return lines;
 }
