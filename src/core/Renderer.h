@@ -1,6 +1,7 @@
 #pragma once
 #include "raylib.h"
 #include <string>
+#include <vector>
 
 class Renderer {
 public:
@@ -34,5 +35,8 @@ private:
     int screenWidth{};
     int screenHeight{};
     void UpdateCellSize();
+
+    std::vector<std::string> WrapText(const Font& font, const std::string& text, int fontSize, float maxWidth, float spacing);
+
 
 };

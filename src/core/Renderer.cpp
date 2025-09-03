@@ -1,4 +1,5 @@
 #include "Renderer.h"
+#include <sstream>
 
 Renderer::Renderer() 
 {
@@ -86,4 +87,14 @@ void Renderer::UpdateCellSize()
 {
 	cellWidth = (float)screenWidth / cols;
 	cellHeight = (float)screenHeight / rows;
+}
+
+std::vector<std::string> Renderer::WrapText(const Font& font, const std::string& text, int fontSize, float maxWidth, float spacing)
+{
+	std::vector<std::string> lines;
+	std::istringstream iss(text);
+	std::string word;
+	std::string currentLine;
+
+	return std::vector<std::string>();
 }
