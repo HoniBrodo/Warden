@@ -3,6 +3,18 @@
 #include <string>
 #include <vector>
 
+enum class TextAlign
+{
+    Left,
+    Center
+};
+
+enum class TextSize
+{
+    MainTitle,
+    Dialogue
+};
+
 class Renderer {
 public:
     Renderer();
@@ -26,7 +38,7 @@ public:
     void SetGrid(int cols, int rows);
     void DrawTextCentred(const std::string& text, int posY, int fontSize, Color color);
     void DrawTextAlignLeft(const std::string& text, int posY, int fontSize, Color color);
-    void DrawTextBlock(const std::string& text, int posX, int posY, int maxWidth);
+    void DrawTextBlock(const std::string& text, int posX, int posY, int maxWidth, TextAlign alignment);
 
 private:
 

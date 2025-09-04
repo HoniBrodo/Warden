@@ -74,17 +74,33 @@ void Renderer::DrawTextAlignLeft(const std::string& text, int posY, int fontSize
 		DrawText(text.c_str(), posX, posY, fontSize, color);
 }
 
-void Renderer::DrawTextBlock(const std::string& text, int posX, int posY, int maxWidth)
+void Renderer::DrawTextBlock(const std::string& text, int posX, int posY, int maxWidth, TextAlign alignment)
 {
 	std::vector<std::string> wrappedText = WrapText(text, maxWidth);
-	//int textWidth = MeasureText(text.c_str(), fontSize);
+
 	Rectangle textPadding{ posX, posY, maxWidth + fontSize * 2, wrappedText.size() * lineSpacing + fontSize };
 	DrawRectangleRec(textPadding, LIGHTGRAY);
 
 	for (size_t i = 0; i < wrappedText.size(); i++)
 	{
-		DrawText(wrappedText[i].c_str(), posX + fontSize, posY + fontSize / 2, fontSize, textColor);
-		posY = posY + lineSpacing;
+		int textWidth = MeasureText(wrappedText[i].c_str(), fontSize);
+		int posXCentered = posX + ((maxWidth + fontSize * 2) / 2) - (textWidth / 2) - fontSize;
+
+		switch (alignment)
+		{
+		case TextAlign::Left:
+			DrawText(wrappedText[i].c_str(), posX + fontSize, posY + fontSize / 2, fontSize, textColor);
+			posY = posY + lineSpacing;
+			break;
+
+		case TextAlign::Center:
+			DrawText(wrappedText[i].c_str(), posXCentered + fontSize, posY + fontSize / 2, fontSize, textColor);
+			posY = posY + lineSpacing;
+			break;
+
+		}
+
+
 	}
 	
 }
