@@ -12,6 +12,7 @@ enum class TextAlign
 enum class TextSize
 {
     MainTitle,
+    Button01,
     Dialogue
 };
 
@@ -31,6 +32,9 @@ public:
     void SetGrid(int cols, int rows);
     void DrawTextBlock(const std::string& text, int posX, int posY, int maxWidth, TextAlign alignment, TextSize size);
     int GetFontSize(TextSize size) const;
+    int ScreenCenterX() { return screenWidth / 2; }
+    int TextScreenCenterX(int paddingWidth) { return (screenWidth / 2) - (paddingWidth / 2); }
+
 
 private:
 

@@ -72,7 +72,7 @@ void Renderer::DrawTextBlock(const std::string& text, int posX, int posY, int ma
 
 
 
-	Rectangle textPadding{ posX, posY, maxWidth + fontSize * 2, wrappedText.size() * lineSpacing + fontSize };
+	Rectangle textPadding{ posX, posY, maxWidth, wrappedText.size() * lineSpacing + indent };
 	DrawRectangleRec(textPadding, LIGHTGRAY);
 
 	for (size_t i = 0; i < wrappedText.size(); i++)
@@ -83,12 +83,12 @@ void Renderer::DrawTextBlock(const std::string& text, int posX, int posY, int ma
 		switch (alignment)
 		{
 		case TextAlign::Left:
-			DrawText(wrappedText[i].c_str(), posX + fontSize, posY + fontSize / 2, fontSize, textColor);
+			DrawText(wrappedText[i].c_str(), posX + fontSize / 4, posY + fontSize / 2, fontSize, textColor);
 			posY = posY + lineSpacing;
 			break;
 
 		case TextAlign::Center:
-			DrawText(wrappedText[i].c_str(), posXCentered + fontSize, posY + fontSize / 2, fontSize, textColor);
+			DrawText(wrappedText[i].c_str(), posXCentered, posY + fontSize / 2, fontSize, textColor);
 			posY = posY + lineSpacing;
 			break;
 
@@ -101,9 +101,11 @@ int Renderer::GetFontSize(TextSize size) const
 	switch (size)
 	{
 	case TextSize::MainTitle:
-		return 60;
+		return 100;
 	case TextSize::Dialogue:
 		return 30;
+	case TextSize::Button01:
+		return 70;
 	default:
 		return 30; // fallback to default
 	}
