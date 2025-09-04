@@ -61,22 +61,16 @@ void Renderer::SetGrid(int cols, int rows)
 	UpdateCellSize();
 }
 
-void Renderer::DrawTextCentred(const std::string& text, int posY, int fontSize, Color color)
+void Renderer::DrawTextBlock(const std::string& text, int posX, int posY, int maxWidth, TextAlign alignment, TextSize size)
 {
-	int textWidth = MeasureText(text.c_str(), fontSize);
-	int posX = (screenWidth - textWidth) / 2;
-	DrawText(text.c_str(), posX, posY, fontSize, color);
-}
+	int fontSize = GetFontSize(size);
+	int rowHeight = fontSize + fontSize / 2;
+	int lineStart = fontSize;
+	int lineSpacing = fontSize * 1.33;
+	int indent = fontSize * 0.66;
+	std::vector<std::string> wrappedText = WrapText(text, maxWidth, fontSize);
 
-void Renderer::DrawTextAlignLeft(const std::string& text, int posY, int fontSize, Color color)
-{
-		int posX = indent;
-		DrawText(text.c_str(), posX, posY, fontSize, color);
-}
 
-void Renderer::DrawTextBlock(const std::string& text, int posX, int posY, int maxWidth, TextAlign alignment)
-{
-	std::vector<std::string> wrappedText = WrapText(text, maxWidth);
 
 	Rectangle textPadding{ posX, posY, maxWidth + fontSize * 2, wrappedText.size() * lineSpacing + fontSize };
 	DrawRectangleRec(textPadding, LIGHTGRAY);
@@ -99,10 +93,20 @@ void Renderer::DrawTextBlock(const std::string& text, int posX, int posY, int ma
 			break;
 
 		}
-
-
 	}
-	
+}
+
+int Renderer::GetFontSize(TextSize size) const
+{
+	switch (size)
+	{
+	case TextSize::MainTitle:
+		return 60;
+	case TextSize::Dialogue:
+		return 30;
+	default:
+		return 30; // fallback to default
+	}
 }
 
 
@@ -112,7 +116,7 @@ void Renderer::UpdateCellSize()
 	cellHeight = (float)screenHeight / rows;
 }
 
-std::vector<std::string> Renderer::WrapText(const std::string& text, int maxWidth)
+std::vector<std::string> Renderer::WrapText(const std::string& text, int maxWidth, int fontSize)
 {
 	std::vector<std::string> lines;
 	std::istringstream iss(text);

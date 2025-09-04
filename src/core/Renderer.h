@@ -22,13 +22,6 @@ public:
     ~Renderer();
 
     Font font = GetFontDefault();
-
-    int fontSize = 30;
-    int rowHeight = fontSize + fontSize / 2;
-    int lineStart = fontSize;
-    int lineSpacing = fontSize * 1.33;
-    int indent = fontSize * 0.66;
-
     Color textColor = DARKGREEN;
 
     float GridX(int gx) const;
@@ -36,9 +29,8 @@ public:
     void DrawGrid(bool showCoords = false) const;
     void SetScreenSize(int width, int height);
     void SetGrid(int cols, int rows);
-    void DrawTextCentred(const std::string& text, int posY, int fontSize, Color color);
-    void DrawTextAlignLeft(const std::string& text, int posY, int fontSize, Color color);
-    void DrawTextBlock(const std::string& text, int posX, int posY, int maxWidth, TextAlign alignment);
+    void DrawTextBlock(const std::string& text, int posX, int posY, int maxWidth, TextAlign alignment, TextSize size);
+    int GetFontSize(TextSize size) const;
 
 private:
 
@@ -50,7 +42,7 @@ private:
     int screenHeight{};
     void UpdateCellSize();
 
-    std::vector<std::string> WrapText(const std::string& text, int maxWidth);
+    std::vector<std::string> WrapText(const std::string& text, int maxWidth, int fontSize);
 
 
 };
