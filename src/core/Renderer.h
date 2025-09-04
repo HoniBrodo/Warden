@@ -9,6 +9,7 @@ public:
     Renderer(int cols, int rows, int screenWidth, int screenHeight);
     ~Renderer();
 
+    Font font = GetFontDefault();
 
     int fontSize = 30;
     int rowHeight = fontSize + fontSize / 2;
@@ -24,7 +25,7 @@ public:
     void SetGrid(int cols, int rows);
     void DrawTextCentred(const std::string& text, int posY, int fontSize, Color color);
     void DrawTextAlignLeft(const std::string& text, int posY, int fontSize, Color color);
-    void DrawTextBlock(const std::string& text, int posX, int posY);
+    void DrawTextBlock(const std::string& text, int posX, int posY, int maxWidth);
 
 private:
 
@@ -36,7 +37,7 @@ private:
     int screenHeight{};
     void UpdateCellSize();
 
-    std::vector<std::string> WrapText(const Font& font, const std::string& text, int fontSize, float maxWidth, float spacing);
+    std::vector<std::string> WrapText(const std::string& text, int maxWidth);
 
 
 };

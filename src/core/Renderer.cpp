@@ -74,12 +74,14 @@ void Renderer::DrawTextAlignLeft(const std::string& text, int posY, int fontSize
 		DrawText(text.c_str(), posX, posY, fontSize, color);
 }
 
-void Renderer::DrawTextBlock(const std::string& text, int posX, int posY)
+void Renderer::DrawTextBlock(const std::string& text, int posX, int posY, int maxWidth)
 {
-	int textWidth = MeasureText(text.c_str(), fontSize);
-	Rectangle textPadding{ posX, posY, textWidth + fontSize * 2, fontSize * 2 };
+	std::vector<std::string> wrappedText = WrapText(text, maxWidth);
+	//int textWidth = MeasureText(text.c_str(), fontSize);
+	Rectangle textPadding{ posX, posY, maxWidth + fontSize * 2, fontSize * 2 };
 	DrawRectangleRec(textPadding, LIGHTGRAY);
-	DrawText(text.c_str(), posX + fontSize, posY + fontSize / 2, fontSize, textColor);
+	// to do: write a bespoke DrawText function that loops through the 'wrappedText' vector and prints all of the strings
+	DrawText(wrappedText[0].c_str(), posX + fontSize, posY + fontSize / 2, fontSize, textColor); 
 }
 
 
@@ -89,7 +91,7 @@ void Renderer::UpdateCellSize()
 	cellHeight = (float)screenHeight / rows;
 }
 
-std::vector<std::string> Renderer::WrapText(const Font& font, const std::string& text, int fontSize, float maxWidth, float spacing)
+std::vector<std::string> Renderer::WrapText(const std::string& text, int maxWidth)
 {
 	std::vector<std::string> lines;
 	std::istringstream iss(text);
@@ -102,7 +104,7 @@ std::vector<std::string> Renderer::WrapText(const Font& font, const std::string&
 		// if currentLine is empty, start a new line with the current word, if not, append to the end. 
 		std::string testLine = currentLine.empty() ? word : currentLine + " " + word;
 		// this if/else statement will measure the size of the string so far and compare it to a max width
-		float lineWidth = MeasureTextEx(font, testLine.c_str(), fontSize, spacing).x;
+		int lineWidth = MeasureText(testLine.c_str(), fontSize);
 		if (lineWidth > maxWidth)
 		{
 		// if currentLine has text, push it into the lines vector (its now a completed line). It could be 

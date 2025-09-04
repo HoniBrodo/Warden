@@ -27,8 +27,8 @@ void Game::Run()
                 render.DrawGrid(true);
             }
             //render.DrawTextCentred("Hello from Warden", render.GridY(8), render.fontSize, DARKGREEN);
-            render.DrawTextBlock("This is a test of the text block function, it will adjust dynamically to the size of the string", render.GridX(2), render.GridY(7));
-            render.DrawTextBlock("Smaller string = smaller box", render.GridX(15), render.GridY(10));
+            render.DrawTextBlock("This is a test of the text block function, it will adjust dynamically to the size of the string", render.GridX(2), render.GridY(7), 400);
+            render.DrawTextBlock("Smaller string = smaller box", render.GridX(15), render.GridY(10), 400);
             EndDrawing();
         }
 
