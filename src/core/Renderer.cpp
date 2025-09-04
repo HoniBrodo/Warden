@@ -78,10 +78,15 @@ void Renderer::DrawTextBlock(const std::string& text, int posX, int posY, int ma
 {
 	std::vector<std::string> wrappedText = WrapText(text, maxWidth);
 	//int textWidth = MeasureText(text.c_str(), fontSize);
-	Rectangle textPadding{ posX, posY, maxWidth + fontSize * 2, fontSize * 2 };
+	Rectangle textPadding{ posX, posY, maxWidth + fontSize * 2, wrappedText.size() * lineSpacing + fontSize };
 	DrawRectangleRec(textPadding, LIGHTGRAY);
-	// to do: write a bespoke DrawText function that loops through the 'wrappedText' vector and prints all of the strings
-	DrawText(wrappedText[0].c_str(), posX + fontSize, posY + fontSize / 2, fontSize, textColor); 
+
+	for (size_t i = 0; i < wrappedText.size(); i++)
+	{
+		DrawText(wrappedText[i].c_str(), posX + fontSize, posY + fontSize / 2, fontSize, textColor);
+		posY = posY + lineSpacing;
+	}
+	
 }
 
 

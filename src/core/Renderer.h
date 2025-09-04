@@ -14,7 +14,8 @@ public:
     int fontSize = 30;
     int rowHeight = fontSize + fontSize / 2;
     int lineStart = fontSize;
-    int indent = 20;
+    int lineSpacing = fontSize * 1.33;
+    int indent = fontSize * 0.66;
 
     Color textColor = DARKGREEN;
 

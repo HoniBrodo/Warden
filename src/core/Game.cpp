@@ -27,8 +27,8 @@ void Game::Run()
                 render.DrawGrid(true);
             }
             //render.DrawTextCentred("Hello from Warden", render.GridY(8), render.fontSize, DARKGREEN);
-            render.DrawTextBlock("This is a test of the text block function, it will adjust dynamically to the size of the string", render.GridX(2), render.GridY(7), 400);
-            render.DrawTextBlock("Smaller string = smaller box", render.GridX(15), render.GridY(10), 400);
+            render.DrawTextBlock("This is a test of the text block function, it will adjust dynamically to the size of the string. let's see what happens when we make it super super super super super super super super super long! ", render.GridX(2), render.GridY(4), 1000);
+            render.DrawTextBlock("I can adjust the size of the padding and the text will automatically wrap. NEAT!", render.GridX(15), render.GridY(10), 400);
             EndDrawing();
         }
 
