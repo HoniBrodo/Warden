@@ -16,6 +16,9 @@
     <Filter Include="Source Files\core">
       <UniqueIdentifier>{cdacda98-084b-4c1a-9650-ffe5ed9b0d80}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{fa371f6e-bcf5-4c7f-824d-eb56f5379b9e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp">
@@ -36,6 +39,9 @@
     <ClCompile Include="..\..\src\core\Renderer.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\UI\UIButton.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\core\Game.h">
@@ -52,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\core\Renderer.h">
       <Filter>Source Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\UI\UIButton.h">
+      <Filter>Source Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -141,6 +141,7 @@
     <ClCompile Include="..\..\src\core\InputManager.cpp" />
     <ClCompile Include="..\..\src\core\Renderer.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
+    <ClCompile Include="..\..\src\UI\UIButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\ClassTemplate.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="..\..\src\core\Game.h" />
     <ClInclude Include="..\..\src\core\InputManager.h" />
     <ClInclude Include="..\..\src\core\Renderer.h" />
+    <ClInclude Include="..\..\src\UI\UIButton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

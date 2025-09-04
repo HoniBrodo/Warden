@@ -1,6 +1,7 @@
 #pragma once
 #include "Renderer.h"
 #include "raylib.h"
+#include "../ui/UIButton.h"
 
 enum class GameState
 {
@@ -26,6 +27,11 @@ private:
 
     GameState state;
     Renderer render;
+
+    UIButton startButton;
+    UIButton exitButton;
+
+    void InitMenuButtons();
 
     int screenWidth = 1920;
     int screenHeight = 1080;

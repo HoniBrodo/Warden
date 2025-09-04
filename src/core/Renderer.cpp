@@ -61,6 +61,11 @@ void Renderer::SetGrid(int cols, int rows)
 	UpdateCellSize();
 }
 
+void Renderer::DrawRectangle(int x, int y, int width, int height, Color color)
+{
+	::DrawRectangle(x, y, width, height, color);
+}
+
 void Renderer::DrawTextBlock(const std::string& text, int posX, int posY, int maxWidth, TextAlign alignment, TextSize size)
 {
 	int fontSize = GetFontSize(size);
