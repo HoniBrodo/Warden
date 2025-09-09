@@ -1,4 +1,5 @@
 #pragma once
+#include "../level/MainMenu.h"
 #include "Renderer.h"
 #include "raylib.h"
 #include "../ui/UIButton.h"
@@ -25,13 +26,9 @@ private:
 
     void ChangeState(GameState newState);
 
-    GameState state;
     Renderer render;
-
-    UIButton startButton;
-    UIButton exitButton;
-
-    void InitMenuButtons();
+    GameState state;
+    MainMenu mMenu;
 
     int screenWidth = 1920;
     int screenHeight = 1080;

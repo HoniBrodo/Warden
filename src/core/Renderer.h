@@ -32,6 +32,7 @@ public:
     void SetGrid(int cols, int rows);
     void DrawRectangle(int x, int y, int width, int height, Color color);
     void DrawTextBlock(const std::string& text, int posX, int posY, int maxWidth, TextAlign alignment, TextSize size);
+    void DrawTextBlockNoPadding(const std::string& text, int posX, int posY, int maxWidth, TextAlign alignment, TextSize size);
     int GetFontSize(TextSize size) const;
     int ScreenCenterX() { return screenWidth / 2; }
     int TextScreenCenterX(int paddingWidth) { return (screenWidth / 2) - (paddingWidth / 2); }

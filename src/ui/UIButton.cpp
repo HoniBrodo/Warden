@@ -14,7 +14,7 @@ void UIButton::Draw(Renderer& render) const
     render.DrawRectangle(x, y, width, height, BLUE);  // Or any colour you like
 
     // Draw the text on top
-    render.DrawTextBlock(label, x, y, width, align, size); // this is where the problem is
+    render.DrawTextBlockNoPadding(label, x, y, width, align, size); 
 }
 
 bool UIButton::IsHovered() const

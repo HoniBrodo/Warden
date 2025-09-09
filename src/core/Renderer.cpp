@@ -101,6 +101,36 @@ void Renderer::DrawTextBlock(const std::string& text, int posX, int posY, int ma
 	}
 }
 
+void Renderer::DrawTextBlockNoPadding(const std::string& text, int posX, int posY, int maxWidth, TextAlign alignment, TextSize size)
+{
+	int fontSize = GetFontSize(size);
+	int rowHeight = fontSize + fontSize / 2;
+	int lineStart = fontSize;
+	int lineSpacing = fontSize * 1.33;
+	int indent = fontSize * 0.66;
+	std::vector<std::string> wrappedText = WrapText(text, maxWidth, fontSize);
+
+	for (size_t i = 0; i < wrappedText.size(); i++)
+	{
+		int textWidth = MeasureText(wrappedText[i].c_str(), fontSize);
+		int posXCentered = posX + ((maxWidth + fontSize * 2) / 2) - (textWidth / 2) - fontSize;
+
+		switch (alignment)
+		{
+		case TextAlign::Left:
+			DrawText(wrappedText[i].c_str(), posX + fontSize / 4, posY + fontSize / 2, fontSize, textColor);
+			posY = posY + lineSpacing;
+			break;
+
+		case TextAlign::Center:
+			DrawText(wrappedText[i].c_str(), posXCentered, posY + fontSize / 2, fontSize, textColor);
+			posY = posY + lineSpacing;
+			break;
+
+		}
+	}
+}
+
 int Renderer::GetFontSize(TextSize size) const
 {
 	switch (size)
