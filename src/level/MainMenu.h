@@ -17,4 +17,6 @@ private:
     StateManager& stateManager;
     UIButton startButton;
     UIButton exitButton;
+    Color startButtonColor = BLUE;
+    Color exitButtonColor = LIGHTGRAY;
 };

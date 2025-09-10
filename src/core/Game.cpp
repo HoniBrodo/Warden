@@ -18,14 +18,10 @@ void Game::Init()
 void Game::Run()
 {
     while (!WindowShouldClose()) {
-        switch (stateManager.GetState()) {
+        switch (stateManager.GetState()) 
+        {
         case StateManager::GameState::DEBUG_WINDOW:
-            BeginDrawing();
-            ClearBackground(BLACK);
-            render.DrawTextBlock("Debug Mode Active",
-                render.GridX(2), render.GridY(4),
-                1500, TextAlign::Left, TextSize::Dialogue);
-            EndDrawing();
+            debugLevel.Run(render);
             break;
 
         case StateManager::GameState::MAIN_MENU:

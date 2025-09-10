@@ -6,26 +6,61 @@ void MainMenu::Run(Renderer& renderRef)
     BeginDrawing();
     ClearBackground(BLACK);
     InitMenuButtons(render);
+
     if (IsKeyDown(KEY_G))
     {
         render.DrawGrid(true);
     }
 
-    render.DrawTextBlock("WARDEN", render.TextScreenCenterX(700), render.GridY(3), 700, TextAlign::Center, TextSize::MainTitle);
-    render.DrawTextBlock("Based on the Sci-fi Horror TTRPG 'Mothership' Written by Sean McCoy and Published by Tuesday Night Games", render.TextScreenCenterX(1000), render.GridY(7), 1000, TextAlign::Center, TextSize::Dialogue);
-    startButton.Draw(render);
-    exitButton.Draw(render);
+    render.DrawTextBlock
+    (
+        "WARDEN", 
+        render.TextScreenCenterX(700), 
+        render.GridY(3), 
+        700, 
+        TextAlign::Center, 
+        TextSize::MainTitle
+    );
 
+    render.DrawTextBlock
+    (
+        "Based on the Sci-fi Horror TTRPG 'Mothership' Written by Sean McCoy and Published by Tuesday Night Games", 
+        render.TextScreenCenterX(1000), 
+        render.GridY(7), 
+        1000, 
+        TextAlign::Center, 
+        TextSize::Dialogue
+    );
+
+    startButton.Draw(render, startButtonColor);
+    exitButton.Draw(render, exitButtonColor);
+
+    // start button logic
     if (startButton.IsClicked()) {
         stateManager.SetState(StateManager::GameState::DEBUG_WINDOW);
     }
 
-    if (IsKeyPressed(KEY_ENTER)) {
+    if (startButton.IsHovered()) {
+        startButtonColor = GRAY;
+    }
+    else startButtonColor = LIGHTGRAY;
+
+    // exit button logic
+    if (exitButton.IsClicked()) {
         stateManager.SetState(StateManager::GameState::DEBUG_WINDOW);
     }
 
+    if (exitButton.IsHovered()) {
+        exitButtonColor = GRAY;
+    }
+    else exitButtonColor = LIGHTGRAY;
+
+
+
     EndDrawing();
 }
+
+// a future task is to set up a constructor for UIButton objects, so they can be initialized as they are created
 
 void MainMenu::InitMenuButtons(Renderer& renderRef)
 {

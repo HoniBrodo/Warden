@@ -3,6 +3,7 @@
 #include "Renderer.h"
 #include "raylib.h"
 #include "../ui/UIButton.h"
+#include "../level/DebugLevel.h"
 #include "StateManager.h"
 
 
@@ -19,6 +20,7 @@ private:
     Renderer render;
     StateManager stateManager;
     MainMenu mMenu{ stateManager };
+    DebugLevel debugLevel{ stateManager }; 
 
     int screenWidth = 1920;
     int screenHeight = 1080;

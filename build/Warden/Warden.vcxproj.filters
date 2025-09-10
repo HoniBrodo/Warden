@@ -16,11 +16,11 @@
     <Filter Include="Source Files\core">
       <UniqueIdentifier>{cdacda98-084b-4c1a-9650-ffe5ed9b0d80}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\UI">
-      <UniqueIdentifier>{fa371f6e-bcf5-4c7f-824d-eb56f5379b9e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Level">
+    <Filter Include="Source Files\level">
       <UniqueIdentifier>{11f32522-0a4e-488a-9f3a-cde571d67a57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ui">
+      <UniqueIdentifier>{fa371f6e-bcf5-4c7f-824d-eb56f5379b9e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -43,13 +43,16 @@
       <Filter>Source Files\core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\UI\UIButton.cpp">
-      <Filter>Source Files\UI</Filter>
+      <Filter>Source Files\ui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\level\MainMenu.cpp">
-      <Filter>Source Files\Level</Filter>
+      <Filter>Source Files\level</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\core\StateManager.cpp">
       <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\level\DebugLevel.cpp">
+      <Filter>Source Files\level</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,13 +72,16 @@
       <Filter>Source Files\core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\UI\UIButton.h">
-      <Filter>Source Files\UI</Filter>
+      <Filter>Source Files\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\level\MainMenu.h">
-      <Filter>Source Files\Level</Filter>
+      <Filter>Source Files\level</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\core\StateManager.h">
       <Filter>Source Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\level\DebugLevel.h">
+      <Filter>Source Files\level</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

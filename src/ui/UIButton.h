@@ -11,7 +11,7 @@ public:
     UIButton(const std::string& label, int x, int y, int width, int height,
         TextAlign align, TextSize size);
 
-    void Draw(Renderer& render) const;
+    void Draw(Renderer& render, Color color) const;
     bool IsHovered() const;
     bool IsClicked() const;
 
