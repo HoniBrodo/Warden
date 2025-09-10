@@ -9,13 +9,10 @@ public:
     MainMenu();
     ~MainMenu();
 
-    void InitMenuButtons();
-
-    void Run();
+    void InitMenuButtons(Renderer& renderRef);
+    void Run(Renderer& renderRef);
 
 private:
-
-    Renderer render;
 
     UIButton startButton;
     UIButton exitButton;
