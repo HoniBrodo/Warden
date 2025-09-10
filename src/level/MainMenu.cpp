@@ -1,9 +1,5 @@
 #include "MainMenu.h"
 
-MainMenu::MainMenu(){}
-
-MainMenu::~MainMenu() {}
-
 void MainMenu::Run(Renderer& renderRef)
 {
     Renderer render = renderRef;
@@ -15,14 +11,17 @@ void MainMenu::Run(Renderer& renderRef)
         render.DrawGrid(true);
     }
 
-
     render.DrawTextBlock("WARDEN", render.TextScreenCenterX(700), render.GridY(3), 700, TextAlign::Center, TextSize::MainTitle);
     render.DrawTextBlock("Based on the Sci-fi Horror TTRPG 'Mothership' Written by Sean McCoy and Published by Tuesday Night Games", render.TextScreenCenterX(1000), render.GridY(7), 1000, TextAlign::Center, TextSize::Dialogue);
     startButton.Draw(render);
     exitButton.Draw(render);
 
     if (startButton.IsClicked()) {
-      // try to access 'state' from the game class  ; 
+        stateManager.SetState(StateManager::GameState::DEBUG_WINDOW);
+    }
+
+    if (IsKeyPressed(KEY_ENTER)) {
+        stateManager.SetState(StateManager::GameState::DEBUG_WINDOW);
     }
 
     EndDrawing();

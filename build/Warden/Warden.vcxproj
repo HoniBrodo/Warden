@@ -140,6 +140,7 @@
     <ClCompile Include="..\..\src\core\Game.cpp" />
     <ClCompile Include="..\..\src\core\InputManager.cpp" />
     <ClCompile Include="..\..\src\core\Renderer.cpp" />
+    <ClCompile Include="..\..\src\core\StateManager.cpp" />
     <ClCompile Include="..\..\src\level\MainMenu.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\UI\UIButton.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="..\..\src\core\Game.h" />
     <ClInclude Include="..\..\src\core\InputManager.h" />
     <ClInclude Include="..\..\src\core\Renderer.h" />
+    <ClInclude Include="..\..\src\core\StateManager.h" />
     <ClInclude Include="..\..\src\level\MainMenu.h" />
     <ClInclude Include="..\..\src\UI\UIButton.h" />
   </ItemGroup>

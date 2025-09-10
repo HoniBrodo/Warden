@@ -3,16 +3,8 @@
 #include "Renderer.h"
 #include "raylib.h"
 #include "../ui/UIButton.h"
+#include "StateManager.h"
 
-enum class GameState
-{
-    DEBUG_WINDOW,
-    MAIN_MENU,
-    PLAYING,
-    PAUSED,
-    DIALOGUE,
-    GAME_OVER
-};
 
 class Game {
 public:
@@ -24,11 +16,9 @@ public:
 
 private: 
 
-    void ChangeState(GameState newState);
-
     Renderer render;
-    GameState state;
-    MainMenu mMenu;
+    StateManager stateManager;
+    MainMenu mMenu{ stateManager };
 
     int screenWidth = 1920;
     int screenHeight = 1080;
