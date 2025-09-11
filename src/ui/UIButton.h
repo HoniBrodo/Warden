@@ -12,8 +12,8 @@ public:
         TextAlign align, TextSize size);
 
     void Draw(Renderer& render, Color color) const;
-    bool IsHovered() const;
-    bool IsClicked() const;
+    bool IsHovered(Renderer& render) const;
+    bool IsClicked(Renderer& render) const;
 
 private:
     std::string label;
@@ -23,5 +23,5 @@ private:
     TextSize size;
     
 
-    Rectangle GetBounds() const;
+    Rectangle GetBounds(Renderer& render) const;
 };

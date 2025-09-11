@@ -24,7 +24,17 @@ void DebugLevel::Run(Renderer& renderRef)
         TextSize::Dialogue
     );
 
-    testButton01.Draw(render, GREEN);
+    testButton01.Draw(render, testButton01Color);
+
+    if (testButton01.IsHovered(render)) {
+        testButton01Color = GRAY;
+    }
+    else testButton01Color = LIGHTGRAY;
+
+    if (testButton01.IsClicked(render))
+    {
+        stateManager.SetState(StateManager::GameState::MAIN_MENU);
+    }
 
     EndDrawing();
 }
@@ -37,7 +47,7 @@ void DebugLevel::InitDebugLevelButtons(Renderer& renderRef)
         "This is a test button in the center of the screeen, testing testing testing",
         render.TextScreenCenterX(1200),
         render.GridY(5),
-        1200, 120,                   // width & height
+        1200, 120,                  
         TextAlign::Center,
         TextSize::Button01
     );

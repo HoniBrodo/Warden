@@ -36,21 +36,21 @@ void MainMenu::Run(Renderer& renderRef, bool& gameRunning)
     exitButton.Draw(render, exitButtonColor);
 
     // start button logic
-    if (startButton.IsClicked()) {
+    if (startButton.IsClicked(render)) {
         stateManager.SetState(StateManager::GameState::DEBUG_WINDOW);
     }
 
-    if (startButton.IsHovered()) {
+    if (startButton.IsHovered(render)) {
         startButtonColor = GRAY;
     }
     else startButtonColor = LIGHTGRAY;
 
     // exit button logic
-    if (exitButton.IsClicked()) {
+    if (exitButton.IsClicked(render)) {
         gameRunning = false;
     }
 
-    if (exitButton.IsHovered()) {
+    if (exitButton.IsHovered(render)) {
         exitButtonColor = GRAY;
     }
     else exitButtonColor = LIGHTGRAY;

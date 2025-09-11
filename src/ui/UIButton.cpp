@@ -18,19 +18,21 @@ void UIButton::Draw(Renderer& render, Color color) const
 
 }
 
-bool UIButton::IsHovered() const
+bool UIButton::IsHovered(Renderer& render) const
 {
-    Rectangle bounds = GetBounds();
+    Rectangle bounds = GetBounds(render);
     return CheckCollisionPointRec(GetMousePosition(), bounds);
 }
 
-bool UIButton::IsClicked() const
+bool UIButton::IsClicked(Renderer& render) const
 {
-    return IsHovered() && IsMouseButtonPressed(MOUSE_LEFT_BUTTON);
+    return IsHovered(render) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON);
 }
 
-Rectangle UIButton::GetBounds() const
+Rectangle UIButton::GetBounds(Renderer& render) const
 {
+    int paddingHeight = render.GetPaddingHeight(label, size, width);
+
     return { static_cast<float>(x), static_cast<float>(y),
-             static_cast<float>(width), static_cast<float>(height) };
+             static_cast<float>(width), static_cast<float>(paddingHeight) };
 }

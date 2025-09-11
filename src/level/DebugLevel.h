@@ -11,6 +11,7 @@ public:
     
     void InitDebugLevelButtons(Renderer& renderRef);
     void Run(Renderer& renderRef);
+    Color testButton01Color;
 
 private:
 
