@@ -10,11 +10,12 @@ UIButton::UIButton(const std::string& label, int x, int y, int width, int height
 
 void UIButton::Draw(Renderer& render, Color color) const
 {
+    int paddingHeight = render.GetPaddingHeight(label, size, width);
     // Draw the button background rectangle
-    render.DrawRectangle(x, y, width, height, color); 
-
+    render.DrawRectangle(x, y, width, paddingHeight, color);
     // Draw the text on top
-    render.DrawTextBlockNoPadding(label, x, y, width, align, size); 
+    render.DrawTextBlockNoPadding(label, x, y, width, align, size);
+
 }
 
 bool UIButton::IsHovered() const

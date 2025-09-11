@@ -146,6 +146,18 @@ int Renderer::GetFontSize(TextSize size) const
 	}
 }
 
+int Renderer::GetPaddingHeight(const std::string& text, TextSize size, int maxWidth)
+{
+	int fontSize = GetFontSize(size);
+	int rowHeight = fontSize + fontSize / 2;
+	int lineStart = fontSize;
+	int lineSpacing = fontSize * 1.33;
+	int indent = fontSize * 0.66;
+	std::vector<std::string> wrappedText = WrapText(text, maxWidth, fontSize);
+
+	return wrappedText.size() * lineSpacing + indent;
+}
+
 
 void Renderer::UpdateCellSize()
 {

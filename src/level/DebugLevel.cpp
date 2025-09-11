@@ -34,10 +34,10 @@ void DebugLevel::InitDebugLevelButtons(Renderer& renderRef)
     Renderer render = renderRef;
 
     testButton01 = UIButton(
-        "This is a test button in ther center of the screeen",
-        render.TextScreenCenterX(300),
+        "This is a test button in the center of the screeen, testing testing testing",
+        render.TextScreenCenterX(1200),
         render.GridY(5),
-        300, 120,                   // width & height
+        1200, 120,                   // width & height
         TextAlign::Center,
         TextSize::Button01
     );

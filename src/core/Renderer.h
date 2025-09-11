@@ -36,6 +36,7 @@ public:
     int GetFontSize(TextSize size) const;
     int ScreenCenterX() { return screenWidth / 2; }
     int TextScreenCenterX(int paddingWidth) { return (screenWidth / 2) - (paddingWidth / 2); }
+    int GetPaddingHeight(const std::string& text, TextSize size, int maxWidth);
 
 
 private:
