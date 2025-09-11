@@ -10,13 +10,14 @@ public:
     MainMenu(StateManager& sm) : stateManager(sm) {}
 
     void InitMenuButtons(Renderer& renderRef);
-    void Run(Renderer& renderRef);
+    void Run(Renderer& renderRef, bool& gameRunning);
 
 private:
 
     StateManager& stateManager;
     UIButton startButton;
     UIButton exitButton;
-    Color startButtonColor = BLUE;
+    Color startButtonColor = LIGHTGRAY;
     Color exitButtonColor = LIGHTGRAY;
+
 };

@@ -24,4 +24,6 @@ private:
 
     int screenWidth = 1920;
     int screenHeight = 1080;
+
+    bool gameRunning = true;
 };

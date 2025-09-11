@@ -17,7 +17,7 @@ void Game::Init()
 
 void Game::Run()
 {
-    while (!WindowShouldClose()) {
+    while (!WindowShouldClose() && gameRunning) {
         switch (stateManager.GetState()) 
         {
         case StateManager::GameState::DEBUG_WINDOW:
@@ -25,7 +25,7 @@ void Game::Run()
             break;
 
         case StateManager::GameState::MAIN_MENU:
-            mMenu.Run(render);
+            mMenu.Run(render, gameRunning);
             break;
         }
     }

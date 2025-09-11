@@ -11,7 +11,7 @@ UIButton::UIButton(const std::string& label, int x, int y, int width, int height
 void UIButton::Draw(Renderer& render, Color color) const
 {
     // Draw the button background rectangle
-    render.DrawRectangle(x, y, width, height, color);  // Or any colour you like
+    render.DrawRectangle(x, y, width, height, color); 
 
     // Draw the text on top
     render.DrawTextBlockNoPadding(label, x, y, width, align, size); 

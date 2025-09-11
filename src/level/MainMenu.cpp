@@ -1,6 +1,6 @@
 #include "MainMenu.h"
 
-void MainMenu::Run(Renderer& renderRef)
+void MainMenu::Run(Renderer& renderRef, bool& gameRunning)
 {
     Renderer render = renderRef;
     BeginDrawing();
@@ -47,7 +47,7 @@ void MainMenu::Run(Renderer& renderRef)
 
     // exit button logic
     if (exitButton.IsClicked()) {
-        stateManager.SetState(StateManager::GameState::DEBUG_WINDOW);
+        gameRunning = false;
     }
 
     if (exitButton.IsHovered()) {
