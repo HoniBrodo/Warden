@@ -65,6 +65,7 @@ void MainMenu::Run(Renderer& renderRef, bool& gameRunning)
 void MainMenu::InitMenuButtons(Renderer& renderRef)
 {
     Renderer render = renderRef;
+
     startButton = UIButton(
         "Start",
         render.TextScreenCenterX(300) - 250,
