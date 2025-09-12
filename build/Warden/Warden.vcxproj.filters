@@ -22,6 +22,9 @@
     <Filter Include="Source Files\ui">
       <UniqueIdentifier>{fa371f6e-bcf5-4c7f-824d-eb56f5379b9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\player">
+      <UniqueIdentifier>{7672a3a9-3c94-4807-aa91-42b2d2a2eec6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp">
@@ -54,6 +57,12 @@
     <ClCompile Include="..\..\src\level\DebugLevel.cpp">
       <Filter>Source Files\level</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\player\BaseClass.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\level\CharacterCreator.cpp">
+      <Filter>Source Files\level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\core\Game.h">
@@ -81,6 +90,12 @@
       <Filter>Source Files\core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\level\DebugLevel.h">
+      <Filter>Source Files\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\player\BaseClass.h">
+      <Filter>Source Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\level\CharacterCreator.h">
       <Filter>Source Files\level</Filter>
     </ClInclude>
   </ItemGroup>
