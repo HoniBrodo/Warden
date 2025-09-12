@@ -63,6 +63,12 @@
     <ClCompile Include="..\..\src\level\CharacterCreator.cpp">
       <Filter>Source Files\level</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\player\BaseEquipment.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\player\BaseSkill.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\core\Game.h">
@@ -97,6 +103,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\level\CharacterCreator.h">
       <Filter>Source Files\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\player\BaseEquipment.h">
+      <Filter>Source Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\player\BaseSkill.h">
+      <Filter>Source Files\player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

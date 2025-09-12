@@ -146,6 +146,8 @@
     <ClCompile Include="..\..\src\level\MainMenu.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\player\BaseClass.cpp" />
+    <ClCompile Include="..\..\src\player\BaseEquipment.cpp" />
+    <ClCompile Include="..\..\src\player\BaseSkill.cpp" />
     <ClCompile Include="..\..\src\UI\UIButton.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +161,8 @@
     <ClInclude Include="..\..\src\level\DebugLevel.h" />
     <ClInclude Include="..\..\src\level\MainMenu.h" />
     <ClInclude Include="..\..\src\player\BaseClass.h" />
+    <ClInclude Include="..\..\src\player\BaseEquipment.h" />
+    <ClInclude Include="..\..\src\player\BaseSkill.h" />
     <ClInclude Include="..\..\src\UI\UIButton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

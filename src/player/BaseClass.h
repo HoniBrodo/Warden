@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "BaseSkill.h"
+#include "BaseEquipment.h"
 #include "raylib.h"
 
 class BaseClass {
@@ -8,28 +10,47 @@ public:
     BaseClass(const std::string& name);
     virtual ~BaseClass();
 
+    // accessors
+    std::string GetName() const { return name; }
+    int GetStrength() const { return strength; }
+    int GetSpeed() const { return speed; }
+    int GetIntellect() const { return intellect; }
+    int GetCombat() const { return combat; }
+    int GetSanity() const { return sanity; }
+    int Getfear() const { return fear; }
+    int GetBody() const { return body; }
+    int GetHealth() const { return health; }
+    int GetWounds() const { return wounds; }
+    int GetStress() const { return stress; }
+
+    // actions 
+    virtual void TakeDamage(int amount);
+    virtual void Heal(int amount);
+    virtual void IncreaseStress(int amount);
+    virtual void ReduceStress(int amount);
+
 protected:
 
     std::string name;
 
     // stats
-    int strength;
-    int speed;
-    int intellect;
-    int combat;
+    int strength{};
+    int speed{};
+    int intellect{};
+    int combat{};
 
     // saves
-    int sanity;
-    int fear;
-    int body;
+    int sanity{};
+    int fear{};
+    int body{};
 
-    int health;
-    int wounds;
-    int stress;
+    int health{};
+    int wounds{};
+    int stress{};
 
     // Inventory + skills
-    std::vector<std::string> skills; // replace string with skills class objects
-    std::vector<std::string> equipment; // replace string with equipment class objects
-    int credits;
+    std::vector<BaseSkill> skills; // skill objects derived from the base skill class
+    std::vector<BaseEquipment> equipment; // equipment objects derived from th base equipment class
+    int credits{};
 
 };
