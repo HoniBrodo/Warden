@@ -1,5 +1,6 @@
 #include "CharacterCreator.h"
 
-CharacterCreator::CharacterCreator() {}
+void CharacterCreator::InitMenuButtons(Renderer& renderRef)
+{
 
-CharacterCreator::~CharacterCreator() {}
+}
