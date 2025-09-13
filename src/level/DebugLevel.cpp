@@ -11,7 +11,7 @@ void DebugLevel::Run(Renderer& renderRef)
 
     BeginDrawing();
     ClearBackground(BLACK);
-    InitDebugLevelButtons(render);
+    InitButtons(render);
 
 
     render.DrawTextBlock
@@ -39,7 +39,7 @@ void DebugLevel::Run(Renderer& renderRef)
     EndDrawing();
 }
 
-void DebugLevel::InitDebugLevelButtons(Renderer& renderRef)
+void DebugLevel::InitButtons(Renderer& renderRef)
 {
     Renderer render = renderRef;
 

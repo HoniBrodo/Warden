@@ -5,7 +5,7 @@ void MainMenu::Run(Renderer& renderRef, bool& gameRunning)
     Renderer render = renderRef;
     BeginDrawing();
     ClearBackground(BLACK);
-    InitMenuButtons(render);
+    InitButtons(render);
 
     if (IsKeyDown(KEY_G))
     {
@@ -37,7 +37,7 @@ void MainMenu::Run(Renderer& renderRef, bool& gameRunning)
 
     // start button logic
     if (startButton.IsClicked(render)) {
-        stateManager.SetState(StateManager::GameState::DEBUG_WINDOW);
+        stateManager.SetState(StateManager::GameState::CHARATER_CREATOR);
     }
 
     if (startButton.IsHovered(render)) {
@@ -62,7 +62,7 @@ void MainMenu::Run(Renderer& renderRef, bool& gameRunning)
 
 // a future task is to set up a constructor for UIButton objects, so they can be initialized as they are created
 
-void MainMenu::InitMenuButtons(Renderer& renderRef)
+void MainMenu::InitButtons(Renderer& renderRef)
 {
     Renderer render = renderRef;
 

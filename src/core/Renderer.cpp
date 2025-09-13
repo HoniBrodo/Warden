@@ -141,6 +141,8 @@ int Renderer::GetFontSize(TextSize size) const
 		return 30;
 	case TextSize::Button01:
 		return 70;
+	case TextSize::SmallerTitle:
+		return 75;
 	default:
 		return 30; // fallback to default
 	}

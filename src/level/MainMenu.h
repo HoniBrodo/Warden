@@ -9,7 +9,7 @@ class MainMenu {
 public:
     MainMenu(StateManager& sm) : stateManager(sm) {}
 
-    void InitMenuButtons(Renderer& renderRef);
+    void InitButtons(Renderer& renderRef);
     void Run(Renderer& renderRef, bool& gameRunning);
 
 private:

@@ -27,6 +27,10 @@ void Game::Run()
         case StateManager::GameState::MAIN_MENU:
             mMenu.Run(render, gameRunning);
             break;
+
+        case StateManager::GameState::CHARATER_CREATOR:
+            cCreator.Run(render); // do we need to pass this reference? the level class already initialized its own variable with the same ref
+            break;
         }
     }
     CloseWindow();

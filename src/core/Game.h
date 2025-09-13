@@ -1,10 +1,12 @@
 #pragma once
 #include "../level/MainMenu.h"
+#include "../level/CharacterCreator.h"
+#include "../level/DebugLevel.h"
+#include "../ui/UIButton.h"
 #include "Renderer.h"
 #include "raylib.h"
-#include "../ui/UIButton.h"
-#include "../level/DebugLevel.h"
 #include "StateManager.h"
+
 
 
 class Game {
@@ -21,6 +23,8 @@ private:
     StateManager stateManager;
     MainMenu mMenu{ stateManager };
     DebugLevel debugLevel{ stateManager }; 
+    CharacterCreator cCreator{ stateManager };
+
 
     int screenWidth = 1920;
     int screenHeight = 1080;

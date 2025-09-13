@@ -9,12 +9,13 @@ class DebugLevel {
 public:
     DebugLevel(StateManager& sm) : stateManager(sm) {}
     
-    void InitDebugLevelButtons(Renderer& renderRef);
+    void InitButtons(Renderer& renderRef);
     void Run(Renderer& renderRef);
-    Color testButton01Color;
+
 
 private:
 
     StateManager& stateManager;
     UIButton testButton01;
+    Color testButton01Color;
 };

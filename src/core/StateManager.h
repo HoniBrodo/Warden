@@ -9,6 +9,7 @@ public:
     {
         DEBUG_WINDOW,
         MAIN_MENU,
+        CHARATER_CREATOR,
         PLAYING,
         PAUSED,
         DIALOGUE,

@@ -9,8 +9,17 @@ class CharacterCreator {
 public:
     CharacterCreator(StateManager& sm) : stateManager(sm) {}
 
+    void Run(Renderer& renderRef);
+    void InitButtons(Renderer& renderRef);
+
 private:
     StateManager& stateManager;
 
-    void InitMenuButtons(Renderer& renderRef);
+    // buttons
+    UIButton NextButton;
+    Color NextButtonColor = LIGHTGRAY;
+    UIButton PreviousButton;
+    Color PreviousButtonColor = LIGHTGRAY;
+    UIButton MainMenuButton;
+    Color MainMenuButtonColor = LIGHTGRAY;
 };    

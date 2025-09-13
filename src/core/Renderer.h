@@ -13,7 +13,8 @@ enum class TextSize
 {
     MainTitle,
     Button01,
-    Dialogue
+    Dialogue,
+    SmallerTitle
 };
 
 class Renderer {
