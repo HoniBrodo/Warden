@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\assets\TextureManager.cpp" />
     <ClCompile Include="..\..\src\ClassTemplate.cpp" />
     <ClCompile Include="..\..\src\core\AudioManager.cpp" />
     <ClCompile Include="..\..\src\core\Game.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="..\..\src\UI\UIButton.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\assets\TextureManager.h" />
     <ClInclude Include="..\..\src\ClassTemplate.h" />
     <ClInclude Include="..\..\src\core\AudioManager.h" />
     <ClInclude Include="..\..\src\core\Game.h" />

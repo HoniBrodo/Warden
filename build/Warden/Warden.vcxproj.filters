@@ -25,6 +25,9 @@
     <Filter Include="Source Files\player">
       <UniqueIdentifier>{7672a3a9-3c94-4807-aa91-42b2d2a2eec6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\assets">
+      <UniqueIdentifier>{c30b6f9a-ce4a-4c6a-ab1b-d88014c34c7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp">
@@ -69,6 +72,9 @@
     <ClCompile Include="..\..\src\player\BaseSkill.cpp">
       <Filter>Source Files\player</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\assets\TextureManager.cpp">
+      <Filter>Source Files\assets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\core\Game.h">
@@ -109,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\player\BaseSkill.h">
       <Filter>Source Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\assets\TextureManager.h">
+      <Filter>Source Files\assets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
