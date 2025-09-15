@@ -4,6 +4,7 @@
 #include "../ui/UIButton.h"
 #include "../Core/StateManager.h"
 #include "../assets/TextureManager.h"
+#include "../assets/TextureManager.h"
 #include "raylib.h" 
 
 class CharacterCreator {

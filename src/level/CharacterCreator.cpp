@@ -1,8 +1,11 @@
 #include "CharacterCreator.h"
 
+
 void CharacterCreator::Run(Renderer& renderRef)
 {
     Renderer render = renderRef;
+
+
 
     if (IsKeyDown(KEY_G))
     {
@@ -12,6 +15,11 @@ void CharacterCreator::Run(Renderer& renderRef)
 	BeginDrawing();
 	ClearBackground(BLACK);
 	InitButtons(render);
+
+    textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
+
+    Texture2D& MarineTex = textureManager.GetTexture("Marine");
+    DrawTexture(MarineTex, 100, 100, WHITE);
 
     render.DrawTextBlock
     (
