@@ -1,6 +1,6 @@
 #include "CharacterCreator.h"
 
-void CharacterCreator::Run(Renderer& renderRef, TextureManager& tm)
+void CharacterCreator::Run(Renderer& renderRef)
 {
     Renderer render = renderRef;
 

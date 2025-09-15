@@ -29,7 +29,7 @@ void Game::Run()
             break;
 
         case StateManager::GameState::CHARATER_CREATOR:
-            cCreator.Run(render, textureManager); // do we need to pass this reference? the level class already initialized its own variable with the same ref
+            cCreator.Run(render); // do we need to pass this reference? the level class already initialized its own variable with the same ref
             break;
         }
     }

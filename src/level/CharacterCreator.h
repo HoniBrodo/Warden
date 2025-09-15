@@ -10,7 +10,7 @@ class CharacterCreator {
 public:
     CharacterCreator(StateManager& sm, TextureManager& tm) : stateManager(sm), textureManager(tm) {}
 
-    void Run(Renderer& renderRef, TextureManager& tm);
+    void Run(Renderer& renderRef);
     void InitButtons(Renderer& renderRef);
 
 private:
