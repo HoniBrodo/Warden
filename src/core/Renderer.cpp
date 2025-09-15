@@ -1,13 +1,9 @@
 #include "Renderer.h"
+#include "../assets/TextureManager.h"
 #include <sstream>
 
-Renderer::Renderer() 
-{
-	UpdateCellSize();
-}
-
-Renderer::Renderer(int cols, int rows, int screenWidth, int screenHeight)
-	: cols(cols), rows(rows), screenWidth(screenWidth), screenHeight(screenHeight)
+Renderer::Renderer(TextureManager& tm, int cols, int rows, int screenWidth, int screenHeight)
+	: cols(cols), rows(rows), screenWidth(screenWidth), screenHeight(screenHeight), textureManager(tm)
 {
 	UpdateCellSize();
 }
@@ -22,6 +18,13 @@ float Renderer::GridX(int gx) const
 float Renderer::GridY(int gy) const
 {
 	return gy * cellHeight;
+}
+
+void Renderer::DrawLoadedTexture(std::string image, Vector2 pos, float rotation, float scale, Color tint)
+{
+	Texture2D& texture = textureManager.GetTexture(image);
+	DrawTextureEx(texture, pos, rotation, scale, tint);
+
 }
 
 void Renderer::DrawGrid(bool showCoords) const

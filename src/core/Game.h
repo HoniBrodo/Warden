@@ -20,9 +20,10 @@ public:
 
 private: 
 
-    Renderer render;
+    
     
     TextureManager textureManager;
+    Renderer render{ textureManager, 0, 0, 0, 0 };
     StateManager stateManager;
     MainMenu mMenu{ stateManager };
     DebugLevel debugLevel{ stateManager }; 

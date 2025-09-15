@@ -1,25 +1,24 @@
 #include "CharacterCreator.h"
+#include "../core/Renderer.h"
+#include "../Core/StateManager.h"
+#include "../assets/TextureManager.h"
 
 
 void CharacterCreator::Run(Renderer& renderRef)
 {
     Renderer render = renderRef;
 
-
-
     if (IsKeyDown(KEY_G))
     {
         render.DrawGrid(true);
     }
 
-	BeginDrawing();
-	ClearBackground(BLACK);
-	InitButtons(render);
+    BeginDrawing();
+    ClearBackground(BLACK);
+    InitButtons(render);
 
     textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
-
-    Texture2D& MarineTex = textureManager.GetTexture("Marine");
-    DrawTexture(MarineTex, 100, 100, WHITE);
+    render.DrawLoadedTexture("Marine", { 100, 100 }, 0.0f, 0.5f, WHITE);
 
     render.DrawTextBlock
     (

@@ -1,11 +1,11 @@
 #pragma once
 #include <string>
-#include "../core/Renderer.h"
 #include "../ui/UIButton.h"
-#include "../Core/StateManager.h"
-#include "../assets/TextureManager.h"
-#include "../assets/TextureManager.h"
 #include "raylib.h" 
+
+class Renderer;
+class StateManager;
+class TextureManager;
 
 class CharacterCreator {
 public:

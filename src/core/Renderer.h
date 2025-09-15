@@ -3,6 +3,9 @@
 #include <string>
 #include <vector>
 
+
+class TextureManager;
+
 enum class TextAlign
 {
     Left,
@@ -19,8 +22,7 @@ enum class TextSize
 
 class Renderer {
 public:
-    Renderer();
-    Renderer(int cols, int rows, int screenWidth, int screenHeight);
+    Renderer(TextureManager& tm, int cols, int rows, int screenWidth, int screenHeight);
     ~Renderer();
 
     Font font = GetFontDefault();
@@ -28,6 +30,7 @@ public:
 
     float GridX(int gx) const;
     float GridY(int gy) const;
+    void DrawLoadedTexture(std::string image, Vector2 pos, float rotation, float scale, Color tint );
     void DrawGrid(bool showCoords = false) const;
     void SetScreenSize(int width, int height);
     void SetGrid(int cols, int rows);
@@ -42,6 +45,8 @@ public:
 
 private:
 
+
+    TextureManager& textureManager;
     int cols = 20;
     int rows = 20;
     float cellWidth{};
