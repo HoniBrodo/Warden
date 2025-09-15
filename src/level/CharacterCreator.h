@@ -3,17 +3,19 @@
 #include "../core/Renderer.h"
 #include "../ui/UIButton.h"
 #include "../Core/StateManager.h"
+#include "../assets/TextureManager.h"
 #include "raylib.h" 
 
 class CharacterCreator {
 public:
-    CharacterCreator(StateManager& sm) : stateManager(sm) {}
+    CharacterCreator(StateManager& sm, TextureManager& tm) : stateManager(sm), textureManager(tm) {}
 
-    void Run(Renderer& renderRef);
+    void Run(Renderer& renderRef, TextureManager& tm);
     void InitButtons(Renderer& renderRef);
 
 private:
     StateManager& stateManager;
+    TextureManager& textureManager;
 
     // buttons
     UIButton NextButton;
