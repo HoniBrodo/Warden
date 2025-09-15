@@ -1,3 +1,4 @@
+#include <string>
 #include "CharacterCreator.h"
 #include "../core/Renderer.h"
 #include "../Core/StateManager.h"
@@ -8,6 +9,8 @@ void CharacterCreator::Run(Renderer& renderRef)
 {
     Renderer render = renderRef;
 
+    std::string marineInfo = "This is some placeholder text for the Marine class. The Marine is good at bla bla bla. They suffer from bla bla bla. Their base stats are bla bla bla";
+
     if (IsKeyDown(KEY_G))
     {
         render.DrawGrid(true);
@@ -17,15 +20,35 @@ void CharacterCreator::Run(Renderer& renderRef)
     ClearBackground(BLACK);
     InitButtons(render);
 
-    textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
-    render.DrawLoadedTexture("Marine", { render.GridX(4), render.GridX(3)+5}, 0.0f, 0.5f, WHITE);
-
     render.DrawTextBlock
     (
         "Choose Your Class",
         render.TextScreenCenterX(800),
         render.GridY(1),
         800,
+        TextAlign::Center,
+        TextSize::SmallerTitle
+    );
+
+    textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
+    render.DrawLoadedTexture("Marine", { render.GridX(4), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
+
+    render.DrawTextBlock
+    (
+        marineInfo,
+        render.GridX(13),
+        render.GridY(8),
+        600,
+        TextAlign::Center,
+        TextSize::Dialogue
+    );
+
+    render.DrawTextBlock
+    (
+        "Marine",
+        render.GridX(15),
+        render.GridY(4),
+        300,
         TextAlign::Center,
         TextSize::SmallerTitle
     );
