@@ -9,7 +9,16 @@ public:
     ~TextureManager();
 
     // Load and store a texture with a key
-    void LoadTexture(const std::string& id, const std::string& filepath);
+    void LoadTextureFromFile(const std::string& id, const std::string& filepath);
+
+    // Get a texture by key (throws if missing)
+    Texture2D& GetTexture(const std::string& id);
+
+    // Check if a texture is already loaded
+    bool HasTexture(const std::string& id) const;
+
+    // Unload a single texture
+    void UnloadTexture(const std::string& id);
 
     // Unload all textures
     void UnloadAll();   
