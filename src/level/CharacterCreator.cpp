@@ -18,11 +18,11 @@ void CharacterCreator::Run(Renderer& renderRef)
     InitButtons(render);
 
     textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
-    render.DrawLoadedTexture("Marine", { 100, 100 }, 0.0f, 0.5f, WHITE);
+    render.DrawLoadedTexture("Marine", { render.GridX(4), render.GridX(3)+5}, 0.0f, 0.5f, WHITE);
 
     render.DrawTextBlock
     (
-        "Character Creator",
+        "Choose Your Class",
         render.TextScreenCenterX(800),
         render.GridY(1),
         800,
