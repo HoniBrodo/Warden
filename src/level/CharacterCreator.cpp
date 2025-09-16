@@ -9,7 +9,9 @@ void CharacterCreator::Run(Renderer& renderRef)
 {
     Renderer render = renderRef;
 
+    // these need to be moved into their respective derived child sub-classes 
     std::string marineInfo = "This is some placeholder text for the Marine class. The Marine is good at bla bla bla. They suffer from bla bla bla. Their base stats are bla bla bla";
+    std::string ScientistInfo = "This is some placeholder text for the Scientist class. The Scientist is good at bla bla bla. They suffer from bla bla bla. Their base stats are bla bla bla";
 
     if (IsKeyDown(KEY_G))
     {
@@ -30,7 +32,8 @@ void CharacterCreator::Run(Renderer& renderRef)
         TextSize::SmallerTitle
     );
 
-    textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
+    textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png"); 
+    textureManager.LoadTextureFromFile("Scientist", "images/player/SFCP_1_38.png");
 
     switch (GetCurrentCharacter())
     {
@@ -61,7 +64,7 @@ void CharacterCreator::Run(Renderer& renderRef)
 
     case CharacterSelect::Scientist:
 
-        render.DrawLoadedTexture("Marine", { render.GridX(4), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
+        render.DrawLoadedTexture("Scientist", { render.GridX(4), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
 
         render.DrawTextBlock
         (
@@ -75,7 +78,7 @@ void CharacterCreator::Run(Renderer& renderRef)
 
         render.DrawTextBlock
         (
-            marineInfo,
+            ScientistInfo,
             render.GridX(13),
             render.GridY(8),
             600,
@@ -91,9 +94,9 @@ void CharacterCreator::Run(Renderer& renderRef)
     NextButton.Draw(render, NextButtonColor);
     MainMenuButton.Draw(render, MainMenuButtonColor);
 
-    // previous button logic
+    // Previous button logic
     if (PreviousButton.IsClicked(render)) {
-        
+        PreviousCharacter();
     }
 
     if (PreviousButton.IsHovered(render)) {
@@ -103,7 +106,7 @@ void CharacterCreator::Run(Renderer& renderRef)
 
     // Next button logic
     if (NextButton.IsClicked(render)) {
-
+        NextCharacter();
     }
 
     if (NextButton.IsHovered(render)) {
@@ -155,3 +158,17 @@ void CharacterCreator::InitButtons(Renderer& renderRef)
         TextSize::Dialogue
     );
 }
+
+
+void CharacterCreator::NextCharacter() {
+    int current = static_cast<int>(currentCharacter);
+    current = (current + 1) % static_cast<int>(CharacterSelect::Count);
+    currentCharacter = static_cast<CharacterSelect>(current);
+}
+
+void CharacterCreator::PreviousCharacter() {
+    int current = static_cast<int>(currentCharacter);
+    current = (current - 1 + static_cast<int>(CharacterSelect::Count)) % static_cast<int>(CharacterSelect::Count);
+    currentCharacter = static_cast<CharacterSelect>(current);
+}
+

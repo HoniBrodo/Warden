@@ -7,10 +7,10 @@ class Renderer;
 class StateManager;
 class TextureManager;
 
-enum class CharacterSelect
-{
-    Marine,
-    Scientist
+enum class CharacterSelect {
+    Marine = 0,
+    Scientist,
+    Count // not a real option, just to track how many
 };
 
 class CharacterCreator {
@@ -26,6 +26,9 @@ private:
     TextureManager& textureManager;
 
     CharacterSelect currentCharacter = CharacterSelect::Scientist;
+
+    void NextCharacter();
+    void PreviousCharacter();
 
     // buttons
     UIButton NextButton;
