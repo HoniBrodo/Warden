@@ -31,27 +31,61 @@ void CharacterCreator::Run(Renderer& renderRef)
     );
 
     textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
-    render.DrawLoadedTexture("Marine", { render.GridX(4), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
 
-    render.DrawTextBlock
-    (
-        marineInfo,
-        render.GridX(13),
-        render.GridY(8),
-        600,
-        TextAlign::Center,
-        TextSize::Dialogue
-    );
+    switch (GetCurrentCharacter())
+    {
+    case CharacterSelect::Marine:
 
-    render.DrawTextBlock
-    (
-        "Marine",
-        render.GridX(15),
-        render.GridY(4),
-        300,
-        TextAlign::Center,
-        TextSize::SmallerTitle
-    );
+        render.DrawLoadedTexture("Marine", { render.GridX(4), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
+
+        render.DrawTextBlock
+        (
+            "Marine",
+            render.GridX(15),
+            render.GridY(4),
+            300,
+            TextAlign::Center,
+            TextSize::SmallerTitle
+        );
+
+        render.DrawTextBlock
+        (
+            marineInfo,
+            render.GridX(13),
+            render.GridY(8),
+            600,
+            TextAlign::Center,
+            TextSize::Dialogue
+        );
+        break;
+
+    case CharacterSelect::Scientist:
+
+        render.DrawLoadedTexture("Marine", { render.GridX(4), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
+
+        render.DrawTextBlock
+        (
+            "Scientist",
+            render.GridX(15),
+            render.GridY(4),
+            400,
+            TextAlign::Center,
+            TextSize::SmallerTitle
+        );
+
+        render.DrawTextBlock
+        (
+            marineInfo,
+            render.GridX(13),
+            render.GridY(8),
+            600,
+            TextAlign::Center,
+            TextSize::Dialogue
+        );
+        break;
+    }
+
+
 
     PreviousButton.Draw(render, PreviousButtonColor);
     NextButton.Draw(render, NextButtonColor);

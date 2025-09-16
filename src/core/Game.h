@@ -20,8 +20,6 @@ public:
 
 private: 
 
-    
-    
     TextureManager textureManager;
     Renderer render{ textureManager, 0, 0, 0, 0 };
     StateManager stateManager;

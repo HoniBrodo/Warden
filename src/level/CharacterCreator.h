@@ -7,16 +7,25 @@ class Renderer;
 class StateManager;
 class TextureManager;
 
+enum class CharacterSelect
+{
+    Marine,
+    Scientist
+};
+
 class CharacterCreator {
 public:
     CharacterCreator(StateManager& sm, TextureManager& tm) : stateManager(sm), textureManager(tm) {}
 
     void Run(Renderer& renderRef);
     void InitButtons(Renderer& renderRef);
+    CharacterSelect GetCurrentCharacter() const { return currentCharacter; }
 
 private:
     StateManager& stateManager;
     TextureManager& textureManager;
+
+    CharacterSelect currentCharacter = CharacterSelect::Scientist;
 
     // buttons
     UIButton NextButton;
