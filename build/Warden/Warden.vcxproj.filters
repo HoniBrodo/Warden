@@ -75,6 +75,18 @@
     <ClCompile Include="..\..\src\assets\TextureManager.cpp">
       <Filter>Source Files\assets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\player\Android.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\player\Teamster.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\player\Scientist.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\player\Marine.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\core\Game.h">
@@ -118,6 +130,18 @@
     </ClInclude>
     <ClInclude Include="..\..\src\assets\TextureManager.h">
       <Filter>Source Files\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\player\Android.h">
+      <Filter>Source Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\player\Teamster.h">
+      <Filter>Source Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\player\Marine.h">
+      <Filter>Source Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\player\Scientist.h">
+      <Filter>Source Files\player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

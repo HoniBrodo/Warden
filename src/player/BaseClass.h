@@ -11,6 +11,7 @@ public:
     virtual ~BaseClass();
 
     // accessors
+    std::string GetClassBio() const { return classBio; }
     std::string GetName() const { return name; }
     int GetStrength() const { return strength; }
     int GetSpeed() const { return speed; }
@@ -32,6 +33,9 @@ public:
 protected:
 
     std::string name;
+
+    // bio
+    std::string classBio{};
 
     // stats
     int strength{};

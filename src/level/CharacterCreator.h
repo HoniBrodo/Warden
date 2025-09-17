@@ -1,7 +1,10 @@
 #pragma once
 #include <string>
 #include "../ui/UIButton.h"
+#include "../player/Marine.h"
+#include "../player/Scientist.h"
 #include "raylib.h" 
+
 
 class Renderer;
 class StateManager;
@@ -20,6 +23,8 @@ public:
     void Run(Renderer& renderRef);
     void InitButtons(Renderer& renderRef);
     CharacterSelect GetCurrentCharacter() const { return currentCharacter; }
+    Marine marine;
+    Scientist scientist;
 
 private:
     StateManager& stateManager;

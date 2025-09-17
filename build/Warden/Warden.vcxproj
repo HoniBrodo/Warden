@@ -146,9 +146,13 @@
     <ClCompile Include="..\..\src\level\DebugLevel.cpp" />
     <ClCompile Include="..\..\src\level\MainMenu.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
+    <ClCompile Include="..\..\src\player\Android.cpp" />
     <ClCompile Include="..\..\src\player\BaseClass.cpp" />
     <ClCompile Include="..\..\src\player\BaseEquipment.cpp" />
     <ClCompile Include="..\..\src\player\BaseSkill.cpp" />
+    <ClCompile Include="..\..\src\player\Marine.cpp" />
+    <ClCompile Include="..\..\src\player\Scientist.cpp" />
+    <ClCompile Include="..\..\src\player\Teamster.cpp" />
     <ClCompile Include="..\..\src\UI\UIButton.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -162,9 +166,13 @@
     <ClInclude Include="..\..\src\level\CharacterCreator.h" />
     <ClInclude Include="..\..\src\level\DebugLevel.h" />
     <ClInclude Include="..\..\src\level\MainMenu.h" />
+    <ClInclude Include="..\..\src\player\Android.h" />
     <ClInclude Include="..\..\src\player\BaseClass.h" />
     <ClInclude Include="..\..\src\player\BaseEquipment.h" />
     <ClInclude Include="..\..\src\player\BaseSkill.h" />
+    <ClInclude Include="..\..\src\player\Marine.h" />
+    <ClInclude Include="..\..\src\player\Scientist.h" />
+    <ClInclude Include="..\..\src\player\Teamster.h" />
     <ClInclude Include="..\..\src\UI\UIButton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

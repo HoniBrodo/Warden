@@ -10,8 +10,8 @@ void CharacterCreator::Run(Renderer& renderRef)
     Renderer render = renderRef;
 
     // these need to be moved into their respective derived child sub-classes 
-    std::string marineInfo = "This is some placeholder text for the Marine class. The Marine is good at bla bla bla. They suffer from bla bla bla. Their base stats are bla bla bla";
-    std::string ScientistInfo = "This is some placeholder text for the Scientist class. The Scientist is good at bla bla bla. They suffer from bla bla bla. Their base stats are bla bla bla";
+    std::string marineInfo = marine.GetClassBio();
+    std::string ScientistInfo = scientist.GetClassBio();
 
     if (IsKeyDown(KEY_G))
     {
@@ -80,7 +80,7 @@ void CharacterCreator::Run(Renderer& renderRef)
         (
             ScientistInfo,
             render.GridX(13),
-            render.GridY(8),
+            render.GridY(7),
             600,
             TextAlign::Center,
             TextSize::Dialogue
