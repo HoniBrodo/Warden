@@ -4,11 +4,10 @@
 #include "../Core/StateManager.h"
 #include "../assets/TextureManager.h"
 
-
 void CharacterCreator::Run()
 {
 
-    DebugRect alignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, true };
+    DebugRect alignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
 
     // these need to be moved into their respective derived child sub-classes 
     std::string marineInfo = marine.GetClassBio();
@@ -73,7 +72,7 @@ void CharacterCreator::Run()
         render.DrawTextBlock
         (
             "Scientist",
-            render.GridX(15),
+            render.AlignCenterXInRect(alignmentRect01, 400),
             render.GridY(4),
             400,
             TextAlign::Center,
@@ -83,7 +82,7 @@ void CharacterCreator::Run()
         render.DrawTextBlock
         (
             ScientistInfo,
-            render.GridX(13),
+            render.AlignCenterXInRect(alignmentRect01, 600),
             render.GridY(7),
             600,
             TextAlign::Center,
@@ -134,7 +133,7 @@ void CharacterCreator::Run()
 void CharacterCreator::InitButtons()
 {
 
-    DebugRect alignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, true };
+    DebugRect alignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
 
     PreviousButton = UIButton(
         "Previous",
