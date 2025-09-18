@@ -9,6 +9,8 @@ void CharacterCreator::Run(Renderer& renderRef)
 {
     Renderer render = renderRef;
 
+    DebugRect alignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, true };
+
     // these need to be moved into their respective derived child sub-classes 
     std::string marineInfo = marine.GetClassBio();
     std::string ScientistInfo = scientist.GetClassBio();
@@ -35,6 +37,9 @@ void CharacterCreator::Run(Renderer& renderRef)
     textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png"); 
     textureManager.LoadTextureFromFile("Scientist", "images/player/SFCP_1_38.png");
 
+    // optional: draw the debug rectangle
+    render.DrawDebugRect(alignmentRect01);
+
     switch (GetCurrentCharacter())
     {
     case CharacterSelect::Marine:
@@ -44,7 +49,7 @@ void CharacterCreator::Run(Renderer& renderRef)
         render.DrawTextBlock
         (
             "Marine",
-            render.GridX(15),
+            render.AlignCenterXInRect(alignmentRect01, 300),
             render.GridY(4),
             300,
             TextAlign::Center,
@@ -54,7 +59,7 @@ void CharacterCreator::Run(Renderer& renderRef)
         render.DrawTextBlock
         (
             marineInfo,
-            render.GridX(13),
+            render.AlignCenterXInRect(alignmentRect01, 600),
             render.GridY(8),
             600,
             TextAlign::Center,

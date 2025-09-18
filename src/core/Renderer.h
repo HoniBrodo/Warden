@@ -20,6 +20,11 @@ enum class TextSize
     SmallerTitle
 };
 
+struct DebugRect {
+    Rectangle rect;
+    bool visible = false; // only drawn if toggled on
+};
+
 class Renderer {
 public:
     Renderer(TextureManager& tm, int cols, int rows, int screenWidth, int screenHeight);
@@ -42,6 +47,8 @@ public:
     int TextScreenCenterX(int paddingWidth) { return (screenWidth / 2) - (paddingWidth / 2); }
     int GetPaddingHeight(const std::string& text, TextSize size, int maxWidth);
 
+    int AlignCenterXInRect(const DebugRect& container, int contentWidth) const;
+    void DrawDebugRect(const DebugRect& container, Color color = RED) const;
 
 private:
 

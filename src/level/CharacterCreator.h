@@ -35,6 +35,7 @@ private:
     void NextCharacter();
     void PreviousCharacter();
 
+
     // buttons
     UIButton NextButton;
     Color NextButtonColor = LIGHTGRAY;

@@ -202,3 +202,22 @@ std::vector<std::string> Renderer::WrapText(const std::string& text, int maxWidt
 	if (!currentLine.empty()) lines.push_back(currentLine);
 	return lines;
 }
+
+int Renderer::AlignCenterXInRect(const DebugRect& container, int contentWidth) const
+{
+	float centerX = container.rect.x + (container.rect.width / 2.0f) - (contentWidth / 2.0f);
+	return centerX;
+}
+
+void Renderer::DrawDebugRect(const DebugRect& container, Color color) const
+{
+	if (container.visible) {
+		DrawRectangleLines(
+			(int)container.rect.x,
+			(int)container.rect.y,
+			(int)container.rect.width,
+			(int)container.rect.height,
+			color
+		);
+	}
+}
