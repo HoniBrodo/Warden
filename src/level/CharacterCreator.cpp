@@ -8,6 +8,7 @@ void CharacterCreator::Run()
 {
 
     DebugRect alignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
+    DebugRect alignmentRect02 = { { render.GridX(1), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
 
     // these need to be moved into their respective derived child sub-classes 
     std::string marineInfo = marine.GetClassBio();
@@ -37,12 +38,13 @@ void CharacterCreator::Run()
 
     // optional: draw the debug rectangle
     render.DrawDebugRect(alignmentRect01);
+    render.DrawDebugRect(alignmentRect02);
 
     switch (GetCurrentCharacter())
     {
     case CharacterSelect::Marine:
 
-        render.DrawLoadedTexture("Marine", { render.GridX(4), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
+        render.DrawLoadedTexture("Marine", { static_cast<float>(render.AlignCenterXInRect(alignmentRect02, textureManager.GetTexture("Marine").width * 0.5)), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
 
         render.DrawTextBlock
         (
@@ -67,7 +69,7 @@ void CharacterCreator::Run()
 
     case CharacterSelect::Scientist:
 
-        render.DrawLoadedTexture("Scientist", { render.GridX(4), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
+        render.DrawLoadedTexture("Scientist", { static_cast<float>(render.AlignCenterXInRect(alignmentRect02, textureManager.GetTexture("Scientist").width * 0.5)), render.GridX(3) + 5}, 0.0f, 0.5f, WHITE);
 
         render.DrawTextBlock
         (
@@ -134,10 +136,11 @@ void CharacterCreator::InitButtons()
 {
 
     DebugRect alignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
+    DebugRect alignmentRect02 = { { render.GridX(1), render.GridY(4), render.GridX(10), render.GridY(11) }, true };
 
     PreviousButton = UIButton(
         "Previous",
-        render.TextScreenCenterX(400) - 450,
+        render.AlignCenterXInRect(alignmentRect02, 400),
         render.GridY(13),
         400, 120,                   
         TextAlign::Center,
