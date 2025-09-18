@@ -25,7 +25,7 @@ private:
     StateManager stateManager;
     MainMenu mMenu{ stateManager };
     DebugLevel debugLevel{ stateManager }; 
-    CharacterCreator cCreator{ stateManager, textureManager };
+    CharacterCreator cCreator{ stateManager, textureManager, render};
 
 
     int screenWidth = 1920;

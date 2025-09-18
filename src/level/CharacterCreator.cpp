@@ -5,9 +5,8 @@
 #include "../assets/TextureManager.h"
 
 
-void CharacterCreator::Run(Renderer& renderRef)
+void CharacterCreator::Run()
 {
-    Renderer render = renderRef;
 
     DebugRect alignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, true };
 
@@ -22,7 +21,7 @@ void CharacterCreator::Run(Renderer& renderRef)
 
     BeginDrawing();
     ClearBackground(BLACK);
-    InitButtons(render);
+    InitButtons();
 
     render.DrawTextBlock
     (
@@ -132,9 +131,10 @@ void CharacterCreator::Run(Renderer& renderRef)
     EndDrawing();
 }
 
-void CharacterCreator::InitButtons(Renderer& renderRef)
+void CharacterCreator::InitButtons()
 {
-    Renderer render = renderRef;
+
+    DebugRect alignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, true };
 
     PreviousButton = UIButton(
         "Previous",
@@ -147,7 +147,7 @@ void CharacterCreator::InitButtons(Renderer& renderRef)
 
     NextButton = UIButton(
         "Next",
-        render.TextScreenCenterX(250) + 450,
+        render.AlignCenterXInRect(alignmentRect01, 250),
         render.GridY(13),
         250, 120,
         TextAlign::Center,

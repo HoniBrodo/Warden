@@ -18,15 +18,16 @@ enum class CharacterSelect {
 
 class CharacterCreator {
 public:
-    CharacterCreator(StateManager& sm, TextureManager& tm) : stateManager(sm), textureManager(tm) {}
+    CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render) : stateManager(sm), textureManager(tm), render(render) {}
 
-    void Run(Renderer& renderRef);
-    void InitButtons(Renderer& renderRef);
+    void Run();
+    void InitButtons();
     CharacterSelect GetCurrentCharacter() const { return currentCharacter; }
     Marine marine;
     Scientist scientist;
 
 private:
+    Renderer& render;
     StateManager& stateManager;
     TextureManager& textureManager;
 
@@ -34,7 +35,6 @@ private:
 
     void NextCharacter();
     void PreviousCharacter();
-
 
     // buttons
     UIButton NextButton;

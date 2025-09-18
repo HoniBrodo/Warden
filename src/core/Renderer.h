@@ -52,7 +52,6 @@ public:
 
 private:
 
-
     TextureManager& textureManager;
     int cols = 20;
     int rows = 20;
