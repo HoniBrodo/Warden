@@ -3,6 +3,8 @@
 #include "../ui/UIButton.h"
 #include "../player/Marine.h"
 #include "../player/Scientist.h"
+#include "../player/Teamster.h"
+#include "../player/Android.h"
 #include "raylib.h" 
 
 
@@ -25,6 +27,8 @@ public:
     CharacterSelect GetCurrentCharacter() const { return currentCharacter; }
     Marine marine;
     Scientist scientist;
+    Android android;
+    Teamster teamster;
 
 private:
     Renderer& render;

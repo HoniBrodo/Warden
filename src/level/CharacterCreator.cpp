@@ -10,9 +10,10 @@ void CharacterCreator::Run()
     DebugRect alignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
     DebugRect alignmentRect02 = { { render.GridX(1), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
 
-    // these need to be moved into their respective derived child sub-classes 
     std::string marineInfo = marine.GetClassBio();
-    std::string ScientistInfo = scientist.GetClassBio();
+    std::string scientistInfo = scientist.GetClassBio();
+    std::string androidInfo = android.GetClassBio();
+    std::string teamsterInfo = teamster.GetClassBio();
 
     if (IsKeyDown(KEY_G))
     {
@@ -34,7 +35,9 @@ void CharacterCreator::Run()
     );
 
     textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png"); 
-    textureManager.LoadTextureFromFile("Scientist", "images/player/SFCP_1_38.png");
+    textureManager.LoadTextureFromFile("Scientist", "images/player/SFCP_1_38.png"); 
+    textureManager.LoadTextureFromFile("Android", "images/player/SFCP_1_59.png"); 
+    textureManager.LoadTextureFromFile("Teamster", "images/player/SFCP_1_27.png");
 
     // optional: draw the debug rectangle
     render.DrawDebugRect(alignmentRect01);
@@ -83,7 +86,7 @@ void CharacterCreator::Run()
 
         render.DrawTextBlock
         (
-            ScientistInfo,
+            scientistInfo,
             render.AlignCenterXInRect(alignmentRect01, 600),
             render.GridY(7),
             600,
@@ -92,8 +95,6 @@ void CharacterCreator::Run()
         );
         break;
     }
-
-
 
     PreviousButton.Draw(render, PreviousButtonColor);
     NextButton.Draw(render, NextButtonColor);
