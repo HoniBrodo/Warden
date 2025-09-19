@@ -9,6 +9,8 @@ void CharacterCreator::Run()
 
     DebugRect alignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
     DebugRect alignmentRect02 = { { render.GridX(1), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
+    DebugRect alignmentRect03 = { { render.GridX(4), render.GridY(4), render.GridX(8), render.GridY(9) }, false };
+    DebugRect alignmentRect04 = { { render.GridX(12), render.GridY(4), render.GridX(8), render.GridY(9) }, false };
 
     std::string marineInfo = marine.GetClassBio();
     std::string scientistInfo = scientist.GetClassBio();
@@ -42,17 +44,19 @@ void CharacterCreator::Run()
     // optional: draw the debug rectangle
     render.DrawDebugRect(alignmentRect01);
     render.DrawDebugRect(alignmentRect02);
+    render.DrawDebugRect(alignmentRect03);
+    render.DrawDebugRect(alignmentRect04);
 
     switch (GetCurrentCharacter())
     {
     case CharacterSelect::Marine:
 
-        render.DrawLoadedTexture("Marine", { static_cast<float>(render.AlignCenterXInRect(alignmentRect02, textureManager.GetTexture("Marine").width * 0.5)), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
+        render.DrawLoadedTexture("Marine", { static_cast<float>(render.AlignCenterXInRect(alignmentRect03, textureManager.GetTexture("Marine").width * 0.5)), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
 
         render.DrawTextBlock
         (
             "Marine",
-            render.AlignCenterXInRect(alignmentRect01, 300),
+            render.AlignCenterXInRect(alignmentRect04, 300),
             render.GridY(4),
             300,
             TextAlign::Center,
@@ -62,8 +66,8 @@ void CharacterCreator::Run()
         render.DrawTextBlock
         (
             marineInfo,
-            render.AlignCenterXInRect(alignmentRect01, 600),
-            render.GridY(8),
+            render.AlignCenterXInRect(alignmentRect04, 600),
+            render.GridY(7),
             600,
             TextAlign::Center,
             TextSize::Dialogue
@@ -72,12 +76,12 @@ void CharacterCreator::Run()
 
     case CharacterSelect::Scientist:
 
-        render.DrawLoadedTexture("Scientist", { static_cast<float>(render.AlignCenterXInRect(alignmentRect02, textureManager.GetTexture("Scientist").width * 0.5)), render.GridX(3) + 5}, 0.0f, 0.5f, WHITE);
+        render.DrawLoadedTexture("Scientist", { static_cast<float>(render.AlignCenterXInRect(alignmentRect03, textureManager.GetTexture("Scientist").width * 0.5)), render.GridX(3) + 5}, 0.0f, 0.5f, WHITE);
 
         render.DrawTextBlock
         (
             "Scientist",
-            render.AlignCenterXInRect(alignmentRect01, 400),
+            render.AlignCenterXInRect(alignmentRect04, 400),
             render.GridY(4),
             400,
             TextAlign::Center,
@@ -87,7 +91,57 @@ void CharacterCreator::Run()
         render.DrawTextBlock
         (
             scientistInfo,
-            render.AlignCenterXInRect(alignmentRect01, 600),
+            render.AlignCenterXInRect(alignmentRect04, 600),
+            render.GridY(7),
+            600,
+            TextAlign::Center,
+            TextSize::Dialogue
+        );
+        break;
+
+    case CharacterSelect::Teamster:
+
+        render.DrawLoadedTexture("Teamster", { static_cast<float>(render.AlignCenterXInRect(alignmentRect03, textureManager.GetTexture("Teamster").width * 0.5)), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
+
+        render.DrawTextBlock
+        (
+            "Teamster",
+            render.AlignCenterXInRect(alignmentRect04, 400),
+            render.GridY(4),
+            400,
+            TextAlign::Center,
+            TextSize::SmallerTitle
+        );
+
+        render.DrawTextBlock
+        (
+            teamsterInfo,
+            render.AlignCenterXInRect(alignmentRect04, 600),
+            render.GridY(7),
+            600,
+            TextAlign::Center,
+            TextSize::Dialogue
+        );
+        break;
+
+    case CharacterSelect::Android:
+
+        render.DrawLoadedTexture("Android", { static_cast<float>(render.AlignCenterXInRect(alignmentRect03, textureManager.GetTexture("Android").width * 0.5)), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
+
+        render.DrawTextBlock
+        (
+            "Android",
+            render.AlignCenterXInRect(alignmentRect04, 400),
+            render.GridY(4),
+            400,
+            TextAlign::Center,
+            TextSize::SmallerTitle
+        );
+
+        render.DrawTextBlock
+        (
+            androidInfo,
+            render.AlignCenterXInRect(alignmentRect04, 600),
             render.GridY(7),
             600,
             TextAlign::Center,
@@ -96,39 +150,52 @@ void CharacterCreator::Run()
         break;
     }
 
-    PreviousButton.Draw(render, PreviousButtonColor);
-    NextButton.Draw(render, NextButtonColor);
-    MainMenuButton.Draw(render, MainMenuButtonColor);
+
+
+    previousButton.Draw(render, previousButtonColor);
+    nextButton.Draw(render, nextButtonColor);
+    mainMenuButton.Draw(render, mainMenuButtonColor);
+    selectClassButton.Draw(render, selectClassButtonColor);
 
     // Previous button logic
-    if (PreviousButton.IsClicked(render)) {
+    if (previousButton.IsClicked(render)) {
         PreviousCharacter();
     }
 
-    if (PreviousButton.IsHovered(render)) {
-        PreviousButtonColor = GRAY;
+    if (previousButton.IsHovered(render)) {
+        previousButtonColor = GRAY;
     }
-    else PreviousButtonColor = LIGHTGRAY;
+    else previousButtonColor = LIGHTGRAY;
 
     // Next button logic
-    if (NextButton.IsClicked(render)) {
+    if (nextButton.IsClicked(render)) {
         NextCharacter();
     }
 
-    if (NextButton.IsHovered(render)) {
-        NextButtonColor = GRAY;
+    if (nextButton.IsHovered(render)) {
+        nextButtonColor = GRAY;
     }
-    else NextButtonColor = LIGHTGRAY;
+    else nextButtonColor = LIGHTGRAY;
 
     // MainMenu button logic
-    if (MainMenuButton.IsClicked(render)) {
+    if (mainMenuButton.IsClicked(render)) {
         stateManager.SetState(StateManager::GameState::MAIN_MENU);
     }
 
-    if (MainMenuButton.IsHovered(render)) {
-        MainMenuButtonColor = GRAY;
+    if (mainMenuButton.IsHovered(render)) {
+        mainMenuButtonColor = GRAY;
     }
-    else MainMenuButtonColor = LIGHTGRAY;
+    else mainMenuButtonColor = LIGHTGRAY;
+
+    // SelectClass button logic
+    if (selectClassButton.IsClicked(render)) {
+        stateManager.SetState(StateManager::GameState::MAIN_MENU);
+    }
+
+    if (selectClassButton.IsHovered(render)) {
+        selectClassButtonColor = GRAY;
+    }
+    else selectClassButtonColor = LIGHTGRAY;
 
     EndDrawing();
 }
@@ -139,7 +206,7 @@ void CharacterCreator::InitButtons()
     DebugRect alignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
     DebugRect alignmentRect02 = { { render.GridX(1), render.GridY(4), render.GridX(10), render.GridY(11) }, true };
 
-    PreviousButton = UIButton(
+    previousButton = UIButton(
         "Previous",
         render.AlignCenterXInRect(alignmentRect02, 400),
         render.GridY(13),
@@ -148,22 +215,31 @@ void CharacterCreator::InitButtons()
         TextSize::Button01
     );
 
-    NextButton = UIButton(
+    nextButton = UIButton(
         "Next",
-        render.AlignCenterXInRect(alignmentRect01, 250),
+        render.AlignCenterXInRect(alignmentRect01, 400),
         render.GridY(13),
-        250, 120,
+        400, 120,
         TextAlign::Center,
         TextSize::Button01
     );
 
-    MainMenuButton = UIButton(
+    mainMenuButton = UIButton(
         "Main Menu",
         render.GridX(20),
         render.GridY(1),
         200, 120,
         TextAlign::Center,
         TextSize::Dialogue
+    );
+
+    selectClassButton = UIButton(
+        "Select Class",
+        render.TextScreenCenterX(500),
+        render.GridY(13),
+        500, 120,
+        TextAlign::Center,
+        TextSize::Button01
     );
 }
 

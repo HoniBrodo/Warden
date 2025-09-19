@@ -15,6 +15,8 @@ class TextureManager;
 enum class CharacterSelect {
     Marine = 0,
     Scientist,
+    Teamster,
+    Android,
     Count // not a real option, just to track how many
 };
 
@@ -35,16 +37,18 @@ private:
     StateManager& stateManager;
     TextureManager& textureManager;
 
-    CharacterSelect currentCharacter = CharacterSelect::Scientist;
+    CharacterSelect currentCharacter = CharacterSelect::Marine;
 
     void NextCharacter();
     void PreviousCharacter();
 
     // buttons
-    UIButton NextButton;
-    Color NextButtonColor = LIGHTGRAY;
-    UIButton PreviousButton;
-    Color PreviousButtonColor = LIGHTGRAY;
-    UIButton MainMenuButton;
-    Color MainMenuButtonColor = LIGHTGRAY;
+    UIButton nextButton;
+    Color nextButtonColor = LIGHTGRAY;
+    UIButton previousButton;
+    Color previousButtonColor = LIGHTGRAY;
+    UIButton mainMenuButton;
+    Color mainMenuButtonColor = LIGHTGRAY;
+    UIButton selectClassButton;
+    Color selectClassButtonColor = LIGHTGRAY;
 };    

@@ -2,6 +2,6 @@
 
 Marine::Marine() : BaseClass("Marine") {
 
-    classBio = "The Marine is a hardened soldier trained for combat. They excel in strength and combat skills but may struggle with stress.";
+    classBio = "Trained for combat in the harshest conditions, the Marine is a soldier bred for survival. Years of drills, deployments, and firefights have hardened them into a relentless fighter who can push through fear and pain where others would break.";
     
 }
