@@ -226,8 +226,8 @@ void CharacterCreator::InitButtons()
 
     mainMenuButton = UIButton(
         "Main Menu",
-        render.GridX(20),
-        render.GridY(1),
+        render.GridX(21) + 30,
+        render.GridY(0) + 10,
         200, 120,
         TextAlign::Center,
         TextSize::Dialogue
