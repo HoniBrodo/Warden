@@ -42,6 +42,8 @@ private:
     void NextCharacter();
     void PreviousCharacter();
 
+    bool characterSelected{ false };
+
     // buttons
     UIButton nextButton;
     Color nextButtonColor = LIGHTGRAY;
