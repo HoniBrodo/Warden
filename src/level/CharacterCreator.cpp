@@ -5,6 +5,8 @@
 #include "../assets/TextureManager.h"
 #include "../player/Player.h"
 
+
+
 void CharacterCreator::Run()
 {
 
@@ -215,7 +217,6 @@ void CharacterCreator::Run()
             auto player = std::make_unique<Player>(std::move(chosenClass));
             stateManager.SetPlayer(std::move(player));
 
-
             characterSelected = true;
         }
 
@@ -225,6 +226,8 @@ void CharacterCreator::Run()
         else selectClassButtonColor = LIGHTGRAY;
 
     }
+
+
 
     if (characterSelected)
     {
