@@ -151,6 +151,7 @@
     <ClCompile Include="..\..\src\player\BaseEquipment.cpp" />
     <ClCompile Include="..\..\src\player\BaseSkill.cpp" />
     <ClCompile Include="..\..\src\player\Marine.cpp" />
+    <ClCompile Include="..\..\src\player\Player.cpp" />
     <ClCompile Include="..\..\src\player\Scientist.cpp" />
     <ClCompile Include="..\..\src\player\Teamster.cpp" />
     <ClCompile Include="..\..\src\UI\UIButton.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="..\..\src\player\BaseEquipment.h" />
     <ClInclude Include="..\..\src\player\BaseSkill.h" />
     <ClInclude Include="..\..\src\player\Marine.h" />
+    <ClInclude Include="..\..\src\player\Player.h" />
     <ClInclude Include="..\..\src\player\Scientist.h" />
     <ClInclude Include="..\..\src\player\Teamster.h" />
     <ClInclude Include="..\..\src\UI\UIButton.h" />

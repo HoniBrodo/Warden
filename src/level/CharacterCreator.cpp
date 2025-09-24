@@ -3,6 +3,7 @@
 #include "../core/Renderer.h"
 #include "../Core/StateManager.h"
 #include "../assets/TextureManager.h"
+#include "../player/Player.h"
 
 void CharacterCreator::Run()
 {
@@ -189,6 +190,32 @@ void CharacterCreator::Run()
 
         // SelectClass button logic
         if (selectClassButton.IsClicked(render)) {
+
+            std::unique_ptr<BaseClass> chosenClass;
+
+            switch (GetCurrentCharacter())
+            {
+            case CharacterSelect::Marine:
+                chosenClass = std::make_unique<Marine>();
+                break;
+            case CharacterSelect::Scientist:
+                chosenClass = std::make_unique<Scientist>();
+                break;
+            case CharacterSelect::Android:
+                chosenClass = std::make_unique<Android>();
+                break;
+            case CharacterSelect::Teamster:
+                chosenClass = std::make_unique<Teamster>();
+                break;
+            default:
+                chosenClass = std::make_unique<Scientist>(); // fallback
+            }
+
+            // wrap into Player and pass to StateManager
+            auto player = std::make_unique<Player>(std::move(chosenClass));
+            stateManager.SetPlayer(std::move(player));
+
+
             characterSelected = true;
         }
 
