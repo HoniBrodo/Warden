@@ -4,6 +4,7 @@
 #include "../Core/StateManager.h"
 #include "../assets/TextureManager.h"
 #include "../player/Player.h"
+#include <iostream>
 
 
 
@@ -227,20 +228,28 @@ void CharacterCreator::Run()
 
     }
 
-
+    // move on to equipment selection specific to the chosen class
 
     if (characterSelected)
     {
+        // Get the player's chosen class name
+        std::string className = stateManager.GetPlayer()->GetClass().GetName();
+
+        // Build the display string
+        std::string displayText = "Choose " + className + " Starting Equipment";
+
+        // Draw it
         render.DrawTextBlock
         (
-            "Choose Starting Equipment",
-            render.TextScreenCenterX(1300),
+            displayText,
+            render.TextScreenCenterX(1500),
             render.GridY(1),
-            1300,
+            1500,
             TextAlign::Center,
             TextSize::SmallerTitle
         );
     }
+
 
     EndDrawing();
 }
