@@ -232,6 +232,13 @@ void CharacterCreator::Run()
 
     if (characterSelected)
     {
+        DebugRect alignmentRect01 = { { render.GridX(1), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
+        DebugRect alignmentRect02 = { { render.GridX(12), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
+
+
+        render.DrawDebugRect(alignmentRect01);
+        render.DrawDebugRect(alignmentRect02);
+
         // Get the player's chosen class name
         std::string className = stateManager.GetPlayer()->GetClass().GetName();
 
@@ -248,6 +255,13 @@ void CharacterCreator::Run()
             TextAlign::Center,
             TextSize::SmallerTitle
         );
+
+        render.DrawRectangle(render.AlignCenterXInRect(alignmentRect01, render.GridX(10)), render.GridY(4), render.GridX(10), render.GridY(5), LIGHTGRAY);
+        render.DrawRectangle(render.AlignCenterXInRect(alignmentRect02, render.GridX(10)), render.GridY(4), render.GridX(10), render.GridY(5), LIGHTGRAY);
+        render.DrawRectangle(render.AlignCenterXInRect(alignmentRect01, render.GridX(10)), render.GridY(10), render.GridX(10), render.GridY(5), LIGHTGRAY);
+        render.DrawRectangle(render.AlignCenterXInRect(alignmentRect02, render.GridX(10)), render.GridY(10), render.GridX(10), render.GridY(5), LIGHTGRAY);
+
+
     }
 
 
