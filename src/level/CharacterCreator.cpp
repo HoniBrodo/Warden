@@ -256,10 +256,17 @@ void CharacterCreator::Run()
             TextSize::SmallerTitle
         );
 
+        std::vector<std::string> loadout01Items = { "Pistol", "Medkit", "Rations", "Flashlight" };
+
+
+
+
         loadout01Button.DrawFreeRec(render, loadout01ButtonColor);
         loadout02Button.DrawFreeRec(render, loadout02ButtonColor);
         loadout03Button.DrawFreeRec(render, loadout03ButtonColor);
         loadout04Button.DrawFreeRec(render, loadout04ButtonColor);
+
+        render.DrawTextListInRect(loadout01Items, loadout01Button.GetRect(), TextAlign::Center, TextSize::Dialogue);
 
         // loadout 01 button logic
         if (loadout01Button.IsClicked(render, true)) {

@@ -8,6 +8,12 @@ UIButton::UIButton(const std::string& label, int x, int y, int width, int height
 {
 }
 
+Rectangle UIButton::GetRect() const
+{
+    Rectangle rec = { x, y, width, height };
+    return rec;
+}
+
 void UIButton::Draw(Renderer& render, Color color) const
 {
     int paddingHeight = render.GetPaddingHeight(label, size, width);

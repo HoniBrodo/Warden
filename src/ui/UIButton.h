@@ -11,12 +11,14 @@ public:
     UIButton(const std::string& label, int x, int y, int width, int height,
         TextAlign align, TextSize size);
 
+    Rectangle GetRect() const;
     void Draw(Renderer& render, Color color) const;
     void DrawFreeRec(Renderer& render, Color color) const;
     bool IsHovered(Renderer& render, bool isFree) const;
     bool IsClicked(Renderer& render, bool isFree) const;
 
 private:
+
     std::string label;
     int x, y;
     int width, height;

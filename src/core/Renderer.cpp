@@ -134,6 +134,45 @@ void Renderer::DrawTextBlockNoPadding(const std::string& text, int posX, int pos
 	}
 }
 
+void Renderer::DrawTextListInRect(const std::vector<std::string>& items, const Rectangle rect, TextAlign alignment, TextSize size)
+{
+	int fontSize = GetFontSize(size);
+	int lineHeight = static_cast<int>(fontSize * 1.33f);
+
+	int posY = static_cast<int>(rect.y) + fontSize / 2;
+
+	for (const auto& item : items)
+	{
+		// Wrap each item’s text if it’s too wide for the rect
+		std::vector<std::string> wrapped = WrapText(item, static_cast<int>(rect.width), fontSize);
+
+		for (const auto& line : wrapped)
+		{
+			int textWidth = MeasureText(line.c_str(), fontSize);
+			int posX = 0;
+
+			switch (alignment)
+			{
+			case TextAlign::Left:
+				posX = static_cast<int>(rect.x) + fontSize / 4;
+				break;
+
+			case TextAlign::Center:
+				posX = static_cast<int>(rect.x + (rect.width / 2.0f) - (textWidth / 2.0f));
+				break;
+			}
+
+			DrawText(line.c_str(), posX, posY, fontSize, textColor);
+			posY += lineHeight;
+
+			// stop if we overflow the rect vertically
+			if (posY > rect.y + rect.height - lineHeight)
+				return;
+		}
+	}
+}
+
+
 int Renderer::GetFontSize(TextSize size) const
 {
 	switch (size)
