@@ -162,37 +162,37 @@ void CharacterCreator::Run()
         selectClassButton.Draw(render, selectClassButtonColor);
 
         // Previous button logic
-        if (previousButton.IsClicked(render)) {
+        if (previousButton.IsClicked(render, false)) {
             PreviousCharacter();
         }
 
-        if (previousButton.IsHovered(render)) {
+        if (previousButton.IsHovered(render, false)) {
             previousButtonColor = GRAY;
         }
         else previousButtonColor = LIGHTGRAY;
 
         // Next button logic
-        if (nextButton.IsClicked(render)) {
+        if (nextButton.IsClicked(render, false)) {
             NextCharacter();
         }
 
-        if (nextButton.IsHovered(render)) {
+        if (nextButton.IsHovered(render, false)) {
             nextButtonColor = GRAY;
         }
         else nextButtonColor = LIGHTGRAY;
 
         // MainMenu button logic
-        if (mainMenuButton.IsClicked(render)) {
+        if (mainMenuButton.IsClicked(render, false)) {
             stateManager.SetState(StateManager::GameState::MAIN_MENU);
         }
 
-        if (mainMenuButton.IsHovered(render)) {
+        if (mainMenuButton.IsHovered(render, false)) {
             mainMenuButtonColor = GRAY;
         }
         else mainMenuButtonColor = LIGHTGRAY;
 
         // SelectClass button logic
-        if (selectClassButton.IsClicked(render)) {
+        if (selectClassButton.IsClicked(render, false)) {
 
             std::unique_ptr<BaseClass> chosenClass;
 
@@ -221,7 +221,7 @@ void CharacterCreator::Run()
             characterSelected = true;
         }
 
-        if (selectClassButton.IsHovered(render)) {
+        if (selectClassButton.IsHovered(render, false)) {
             selectClassButtonColor = GRAY;
         }
         else selectClassButtonColor = LIGHTGRAY;
@@ -256,14 +256,52 @@ void CharacterCreator::Run()
             TextSize::SmallerTitle
         );
 
-        render.DrawRectangle(render.AlignCenterXInRect(alignmentRect01, render.GridX(10)), render.GridY(4), render.GridX(10), render.GridY(5), LIGHTGRAY);
-        render.DrawRectangle(render.AlignCenterXInRect(alignmentRect02, render.GridX(10)), render.GridY(4), render.GridX(10), render.GridY(5), LIGHTGRAY);
-        render.DrawRectangle(render.AlignCenterXInRect(alignmentRect01, render.GridX(10)), render.GridY(10), render.GridX(10), render.GridY(5), LIGHTGRAY);
-        render.DrawRectangle(render.AlignCenterXInRect(alignmentRect02, render.GridX(10)), render.GridY(10), render.GridX(10), render.GridY(5), LIGHTGRAY);
+        loadout01Button.DrawFreeRec(render, loadout01ButtonColor);
+        loadout02Button.DrawFreeRec(render, loadout02ButtonColor);
+        loadout03Button.DrawFreeRec(render, loadout03ButtonColor);
+        loadout04Button.DrawFreeRec(render, loadout04ButtonColor);
 
+        // loadout 01 button logic
+        if (loadout01Button.IsClicked(render, true)) {
+;
+        }
+
+        if (loadout01Button.IsHovered(render, true)) {
+            loadout01ButtonColor = GRAY;
+        }
+        else loadout01ButtonColor = LIGHTGRAY;
+
+        // loadout 02 button logic
+        if (loadout02Button.IsClicked(render, true)) {
+            ;
+        }
+
+        if (loadout02Button.IsHovered(render, true)) {
+            loadout02ButtonColor = GRAY;
+        }
+        else loadout02ButtonColor = LIGHTGRAY;
+
+        // loadout 03 button logic
+        if (loadout03Button.IsClicked(render, true)) {
+            ;
+        }
+
+        if (loadout03Button.IsHovered(render, true)) {
+            loadout03ButtonColor = GRAY;
+        }
+        else loadout03ButtonColor = LIGHTGRAY;
+
+        // loadout 04 button logic
+        if (loadout04Button.IsClicked(render, true)) {
+            ;
+        }
+
+        if (loadout04Button.IsHovered(render, true)) {
+            loadout04ButtonColor = GRAY;
+        }
+        else loadout04ButtonColor = LIGHTGRAY;
 
     }
-
 
     EndDrawing();
 }
@@ -272,7 +310,14 @@ void CharacterCreator::InitButtons()
 {
 
     DebugRect alignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
-    DebugRect alignmentRect02 = { { render.GridX(1), render.GridY(4), render.GridX(10), render.GridY(11) }, true };
+    DebugRect alignmentRect02 = { { render.GridX(1), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
+    DebugRect alignmentRect03 = { { render.GridX(1), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
+    DebugRect alignmentRect04 = { { render.GridX(12), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
+
+    render.DrawDebugRect(alignmentRect01);
+    render.DrawDebugRect(alignmentRect02);
+    render.DrawDebugRect(alignmentRect03);
+    render.DrawDebugRect(alignmentRect04);
 
     previousButton = UIButton(
         "Previous",
@@ -306,6 +351,42 @@ void CharacterCreator::InitButtons()
         render.TextScreenCenterX(500),
         render.GridY(13),
         500, 120,
+        TextAlign::Center,
+        TextSize::Button01
+    );
+
+    loadout01Button = UIButton(
+        "Select Class",
+        render.AlignCenterXInRect(alignmentRect01, render.GridX(10)),
+        render.GridY(4),
+        render.GridX(10), render.GridY(5),
+        TextAlign::Center,
+        TextSize::Button01
+    );
+
+    loadout02Button = UIButton(
+        "Select Class",
+        render.AlignCenterXInRect(alignmentRect02, render.GridX(10)),
+        render.GridY(4),
+        render.GridX(10), render.GridY(5),
+        TextAlign::Center,
+        TextSize::Button01
+    );
+
+    loadout03Button = UIButton(
+        "Select Class",
+        render.AlignCenterXInRect(alignmentRect01, render.GridX(10)),
+        render.GridY(10),
+        render.GridX(10), render.GridY(5),
+        TextAlign::Center,
+        TextSize::Button01
+    );
+ 
+    loadout04Button = UIButton(
+        "Select Class",
+        render.AlignCenterXInRect(alignmentRect02, render.GridX(10)),
+        render.GridY(10),
+        render.GridX(10), render.GridY(5),
         TextAlign::Center,
         TextSize::Button01
     );

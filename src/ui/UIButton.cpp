@@ -15,24 +15,40 @@ void UIButton::Draw(Renderer& render, Color color) const
     render.DrawRectangle(x, y, width, paddingHeight, color);
     // Draw the text on top
     render.DrawTextBlockNoPadding(label, x, y, width, align, size);
-
 }
 
-bool UIButton::IsHovered(Renderer& render) const
+void UIButton::DrawFreeRec(Renderer& render, Color color) const
 {
-    Rectangle bounds = GetBounds(render);
+    render.DrawRectangle(x, y, width, height, color);
+    render.DrawTextBlockNoPadding(label, x, y, width, align, size);
+}
+
+bool UIButton::IsHovered(Renderer& render, bool isFree) const
+{
+    Rectangle bounds = GetBounds(render, isFree);
     return CheckCollisionPointRec(GetMousePosition(), bounds);
 }
 
-bool UIButton::IsClicked(Renderer& render) const
+
+
+bool UIButton::IsClicked(Renderer& render, bool isFree) const
 {
-    return IsHovered(render) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON);
+    return IsHovered(render, isFree) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON);
 }
 
-Rectangle UIButton::GetBounds(Renderer& render) const
+Rectangle UIButton::GetBounds(Renderer& render, bool isFree) const
 {
-    int paddingHeight = render.GetPaddingHeight(label, size, width);
+    if (!isFree)
+    {
+        int paddingHeight = render.GetPaddingHeight(label, size, width);
 
-    return { static_cast<float>(x), static_cast<float>(y),
-             static_cast<float>(width), static_cast<float>(paddingHeight) };
+        return { static_cast<float>(x), static_cast<float>(y),
+                 static_cast<float>(width), static_cast<float>(paddingHeight) };
+    }
+    else
+    {
+        return { static_cast<float>(x), static_cast<float>(y),
+                 static_cast<float>(width), static_cast<float>(height) };
+    }
+
 }

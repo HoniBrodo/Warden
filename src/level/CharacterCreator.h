@@ -53,4 +53,12 @@ private:
     Color mainMenuButtonColor = LIGHTGRAY;
     UIButton selectClassButton;
     Color selectClassButtonColor = LIGHTGRAY;
-};    
+    UIButton loadout01Button;
+    Color loadout01ButtonColor = LIGHTGRAY;
+    UIButton loadout02Button;
+    Color loadout02ButtonColor = LIGHTGRAY;
+    UIButton loadout03Button;
+    Color loadout03ButtonColor = LIGHTGRAY;
+    UIButton loadout04Button;
+    Color loadout04ButtonColor = LIGHTGRAY;
+};  

@@ -26,12 +26,12 @@ void DebugLevel::Run(Renderer& renderRef)
 
     testButton01.Draw(render, testButton01Color);
 
-    if (testButton01.IsHovered(render)) {
+    if (testButton01.IsHovered(render, false)) {
         testButton01Color = GRAY;
     }
     else testButton01Color = LIGHTGRAY;
      
-    if (testButton01.IsClicked(render))
+    if (testButton01.IsClicked(render, false))
     {
         stateManager.SetState(StateManager::GameState::MAIN_MENU);
     }
