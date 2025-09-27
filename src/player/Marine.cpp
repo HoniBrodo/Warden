@@ -15,8 +15,8 @@ Marine::Marine() : BaseClass("Marine") {
     stress = 0;
     credits = 100;
 
-    loadout01Items = { "Pistol", "Medkit", "Rations", "Flashlight" };
-    loadout02Items = { "Shotgun", "Ammo x20", "Grenade" };
-    loadout03Items = { "Rifle", "Body Armor", "Combat Knife" };
-    loadout04Items = { "SMG", "Smoke Grenade", "Rations" };
+    loadout01Items = { "Advanced Battle Dress (AP 10)", "Flamethrower (4 shots)", "Boarding Axe"};
+    loadout02Items = { "Standard Battle Dress (AP 7)", "Pulse Rifle (3 mags)", "Infrared Goggles" };
+    loadout03Items = { "Standard Battle Dress (AP 7)", "Smart Rifle (3 mags)", "Binoculars", "Personal Locator"};
+    loadout04Items = { "Advanced Battle Dress (AP 10)", "General Purpose Machine Gun (1 can of ammo)", "HUD" };
 }

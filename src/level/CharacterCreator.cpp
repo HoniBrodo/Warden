@@ -243,12 +243,12 @@ void CharacterCreator::Run()
         std::string className = stateManager.GetPlayer()->GetClass().GetName();
 
         // Build the display string
-        std::string displayText = "Choose " + className + " Starting Equipment";
+        std::string equipmentScreenText = "Choose " + className + " Starting Equipment";
 
         // Draw it
         render.DrawTextBlock
         (
-            displayText,
+            equipmentScreenText,
             render.TextScreenCenterX(1500),
             render.GridY(1),
             1500,
