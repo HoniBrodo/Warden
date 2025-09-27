@@ -256,17 +256,20 @@ void CharacterCreator::Run()
             TextSize::SmallerTitle
         );
 
-        std::vector<std::string> loadout01Items = { "Pistol", "Medkit", "Rations", "Flashlight" };
-
-
-
+        std::vector<std::string> loadout01Items = stateManager.GetPlayer()->GetClass().GetLoadout(1);
+        std::vector<std::string> loadout02Items = stateManager.GetPlayer()->GetClass().GetLoadout(2);
+        std::vector<std::string> loadout03Items = stateManager.GetPlayer()->GetClass().GetLoadout(3);
+        std::vector<std::string> loadout04Items = stateManager.GetPlayer()->GetClass().GetLoadout(4);
 
         loadout01Button.DrawFreeRec(render, loadout01ButtonColor);
         loadout02Button.DrawFreeRec(render, loadout02ButtonColor);
         loadout03Button.DrawFreeRec(render, loadout03ButtonColor);
         loadout04Button.DrawFreeRec(render, loadout04ButtonColor);
 
-        render.DrawTextListInRect(loadout01Items, loadout01Button.GetRect(), TextAlign::Center, TextSize::Dialogue);
+        render.DrawTextListInRect(loadout01Items, loadout01Button.GetRect(), TextAlign::Center, TextSize::Dialogue, 120);
+        render.DrawTextListInRect(loadout02Items, loadout02Button.GetRect(), TextAlign::Center, TextSize::Dialogue, 120);
+        render.DrawTextListInRect(loadout03Items, loadout03Button.GetRect(), TextAlign::Center, TextSize::Dialogue, 120);
+        render.DrawTextListInRect(loadout04Items, loadout04Button.GetRect(), TextAlign::Center, TextSize::Dialogue, 120);
 
         // loadout 01 button logic
         if (loadout01Button.IsClicked(render, true)) {
@@ -363,8 +366,8 @@ void CharacterCreator::InitButtons()
     );
 
     loadout01Button = UIButton(
-        "Select Class",
-        render.AlignCenterXInRect(alignmentRect01, render.GridX(10)),
+        "Loadout 01",
+        render.AlignCenterXInRect(alignmentRect02, render.GridX(10)),
         render.GridY(4),
         render.GridX(10), render.GridY(5),
         TextAlign::Center,
@@ -372,8 +375,8 @@ void CharacterCreator::InitButtons()
     );
 
     loadout02Button = UIButton(
-        "Select Class",
-        render.AlignCenterXInRect(alignmentRect02, render.GridX(10)),
+        "Loadout 02",
+        render.AlignCenterXInRect(alignmentRect01, render.GridX(10)),
         render.GridY(4),
         render.GridX(10), render.GridY(5),
         TextAlign::Center,
@@ -381,7 +384,16 @@ void CharacterCreator::InitButtons()
     );
 
     loadout03Button = UIButton(
-        "Select Class",
+        "Loadout 03",
+        render.AlignCenterXInRect(alignmentRect02, render.GridX(10)),
+        render.GridY(10),
+        render.GridX(10), render.GridY(5),
+        TextAlign::Center,
+        TextSize::Button01
+    );
+
+    loadout04Button = UIButton(
+        "Loadout 04",
         render.AlignCenterXInRect(alignmentRect01, render.GridX(10)),
         render.GridY(10),
         render.GridX(10), render.GridY(5),
@@ -389,14 +401,7 @@ void CharacterCreator::InitButtons()
         TextSize::Button01
     );
  
-    loadout04Button = UIButton(
-        "Select Class",
-        render.AlignCenterXInRect(alignmentRect02, render.GridX(10)),
-        render.GridY(10),
-        render.GridX(10), render.GridY(5),
-        TextAlign::Center,
-        TextSize::Button01
-    );
+
 }
 
 

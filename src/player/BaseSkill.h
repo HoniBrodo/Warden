@@ -4,4 +4,5 @@ class BaseSkill {
 public:
     BaseSkill();
     ~BaseSkill();
+
 };

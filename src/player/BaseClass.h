@@ -23,6 +23,7 @@ public:
     int GetHealth() const { return health; }
     int GetWounds() const { return wounds; }
     int GetStress() const { return stress; }
+    virtual std::vector<std::string> GetLoadout(int loadoutNumber);
 
     // actions 
     virtual void TakeDamage(int amount);
@@ -54,7 +55,12 @@ protected:
 
     // Inventory + skills
     std::vector<BaseSkill> skills; // skill objects derived from the base skill class
-    std::vector<BaseEquipment> equipment; // equipment objects derived from th base equipment class
+    std::vector<BaseEquipment> equipment; // equipment objects derived from the base equipment class
     int credits{};
+
+    std::vector<std::string> loadout01Items;
+    std::vector<std::string> loadout02Items;
+    std::vector<std::string> loadout03Items;
+    std::vector<std::string> loadout04Items;
 
 };

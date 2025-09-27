@@ -14,4 +14,9 @@ Marine::Marine() : BaseClass("Marine") {
     wounds = 0;
     stress = 0;
     credits = 100;
+
+    loadout01Items = { "Pistol", "Medkit", "Rations", "Flashlight" };
+    loadout02Items = { "Shotgun", "Ammo x20", "Grenade" };
+    loadout03Items = { "Rifle", "Body Armor", "Combat Knife" };
+    loadout04Items = { "SMG", "Smoke Grenade", "Rations" };
 }
