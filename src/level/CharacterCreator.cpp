@@ -10,6 +10,9 @@
 
 void CharacterCreator::Run()
 {
+    bool pendingCharacterSelect = false;
+    bool pendingLoadoutSelect = false;
+    bool pendingMainMenu = false;
 
     textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
     textureManager.LoadTextureFromFile("Scientist", "images/player/SFCP_1_38.png");
@@ -29,8 +32,7 @@ void CharacterCreator::Run()
 
     // MainMenu button logic
     if (mainMenuButton.IsClicked(render, false)) {
-        characterSelected = false;
-        stateManager.SetState(StateManager::GameState::MAIN_MENU);
+        pendingMainMenu = true;
     }
 
     if (mainMenuButton.IsHovered(render, false)) {
@@ -38,6 +40,7 @@ void CharacterCreator::Run()
     }
     else mainMenuButtonColor = LIGHTGRAY;
 
+    // character class selection screen
     if (!characterSelected)
     {
         std::string marineInfo = marine.GetClassBio();
@@ -222,7 +225,7 @@ void CharacterCreator::Run()
             auto player = std::make_unique<Player>(std::move(chosenClass));
             stateManager.SetPlayer(std::move(player));
 
-            characterSelected = true;
+            pendingCharacterSelect = true;
         }
 
         if (selectClassButton.IsHovered(render, false)) {
@@ -232,9 +235,8 @@ void CharacterCreator::Run()
 
     }
 
-    // move on to equipment selection specific to the chosen class
-
-    if (characterSelected)
+    // loadout selectoin screen
+    if (characterSelected && !loadoutSelected)
     {
         DebugRect alignmentRect01 = { { render.GridX(1), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
         DebugRect alignmentRect02 = { { render.GridX(12), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
@@ -277,7 +279,7 @@ void CharacterCreator::Run()
 
         // loadout 01 button logic
         if (loadout01Button.IsClicked(render, true)) {
-;
+            pendingLoadoutSelect = true;
         }
 
         if (loadout01Button.IsHovered(render, true)) {
@@ -287,7 +289,7 @@ void CharacterCreator::Run()
 
         // loadout 02 button logic
         if (loadout02Button.IsClicked(render, true)) {
-            ;
+            pendingLoadoutSelect = true;
         }
 
         if (loadout02Button.IsHovered(render, true)) {
@@ -297,7 +299,7 @@ void CharacterCreator::Run()
 
         // loadout 03 button logic
         if (loadout03Button.IsClicked(render, true)) {
-            ;
+            pendingLoadoutSelect = true;
         }
 
         if (loadout03Button.IsHovered(render, true)) {
@@ -307,7 +309,7 @@ void CharacterCreator::Run()
 
         // loadout 04 button logic
         if (loadout04Button.IsClicked(render, true)) {
-            ;
+            pendingLoadoutSelect = true;
         }
 
         if (loadout04Button.IsHovered(render, true)) {
@@ -315,6 +317,32 @@ void CharacterCreator::Run()
         }
         else loadout04ButtonColor = LIGHTGRAY;
 
+    }
+
+     // stats and skills screen
+    if (loadoutSelected)
+    {
+        render.DrawTextBlock
+        (
+            "Skills and Stats",
+            render.TextScreenCenterX(1500),
+            render.GridY(1),
+            1500,
+            TextAlign::Center,
+            TextSize::SmallerTitle
+        );
+    }
+
+    if (pendingCharacterSelect) {
+        characterSelected = true;
+    }
+    if (pendingLoadoutSelect) {
+        loadoutSelected = true;
+    }
+    if (pendingMainMenu) {
+        stateManager.SetState(StateManager::GameState::MAIN_MENU);
+        characterSelected = false;
+        loadoutSelected = false;
     }
 
     EndDrawing();
@@ -371,36 +399,36 @@ void CharacterCreator::InitButtons()
 
     loadout01Button = UIButton(
         "Loadout 01",
-        render.AlignCenterXInRect(alignmentRect02, render.GridX(10)),
+        render.AlignCenterXInRect(alignmentRect03, render.GridX(9)),
         render.GridY(4),
-        render.GridX(10), render.GridY(5),
+        render.GridX(9), render.GridY(5),
         TextAlign::Center,
         TextSize::Button01
     );
 
     loadout02Button = UIButton(
         "Loadout 02",
-        render.AlignCenterXInRect(alignmentRect01, render.GridX(10)),
+        render.AlignCenterXInRect(alignmentRect04, render.GridX(9)),
         render.GridY(4),
-        render.GridX(10), render.GridY(5),
+        render.GridX(9), render.GridY(5),
         TextAlign::Center,
         TextSize::Button01
     );
 
     loadout03Button = UIButton(
         "Loadout 03",
-        render.AlignCenterXInRect(alignmentRect02, render.GridX(10)),
+        render.AlignCenterXInRect(alignmentRect03, render.GridX(9)),
         render.GridY(10),
-        render.GridX(10), render.GridY(5),
+        render.GridX(9), render.GridY(5),
         TextAlign::Center,
         TextSize::Button01
     );
 
     loadout04Button = UIButton(
         "Loadout 04",
-        render.AlignCenterXInRect(alignmentRect01, render.GridX(10)),
+        render.AlignCenterXInRect(alignmentRect04, render.GridX(9)),
         render.GridY(10),
-        render.GridX(10), render.GridY(5),
+        render.GridX(9), render.GridY(5),
         TextAlign::Center,
         TextSize::Button01
     );
@@ -408,7 +436,7 @@ void CharacterCreator::InitButtons()
 
 }
 
-
+// could these helpers be in the .h file?
 void CharacterCreator::NextCharacter() {
     int current = static_cast<int>(currentCharacter);
     current = (current + 1) % static_cast<int>(CharacterSelect::Count);

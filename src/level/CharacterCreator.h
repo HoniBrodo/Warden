@@ -43,6 +43,7 @@ private:
     void PreviousCharacter();
 
     bool characterSelected{ false };
+    bool loadoutSelected{ false }; 
 
     // buttons
     UIButton nextButton;

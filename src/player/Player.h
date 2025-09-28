@@ -23,8 +23,6 @@ public:
     int GetWounds() const { return characterClass_->GetWounds(); }
     int GetStress() const { return characterClass_->GetStress(); }
 
-
-
     // gameplay actions - these will dispatch to the derived class implementation
     void TakeDamage(int amount) { characterClass_->TakeDamage(amount); }
     void Heal(int amount) { characterClass_->Heal(amount); }
