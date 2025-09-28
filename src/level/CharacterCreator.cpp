@@ -25,6 +25,19 @@ void CharacterCreator::Run()
         render.DrawGrid(true);
     }
 
+    mainMenuButton.Draw(render, mainMenuButtonColor);
+
+    // MainMenu button logic
+    if (mainMenuButton.IsClicked(render, false)) {
+        characterSelected = false;
+        stateManager.SetState(StateManager::GameState::MAIN_MENU);
+    }
+
+    if (mainMenuButton.IsHovered(render, false)) {
+        mainMenuButtonColor = GRAY;
+    }
+    else mainMenuButtonColor = LIGHTGRAY;
+
     if (!characterSelected)
     {
         std::string marineInfo = marine.GetClassBio();
@@ -158,7 +171,6 @@ void CharacterCreator::Run()
 
         previousButton.Draw(render, previousButtonColor);
         nextButton.Draw(render, nextButtonColor);
-        mainMenuButton.Draw(render, mainMenuButtonColor);
         selectClassButton.Draw(render, selectClassButtonColor);
 
         // Previous button logic
@@ -181,15 +193,7 @@ void CharacterCreator::Run()
         }
         else nextButtonColor = LIGHTGRAY;
 
-        // MainMenu button logic
-        if (mainMenuButton.IsClicked(render, false)) {
-            stateManager.SetState(StateManager::GameState::MAIN_MENU);
-        }
 
-        if (mainMenuButton.IsHovered(render, false)) {
-            mainMenuButtonColor = GRAY;
-        }
-        else mainMenuButtonColor = LIGHTGRAY;
 
         // SelectClass button logic
         if (selectClassButton.IsClicked(render, false)) {
@@ -349,8 +353,8 @@ void CharacterCreator::InitButtons()
 
     mainMenuButton = UIButton(
         "Main Menu",
-        render.GridX(21) + 30,
-        render.GridY(0) + 10,
+        render.GridX(21) + 39,
+        render.GridY(0) + 1,
         200, 120,
         TextAlign::Center,
         TextSize::Dialogue
