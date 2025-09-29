@@ -436,6 +436,18 @@ void CharacterCreator::InitButtons()
 
 }
 
+void CharacterCreator::Update(float dt)
+{
+}
+
+void CharacterCreator::Render(Renderer& render)
+{
+}
+
+void CharacterCreator::HandleInput()
+{
+}
+
 // could these helpers be in the .h file?
 void CharacterCreator::NextCharacter() {
     int current = static_cast<int>(currentCharacter);

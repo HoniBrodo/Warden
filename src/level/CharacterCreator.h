@@ -5,6 +5,7 @@
 #include "../player/Scientist.h"
 #include "../player/Teamster.h"
 #include "../player/Android.h"
+#include "../core/IGameState.h"
 #include "raylib.h" 
 
 
@@ -20,12 +21,15 @@ enum class CharacterSelect {
     Count // not a real option, just to track how many
 };
 
-class CharacterCreator {
+class CharacterCreator : public IGameState {
 public:
     CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render) : stateManager(sm), textureManager(tm), render(render) {}
 
     void Run();
     void InitButtons();
+    void Update(float dt) override;
+    void Render(Renderer& render) override;
+    void HandleInput() override;
     CharacterSelect GetCurrentCharacter() const { return currentCharacter; }
     Marine marine;
     Scientist scientist;
