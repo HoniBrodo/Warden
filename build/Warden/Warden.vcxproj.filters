@@ -149,5 +149,8 @@
     <ClInclude Include="..\..\src\player\Player.h">
       <Filter>Source Files\player</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\core\IGameState.h">
+      <Filter>Source Files\core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

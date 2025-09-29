@@ -161,6 +161,7 @@
     <ClInclude Include="..\..\src\ClassTemplate.h" />
     <ClInclude Include="..\..\src\core\AudioManager.h" />
     <ClInclude Include="..\..\src\core\Game.h" />
+    <ClInclude Include="..\..\src\core\IGameState.h" />
     <ClInclude Include="..\..\src\core\InputManager.h" />
     <ClInclude Include="..\..\src\core\Renderer.h" />
     <ClInclude Include="..\..\src\core\StateManager.h" />
