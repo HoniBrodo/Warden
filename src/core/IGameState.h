@@ -13,5 +13,5 @@ public:
     virtual void Update(float dt) = 0;
 
     // Called every frame to render
-    virtual void Render(Renderer& render) = 0;
+    virtual void Draw(Renderer& render) = 0;
 };

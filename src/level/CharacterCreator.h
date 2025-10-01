@@ -28,7 +28,7 @@ public:
     void Run();
     void InitButtons();
     void Update(float dt) override;
-    void Render(Renderer& render) override;
+    void Draw(Renderer& render) override;
     void HandleInput() override;
     CharacterSelect GetCurrentCharacter() const { return currentCharacter; }
     Marine marine;

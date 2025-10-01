@@ -6,6 +6,17 @@
 #include "../player/Player.h"
 #include <iostream>
 
+void CharacterCreator::Update(float dt)
+{
+}
+
+void CharacterCreator::Draw(Renderer& render)
+{
+}
+
+void CharacterCreator::HandleInput()
+{
+}
 
 
 void CharacterCreator::Run()
@@ -434,18 +445,6 @@ void CharacterCreator::InitButtons()
     );
  
 
-}
-
-void CharacterCreator::Update(float dt)
-{
-}
-
-void CharacterCreator::Render(Renderer& render)
-{
-}
-
-void CharacterCreator::HandleInput()
-{
 }
 
 // could these helpers be in the .h file?
