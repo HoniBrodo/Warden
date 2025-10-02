@@ -23,7 +23,7 @@ enum class CharacterSelect {
 
 class CharacterCreator : public IGameState {
 public:
-    CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render) : stateManager(sm), textureManager(tm), render(render) {}
+    CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render);
 
     void Run();
     void InitButtons();

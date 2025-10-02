@@ -8,7 +8,6 @@ Game::~Game() {}
 
 void Game::Init()
 {
-	InitWindow(screenWidth, screenHeight, "Warden");
     render.SetScreenSize(screenWidth, screenHeight);
     render.SetGrid(24, 16);
 	SetTargetFPS(120);

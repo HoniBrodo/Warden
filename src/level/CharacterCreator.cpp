@@ -6,6 +6,18 @@
 #include "../player/Player.h"
 #include <iostream>
 
+CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render) : stateManager(sm), textureManager(tm), render(render) 
+{
+    textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
+    textureManager.LoadTextureFromFile("Scientist", "images/player/SFCP_1_38.png");
+    textureManager.LoadTextureFromFile("Android", "images/player/SFCP_1_59.png");
+    textureManager.LoadTextureFromFile("Teamster", "images/player/SFCP_1_27.png");
+}
+
+void CharacterCreator::HandleInput()
+{
+}
+
 void CharacterCreator::Update(float dt)
 {
 }
@@ -14,21 +26,11 @@ void CharacterCreator::Draw(Renderer& render)
 {
 }
 
-void CharacterCreator::HandleInput()
-{
-}
-
-
 void CharacterCreator::Run()
 {
     bool pendingCharacterSelect = false;
     bool pendingLoadoutSelect = false;
     bool pendingMainMenu = false;
-
-    textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
-    textureManager.LoadTextureFromFile("Scientist", "images/player/SFCP_1_38.png");
-    textureManager.LoadTextureFromFile("Android", "images/player/SFCP_1_59.png");
-    textureManager.LoadTextureFromFile("Teamster", "images/player/SFCP_1_27.png");
 
     BeginDrawing();
     ClearBackground(BLACK);
