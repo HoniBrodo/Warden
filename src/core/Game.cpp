@@ -16,7 +16,13 @@ void Game::Init()
 
 void Game::Run()
 {
+    float lastTime = GetTime();  // seconds since start
     while (!WindowShouldClose() && gameRunning) {
+
+        float currentTime = GetTime();
+        float dt = currentTime - lastTime;
+        lastTime = currentTime;
+
         switch (stateManager.GetState()) 
         {
         case StateManager::GameState::DEBUG_WINDOW:
@@ -28,7 +34,9 @@ void Game::Run()
             break;
 
         case StateManager::GameState::CHARATER_CREATOR:
-            cCreator.Run(); 
+            cCreator.HandleInput();
+            cCreator.Update(dt);
+            cCreator.Draw(render);
             break;
         }
     }

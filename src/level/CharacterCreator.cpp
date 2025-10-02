@@ -16,42 +16,141 @@ CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Rendere
 
 void CharacterCreator::HandleInput()
 {
-}
-
-void CharacterCreator::Update(float dt)
-{
-}
-
-void CharacterCreator::Draw(Renderer& render)
-{
-}
-
-void CharacterCreator::Run()
-{
-    bool pendingCharacterSelect = false;
-    bool pendingLoadoutSelect = false;
-    bool pendingMainMenu = false;
-
-    BeginDrawing();
-    ClearBackground(BLACK);
-    InitButtons();
-
     if (IsKeyDown(KEY_G))
     {
         render.DrawGrid(true);
     }
-
-    mainMenuButton.Draw(render, mainMenuButtonColor);
 
     // MainMenu button logic
     if (mainMenuButton.IsClicked(render, false)) {
         pendingMainMenu = true;
     }
 
-    if (mainMenuButton.IsHovered(render, false)) {
-        mainMenuButtonColor = GRAY;
+    mainMenuButtonColor = mainMenuButton.IsHovered(render, false) ? GRAY : LIGHTGRAY; 
+
+    // Previous button logic
+    if (previousButton.IsClicked(render, false)) {
+        PreviousCharacter();
     }
-    else mainMenuButtonColor = LIGHTGRAY;
+
+    if (previousButton.IsHovered(render, false)) {
+        previousButtonColor = GRAY;
+    }
+    else previousButtonColor = LIGHTGRAY;
+
+    // Next button logic
+    if (nextButton.IsClicked(render, false)) {
+        NextCharacter();
+    }
+
+    if (nextButton.IsHovered(render, false)) {
+        nextButtonColor = GRAY;
+    }
+    else nextButtonColor = LIGHTGRAY;
+
+    // SelectClass button logic
+    if (selectClassButton.IsClicked(render, false)) {
+
+        std::unique_ptr<BaseClass> chosenClass;
+
+        switch (GetCurrentCharacter())
+        {
+        case CharacterSelect::Marine:
+            chosenClass = std::make_unique<Marine>();
+            break;
+        case CharacterSelect::Scientist:
+            chosenClass = std::make_unique<Scientist>();
+            break;
+        case CharacterSelect::Android:
+            chosenClass = std::make_unique<Android>();
+            break;
+        case CharacterSelect::Teamster:
+            chosenClass = std::make_unique<Teamster>();
+            break;
+        default:
+            chosenClass = std::make_unique<Scientist>(); // fallback
+        }
+
+        // wrap into Player and pass to StateManager
+        auto player = std::make_unique<Player>(std::move(chosenClass));
+        stateManager.SetPlayer(std::move(player));
+
+        pendingCharacterSelect = true;
+    }
+
+    if (selectClassButton.IsHovered(render, false)) {
+        selectClassButtonColor = GRAY;
+    }
+    else selectClassButtonColor = LIGHTGRAY;
+
+    // loadout 01 button logic
+        if (loadout01Button.IsClicked(render, true)) {
+            pendingLoadoutSelect = true;
+        }
+
+        if (loadout01Button.IsHovered(render, true)) {
+            loadout01ButtonColor = GRAY;
+        }
+        else loadout01ButtonColor = LIGHTGRAY;
+
+        // loadout 02 button logic
+        if (loadout02Button.IsClicked(render, true)) {
+            pendingLoadoutSelect = true;
+        }
+
+        if (loadout02Button.IsHovered(render, true)) {
+            loadout02ButtonColor = GRAY;
+        }
+        else loadout02ButtonColor = LIGHTGRAY;
+
+        // loadout 03 button logic
+        if (loadout03Button.IsClicked(render, true)) {
+            pendingLoadoutSelect = true;
+        }
+
+        if (loadout03Button.IsHovered(render, true)) {
+            loadout03ButtonColor = GRAY;
+        }
+        else loadout03ButtonColor = LIGHTGRAY;
+
+        // loadout 04 button logic
+        if (loadout04Button.IsClicked(render, true)) {
+            pendingLoadoutSelect = true;
+        }
+
+        if (loadout04Button.IsHovered(render, true)) {
+            loadout04ButtonColor = GRAY;
+        }
+        else loadout04ButtonColor = LIGHTGRAY;
+
+    
+}
+
+void CharacterCreator::Update(float dt)
+{
+    // Handle state transitions based on input
+    if (pendingCharacterSelect) {
+        characterSelected = true;
+        pendingCharacterSelect = false;
+    }
+    if (pendingLoadoutSelect) {
+        loadoutSelected = true;
+        pendingLoadoutSelect = false;
+    }
+    if (pendingMainMenu) {
+        stateManager.SetState(StateManager::GameState::MAIN_MENU);
+        characterSelected = false;
+        loadoutSelected = false;
+        pendingMainMenu = false;
+    }
+}
+
+void CharacterCreator::Draw(Renderer& render)
+{
+    BeginDrawing();
+    ClearBackground(BLACK);
+
+    InitButtons();
 
     // character class selection screen
     if (!characterSelected)
@@ -188,68 +287,11 @@ void CharacterCreator::Run()
         previousButton.Draw(render, previousButtonColor);
         nextButton.Draw(render, nextButtonColor);
         selectClassButton.Draw(render, selectClassButtonColor);
-
-        // Previous button logic
-        if (previousButton.IsClicked(render, false)) {
-            PreviousCharacter();
-        }
-
-        if (previousButton.IsHovered(render, false)) {
-            previousButtonColor = GRAY;
-        }
-        else previousButtonColor = LIGHTGRAY;
-
-        // Next button logic
-        if (nextButton.IsClicked(render, false)) {
-            NextCharacter();
-        }
-
-        if (nextButton.IsHovered(render, false)) {
-            nextButtonColor = GRAY;
-        }
-        else nextButtonColor = LIGHTGRAY;
-
-
-
-        // SelectClass button logic
-        if (selectClassButton.IsClicked(render, false)) {
-
-            std::unique_ptr<BaseClass> chosenClass;
-
-            switch (GetCurrentCharacter())
-            {
-            case CharacterSelect::Marine:
-                chosenClass = std::make_unique<Marine>();
-                break;
-            case CharacterSelect::Scientist:
-                chosenClass = std::make_unique<Scientist>();
-                break;
-            case CharacterSelect::Android:
-                chosenClass = std::make_unique<Android>();
-                break;
-            case CharacterSelect::Teamster:
-                chosenClass = std::make_unique<Teamster>();
-                break;
-            default:
-                chosenClass = std::make_unique<Scientist>(); // fallback
-            }
-
-            // wrap into Player and pass to StateManager
-            auto player = std::make_unique<Player>(std::move(chosenClass));
-            stateManager.SetPlayer(std::move(player));
-
-            pendingCharacterSelect = true;
-        }
-
-        if (selectClassButton.IsHovered(render, false)) {
-            selectClassButtonColor = GRAY;
-        }
-        else selectClassButtonColor = LIGHTGRAY;
-
+        mainMenuButton.Draw(render, mainMenuButtonColor);
     }
 
     // loadout selectoin screen
-    if (characterSelected && !loadoutSelected)
+    else if (!loadoutSelected)
     {
         DebugRect alignmentRect01 = { { render.GridX(1), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
         DebugRect alignmentRect02 = { { render.GridX(12), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
@@ -289,51 +331,10 @@ void CharacterCreator::Run()
         render.DrawTextListInRect(loadout02Items, loadout02Button.GetRect(), TextAlign::Center, TextSize::Dialogue, 120);
         render.DrawTextListInRect(loadout03Items, loadout03Button.GetRect(), TextAlign::Center, TextSize::Dialogue, 120);
         render.DrawTextListInRect(loadout04Items, loadout04Button.GetRect(), TextAlign::Center, TextSize::Dialogue, 120);
-
-        // loadout 01 button logic
-        if (loadout01Button.IsClicked(render, true)) {
-            pendingLoadoutSelect = true;
-        }
-
-        if (loadout01Button.IsHovered(render, true)) {
-            loadout01ButtonColor = GRAY;
-        }
-        else loadout01ButtonColor = LIGHTGRAY;
-
-        // loadout 02 button logic
-        if (loadout02Button.IsClicked(render, true)) {
-            pendingLoadoutSelect = true;
-        }
-
-        if (loadout02Button.IsHovered(render, true)) {
-            loadout02ButtonColor = GRAY;
-        }
-        else loadout02ButtonColor = LIGHTGRAY;
-
-        // loadout 03 button logic
-        if (loadout03Button.IsClicked(render, true)) {
-            pendingLoadoutSelect = true;
-        }
-
-        if (loadout03Button.IsHovered(render, true)) {
-            loadout03ButtonColor = GRAY;
-        }
-        else loadout03ButtonColor = LIGHTGRAY;
-
-        // loadout 04 button logic
-        if (loadout04Button.IsClicked(render, true)) {
-            pendingLoadoutSelect = true;
-        }
-
-        if (loadout04Button.IsHovered(render, true)) {
-            loadout04ButtonColor = GRAY;
-        }
-        else loadout04ButtonColor = LIGHTGRAY;
-
     }
 
-     // stats and skills screen
-    if (loadoutSelected)
+    // stats and skills screen
+    else
     {
         render.DrawTextBlock
         (
@@ -344,18 +345,6 @@ void CharacterCreator::Run()
             TextAlign::Center,
             TextSize::SmallerTitle
         );
-    }
-
-    if (pendingCharacterSelect) {
-        characterSelected = true;
-    }
-    if (pendingLoadoutSelect) {
-        loadoutSelected = true;
-    }
-    if (pendingMainMenu) {
-        stateManager.SetState(StateManager::GameState::MAIN_MENU);
-        characterSelected = false;
-        loadoutSelected = false;
     }
 
     EndDrawing();

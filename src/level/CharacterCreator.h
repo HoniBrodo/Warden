@@ -25,7 +25,6 @@ class CharacterCreator : public IGameState {
 public:
     CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render);
 
-    void Run();
     void InitButtons();
     void Update(float dt) override;
     void Draw(Renderer& render) override;
@@ -45,6 +44,10 @@ private:
 
     void NextCharacter();
     void PreviousCharacter();
+
+    bool pendingCharacterSelect = false;
+    bool pendingLoadoutSelect = false;
+    bool pendingMainMenu = false;
 
     bool characterSelected{ false };
     bool loadoutSelected{ false }; 
