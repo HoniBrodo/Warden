@@ -21,7 +21,7 @@ public:
 private: 
 
     TextureManager textureManager;
-    Renderer render{ textureManager, 0, 0, 0, 0 };
+    Renderer render{ textureManager, 24, 16, 1920, 1080 };
     StateManager stateManager;
     MainMenu mMenu{ stateManager };
     DebugLevel debugLevel{ stateManager }; 

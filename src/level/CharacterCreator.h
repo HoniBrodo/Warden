@@ -45,12 +45,26 @@ private:
     void NextCharacter();
     void PreviousCharacter();
 
+    void Reset();
+
+    bool pendingDebugGrid = false;
     bool pendingCharacterSelect = false;
     bool pendingLoadoutSelect = false;
     bool pendingMainMenu = false;
 
     bool characterSelected{ false };
     bool loadoutSelected{ false }; 
+    bool drawDebugGrid{ false };
+
+    std::string marineInfo = marine.GetClassBio();
+    std::string scientistInfo = scientist.GetClassBio();
+    std::string androidInfo = android.GetClassBio();
+    std::string teamsterInfo = teamster.GetClassBio();
+
+    DebugRect SelectClassAlignmentRect01;
+    DebugRect SelectClassAlignmentRect02;
+    DebugRect SelectClassAlignmentRect03;
+    DebugRect SelectClassAlignmentRect04;
 
     // buttons
     UIButton nextButton;

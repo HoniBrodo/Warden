@@ -12,78 +12,92 @@ CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Rendere
     textureManager.LoadTextureFromFile("Scientist", "images/player/SFCP_1_38.png");
     textureManager.LoadTextureFromFile("Android", "images/player/SFCP_1_59.png");
     textureManager.LoadTextureFromFile("Teamster", "images/player/SFCP_1_27.png");
+
+    SelectClassAlignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, true };
+    SelectClassAlignmentRect02 = { { render.GridX(1), render.GridY(4), render.GridX(10), render.GridY(11) }, true };
+    SelectClassAlignmentRect03 = { { render.GridX(4), render.GridY(4), render.GridX(8), render.GridY(9) }, true };
+    SelectClassAlignmentRect04 = { { render.GridX(12), render.GridY(4), render.GridX(8), render.GridY(9) }, true };
 }
 
 void CharacterCreator::HandleInput()
 {
     if (IsKeyDown(KEY_G))
     {
-        render.DrawGrid(true);
+        pendingDebugGrid = true;
     }
+    else
+        pendingDebugGrid = false;
 
     // MainMenu button logic
     if (mainMenuButton.IsClicked(render, false)) {
         pendingMainMenu = true;
+        pendingCharacterSelect = false;
+        pendingLoadoutSelect = false;
     }
 
     mainMenuButtonColor = mainMenuButton.IsHovered(render, false) ? GRAY : LIGHTGRAY; 
 
-    // Previous button logic
-    if (previousButton.IsClicked(render, false)) {
-        PreviousCharacter();
-    }
-
-    if (previousButton.IsHovered(render, false)) {
-        previousButtonColor = GRAY;
-    }
-    else previousButtonColor = LIGHTGRAY;
-
-    // Next button logic
-    if (nextButton.IsClicked(render, false)) {
-        NextCharacter();
-    }
-
-    if (nextButton.IsHovered(render, false)) {
-        nextButtonColor = GRAY;
-    }
-    else nextButtonColor = LIGHTGRAY;
-
-    // SelectClass button logic
-    if (selectClassButton.IsClicked(render, false)) {
-
-        std::unique_ptr<BaseClass> chosenClass;
-
-        switch (GetCurrentCharacter())
-        {
-        case CharacterSelect::Marine:
-            chosenClass = std::make_unique<Marine>();
-            break;
-        case CharacterSelect::Scientist:
-            chosenClass = std::make_unique<Scientist>();
-            break;
-        case CharacterSelect::Android:
-            chosenClass = std::make_unique<Android>();
-            break;
-        case CharacterSelect::Teamster:
-            chosenClass = std::make_unique<Teamster>();
-            break;
-        default:
-            chosenClass = std::make_unique<Scientist>(); // fallback
+    if (!characterSelected)
+    {
+        // Previous button logic
+        if (previousButton.IsClicked(render, false)) {
+            PreviousCharacter();
         }
 
-        // wrap into Player and pass to StateManager
-        auto player = std::make_unique<Player>(std::move(chosenClass));
-        stateManager.SetPlayer(std::move(player));
+        if (previousButton.IsHovered(render, false)) {
+            previousButtonColor = GRAY;
+        }
+        else previousButtonColor = LIGHTGRAY;
 
-        pendingCharacterSelect = true;
+        // Next button logic
+        if (nextButton.IsClicked(render, false)) {
+            NextCharacter();
+        }
+
+        if (nextButton.IsHovered(render, false)) {
+            nextButtonColor = GRAY;
+        }
+        else nextButtonColor = LIGHTGRAY;
+
+        // SelectClass button logic
+        if (selectClassButton.IsClicked(render, false)) {
+
+            std::unique_ptr<BaseClass> chosenClass;
+
+            switch (GetCurrentCharacter())
+            {
+            case CharacterSelect::Marine:
+                chosenClass = std::make_unique<Marine>();
+                break;
+            case CharacterSelect::Scientist:
+                chosenClass = std::make_unique<Scientist>();
+                break;
+            case CharacterSelect::Android:
+                chosenClass = std::make_unique<Android>();
+                break;
+            case CharacterSelect::Teamster:
+                chosenClass = std::make_unique<Teamster>();
+                break;
+            default:
+                chosenClass = std::make_unique<Scientist>(); // fallback
+            }
+
+            // wrap into Player and pass to StateManager
+            auto player = std::make_unique<Player>(std::move(chosenClass));
+            stateManager.SetPlayer(std::move(player));
+
+            pendingCharacterSelect = true;
+        }
+
+        if (selectClassButton.IsHovered(render, false)) {
+            selectClassButtonColor = GRAY;
+        }
+        else selectClassButtonColor = LIGHTGRAY;
     }
 
-    if (selectClassButton.IsHovered(render, false)) {
-        selectClassButtonColor = GRAY;
-    }
-    else selectClassButtonColor = LIGHTGRAY;
-
-    // loadout 01 button logic
+    if (characterSelected && !loadoutSelected)
+    {
+        // loadout 01 button logic
         if (loadout01Button.IsClicked(render, true)) {
             pendingLoadoutSelect = true;
         }
@@ -122,13 +136,19 @@ void CharacterCreator::HandleInput()
             loadout04ButtonColor = GRAY;
         }
         else loadout04ButtonColor = LIGHTGRAY;
-
-    
+    }
 }
 
 void CharacterCreator::Update(float dt)
 {
     // Handle state transitions based on input
+    if (pendingDebugGrid) {
+        drawDebugGrid = true;
+        pendingDebugGrid = false;
+    }
+    else drawDebugGrid = false;
+
+
     if (pendingCharacterSelect) {
         characterSelected = true;
         pendingCharacterSelect = false;
@@ -139,9 +159,9 @@ void CharacterCreator::Update(float dt)
     }
     if (pendingMainMenu) {
         stateManager.SetState(StateManager::GameState::MAIN_MENU);
-        characterSelected = false;
-        loadoutSelected = false;
         pendingMainMenu = false;
+        Reset();
+        return;
     }
 }
 
@@ -152,24 +172,22 @@ void CharacterCreator::Draw(Renderer& render)
 
     InitButtons();
 
+    // optional: draw the debug rectangle
+    render.DrawDebugRect(SelectClassAlignmentRect01);
+    render.DrawDebugRect(SelectClassAlignmentRect02);
+    render.DrawDebugRect(SelectClassAlignmentRect03);
+    render.DrawDebugRect(SelectClassAlignmentRect04);
+
+    mainMenuButton.Draw(render, mainMenuButtonColor);
+
+    if (drawDebugGrid)
+    {
+        render.DrawGrid(true);
+    }
+
     // character class selection screen
     if (!characterSelected)
     {
-        std::string marineInfo = marine.GetClassBio();
-        std::string scientistInfo = scientist.GetClassBio();
-        std::string androidInfo = android.GetClassBio();
-        std::string teamsterInfo = teamster.GetClassBio();
-
-        DebugRect alignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
-        DebugRect alignmentRect02 = { { render.GridX(1), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
-        DebugRect alignmentRect03 = { { render.GridX(4), render.GridY(4), render.GridX(8), render.GridY(9) }, false };
-        DebugRect alignmentRect04 = { { render.GridX(12), render.GridY(4), render.GridX(8), render.GridY(9) }, false };
-
-        // optional: draw the debug rectangle
-        render.DrawDebugRect(alignmentRect01);
-        render.DrawDebugRect(alignmentRect02);
-        render.DrawDebugRect(alignmentRect03);
-        render.DrawDebugRect(alignmentRect04);
 
         render.DrawTextBlock
         (
@@ -185,12 +203,12 @@ void CharacterCreator::Draw(Renderer& render)
         {
         case CharacterSelect::Marine:
 
-            render.DrawLoadedTexture("Marine", { static_cast<float>(render.AlignCenterXInRect(alignmentRect03, textureManager.GetTexture("Marine").width * 0.5)), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
+            render.DrawLoadedTexture("Marine", { static_cast<float>(render.AlignCenterXInRect(SelectClassAlignmentRect03, textureManager.GetTexture("Marine").width * 0.5)), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
 
             render.DrawTextBlock
             (
                 "Marine",
-                render.AlignCenterXInRect(alignmentRect04, 300),
+                render.AlignCenterXInRect(SelectClassAlignmentRect04, 300),
                 render.GridY(4),
                 300,
                 TextAlign::Center,
@@ -200,7 +218,7 @@ void CharacterCreator::Draw(Renderer& render)
             render.DrawTextBlock
             (
                 marineInfo,
-                render.AlignCenterXInRect(alignmentRect04, 600),
+                render.AlignCenterXInRect(SelectClassAlignmentRect04, 600),
                 render.GridY(7),
                 600,
                 TextAlign::Center,
@@ -210,12 +228,12 @@ void CharacterCreator::Draw(Renderer& render)
 
         case CharacterSelect::Scientist:
 
-            render.DrawLoadedTexture("Scientist", { static_cast<float>(render.AlignCenterXInRect(alignmentRect03, textureManager.GetTexture("Scientist").width * 0.5)), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
+            render.DrawLoadedTexture("Scientist", { static_cast<float>(render.AlignCenterXInRect(SelectClassAlignmentRect03, textureManager.GetTexture("Scientist").width * 0.5)), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
 
             render.DrawTextBlock
             (
                 "Scientist",
-                render.AlignCenterXInRect(alignmentRect04, 400),
+                render.AlignCenterXInRect(SelectClassAlignmentRect04, 400),
                 render.GridY(4),
                 400,
                 TextAlign::Center,
@@ -225,7 +243,7 @@ void CharacterCreator::Draw(Renderer& render)
             render.DrawTextBlock
             (
                 scientistInfo,
-                render.AlignCenterXInRect(alignmentRect04, 600),
+                render.AlignCenterXInRect(SelectClassAlignmentRect04, 600),
                 render.GridY(7),
                 600,
                 TextAlign::Center,
@@ -235,12 +253,12 @@ void CharacterCreator::Draw(Renderer& render)
 
         case CharacterSelect::Teamster:
 
-            render.DrawLoadedTexture("Teamster", { static_cast<float>(render.AlignCenterXInRect(alignmentRect03, textureManager.GetTexture("Teamster").width * 0.5)), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
+            render.DrawLoadedTexture("Teamster", { static_cast<float>(render.AlignCenterXInRect(SelectClassAlignmentRect03, textureManager.GetTexture("Teamster").width * 0.5)), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
 
             render.DrawTextBlock
             (
                 "Teamster",
-                render.AlignCenterXInRect(alignmentRect04, 400),
+                render.AlignCenterXInRect(SelectClassAlignmentRect04, 400),
                 render.GridY(4),
                 400,
                 TextAlign::Center,
@@ -250,7 +268,7 @@ void CharacterCreator::Draw(Renderer& render)
             render.DrawTextBlock
             (
                 teamsterInfo,
-                render.AlignCenterXInRect(alignmentRect04, 600),
+                render.AlignCenterXInRect(SelectClassAlignmentRect04, 600),
                 render.GridY(7),
                 600,
                 TextAlign::Center,
@@ -260,12 +278,12 @@ void CharacterCreator::Draw(Renderer& render)
 
         case CharacterSelect::Android:
 
-            render.DrawLoadedTexture("Android", { static_cast<float>(render.AlignCenterXInRect(alignmentRect03, textureManager.GetTexture("Android").width * 0.5)), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
+            render.DrawLoadedTexture("Android", { static_cast<float>(render.AlignCenterXInRect(SelectClassAlignmentRect03, textureManager.GetTexture("Android").width * 0.5)), render.GridX(3) + 5 }, 0.0f, 0.5f, WHITE);
 
             render.DrawTextBlock
             (
                 "Android",
-                render.AlignCenterXInRect(alignmentRect04, 400),
+                render.AlignCenterXInRect(SelectClassAlignmentRect04, 400),
                 render.GridY(4),
                 400,
                 TextAlign::Center,
@@ -275,7 +293,7 @@ void CharacterCreator::Draw(Renderer& render)
             render.DrawTextBlock
             (
                 androidInfo,
-                render.AlignCenterXInRect(alignmentRect04, 600),
+                render.AlignCenterXInRect(SelectClassAlignmentRect04, 600),
                 render.GridY(7),
                 600,
                 TextAlign::Center,
@@ -287,11 +305,10 @@ void CharacterCreator::Draw(Renderer& render)
         previousButton.Draw(render, previousButtonColor);
         nextButton.Draw(render, nextButtonColor);
         selectClassButton.Draw(render, selectClassButtonColor);
-        mainMenuButton.Draw(render, mainMenuButtonColor);
     }
 
     // loadout selectoin screen
-    else if (!loadoutSelected)
+    if (characterSelected && !loadoutSelected)
     {
         DebugRect alignmentRect01 = { { render.GridX(1), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
         DebugRect alignmentRect02 = { { render.GridX(12), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
@@ -334,18 +351,18 @@ void CharacterCreator::Draw(Renderer& render)
     }
 
     // stats and skills screen
-    else
-    {
-        render.DrawTextBlock
-        (
-            "Skills and Stats",
-            render.TextScreenCenterX(1500),
-            render.GridY(1),
-            1500,
-            TextAlign::Center,
-            TextSize::SmallerTitle
-        );
-    }
+    //else
+    //{
+    //    render.DrawTextBlock
+    //    (
+    //        "Skills and Stats",
+    //        render.TextScreenCenterX(1500),
+    //        render.GridY(1),
+    //        1500,
+    //        TextAlign::Center,
+    //        TextSize::SmallerTitle
+    //    );
+    //}
 
     EndDrawing();
 }
@@ -449,5 +466,29 @@ void CharacterCreator::PreviousCharacter() {
     int current = static_cast<int>(currentCharacter);
     current = (current - 1 + static_cast<int>(CharacterSelect::Count)) % static_cast<int>(CharacterSelect::Count);
     currentCharacter = static_cast<CharacterSelect>(current);
+}
+
+void CharacterCreator::Reset()
+{
+    currentCharacter = CharacterSelect::Marine;
+
+    pendingCharacterSelect = false;
+    pendingLoadoutSelect = false;
+    pendingMainMenu = false;
+    pendingDebugGrid = false;
+
+    characterSelected = false;
+    loadoutSelected = false;
+    drawDebugGrid = false;
+
+    // Reset button colours too
+    nextButtonColor = LIGHTGRAY;
+    previousButtonColor = LIGHTGRAY;
+    mainMenuButtonColor = LIGHTGRAY;
+    selectClassButtonColor = LIGHTGRAY;
+    loadout01ButtonColor = LIGHTGRAY;
+    loadout02ButtonColor = LIGHTGRAY;
+    loadout03ButtonColor = LIGHTGRAY;
+    loadout04ButtonColor = LIGHTGRAY;
 }
 
