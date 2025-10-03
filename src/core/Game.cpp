@@ -36,10 +36,7 @@ void Game::Run()
         case StateManager::GameState::CHARATER_CREATOR:
             cCreator.HandleInput();
             cCreator.Update(dt);
-            // check prevents one-frame flash by skipping Draw() if the state switched this frame
-            // this feels like a patch rather than a fix
-            if (stateManager.GetState() == StateManager::GameState::CHARATER_CREATOR)
-                cCreator.Draw(render);
+            cCreator.Draw(render);
             break;
         }
     }

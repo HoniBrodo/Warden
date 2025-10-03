@@ -54,7 +54,10 @@ private:
 
     bool characterSelected{ false };
     bool loadoutSelected{ false }; 
+
     bool drawDebugGrid{ false };
+
+    bool shouldDraw{ true }; 
 
     std::string marineInfo = marine.GetClassBio();
     std::string scientistInfo = scientist.GetClassBio();

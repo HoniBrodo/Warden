@@ -159,7 +159,7 @@ void CharacterCreator::Update(float dt)
     }
     if (pendingMainMenu) {
         stateManager.SetState(StateManager::GameState::MAIN_MENU);
-        pendingMainMenu = false;
+        shouldDraw = false;
         Reset();
         return;
     }
@@ -167,6 +167,11 @@ void CharacterCreator::Update(float dt)
 
 void CharacterCreator::Draw(Renderer& render)
 {
+    if (!shouldDraw)
+    {
+        shouldDraw = true;
+        return;
+    }
     BeginDrawing();
     ClearBackground(BLACK);
 
