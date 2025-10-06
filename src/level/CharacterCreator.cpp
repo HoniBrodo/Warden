@@ -1,7 +1,7 @@
 #include <string>
 #include "CharacterCreator.h"
 #include "../core/Renderer.h"
-#include "../Core/StateManager.h"
+#include "../core/StateManager.h"
 #include "../assets/TextureManager.h"
 #include "../player/Player.h"
 #include <iostream>
@@ -171,6 +171,7 @@ void CharacterCreator::Draw(Renderer& render)
         shouldDraw = true;
         return;
     }
+
     BeginDrawing();
     ClearBackground(BLACK);
 
@@ -189,9 +190,10 @@ void CharacterCreator::Draw(Renderer& render)
         render.DrawGrid(true);
     }
 
-    // character class selection screen
-    if (!characterSelected)
+    switch (GetCurrentPage())
     {
+
+    case Page::CLASS_SELECT:
 
         render.DrawTextBlock
         (
@@ -309,10 +311,11 @@ void CharacterCreator::Draw(Renderer& render)
         previousButton.Draw(render, previousButtonColor);
         nextButton.Draw(render, nextButtonColor);
         selectClassButton.Draw(render, selectClassButtonColor);
-    }
 
-    // loadout selectoin screen
-    if (characterSelected && !loadoutSelected)
+        break; 
+
+    case Page::LOADOUT_SELECT:
+
     {
         DebugRect alignmentRect01 = { { render.GridX(1), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
         DebugRect alignmentRect02 = { { render.GridX(12), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
@@ -352,21 +355,24 @@ void CharacterCreator::Draw(Renderer& render)
         render.DrawTextListInRect(loadout02Items, loadout02Button.GetRect(), TextAlign::Center, TextSize::Dialogue, 120);
         render.DrawTextListInRect(loadout03Items, loadout03Button.GetRect(), TextAlign::Center, TextSize::Dialogue, 120);
         render.DrawTextListInRect(loadout04Items, loadout04Button.GetRect(), TextAlign::Center, TextSize::Dialogue, 120);
+
+        break;
     }
 
-    // stats and skills screen
-    //else
-    //{
-    //    render.DrawTextBlock
-    //    (
-    //        "Skills and Stats",
-    //        render.TextScreenCenterX(1500),
-    //        render.GridY(1),
-    //        1500,
-    //        TextAlign::Center,
-    //        TextSize::SmallerTitle
-    //    );
-    //}
+    case Page::SKILLS_SELECT:
+
+    render.DrawTextBlock
+    (
+    "Skills and Stats",
+    render.TextScreenCenterX(1500),
+    render.GridY(1),
+    1500,
+    TextAlign::Center,
+    TextSize::SmallerTitle
+    );
+
+       break;
+    }
 
     EndDrawing();
 }
