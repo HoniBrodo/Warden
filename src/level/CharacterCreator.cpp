@@ -37,8 +37,10 @@ void CharacterCreator::HandleInput()
 
     mainMenuButtonColor = mainMenuButton.IsHovered(render, false) ? GRAY : LIGHTGRAY; 
 
-    if (!characterSelected)
+    switch (GetCurrentPage())
     {
+    case Page::CLASS_SELECT:
+
         // Previous button logic
         if (previousButton.IsClicked(render, false)) {
             PreviousCharacter();
@@ -86,20 +88,23 @@ void CharacterCreator::HandleInput()
             auto player = std::make_unique<Player>(std::move(chosenClass));
             stateManager.SetPlayer(std::move(player));
 
-            pendingCharacterSelect = true;
+            currentPage = Page::LOADOUT_SELECT;
+
+            break;
         }
 
         if (selectClassButton.IsHovered(render, false)) {
             selectClassButtonColor = GRAY;
         }
         else selectClassButtonColor = LIGHTGRAY;
-    }
 
-    if (characterSelected && !loadoutSelected)
-    {
+        break;
+
+    case Page::LOADOUT_SELECT:
+
         // loadout 01 button logic
         if (loadout01Button.IsClicked(render, true)) {
-            pendingLoadoutSelect = true;
+            currentPage = Page::SKILLS_SELECT;
         }
 
         if (loadout01Button.IsHovered(render, true)) {
@@ -109,7 +114,7 @@ void CharacterCreator::HandleInput()
 
         // loadout 02 button logic
         if (loadout02Button.IsClicked(render, true)) {
-            pendingLoadoutSelect = true;
+            currentPage = Page::SKILLS_SELECT;
         }
 
         if (loadout02Button.IsHovered(render, true)) {
@@ -119,7 +124,7 @@ void CharacterCreator::HandleInput()
 
         // loadout 03 button logic
         if (loadout03Button.IsClicked(render, true)) {
-            pendingLoadoutSelect = true;
+            currentPage = Page::SKILLS_SELECT;
         }
 
         if (loadout03Button.IsHovered(render, true)) {
@@ -129,18 +134,21 @@ void CharacterCreator::HandleInput()
 
         // loadout 04 button logic
         if (loadout04Button.IsClicked(render, true)) {
-            pendingLoadoutSelect = true;
+            currentPage = Page::SKILLS_SELECT;
         }
 
         if (loadout04Button.IsHovered(render, true)) {
             loadout04ButtonColor = GRAY;
         }
         else loadout04ButtonColor = LIGHTGRAY;
+
+        break;
     }
 }
 
 void CharacterCreator::Update(float dt)
 {
+
     // Handle state transitions based on input
     if (pendingDebugGrid) {
         drawDebugGrid = true;
@@ -148,15 +156,6 @@ void CharacterCreator::Update(float dt)
     }
     else drawDebugGrid = false;
 
-
-    if (pendingCharacterSelect) {
-        characterSelected = true;
-        pendingCharacterSelect = false;
-    }
-    if (pendingLoadoutSelect) {
-        loadoutSelected = true;
-        pendingLoadoutSelect = false;
-    }
     if (pendingMainMenu) {
         stateManager.SetState(StateManager::GameState::MAIN_MENU);
         shouldDraw = false;
@@ -476,6 +475,7 @@ void CharacterCreator::PreviousCharacter() {
 void CharacterCreator::Reset()
 {
     currentCharacter = CharacterSelect::Marine;
+    currentPage = Page::CLASS_SELECT;
 
     pendingCharacterSelect = false;
     pendingLoadoutSelect = false;
