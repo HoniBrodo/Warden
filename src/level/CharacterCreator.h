@@ -21,6 +21,12 @@ enum class CharacterSelect {
     Count // not a real option, just to track how many
 };
 
+enum class Page {
+    CLASS_SELECT,
+    LOADOUT_SELECT,
+    SKILLS_SELECT
+};
+
 class CharacterCreator : public IGameState {
 public:
     CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render);
@@ -30,10 +36,12 @@ public:
     void Draw(Renderer& render) override;
     void HandleInput() override;
     CharacterSelect GetCurrentCharacter() const { return currentCharacter; }
+    Page GetCurrentPage() const { return currentPage; }
     Marine marine;
     Scientist scientist;
     Android android;
     Teamster teamster;
+
 
 private:
     Renderer& render;
@@ -41,6 +49,7 @@ private:
     TextureManager& textureManager;
 
     CharacterSelect currentCharacter = CharacterSelect::Marine;
+    Page currentPage = Page::CLASS_SELECT;
 
     void NextCharacter();
     void PreviousCharacter();
