@@ -77,6 +77,8 @@ private:
     DebugRect SelectClassAlignmentRect02;
     DebugRect SelectClassAlignmentRect03;
     DebugRect SelectClassAlignmentRect04;
+    DebugRect LoadoutSelectAlignmentRect01;
+    DebugRect LoadoutSelectAlignmentRect02;
 
     // buttons
     UIButton nextButton;

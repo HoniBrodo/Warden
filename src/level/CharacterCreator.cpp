@@ -6,6 +6,22 @@
 #include "../player/Player.h"
 #include <iostream>
 
+/*
+--------------------------------
+plan for stats and saves screen: 
+--------------------------------
+
+- Add classs modifiers to class select screen, call a fucntion that will generate class-unique stat and save modifiers as we cycle through the classes.
+- Once we get to the stats screen, we want to be able to allocate a set amount of points to each stat and save.
+
+Stats
+------
+- We will start with 36 (+ class modifier) for each. The player can click a plus or minus button, with a 'points available' tally on the screen.
+Saves
+-----
+- We will start with 21 (+ class modifier) for each. The player can click a plus or minus button, with a 'points available' tally on the screen.
+*/
+
 CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render) : stateManager(sm), textureManager(tm), render(render) 
 {
     textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
@@ -17,6 +33,8 @@ CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Rendere
     SelectClassAlignmentRect02 = { { render.GridX(1), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
     SelectClassAlignmentRect03 = { { render.GridX(4), render.GridY(4), render.GridX(8), render.GridY(9) }, false };
     SelectClassAlignmentRect04 = { { render.GridX(12), render.GridY(4), render.GridX(8), render.GridY(9) }, false };
+    LoadoutSelectAlignmentRect01 = { { render.GridX(1), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
+    LoadoutSelectAlignmentRect02 = { { render.GridX(12), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
 }
 
 void CharacterCreator::HandleInput()
@@ -317,12 +335,8 @@ void CharacterCreator::Draw(Renderer& render)
     case Page::LOADOUT_SELECT:
 
     {
-        DebugRect alignmentRect01 = { { render.GridX(1), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
-        DebugRect alignmentRect02 = { { render.GridX(12), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
-
-
-        render.DrawDebugRect(alignmentRect01);
-        render.DrawDebugRect(alignmentRect02);
+        render.DrawDebugRect(LoadoutSelectAlignmentRect01);
+        render.DrawDebugRect(LoadoutSelectAlignmentRect02);
 
         // Get the player's chosen class name
         std::string className = stateManager.GetPlayer()->GetClass().GetName();
@@ -501,5 +515,7 @@ void CharacterCreator::Reset()
     loadout02ButtonColor = LIGHTGRAY;
     loadout03ButtonColor = LIGHTGRAY;
     loadout04ButtonColor = LIGHTGRAY;
+
+       
 }
 
