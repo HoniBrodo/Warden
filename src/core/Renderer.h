@@ -17,7 +17,8 @@ enum class TextSize
     MainTitle,
     Button01,
     Dialogue,
-    SmallerTitle
+    SmallerTitle,
+    MenuSmall
 };
 
 struct DebugRect {

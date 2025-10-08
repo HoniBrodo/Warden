@@ -49,8 +49,6 @@ void CharacterCreator::HandleInput()
     // MainMenu button logic
     if (mainMenuButton.IsClicked(render, false)) {
         pendingMainMenu = true;
-        pendingCharacterSelect = false;
-        pendingLoadoutSelect = false;
     }
 
     mainMenuButtonColor = mainMenuButton.IsHovered(render, false) ? GRAY : LIGHTGRAY; 
@@ -339,15 +337,11 @@ void CharacterCreator::Draw(Renderer& render)
         render.DrawDebugRect(LoadoutSelectAlignmentRect02);
 
         // Get the player's chosen class name
-        std::string className = stateManager.GetPlayer()->GetClass().GetName();
+        className = stateManager.GetPlayer()->GetClass().GetName();
 
-        // Build the display string
-        std::string equipmentScreenText = "Choose " + className + " Starting Equipment";
-
-        // Draw it
         render.DrawTextBlock
         (
-            equipmentScreenText,
+            "Choose " + className + " Starting Equipment",
             render.TextScreenCenterX(1500),
             render.GridY(1),
             1500,
@@ -375,17 +369,56 @@ void CharacterCreator::Draw(Renderer& render)
 
     case Page::SKILLS_SELECT:
 
-    render.DrawTextBlock
-    (
-    "Skills and Stats",
-    render.TextScreenCenterX(1500),
-    render.GridY(1),
-    1500,
-    TextAlign::Center,
-    TextSize::SmallerTitle
-    );
+    {
+        render.DrawTextBlock
+        (
+            className + " Skills and Stats",
+            render.TextScreenCenterX(1200),
+            render.GridY(1),
+            1200,
+            TextAlign::Center,
+            TextSize::SmallerTitle
+        );
 
-       break;
+        render.DrawTextBlock
+        (
+            "Available stat points: ",
+            render.AlignCenterXInRect(LoadoutSelectAlignmentRect01, 800),
+            render.GridY(4),
+            800,
+            TextAlign::Center,
+            TextSize::MenuSmall
+        );
+
+        render.DrawTextBlock
+        (
+            "Available save points: ",
+            render.AlignCenterXInRect(LoadoutSelectAlignmentRect02, 800),
+            render.GridY(4),
+            800,
+            TextAlign::Center,
+            TextSize::MenuSmall
+        );
+
+        render.DrawRectangle(
+            render.AlignCenterXInRect(LoadoutSelectAlignmentRect01, render.GridX(10)),
+            render.GridY(6),
+            render.GridX(10),
+            render.GridY(9),
+            LIGHTGRAY
+        );
+
+        render.DrawRectangle(
+            render.AlignCenterXInRect(LoadoutSelectAlignmentRect02, render.GridX(10)),
+            render.GridY(6),
+            render.GridX(10),
+            render.GridY(9),
+            LIGHTGRAY
+        );
+
+        break;
+    }
+
     }
 
     EndDrawing();
@@ -497,8 +530,6 @@ void CharacterCreator::Reset()
     currentCharacter = CharacterSelect::Marine;
     currentPage = Page::CLASS_SELECT;
 
-    pendingCharacterSelect = false;
-    pendingLoadoutSelect = false;
     pendingMainMenu = false;
     pendingDebugGrid = false;
 

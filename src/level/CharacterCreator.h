@@ -57,8 +57,6 @@ private:
     void Reset();
 
     bool pendingDebugGrid = false;
-    bool pendingCharacterSelect = false;
-    bool pendingLoadoutSelect = false;
     bool pendingMainMenu = false;
 
     bool characterSelected{ false };
@@ -72,6 +70,7 @@ private:
     std::string scientistInfo = scientist.GetClassBio();
     std::string androidInfo = android.GetClassBio();
     std::string teamsterInfo = teamster.GetClassBio();
+    std::string className;
 
     DebugRect SelectClassAlignmentRect01;
     DebugRect SelectClassAlignmentRect02;
