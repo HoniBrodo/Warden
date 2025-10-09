@@ -22,7 +22,7 @@ Saves
 - We will start with 21 (+ class modifier) for each. The player can click a plus or minus button, with a 'points available' tally on the screen.
 */
 
-CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render, BaseClass& player) : stateManager(sm), textureManager(tm), render(render), player(player)
+CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render) : stateManager(sm), textureManager(tm), render(render)
 {
     textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
     textureManager.LoadTextureFromFile("Scientist", "images/player/SFCP_1_38.png");
@@ -162,8 +162,6 @@ void CharacterCreator::HandleInput()
 
     case Page::SKILLS_SELECT:
     {
-
-
         if (incrementStrengthButton.IsClicked(render, true)) {
             availableStatPoints--;
             stateManager.GetPlayer()->GetClass().IncreaseStrength(1);

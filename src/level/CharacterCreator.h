@@ -30,7 +30,7 @@ enum class Page {
 
 class CharacterCreator : public IGameState {
 public:
-    CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render, BaseClass& player);
+    CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render);
 
     void InitButtons();
     void Update(float dt) override;
@@ -45,7 +45,6 @@ public:
 
 
 private:
-    BaseClass& player;
     Renderer& render;
     StateManager& stateManager;
     TextureManager& textureManager;
