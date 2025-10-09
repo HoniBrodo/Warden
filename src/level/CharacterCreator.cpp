@@ -171,7 +171,7 @@ void CharacterCreator::HandleInput()
         if (incrementStrengthButton.IsHovered(render, true)) {
             incrementStrengthButtonColor = GRAY;
         }
-        else incrementStrengthButtonColor = LIGHTGRAY;
+        else incrementStrengthButtonColor = BLACK;
     }
 
     }
@@ -433,7 +433,7 @@ void CharacterCreator::Draw(Renderer& render)
             LIGHTGRAY
         );
 
-        incrementStrengthButton.DrawFreeRec(render, incrementStrengthButtonColor);
+        incrementStrengthButton.Draw(render, incrementStrengthButtonColor);
 
         break;
     }
@@ -456,11 +456,12 @@ void CharacterCreator::InitButtons()
     render.DrawDebugRect(alignmentRect03);
     render.DrawDebugRect(alignmentRect04);
 
+
     incrementStrengthButton = UIButton(
         "+",
-        render.AlignCenterXInRect(alignmentRect02, 400),
-        render.GridY(13),
-        400, 120,
+        render.GridX(7),
+        render.GridY(7),
+        render.GridX(2), 120,
         TextAlign::Center,
         TextSize::Button01
     );

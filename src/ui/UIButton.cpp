@@ -42,22 +42,6 @@ bool UIButton::IsClicked(Renderer& render, bool isFree) const
     return IsHovered(render, isFree) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON);
 }
 
-void UIButton::Increment(int incrementValue)
-{
-    incrementValue++;
-}
-
-void UIButton::Decrement(int decrementValue)
-{
-    decrementValue++;
-}
-
-void UIButton::IncrementDecrement(int incrementValue, int decrementValue)
-{
-    incrementValue++;
-    decrementValue++;
-}
-
 Rectangle UIButton::GetBounds(Renderer& render, bool isFree) const
 {
     if (!isFree)

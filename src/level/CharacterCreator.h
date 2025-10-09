@@ -82,7 +82,7 @@ private:
 
     // buttons
     UIButton incrementStrengthButton;
-    Color incrementStrengthButtonColor = LIGHTGRAY;
+    Color incrementStrengthButtonColor = BLACK;
     UIButton decrementButton;
     Color decrementButtonColor = LIGHTGRAY;
     UIButton nextButton;

@@ -16,9 +16,6 @@ public:
     void DrawFreeRec(Renderer& render, Color color) const;
     bool IsHovered(Renderer& render, bool isFree) const;
     bool IsClicked(Renderer& render, bool isFree) const;
-    void Increment(int incrementValue);
-    void Decrement(int decrementValue);
-    void IncrementDecrement(int incrementValue, int decrementValue);
 
 private:
     // these variables are being referenced in the constructor but are never being used (I think)
