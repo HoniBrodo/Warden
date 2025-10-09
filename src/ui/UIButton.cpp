@@ -8,6 +8,11 @@ UIButton::UIButton(const std::string& label, int x, int y, int width, int height
 {
 }
 
+UIButton::UIButton(const std::string& label, int x, int y, int width, int height, TextAlign align, TextSize size, int& incrementValue, int& decrementValue)
+    : label(label), x(x), y(y), width(width), height(height), align(align), size(size), incrementValue(incrementValue), decrementValue(decrementValue)
+{
+}
+
 Rectangle UIButton::GetRect() const
 {
     Rectangle rec = { x, y, width, height };
@@ -40,6 +45,22 @@ bool UIButton::IsHovered(Renderer& render, bool isFree) const
 bool UIButton::IsClicked(Renderer& render, bool isFree) const
 {
     return IsHovered(render, isFree) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON);
+}
+
+void UIButton::Increment(int incrementValue)
+{
+    incrementValue++;
+}
+
+void UIButton::Decrement(int decrementValue)
+{
+    decrementValue++;
+}
+
+void UIButton::IncrementDecrement(int incrementValue, int decrementValue)
+{
+    incrementValue++;
+    decrementValue++;
 }
 
 Rectangle UIButton::GetBounds(Renderer& render, bool isFree) const

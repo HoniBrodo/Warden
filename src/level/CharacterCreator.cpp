@@ -159,7 +159,24 @@ void CharacterCreator::HandleInput()
         else loadout04ButtonColor = LIGHTGRAY;
 
         break;
+
+    case Page::SKILLS_SELECT:
+    {
+        // incrementStrengthButton button logic
+        if (incrementStrengthButton.IsClicked(render, true)) {
+            //incrementStrengthButton.IncrementDecrement(testInt, availableStatPoints);
+            availableStatPoints++;
+        }
+
+        if (incrementStrengthButton.IsHovered(render, true)) {
+            incrementStrengthButtonColor = GRAY;
+        }
+        else incrementStrengthButtonColor = LIGHTGRAY;
     }
+
+    }
+
+
 }
 
 void CharacterCreator::Update(float dt)
@@ -416,6 +433,8 @@ void CharacterCreator::Draw(Renderer& render)
             LIGHTGRAY
         );
 
+        incrementStrengthButton.DrawFreeRec(render, incrementStrengthButtonColor);
+
         break;
     }
 
@@ -436,6 +455,17 @@ void CharacterCreator::InitButtons()
     render.DrawDebugRect(alignmentRect02);
     render.DrawDebugRect(alignmentRect03);
     render.DrawDebugRect(alignmentRect04);
+
+    incrementStrengthButton = UIButton(
+        "+",
+        render.AlignCenterXInRect(alignmentRect02, 400),
+        render.GridY(13),
+        400, 120,
+        TextAlign::Center,
+        TextSize::Button01,
+        testInt,
+        availableStatPoints
+    );
 
     previousButton = UIButton(
         "Previous",
@@ -533,8 +563,6 @@ void CharacterCreator::Reset()
     pendingMainMenu = false;
     pendingDebugGrid = false;
 
-    characterSelected = false;
-    loadoutSelected = false;
     drawDebugGrid = false;
 
     // Reset button colours too

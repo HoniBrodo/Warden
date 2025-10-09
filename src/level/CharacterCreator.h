@@ -58,16 +58,13 @@ private:
 
     bool pendingDebugGrid = false;
     bool pendingMainMenu = false;
-
-    bool characterSelected{ false };
-    bool loadoutSelected{ false }; 
-
     bool drawDebugGrid{ false };
-
     bool shouldDraw{ true }; 
 
     int availableStatPoints = 36;
     int availableSavePoints = 21;
+
+    int testInt = 10;
 
     std::string marineInfo = marine.GetClassBio();
     std::string scientistInfo = scientist.GetClassBio();
@@ -83,6 +80,10 @@ private:
     DebugRect LoadoutSelectAlignmentRect02;
 
     // buttons
+    UIButton incrementStrengthButton;
+    Color incrementStrengthButtonColor = LIGHTGRAY;
+    UIButton decrementButton;
+    Color decrementButtonColor = LIGHTGRAY;
     UIButton nextButton;
     Color nextButtonColor = LIGHTGRAY;
     UIButton previousButton;
