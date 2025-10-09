@@ -372,7 +372,7 @@ void CharacterCreator::Draw(Renderer& render)
     {
         render.DrawTextBlock
         (
-            className + " Skills and Stats",
+            className + " Stats and Saves",
             render.TextScreenCenterX(1200),
             render.GridY(1),
             1200,
@@ -382,7 +382,7 @@ void CharacterCreator::Draw(Renderer& render)
 
         render.DrawTextBlock
         (
-            "Available stat points: ",
+            "Available stat points: " + std::to_string(availableStatPoints),
             render.AlignCenterXInRect(LoadoutSelectAlignmentRect01, 800),
             render.GridY(4),
             800,
@@ -392,7 +392,7 @@ void CharacterCreator::Draw(Renderer& render)
 
         render.DrawTextBlock
         (
-            "Available save points: ",
+            "Available save points: " + std::to_string(availableSavePoints),
             render.AlignCenterXInRect(LoadoutSelectAlignmentRect02, 800),
             render.GridY(4),
             800,

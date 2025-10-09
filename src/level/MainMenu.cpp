@@ -24,11 +24,21 @@ void MainMenu::Run(Renderer& renderRef, bool& gameRunning)
 
     render.DrawTextBlock
     (
-        "Based on the Sci-fi Horror TTRPG 'Mothership' Written by Sean McCoy and Published by Tuesday Night Games", 
+        "Based on the Sci-fi Horror TTRPG 'Mothership' Written by Sean McCoy and Published by Tuesday Night Games.", 
         render.TextScreenCenterX(1000), 
         render.GridY(7), 
         1000, 
         TextAlign::Center, 
+        TextSize::Dialogue
+    );
+
+    render.DrawTextBlock
+    (
+        "Artwork by Ashen Victor",
+        render.TextScreenCenterX(500),
+        render.GridY(9),
+        500,
+        TextAlign::Center,
         TextSize::Dialogue
     );
 

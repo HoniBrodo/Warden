@@ -66,6 +66,9 @@ private:
 
     bool shouldDraw{ true }; 
 
+    int availableStatPoints = 36;
+    int availableSavePoints = 21;
+
     std::string marineInfo = marine.GetClassBio();
     std::string scientistInfo = scientist.GetClassBio();
     std::string androidInfo = android.GetClassBio();
