@@ -22,7 +22,7 @@ Saves
 - We will start with 21 (+ class modifier) for each. The player can click a plus or minus button, with a 'points available' tally on the screen.
 */
 
-CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render) : stateManager(sm), textureManager(tm), render(render) 
+CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render, BaseClass& player) : stateManager(sm), textureManager(tm), render(render), player(player)
 {
     textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
     textureManager.LoadTextureFromFile("Scientist", "images/player/SFCP_1_38.png");
@@ -162,10 +162,12 @@ void CharacterCreator::HandleInput()
 
     case Page::SKILLS_SELECT:
     {
-        // incrementStrengthButton button logic
+
+
         if (incrementStrengthButton.IsClicked(render, true)) {
-            //incrementStrengthButton.IncrementDecrement(testInt, availableStatPoints);
-            availableStatPoints++;
+            availableStatPoints--;
+            stateManager.GetPlayer()->GetClass().IncreaseStrength(1);
+            std::cout << stateManager.GetPlayer()->GetClass().GetStrength();
         }
 
         if (incrementStrengthButton.IsHovered(render, true)) {
@@ -462,9 +464,7 @@ void CharacterCreator::InitButtons()
         render.GridY(13),
         400, 120,
         TextAlign::Center,
-        TextSize::Button01,
-        testInt,
-        availableStatPoints
+        TextSize::Button01
     );
 
     previousButton = UIButton(

@@ -23,6 +23,11 @@ std::vector<std::string> BaseClass::GetLoadout(int loadoutNumber)
     }
 }
 
+void BaseClass::IncreaseStrength(int amount)
+{
+    strength += amount;
+}
+
 void BaseClass::TakeDamage(int amount)
 {
 }

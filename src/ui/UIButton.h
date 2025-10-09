@@ -10,8 +10,6 @@ public:
     UIButton();
     UIButton(const std::string& label, int x, int y, int width, int height,
         TextAlign align, TextSize size);
-    UIButton(const std::string& label, int x, int y, int width, int height,
-        TextAlign align, TextSize size, int& incrementValue, int& decrementValue);
 
     Rectangle GetRect() const;
     void Draw(Renderer& render, Color color) const;
@@ -24,8 +22,6 @@ public:
 
 private:
     // these variables are being referenced in the constructor but are never being used (I think)
-    int incrementValue;
-    int decrementValue;
     std::string label;
     int x, y;
     int width, height;

@@ -3,6 +3,7 @@
 #include "../level/CharacterCreator.h"
 #include "../level/DebugLevel.h"
 #include "../assets/TextureManager.h"
+#include "../player/BaseClass.h"
 #include "../ui/UIButton.h"
 #include "Renderer.h"
 #include "raylib.h"
@@ -20,12 +21,13 @@ public:
 
 private: 
 
+    BaseClass player{ player };
     TextureManager textureManager;
     Renderer render{ textureManager, 24, 16, 1920, 1080 };
     StateManager stateManager;
     MainMenu mMenu{ stateManager };
     DebugLevel debugLevel{ stateManager }; 
-    CharacterCreator cCreator{ stateManager, textureManager, render};
+    CharacterCreator cCreator{ stateManager, textureManager, render, player };
 
 
     int screenWidth = 1920;

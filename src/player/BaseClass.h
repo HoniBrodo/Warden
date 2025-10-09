@@ -26,6 +26,7 @@ public:
     virtual std::vector<std::string> GetLoadout(int loadoutNumber);
 
     // actions 
+    virtual void IncreaseStrength(int amount);
     virtual void TakeDamage(int amount);
     virtual void Heal(int amount);
     virtual void IncreaseStress(int amount);

@@ -8,11 +8,6 @@ UIButton::UIButton(const std::string& label, int x, int y, int width, int height
 {
 }
 
-UIButton::UIButton(const std::string& label, int x, int y, int width, int height, TextAlign align, TextSize size, int& incrementValue, int& decrementValue)
-    : label(label), x(x), y(y), width(width), height(height), align(align), size(size), incrementValue(incrementValue), decrementValue(decrementValue)
-{
-}
-
 Rectangle UIButton::GetRect() const
 {
     Rectangle rec = { x, y, width, height };

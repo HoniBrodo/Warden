@@ -5,6 +5,7 @@
 #include "../player/Scientist.h"
 #include "../player/Teamster.h"
 #include "../player/Android.h"
+#include "../player/BaseClass.h"
 #include "../core/IGameState.h"
 #include "raylib.h" 
 
@@ -29,7 +30,7 @@ enum class Page {
 
 class CharacterCreator : public IGameState {
 public:
-    CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render);
+    CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render, BaseClass& player);
 
     void InitButtons();
     void Update(float dt) override;
@@ -44,6 +45,7 @@ public:
 
 
 private:
+    BaseClass& player;
     Renderer& render;
     StateManager& stateManager;
     TextureManager& textureManager;
