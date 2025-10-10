@@ -162,13 +162,13 @@ void CharacterCreator::HandleInput()
 
     case Page::SKILLS_SELECT:
     {
-        if (incrementStrengthButton.IsClicked(render, true)) {
+        if (incrementStrengthButton.IsClicked(render, false)) {
             availableStatPoints--;
             stateManager.GetPlayer()->GetClass().IncreaseStrength(1);
             std::cout << stateManager.GetPlayer()->GetClass().GetStrength();
         }
 
-        if (incrementStrengthButton.IsHovered(render, true)) {
+        if (incrementStrengthButton.IsHovered(render, false)) {
             incrementStrengthButtonColor = GRAY;
         }
         else incrementStrengthButtonColor = BLACK;
@@ -387,6 +387,11 @@ void CharacterCreator::Draw(Renderer& render)
     case Page::SKILLS_SELECT:
 
     {
+        int strength = stateManager.GetPlayer()->GetClass().GetStrength();
+        int speed = stateManager.GetPlayer()->GetClass().GetSpeed();
+        int intellect = stateManager.GetPlayer()->GetClass().GetIntellect();
+        int combat = stateManager.GetPlayer()->GetClass().GetCombat();
+
         render.DrawTextBlock
         (
             className + " Stats and Saves",
@@ -433,8 +438,47 @@ void CharacterCreator::Draw(Renderer& render)
             LIGHTGRAY
         );
 
-        incrementStrengthButton.Draw(render, incrementStrengthButtonColor);
+        render.DrawTextBlockNoPadding
+        (
+            "Strength: " + std::to_string(strength),
+            render.GridX(2),
+            render.GridY(7),
+            800,
+            TextAlign::Left,
+            TextSize::MenuSmall
+        );
 
+        render.DrawTextBlockNoPadding
+        (
+            "Speed: " + std::to_string(speed),
+            render.GridX(2),
+            render.GridY(8),
+            800,
+            TextAlign::Left,
+            TextSize::MenuSmall
+        );
+
+        render.DrawTextBlockNoPadding
+        (
+            "Intellect: " + std::to_string(intellect),
+            render.GridX(2),
+            render.GridY(9),
+            800,
+            TextAlign::Left,
+            TextSize::MenuSmall
+        );
+
+        render.DrawTextBlockNoPadding
+        (
+            "Combat: " + std::to_string(combat),
+            render.GridX(2),
+            render.GridY(10),
+            800,
+            TextAlign::Left,
+            TextSize::MenuSmall
+        );
+
+        incrementStrengthButton.Draw(render, incrementStrengthButtonColor);
         break;
     }
 
@@ -459,9 +503,9 @@ void CharacterCreator::InitButtons()
 
     incrementStrengthButton = UIButton(
         "+",
-        render.GridX(7),
-        render.GridY(7),
-        render.GridX(2), 120,
+        render.AlignCenterXInRect(alignmentRect02, 400),
+        render.GridY(13),
+        400, 120,
         TextAlign::Center,
         TextSize::Button01
     );
