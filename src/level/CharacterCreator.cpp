@@ -169,9 +169,9 @@ void CharacterCreator::HandleInput()
         }
 
         if (incrementStrengthButton.IsHovered(render, false)) {
-            incrementStrengthButtonColor = GRAY;
+            incrementStrengthButtonColor = BLACK;
         }
-        else incrementStrengthButtonColor = BLACK;
+        else incrementStrengthButtonColor = GRAY;
     }
 
     }
@@ -452,7 +452,7 @@ void CharacterCreator::Draw(Renderer& render)
         (
             "Speed: " + std::to_string(speed),
             render.GridX(2),
-            render.GridY(8),
+            render.GridY(9),
             800,
             TextAlign::Left,
             TextSize::MenuSmall
@@ -462,7 +462,7 @@ void CharacterCreator::Draw(Renderer& render)
         (
             "Intellect: " + std::to_string(intellect),
             render.GridX(2),
-            render.GridY(9),
+            render.GridY(11),
             800,
             TextAlign::Left,
             TextSize::MenuSmall
@@ -472,13 +472,21 @@ void CharacterCreator::Draw(Renderer& render)
         (
             "Combat: " + std::to_string(combat),
             render.GridX(2),
-            render.GridY(10),
+            render.GridY(13),
             800,
             TextAlign::Left,
             TextSize::MenuSmall
         );
 
         incrementStrengthButton.Draw(render, incrementStrengthButtonColor);
+        incrementSpeedButton.Draw(render, incrementSpeedButtonColor);
+        incrementIntellectButton.Draw(render, incrementIntellectButtonColor);
+        incrementCombatButton.Draw(render, incrementCombatButtonColor);
+        decrementStrengthButton.Draw(render, decrementStrengthButtonColor);
+        decrementSpeedButton.Draw(render, decrementSpeedButtonColor);
+        decrementIntellectButton.Draw(render, decrementIntellectButtonColor);
+        decrementCombatButton.Draw(render, decrementCombatButtonColor);
+
         break;
     }
 
@@ -500,14 +508,76 @@ void CharacterCreator::InitButtons()
     render.DrawDebugRect(alignmentRect03);
     render.DrawDebugRect(alignmentRect04);
 
+    decrementStrengthButton = UIButton(
+        "-",
+        render.GridX(9),
+        render.GridY(7) + 10,
+        100, 120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    decrementSpeedButton = UIButton(
+        "-",
+        render.GridX(9),
+        render.GridY(9) + 10,
+        100, 120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    decrementIntellectButton = UIButton(
+        "-",
+        render.GridX(9),
+        render.GridY(11) + 10,
+        100, 120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    decrementCombatButton = UIButton(
+        "-",
+        render.GridX(9),
+        render.GridY(13) + 10,
+        100, 120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
 
     incrementStrengthButton = UIButton(
         "+",
-        render.AlignCenterXInRect(alignmentRect02, 400),
-        render.GridY(13),
-        400, 120,
+        render.GridX(7),
+        render.GridY(7) + 10,
+        100, 120,
         TextAlign::Center,
-        TextSize::Button01
+        TextSize::Button02
+    );
+
+    incrementSpeedButton = UIButton(
+        "+",
+        render.GridX(7),
+        render.GridY(9) + 10,
+        100, 120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    incrementIntellectButton = UIButton(
+        "+",
+        render.GridX(7),
+        render.GridY(11) + 10,
+        100, 120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    incrementCombatButton = UIButton(
+        "+",
+        render.GridX(7),
+        render.GridY(13) + 10,
+        100, 120,
+        TextAlign::Center,
+        TextSize::Button02
     );
 
     previousButton = UIButton(

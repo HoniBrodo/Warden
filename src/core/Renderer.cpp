@@ -181,6 +181,8 @@ int Renderer::GetFontSize(TextSize size) const
 		return 100;
 	case TextSize::Dialogue:
 		return 30;
+	case TextSize::Button02:
+		return 40;
 	case TextSize::Button01:
 		return 70;
 	case TextSize::SmallerTitle:

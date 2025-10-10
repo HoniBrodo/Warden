@@ -15,6 +15,7 @@ enum class TextAlign
 enum class TextSize
 {
     MainTitle,
+    Button02,
     Button01,
     Dialogue,
     SmallerTitle,

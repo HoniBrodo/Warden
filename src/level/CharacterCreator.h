@@ -81,10 +81,22 @@ private:
     DebugRect LoadoutSelectAlignmentRect02;
 
     // buttons
+    UIButton decrementStrengthButton;
+    Color decrementStrengthButtonColor = GRAY;
+    UIButton decrementSpeedButton;
+    Color decrementSpeedButtonColor = GRAY;
+    UIButton decrementIntellectButton;
+    Color decrementIntellectButtonColor = GRAY;
+    UIButton decrementCombatButton;
+    Color decrementCombatButtonColor = GRAY;
     UIButton incrementStrengthButton;
-    Color incrementStrengthButtonColor = BLACK;
-    UIButton decrementButton;
-    Color decrementButtonColor = LIGHTGRAY;
+    Color incrementStrengthButtonColor = GRAY;
+    UIButton incrementSpeedButton;
+    Color incrementSpeedButtonColor = GRAY;
+    UIButton incrementIntellectButton;
+    Color incrementIntellectButtonColor = GRAY;
+    UIButton incrementCombatButton;
+    Color incrementCombatButtonColor = GRAY;
     UIButton nextButton;
     Color nextButtonColor = LIGHTGRAY;
     UIButton previousButton;
