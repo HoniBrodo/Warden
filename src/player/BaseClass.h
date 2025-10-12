@@ -27,6 +27,13 @@ public:
 
     // actions 
     virtual void IncreaseStrength(int amount);
+    virtual void DecreaseStrength(int amount);
+    virtual void IncreaseSpeed(int amount);
+    virtual void DecreaseSpeed(int amount);
+    virtual void IncreaseIntellect(int amount);
+    virtual void DecreaseIntellect(int amount);
+    virtual void IncreaseCombat(int amount);
+    virtual void DecreaseCombat(int amount);
     virtual void TakeDamage(int amount);
     virtual void Heal(int amount);
     virtual void IncreaseStress(int amount);

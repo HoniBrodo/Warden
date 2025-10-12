@@ -162,16 +162,101 @@ void CharacterCreator::HandleInput()
 
     case Page::SKILLS_SELECT:
     {
+        // increment strength button logic
+
         if (incrementStrengthButton.IsClicked(render, false)) {
             availableStatPoints--;
             stateManager.GetPlayer()->GetClass().IncreaseStrength(1);
-            std::cout << stateManager.GetPlayer()->GetClass().GetStrength();
         }
 
         if (incrementStrengthButton.IsHovered(render, false)) {
             incrementStrengthButtonColor = BLACK;
         }
         else incrementStrengthButtonColor = GRAY;
+
+        // decrement strength button logic
+
+        if (decrementStrengthButton.IsClicked(render, false)) {
+            availableStatPoints++;
+            stateManager.GetPlayer()->GetClass().DecreaseStrength(1);
+        }
+
+        if (decrementStrengthButton.IsHovered(render, false)) {
+            decrementStrengthButtonColor = BLACK;
+        }
+        else decrementStrengthButtonColor = GRAY;
+
+        // increment speed button logic
+
+        if (incrementSpeedButton.IsClicked(render, false)) {
+            availableStatPoints--;
+            stateManager.GetPlayer()->GetClass().IncreaseSpeed(1);
+        }
+
+        if (incrementSpeedButton.IsHovered(render, false)) {
+            incrementSpeedButtonColor = BLACK;
+        }
+        else incrementSpeedButtonColor = GRAY;
+
+        // decrement speed button logic
+
+        if (decrementSpeedButton.IsClicked(render, false)) {
+            availableStatPoints++;
+            stateManager.GetPlayer()->GetClass().DecreaseSpeed(1);
+        }
+
+        if (decrementSpeedButton.IsHovered(render, false)) {
+            decrementSpeedButtonColor = BLACK;
+        }
+        else decrementSpeedButtonColor = GRAY;
+
+        // increment intellect button logic
+
+        if (incrementIntellectButton.IsClicked(render, false)) {
+            availableStatPoints--;
+            stateManager.GetPlayer()->GetClass().IncreaseIntellect(1);
+        }
+
+        if (incrementIntellectButton.IsHovered(render, false)) {
+            incrementIntellectButtonColor = BLACK;
+        }
+        else incrementIntellectButtonColor = GRAY;
+
+        // decrement intellect button logic
+
+        if (decrementIntellectButton.IsClicked(render, false)) {
+            availableStatPoints++;
+            stateManager.GetPlayer()->GetClass().DecreaseIntellect(1);
+        }
+
+        if (decrementIntellectButton.IsHovered(render, false)) {
+            decrementIntellectButtonColor = BLACK;
+        }
+        else decrementIntellectButtonColor = GRAY;
+
+        // increment combat button logic
+
+        if (incrementCombatButton.IsClicked(render, false)) {
+            availableStatPoints--;
+            stateManager.GetPlayer()->GetClass().IncreaseCombat(1);
+        }
+
+        if (incrementCombatButton.IsHovered(render, false)) {
+            incrementCombatButtonColor = BLACK;
+        }
+        else incrementCombatButtonColor = GRAY;
+
+        // decrement combat button logic
+
+        if (decrementCombatButton.IsClicked(render, false)) {
+            availableStatPoints++;
+            stateManager.GetPlayer()->GetClass().DecreaseCombat(1);
+        }
+
+        if (decrementCombatButton.IsHovered(render, false)) {
+            decrementCombatButtonColor = BLACK;
+        }
+        else decrementCombatButtonColor = GRAY;
     }
 
     }
@@ -510,7 +595,7 @@ void CharacterCreator::InitButtons()
 
     decrementStrengthButton = UIButton(
         "-",
-        render.GridX(9),
+        render.GridX(7),
         render.GridY(7) + 10,
         100, 120,
         TextAlign::Center,
@@ -519,7 +604,7 @@ void CharacterCreator::InitButtons()
 
     decrementSpeedButton = UIButton(
         "-",
-        render.GridX(9),
+        render.GridX(7),
         render.GridY(9) + 10,
         100, 120,
         TextAlign::Center,
@@ -528,7 +613,7 @@ void CharacterCreator::InitButtons()
 
     decrementIntellectButton = UIButton(
         "-",
-        render.GridX(9),
+        render.GridX(7),
         render.GridY(11) + 10,
         100, 120,
         TextAlign::Center,
@@ -537,7 +622,7 @@ void CharacterCreator::InitButtons()
 
     decrementCombatButton = UIButton(
         "-",
-        render.GridX(9),
+        render.GridX(7),
         render.GridY(13) + 10,
         100, 120,
         TextAlign::Center,
@@ -546,7 +631,7 @@ void CharacterCreator::InitButtons()
 
     incrementStrengthButton = UIButton(
         "+",
-        render.GridX(7),
+        render.GridX(9),
         render.GridY(7) + 10,
         100, 120,
         TextAlign::Center,
@@ -555,7 +640,7 @@ void CharacterCreator::InitButtons()
 
     incrementSpeedButton = UIButton(
         "+",
-        render.GridX(7),
+        render.GridX(9),
         render.GridY(9) + 10,
         100, 120,
         TextAlign::Center,
@@ -564,7 +649,7 @@ void CharacterCreator::InitButtons()
 
     incrementIntellectButton = UIButton(
         "+",
-        render.GridX(7),
+        render.GridX(9),
         render.GridY(11) + 10,
         100, 120,
         TextAlign::Center,
@@ -573,7 +658,7 @@ void CharacterCreator::InitButtons()
 
     incrementCombatButton = UIButton(
         "+",
-        render.GridX(7),
+        render.GridX(9),
         render.GridY(13) + 10,
         100, 120,
         TextAlign::Center,
@@ -652,7 +737,6 @@ void CharacterCreator::InitButtons()
         TextSize::Button01
     );
  
-
 }
 
 // could these helpers be in the .h file?

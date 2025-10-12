@@ -28,6 +28,41 @@ void BaseClass::IncreaseStrength(int amount)
     strength += amount;
 }
 
+void BaseClass::DecreaseStrength(int amount)
+{
+    strength -= amount;
+}
+
+void BaseClass::IncreaseSpeed(int amount)
+{
+    speed += amount;
+}
+
+void BaseClass::DecreaseSpeed(int amount)
+{
+    speed -= amount;
+}
+
+void BaseClass::IncreaseIntellect(int amount)
+{
+    intellect += amount;
+}
+
+void BaseClass::DecreaseIntellect(int amount)
+{
+    intellect -= amount;
+}
+
+void BaseClass::IncreaseCombat(int amount)
+{
+    combat += amount;
+}
+
+void BaseClass::DecreaseCombat(int amount)
+{
+    combat -= amount;
+}
+
 void BaseClass::TakeDamage(int amount)
 {
 }
