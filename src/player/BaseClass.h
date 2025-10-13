@@ -18,7 +18,7 @@ public:
     int GetIntellect() const { return intellect; }
     int GetCombat() const { return combat; }
     int GetSanity() const { return sanity; }
-    int Getfear() const { return fear; }
+    int GetFear() const { return fear; }
     int GetBody() const { return body; }
     int GetHealth() const { return health; }
     int GetWounds() const { return wounds; }
@@ -34,6 +34,14 @@ public:
     virtual void DecreaseIntellect(int amount);
     virtual void IncreaseCombat(int amount);
     virtual void DecreaseCombat(int amount);
+    virtual void IncreaseSanity(int amount);
+    virtual void DecreaseSanity(int amount);
+    virtual void IncreaseFear(int amount);
+    virtual void DecreaseFear(int amount);
+    virtual void IncreaseBody(int amount);
+    virtual void DecreaseBody(int amount);
+
+
     virtual void TakeDamage(int amount);
     virtual void Heal(int amount);
     virtual void IncreaseStress(int amount);

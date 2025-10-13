@@ -63,6 +63,36 @@ void BaseClass::DecreaseCombat(int amount)
     combat -= amount;
 }
 
+void BaseClass::IncreaseSanity(int amount)
+{
+    sanity += amount;
+}
+
+void BaseClass::DecreaseSanity(int amount)
+{
+    sanity -= amount;
+}
+
+void BaseClass::IncreaseFear(int amount)
+{
+    fear += amount;
+}
+
+void BaseClass::DecreaseFear(int amount)
+{
+    fear -= amount;
+}
+
+void BaseClass::IncreaseBody(int amount)
+{
+    body += amount;
+}
+
+void BaseClass::DecreaseBody(int amount)
+{
+    body -= amount;
+}
+
 void BaseClass::TakeDamage(int amount)
 {
 }

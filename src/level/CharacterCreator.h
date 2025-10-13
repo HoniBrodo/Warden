@@ -97,6 +97,20 @@ private:
     Color incrementIntellectButtonColor = GRAY;
     UIButton incrementCombatButton;
     Color incrementCombatButtonColor = GRAY;
+
+    UIButton decrementSanityButton;
+    Color decrementSanityButtonColor = GRAY;
+    UIButton decrementFearButton;
+    Color decrementFearButtonColor = GRAY;
+    UIButton decrementBodyButton;
+    Color decrementBodyButtonColor = GRAY;
+    UIButton incrementSanityButton;
+    Color incrementSanityButtonColor = GRAY;
+    UIButton incrementFearButton;
+    Color incrementFearButtonColor = GRAY;
+    UIButton incrementBodyButton;
+    Color incrementBodyButtonColor = GRAY;
+
     UIButton nextButton;
     Color nextButtonColor = LIGHTGRAY;
     UIButton previousButton;

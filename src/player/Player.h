@@ -17,7 +17,7 @@ public:
     int GetIntellect() const { return characterClass_->GetIntellect(); }
     int GetCombat() const { return characterClass_->GetCombat(); }
     int GetSanity() const { return characterClass_->GetSanity(); }
-    int Getfear() const { return characterClass_->Getfear(); }
+    int Getfear() const { return characterClass_->GetFear(); }
     int GetBody() const { return characterClass_->GetBody(); }
     int GetHealth() const { return characterClass_->GetHealth(); }
     int GetWounds() const { return characterClass_->GetWounds(); }

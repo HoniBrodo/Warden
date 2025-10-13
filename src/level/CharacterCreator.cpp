@@ -476,6 +476,10 @@ void CharacterCreator::Draw(Renderer& render)
         int speed = stateManager.GetPlayer()->GetClass().GetSpeed();
         int intellect = stateManager.GetPlayer()->GetClass().GetIntellect();
         int combat = stateManager.GetPlayer()->GetClass().GetCombat();
+        
+        int sanity = stateManager.GetPlayer()->GetClass().GetSanity();
+        int fear = stateManager.GetPlayer()->GetClass().GetFear();
+        int body = stateManager.GetPlayer()->GetClass().GetBody();
 
         render.DrawTextBlock
         (
@@ -523,11 +527,13 @@ void CharacterCreator::Draw(Renderer& render)
             LIGHTGRAY
         );
 
+        // draw stat types
+
         render.DrawTextBlockNoPadding
         (
             "Strength: " + std::to_string(strength),
             render.GridX(2),
-            render.GridY(7),
+            render.GridY(7)-10,
             800,
             TextAlign::Left,
             TextSize::MenuSmall
@@ -537,7 +543,7 @@ void CharacterCreator::Draw(Renderer& render)
         (
             "Speed: " + std::to_string(speed),
             render.GridX(2),
-            render.GridY(9),
+            render.GridY(9)-10,
             800,
             TextAlign::Left,
             TextSize::MenuSmall
@@ -547,7 +553,7 @@ void CharacterCreator::Draw(Renderer& render)
         (
             "Intellect: " + std::to_string(intellect),
             render.GridX(2),
-            render.GridY(11),
+            render.GridY(11)-10,
             800,
             TextAlign::Left,
             TextSize::MenuSmall
@@ -557,7 +563,39 @@ void CharacterCreator::Draw(Renderer& render)
         (
             "Combat: " + std::to_string(combat),
             render.GridX(2),
-            render.GridY(13),
+            render.GridY(13)-10,
+            800,
+            TextAlign::Left,
+            TextSize::MenuSmall
+        );
+
+        // draw save types
+
+        render.DrawTextBlockNoPadding
+        (
+            "Sanity: " + std::to_string(sanity),
+            render.GridX(13)-10,
+            render.GridY(8)-10,
+            800,
+            TextAlign::Left,
+            TextSize::MenuSmall
+        );
+
+        render.DrawTextBlockNoPadding
+        (
+            "Fear: " + std::to_string(fear),
+            render.GridX(13),
+            render.GridY(10)-10,
+            800,
+            TextAlign::Left,
+            TextSize::MenuSmall
+        );
+
+        render.DrawTextBlockNoPadding
+        (
+            "Body: " + std::to_string(body),
+            render.GridX(13),
+            render.GridY(12)-10,
             800,
             TextAlign::Left,
             TextSize::MenuSmall
@@ -571,6 +609,11 @@ void CharacterCreator::Draw(Renderer& render)
         decrementSpeedButton.Draw(render, decrementSpeedButtonColor);
         decrementIntellectButton.Draw(render, decrementIntellectButtonColor);
         decrementCombatButton.Draw(render, decrementCombatButtonColor);
+
+        decrementSanityButton.Draw(render, decrementSanityButtonColor);
+        decrementFearButton.Draw(render, decrementFearButtonColor);
+        decrementBodyButton.Draw(render, decrementBodyButtonColor);
+
 
         break;
     }
@@ -596,7 +639,7 @@ void CharacterCreator::InitButtons()
     decrementStrengthButton = UIButton(
         "-",
         render.GridX(7),
-        render.GridY(7) + 10,
+        render.GridY(7),
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -605,7 +648,7 @@ void CharacterCreator::InitButtons()
     decrementSpeedButton = UIButton(
         "-",
         render.GridX(7),
-        render.GridY(9) + 10,
+        render.GridY(9),
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -614,7 +657,7 @@ void CharacterCreator::InitButtons()
     decrementIntellectButton = UIButton(
         "-",
         render.GridX(7),
-        render.GridY(11) + 10,
+        render.GridY(11),
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -623,7 +666,7 @@ void CharacterCreator::InitButtons()
     decrementCombatButton = UIButton(
         "-",
         render.GridX(7),
-        render.GridY(13) + 10,
+        render.GridY(13),
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -632,7 +675,7 @@ void CharacterCreator::InitButtons()
     incrementStrengthButton = UIButton(
         "+",
         render.GridX(9),
-        render.GridY(7) + 10,
+        render.GridY(7),
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -641,7 +684,7 @@ void CharacterCreator::InitButtons()
     incrementSpeedButton = UIButton(
         "+",
         render.GridX(9),
-        render.GridY(9) + 10,
+        render.GridY(9),
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -650,7 +693,7 @@ void CharacterCreator::InitButtons()
     incrementIntellectButton = UIButton(
         "+",
         render.GridX(9),
-        render.GridY(11) + 10,
+        render.GridY(11),
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -659,7 +702,34 @@ void CharacterCreator::InitButtons()
     incrementCombatButton = UIButton(
         "+",
         render.GridX(9),
-        render.GridY(13) + 10,
+        render.GridY(13),
+        100, 120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    decrementSanityButton = UIButton(
+        "-",
+        render.GridX(18),
+        render.GridY(8),
+        100, 120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    decrementFearButton = UIButton(
+        "-",
+        render.GridX(18),
+        render.GridY(10),
+        100, 120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    decrementBodyButton = UIButton(
+        "-",
+        render.GridX(18),
+        render.GridY(12),
         100, 120,
         TextAlign::Center,
         TextSize::Button02
