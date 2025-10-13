@@ -257,9 +257,82 @@ void CharacterCreator::HandleInput()
             decrementCombatButtonColor = BLACK;
         }
         else decrementCombatButtonColor = GRAY;
+
+        // increment sanity button logic
+
+        if (incrementSanityButton.IsClicked(render, false)) {
+            availableSavePoints--;
+            stateManager.GetPlayer()->GetClass().IncreaseSanity(1);
+        }
+
+        if (incrementSanityButton.IsHovered(render, false)) {
+            incrementSanityButtonColor = BLACK;
+        }
+        else incrementSanityButtonColor = GRAY;
+
+        // decrement sanity button logic
+
+        if (decrementSanityButton.IsClicked(render, false)) {
+            availableSavePoints++;
+            stateManager.GetPlayer()->GetClass().DecreaseSanity(1);
+        }
+
+        if (decrementSanityButton.IsHovered(render, false)) {
+            decrementSanityButtonColor = BLACK;
+        }
+        else decrementSanityButtonColor = GRAY;
+
+        // increment fear button logic
+
+        if (incrementFearButton.IsClicked(render, false)) {
+            availableSavePoints--;
+            stateManager.GetPlayer()->GetClass().IncreaseFear(1);
+        }
+
+        if (incrementFearButton.IsHovered(render, false)) {
+            incrementFearButtonColor = BLACK;
+        }
+        else incrementFearButtonColor = GRAY;
+
+        // decrement fear button logic
+
+        if (decrementFearButton.IsClicked(render, false)) {
+            availableSavePoints++;
+            stateManager.GetPlayer()->GetClass().DecreaseFear(1);
+        }
+
+        if (decrementFearButton.IsHovered(render, false)) {
+            decrementFearButtonColor = BLACK;
+        }
+        else decrementFearButtonColor = GRAY;
+
+        // increment body button logic
+
+        if (incrementBodyButton.IsClicked(render, false)) {
+            availableSavePoints--;
+            stateManager.GetPlayer()->GetClass().IncreaseBody(1);
+        }
+
+        if (incrementBodyButton.IsHovered(render, false)) {
+            incrementBodyButtonColor = BLACK;
+        }
+        else incrementBodyButtonColor = GRAY;
+
+        // decrement body button logic
+
+        if (decrementBodyButton.IsClicked(render, false)) {
+            availableSavePoints++;
+            stateManager.GetPlayer()->GetClass().DecreaseBody(1);
+        }
+
+        if (decrementBodyButton.IsHovered(render, false)) {
+            decrementBodyButtonColor = BLACK;
+        }
+        else decrementBodyButtonColor = GRAY;
     }
 
     }
+
 
 
 }
@@ -613,6 +686,9 @@ void CharacterCreator::Draw(Renderer& render)
         decrementSanityButton.Draw(render, decrementSanityButtonColor);
         decrementFearButton.Draw(render, decrementFearButtonColor);
         decrementBodyButton.Draw(render, decrementBodyButtonColor);
+        incrementSanityButton.Draw(render, incrementSanityButtonColor);
+        incrementFearButton.Draw(render, incrementFearButtonColor);
+        incrementBodyButton.Draw(render, incrementBodyButtonColor);
 
 
         break;
@@ -729,6 +805,33 @@ void CharacterCreator::InitButtons()
     decrementBodyButton = UIButton(
         "-",
         render.GridX(18),
+        render.GridY(12),
+        100, 120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    incrementSanityButton = UIButton(
+        "+",
+        render.GridX(20),
+        render.GridY(8),
+        100, 120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    incrementFearButton = UIButton(
+        "+",
+        render.GridX(20),
+        render.GridY(10),
+        100, 120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    incrementBodyButton = UIButton(
+        "+",
+        render.GridX(20),
         render.GridY(12),
         100, 120,
         TextAlign::Center,
