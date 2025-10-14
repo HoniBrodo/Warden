@@ -92,6 +92,7 @@ void CharacterCreator::HandleInput()
                 break;
             case CharacterSelect::Android:
                 chosenClass = std::make_unique<Android>();
+                androidDecisionRequired = true;
                 break;
             case CharacterSelect::Teamster:
                 chosenClass = std::make_unique<Teamster>();
@@ -164,171 +165,174 @@ void CharacterCreator::HandleInput()
     {
         // increment strength button logic
 
-        if (incrementStrengthButton.IsClicked(render, false)) {
-            availableStatPoints--;
-            stateManager.GetPlayer()->GetClass().IncreaseStrength(1);
-        }
+        if (androidDecisionRequired == false)
+        {
+            if (incrementStrengthButton.IsClicked(render, false)) {
+                availableStatPoints--;
+                stateManager.GetPlayer()->GetClass().IncreaseStrength(1);
+            }
 
-        if (incrementStrengthButton.IsHovered(render, false)) {
-            incrementStrengthButtonColor = BLACK;
-        }
-        else incrementStrengthButtonColor = GRAY;
+            if (incrementStrengthButton.IsHovered(render, false)) {
+                incrementStrengthButtonColor = BLACK;
+            }
+            else incrementStrengthButtonColor = GRAY;
 
-        // decrement strength button logic
+            // decrement strength button logic
 
-        if (decrementStrengthButton.IsClicked(render, false)) {
-            availableStatPoints++;
-            stateManager.GetPlayer()->GetClass().DecreaseStrength(1);
-        }
+            if (decrementStrengthButton.IsClicked(render, false)) {
+                availableStatPoints++;
+                stateManager.GetPlayer()->GetClass().DecreaseStrength(1);
+            }
 
-        if (decrementStrengthButton.IsHovered(render, false)) {
-            decrementStrengthButtonColor = BLACK;
-        }
-        else decrementStrengthButtonColor = GRAY;
+            if (decrementStrengthButton.IsHovered(render, false)) {
+                decrementStrengthButtonColor = BLACK;
+            }
+            else decrementStrengthButtonColor = GRAY;
 
-        // increment speed button logic
+            // increment speed button logic
 
-        if (incrementSpeedButton.IsClicked(render, false)) {
-            availableStatPoints--;
-            stateManager.GetPlayer()->GetClass().IncreaseSpeed(1);
-        }
+            if (incrementSpeedButton.IsClicked(render, false)) {
+                availableStatPoints--;
+                stateManager.GetPlayer()->GetClass().IncreaseSpeed(1);
+            }
 
-        if (incrementSpeedButton.IsHovered(render, false)) {
-            incrementSpeedButtonColor = BLACK;
-        }
-        else incrementSpeedButtonColor = GRAY;
+            if (incrementSpeedButton.IsHovered(render, false)) {
+                incrementSpeedButtonColor = BLACK;
+            }
+            else incrementSpeedButtonColor = GRAY;
 
-        // decrement speed button logic
+            // decrement speed button logic
 
-        if (decrementSpeedButton.IsClicked(render, false)) {
-            availableStatPoints++;
-            stateManager.GetPlayer()->GetClass().DecreaseSpeed(1);
-        }
+            if (decrementSpeedButton.IsClicked(render, false)) {
+                availableStatPoints++;
+                stateManager.GetPlayer()->GetClass().DecreaseSpeed(1);
+            }
 
-        if (decrementSpeedButton.IsHovered(render, false)) {
-            decrementSpeedButtonColor = BLACK;
-        }
-        else decrementSpeedButtonColor = GRAY;
+            if (decrementSpeedButton.IsHovered(render, false)) {
+                decrementSpeedButtonColor = BLACK;
+            }
+            else decrementSpeedButtonColor = GRAY;
 
-        // increment intellect button logic
+            // increment intellect button logic
 
-        if (incrementIntellectButton.IsClicked(render, false)) {
-            availableStatPoints--;
-            stateManager.GetPlayer()->GetClass().IncreaseIntellect(1);
-        }
+            if (incrementIntellectButton.IsClicked(render, false)) {
+                availableStatPoints--;
+                stateManager.GetPlayer()->GetClass().IncreaseIntellect(1);
+            }
 
-        if (incrementIntellectButton.IsHovered(render, false)) {
-            incrementIntellectButtonColor = BLACK;
-        }
-        else incrementIntellectButtonColor = GRAY;
+            if (incrementIntellectButton.IsHovered(render, false)) {
+                incrementIntellectButtonColor = BLACK;
+            }
+            else incrementIntellectButtonColor = GRAY;
 
-        // decrement intellect button logic
+            // decrement intellect button logic
 
-        if (decrementIntellectButton.IsClicked(render, false)) {
-            availableStatPoints++;
-            stateManager.GetPlayer()->GetClass().DecreaseIntellect(1);
-        }
+            if (decrementIntellectButton.IsClicked(render, false)) {
+                availableStatPoints++;
+                stateManager.GetPlayer()->GetClass().DecreaseIntellect(1);
+            }
 
-        if (decrementIntellectButton.IsHovered(render, false)) {
-            decrementIntellectButtonColor = BLACK;
-        }
-        else decrementIntellectButtonColor = GRAY;
+            if (decrementIntellectButton.IsHovered(render, false)) {
+                decrementIntellectButtonColor = BLACK;
+            }
+            else decrementIntellectButtonColor = GRAY;
 
-        // increment combat button logic
+            // increment combat button logic
 
-        if (incrementCombatButton.IsClicked(render, false)) {
-            availableStatPoints--;
-            stateManager.GetPlayer()->GetClass().IncreaseCombat(1);
-        }
+            if (incrementCombatButton.IsClicked(render, false)) {
+                availableStatPoints--;
+                stateManager.GetPlayer()->GetClass().IncreaseCombat(1);
+            }
 
-        if (incrementCombatButton.IsHovered(render, false)) {
-            incrementCombatButtonColor = BLACK;
-        }
-        else incrementCombatButtonColor = GRAY;
+            if (incrementCombatButton.IsHovered(render, false)) {
+                incrementCombatButtonColor = BLACK;
+            }
+            else incrementCombatButtonColor = GRAY;
 
-        // decrement combat button logic
+            // decrement combat button logic
 
-        if (decrementCombatButton.IsClicked(render, false)) {
-            availableStatPoints++;
-            stateManager.GetPlayer()->GetClass().DecreaseCombat(1);
-        }
+            if (decrementCombatButton.IsClicked(render, false)) {
+                availableStatPoints++;
+                stateManager.GetPlayer()->GetClass().DecreaseCombat(1);
+            }
 
-        if (decrementCombatButton.IsHovered(render, false)) {
-            decrementCombatButtonColor = BLACK;
-        }
-        else decrementCombatButtonColor = GRAY;
+            if (decrementCombatButton.IsHovered(render, false)) {
+                decrementCombatButtonColor = BLACK;
+            }
+            else decrementCombatButtonColor = GRAY;
 
-        // increment sanity button logic
+            // increment sanity button logic
 
-        if (incrementSanityButton.IsClicked(render, false)) {
-            availableSavePoints--;
-            stateManager.GetPlayer()->GetClass().IncreaseSanity(1);
-        }
+            if (incrementSanityButton.IsClicked(render, false)) {
+                availableSavePoints--;
+                stateManager.GetPlayer()->GetClass().IncreaseSanity(1);
+            }
 
-        if (incrementSanityButton.IsHovered(render, false)) {
-            incrementSanityButtonColor = BLACK;
-        }
-        else incrementSanityButtonColor = GRAY;
+            if (incrementSanityButton.IsHovered(render, false)) {
+                incrementSanityButtonColor = BLACK;
+            }
+            else incrementSanityButtonColor = GRAY;
 
-        // decrement sanity button logic
+            // decrement sanity button logic
 
-        if (decrementSanityButton.IsClicked(render, false)) {
-            availableSavePoints++;
-            stateManager.GetPlayer()->GetClass().DecreaseSanity(1);
-        }
+            if (decrementSanityButton.IsClicked(render, false)) {
+                availableSavePoints++;
+                stateManager.GetPlayer()->GetClass().DecreaseSanity(1);
+            }
 
-        if (decrementSanityButton.IsHovered(render, false)) {
-            decrementSanityButtonColor = BLACK;
-        }
-        else decrementSanityButtonColor = GRAY;
+            if (decrementSanityButton.IsHovered(render, false)) {
+                decrementSanityButtonColor = BLACK;
+            }
+            else decrementSanityButtonColor = GRAY;
 
-        // increment fear button logic
+            // increment fear button logic
 
-        if (incrementFearButton.IsClicked(render, false)) {
-            availableSavePoints--;
-            stateManager.GetPlayer()->GetClass().IncreaseFear(1);
-        }
+            if (incrementFearButton.IsClicked(render, false)) {
+                availableSavePoints--;
+                stateManager.GetPlayer()->GetClass().IncreaseFear(1);
+            }
 
-        if (incrementFearButton.IsHovered(render, false)) {
-            incrementFearButtonColor = BLACK;
-        }
-        else incrementFearButtonColor = GRAY;
+            if (incrementFearButton.IsHovered(render, false)) {
+                incrementFearButtonColor = BLACK;
+            }
+            else incrementFearButtonColor = GRAY;
 
-        // decrement fear button logic
+            // decrement fear button logic
 
-        if (decrementFearButton.IsClicked(render, false)) {
-            availableSavePoints++;
-            stateManager.GetPlayer()->GetClass().DecreaseFear(1);
-        }
+            if (decrementFearButton.IsClicked(render, false)) {
+                availableSavePoints++;
+                stateManager.GetPlayer()->GetClass().DecreaseFear(1);
+            }
 
-        if (decrementFearButton.IsHovered(render, false)) {
-            decrementFearButtonColor = BLACK;
-        }
-        else decrementFearButtonColor = GRAY;
+            if (decrementFearButton.IsHovered(render, false)) {
+                decrementFearButtonColor = BLACK;
+            }
+            else decrementFearButtonColor = GRAY;
 
-        // increment body button logic
+            // increment body button logic
 
-        if (incrementBodyButton.IsClicked(render, false)) {
-            availableSavePoints--;
-            stateManager.GetPlayer()->GetClass().IncreaseBody(1);
-        }
+            if (incrementBodyButton.IsClicked(render, false)) {
+                availableSavePoints--;
+                stateManager.GetPlayer()->GetClass().IncreaseBody(1);
+            }
 
-        if (incrementBodyButton.IsHovered(render, false)) {
-            incrementBodyButtonColor = BLACK;
-        }
-        else incrementBodyButtonColor = GRAY;
+            if (incrementBodyButton.IsHovered(render, false)) {
+                incrementBodyButtonColor = BLACK;
+            }
+            else incrementBodyButtonColor = GRAY;
 
-        // decrement body button logic
+            // decrement body button logic
 
-        if (decrementBodyButton.IsClicked(render, false)) {
-            availableSavePoints++;
-            stateManager.GetPlayer()->GetClass().DecreaseBody(1);
-        }
+            if (decrementBodyButton.IsClicked(render, false)) {
+                availableSavePoints++;
+                stateManager.GetPlayer()->GetClass().DecreaseBody(1);
+            }
 
-        if (decrementBodyButton.IsHovered(render, false)) {
-            decrementBodyButtonColor = BLACK;
-        }
-        else decrementBodyButtonColor = GRAY;
+            if (decrementBodyButton.IsHovered(render, false)) {
+                decrementBodyButtonColor = BLACK;
+            }
+            else decrementBodyButtonColor = GRAY;
+        }  
     }
 
     }
@@ -554,6 +558,8 @@ void CharacterCreator::Draw(Renderer& render)
         int fear = stateManager.GetPlayer()->GetClass().GetFear();
         int body = stateManager.GetPlayer()->GetClass().GetBody();
 
+        std::string classType = stateManager.GetPlayer()->GetClass().GetName();
+
         render.DrawTextBlock
         (
             className + " Stats and Saves",
@@ -690,6 +696,18 @@ void CharacterCreator::Draw(Renderer& render)
         incrementFearButton.Draw(render, incrementFearButtonColor);
         incrementBodyButton.Draw(render, incrementBodyButtonColor);
 
+
+        if (classType == "Android")
+        {
+            render.DrawRectangleWithBorder(
+                GetScreenWidth() / 2 - render.GridX(7),
+                render.GridY(5),
+                render.GridX(14),
+                render.GridY(9),
+                LIGHTGRAY,
+                BLACK,
+                render.GridX(1) / 8);
+        }
 
         break;
     }

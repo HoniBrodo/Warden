@@ -61,6 +61,7 @@ private:
     bool pendingMainMenu = false;
     bool drawDebugGrid{ false };
     bool shouldDraw{ true }; 
+    bool androidDecisionRequired{ false };
 
     int availableStatPoints = 36;
     int availableSavePoints = 21;

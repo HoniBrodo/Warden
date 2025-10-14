@@ -2,6 +2,9 @@
 
 Android::Android() : BaseClass("Android") {
 
+    intellect = 20;
+    fear = 60;
+
     classBio = "Engineered rather than born, the Android is a marvel of synthetic design. Programmed with logic far beyond human capacity and equipped with reinforced servos, it excels in both precision tasks and high - risk environments. Free from fear and fatigue, the Android operates where others falter.";
 
     loadout01Items = { "Vaccsuit (AP 3)", "Smart Rifle(2 mags)", "Infrared Goggles", "Mylar Blanket" };
@@ -14,3 +17,4 @@ Android::Android() : BaseClass("Android") {
 
 
 
+ 

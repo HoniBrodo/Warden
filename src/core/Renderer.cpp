@@ -69,6 +69,19 @@ void Renderer::DrawRectangle(int x, int y, int width, int height, Color color)
 	::DrawRectangle(x, y, width, height, color);
 }
 
+void Renderer::DrawRectangleWithBorder(int posX, int posY, int width, int height, Color fillColor, Color borderColor, int borderThickness)
+{
+	// Draw the border (slightly larger rectangle)
+	DrawRectangle(posX, posY, width, height, borderColor);
+
+	// Draw the inner filled rectangle (slightly smaller)
+	DrawRectangle(posX + borderThickness,
+		posY + borderThickness,
+		width - 2 * borderThickness,
+		height - 2 * borderThickness,
+		fillColor);
+}
+
 void Renderer::DrawTextBlock(const std::string& text, int posX, int posY, int maxWidth, TextAlign alignment, TextSize size)
 {
 	int fontSize = GetFontSize(size);
