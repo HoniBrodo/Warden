@@ -707,6 +707,17 @@ void CharacterCreator::Draw(Renderer& render)
                 LIGHTGRAY,
                 BLACK,
                 render.GridX(1) / 8);
+
+            render.DrawTextBlockNoPadding(
+                "As an android, you must choose a stat to recieve a -10 point handicap",
+                render.TextScreenCenterX(0) / 2,
+                render.GridY(6),
+                render.GridX(12),
+                TextAlign::Center,
+                TextSize::MenuSmall
+            );
+
+            androidHandicapStrength.Draw(render, androidHandicapStrengthColor);
         }
 
         break;
@@ -729,6 +740,16 @@ void CharacterCreator::InitButtons()
     render.DrawDebugRect(alignmentRect02);
     render.DrawDebugRect(alignmentRect03);
     render.DrawDebugRect(alignmentRect04);
+
+    androidHandicapStrength = UIButton(
+        "Strength",
+        render.GridX(6),
+        render.GridY(10),
+        render.GridX(3),
+        120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
 
     decrementStrengthButton = UIButton(
         "-",

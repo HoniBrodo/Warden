@@ -128,4 +128,7 @@ private:
     Color loadout03ButtonColor = LIGHTGRAY;
     UIButton loadout04Button;
     Color loadout04ButtonColor = LIGHTGRAY;
+
+    UIButton androidHandicapStrength;
+    Color androidHandicapStrengthColor = GRAY;
 };  
