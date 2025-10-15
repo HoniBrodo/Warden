@@ -181,6 +181,15 @@ void CharacterCreator::HandleInput()
 
     case Page::SKILLS_SELECT:
     {
+        int strength = stateManager.GetPlayer()->GetClass().GetStrength();
+        int speed = stateManager.GetPlayer()->GetClass().GetSpeed();
+        int intellect = stateManager.GetPlayer()->GetClass().GetIntellect();
+        int combat = stateManager.GetPlayer()->GetClass().GetCombat();
+
+        int sanity = stateManager.GetPlayer()->GetClass().GetSanity();
+        int fear = stateManager.GetPlayer()->GetClass().GetFear();
+        int body = stateManager.GetPlayer()->GetClass().GetBody();
+
         // increment strength button logic
 
         if (androidDecisionRequired == false)
@@ -353,10 +362,25 @@ void CharacterCreator::HandleInput()
 
         }  
 
+        static bool isDecreased = false;
+
         if (androidHandicapStrengthButton.IsHovered(render, false)) {
             androidHandicapStrengthButtonColor = BLACK;
+            if (!isDecreased)
+            {
+                stateManager.GetPlayer()->GetClass().DecreaseStrength(10);
+                isDecreased = true;
+            }
         }
-        else androidHandicapStrengthButtonColor = GRAY;
+        else
+        {
+            androidHandicapStrengthButtonColor = GRAY;
+            if (isDecreased) {
+                stateManager.GetPlayer()->GetClass().IncreaseStrength(10);
+                isDecreased = false;
+            }
+        }
+
 
         if (androidHandicapSpeedButton.IsHovered(render, false)) {
             androidHandicapSpeedButtonColor = BLACK;
@@ -649,7 +673,7 @@ void CharacterCreator::Draw(Renderer& render)
 
         render.DrawTextBlockNoPadding
         (
-            "Strength: " + std::to_string(strength),
+            "Strength: " + std::to_string(stateManager.GetPlayer()->GetClass().GetStrength()),
             render.GridX(2),
             render.GridY(7)-10,
             800,
@@ -754,6 +778,42 @@ void CharacterCreator::Draw(Renderer& render)
                 render.GridX(12),
                 TextAlign::Center,
                 TextSize::MenuSmall
+            );
+
+            render.DrawTextBlockNoPadding(
+                std::to_string(strength),
+                render.GridX(6) + 35,
+                render.GridY(10),
+                render.GridX(12),
+                TextAlign::Left,
+                TextSize::MainTitle
+            );
+
+            render.DrawTextBlockNoPadding(
+                std::to_string(speed),
+                render.GridX(9) + 35,
+                render.GridY(10),
+                render.GridX(12),
+                TextAlign::Left,
+                TextSize::MainTitle
+            );
+
+            render.DrawTextBlockNoPadding(
+                std::to_string(intellect),
+                render.GridX(12) + 35,
+                render.GridY(10),
+                render.GridX(12),
+                TextAlign::Left,
+                TextSize::MainTitle
+            );
+
+            render.DrawTextBlockNoPadding(
+                std::to_string(combat),
+                render.GridX(15) + 35,
+                render.GridY(10),
+                render.GridX(12),
+                TextAlign::Left,
+                TextSize::MainTitle
             );
 
             androidHandicapStrengthButton.Draw(render, androidHandicapStrengthButtonColor);
