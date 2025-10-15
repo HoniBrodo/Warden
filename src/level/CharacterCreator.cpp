@@ -10,16 +10,16 @@
 --------------------------------
 plan for stats and saves screen: 
 --------------------------------
+All base stats start at 36
+All base saves are 21
 
-- Add classs modifiers to class select screen, call a fucntion that will generate class-unique stat and save modifiers as we cycle through the classes.
-- Once we get to the stats screen, we want to be able to allocate a set amount of points to each stat and save.
+Android:
 
-Stats
-------
-- We will start with 36 (+ class modifier) for each. The player can click a plus or minus button, with a 'points available' tally on the screen.
-Saves
------
-- We will start with 21 (+ class modifier) for each. The player can click a plus or minus button, with a 'points available' tally on the screen.
+* choose a stat for a -10 handicap (that stat receives 26)
+* Intellect gets 56
+* Fear gets 81
+* Max wounds is 3
+
 */
 
 CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render) : stateManager(sm), textureManager(tm), render(render)
