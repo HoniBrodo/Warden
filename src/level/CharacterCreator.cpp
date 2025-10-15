@@ -350,7 +350,28 @@ void CharacterCreator::HandleInput()
                 decrementBodyButtonColor = BLACK;
             }
             else decrementBodyButtonColor = GRAY;
+
         }  
+
+        if (androidHandicapStrengthButton.IsHovered(render, false)) {
+            androidHandicapStrengthButtonColor = BLACK;
+        }
+        else androidHandicapStrengthButtonColor = GRAY;
+
+        if (androidHandicapSpeedButton.IsHovered(render, false)) {
+            androidHandicapSpeedButtonColor = BLACK;
+        }
+        else androidHandicapSpeedButtonColor = GRAY;
+
+        if (androidHandicapIntellectButton.IsHovered(render, false)) {
+            androidHandicapIntellectButtonColor = BLACK;
+        }
+        else androidHandicapIntellectButtonColor = GRAY;
+
+        if (androidHandicapCombatButton.IsHovered(render, false)) {
+            androidHandicapCombatButtonColor = BLACK;
+        }
+        else androidHandicapCombatButtonColor = GRAY;
     }
 
     }
@@ -735,7 +756,10 @@ void CharacterCreator::Draw(Renderer& render)
                 TextSize::MenuSmall
             );
 
-            androidHandicapStrength.Draw(render, androidHandicapStrengthColor);
+            androidHandicapStrengthButton.Draw(render, androidHandicapStrengthButtonColor);
+            androidHandicapSpeedButton.Draw(render, androidHandicapSpeedButtonColor);
+            androidHandicapIntellectButton.Draw(render, androidHandicapIntellectButtonColor);
+            androidHandicapCombatButton.Draw(render, androidHandicapCombatButtonColor);
         }
 
         break;
@@ -759,11 +783,41 @@ void CharacterCreator::InitButtons()
     render.DrawDebugRect(alignmentRect03);
     render.DrawDebugRect(alignmentRect04);
 
-    androidHandicapStrength = UIButton(
+    androidHandicapStrengthButton = UIButton(
         "Strength",
         render.GridX(6),
-        render.GridY(10),
-        render.GridX(3),
+        render.GridY(9),
+        render.GridX(3) - 10,
+        120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    androidHandicapSpeedButton = UIButton(
+        "Speed",
+        render.GridX(9),
+        render.GridY(9),
+        render.GridX(3) - 10,
+        120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    androidHandicapIntellectButton = UIButton(
+        "Intellect",
+        render.GridX(12),
+        render.GridY(9),
+        render.GridX(3) - 10,
+        120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    androidHandicapCombatButton = UIButton(
+        "Combat",
+        render.GridX(15),
+        render.GridY(9),
+        render.GridX(3) - 10,
         120,
         TextAlign::Center,
         TextSize::Button02

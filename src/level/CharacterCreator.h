@@ -129,6 +129,12 @@ private:
     UIButton loadout04Button;
     Color loadout04ButtonColor = LIGHTGRAY;
 
-    UIButton androidHandicapStrength;
-    Color androidHandicapStrengthColor = GRAY;
+    UIButton androidHandicapStrengthButton;
+    Color androidHandicapStrengthButtonColor = GRAY;
+    UIButton androidHandicapSpeedButton;
+    Color androidHandicapSpeedButtonColor = GRAY;
+    UIButton androidHandicapIntellectButton;
+    Color androidHandicapIntellectButtonColor = GRAY;
+    UIButton androidHandicapCombatButton;
+    Color androidHandicapCombatButtonColor = GRAY;
 };  
