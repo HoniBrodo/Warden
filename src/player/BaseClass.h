@@ -55,19 +55,21 @@ protected:
     std::string classBio{};
 
     // stats
-    int strength{};
-    int speed{};
-    int intellect{};
-    int combat{};
+    int strength{ 36 };
+    int speed{ 36 };
+    int intellect{ 36 };
+    int combat{ 36 };
 
     // saves
-    int sanity{};
-    int fear{};
-    int body{};
+    int sanity{ 21 };
+    int fear{ 21 };
+    int body{ 21 };;
 
-    int health{};
-    int wounds{};
-    int stress{};
+    int maxHealth{ 16 };
+    int health{ 16 };
+    int maxWounds{ 2 };
+    int wounds{ 0 };
+    int stress{ 2 };
 
     // Inventory + skills
     std::vector<BaseSkill> skills; // skill objects derived from the base skill class

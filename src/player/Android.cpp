@@ -2,8 +2,9 @@
 
 Android::Android() : BaseClass("Android") {
 
-    intellect = 20;
-    fear = 60;
+    intellect = 56;
+    fear = 81;
+    maxWounds = 3;
 
     classBio = "Engineered rather than born, the Android is a marvel of synthetic design. Programmed with logic far beyond human capacity and equipped with reinforced servos, it excels in both precision tasks and high - risk environments. Free from fear and fatigue, the Android operates where others falter.";
 

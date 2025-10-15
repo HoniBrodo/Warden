@@ -10,15 +10,33 @@
 --------------------------------
 plan for stats and saves screen: 
 --------------------------------
-All base stats start at 36
-All base saves are 21
+all base stats start at 36
+all base saves are 21
 
-Android:
+marine:
+
+* combat gets 46
+* body gets 31
+* fear gets 41
+* max wounds is 3
+
+android:
 
 * choose a stat for a -10 handicap (that stat receives 26)
-* Intellect gets 56
-* Fear gets 81
-* Max wounds is 3
+* intellect gets 56
+* fear gets 81
+* max wounds is 3
+
+scientist:
+
+* intellect gets 46
+* choose a stat to recieve +5 (that stat receives 41, unless it's intellct, which would get 51)
+* sanity gets 51
+
+teamster: 
+
+* +5 to all stats (all stats recieve 41)
+* +10 to all saves (all saves recieve 31)
 
 */
 
