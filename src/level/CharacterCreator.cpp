@@ -362,40 +362,99 @@ void CharacterCreator::HandleInput()
 
         }  
 
-        static bool isDecreased = false;
-
-        if (androidHandicapStrengthButton.IsHovered(render, false)) {
-            androidHandicapStrengthButtonColor = BLACK;
-            if (!isDecreased)
-            {
-                stateManager.GetPlayer()->GetClass().DecreaseStrength(10);
-                isDecreased = true;
-            }
-        }
-        else
+        if (androidDecisionRequired)
         {
-            androidHandicapStrengthButtonColor = GRAY;
-            if (isDecreased) {
-                stateManager.GetPlayer()->GetClass().IncreaseStrength(10);
-                isDecreased = false;
+            static bool isStrengthDecreased = false;
+            static bool isSpeedDecreased = false;
+            static bool isIntellectDecreased = false;
+            static bool isCombatDecreased = false;
+
+            // android handicap strength button logic
+
+            if (androidHandicapStrengthButton.IsHovered(render, false)) {
+                androidHandicapStrengthButtonColor = BLACK;
+                if (!isStrengthDecreased)
+                {
+                    stateManager.GetPlayer()->GetClass().DecreaseStrength(10);
+                    isStrengthDecreased = true;
+                }
+            }
+            else
+            {
+                androidHandicapStrengthButtonColor = GRAY;
+                if (isStrengthDecreased)
+                {
+                    stateManager.GetPlayer()->GetClass().IncreaseStrength(10);
+                    isStrengthDecreased = false;
+                }
+            }
+
+            if (androidHandicapStrengthButton.IsClicked(render, false)) {
+                androidDecisionRequired = false;
+            }
+
+            // android handicap speed button logic
+
+            if (androidHandicapSpeedButton.IsHovered(render, false)) {
+                androidHandicapSpeedButtonColor = BLACK;
+                if (!isSpeedDecreased)
+                {
+                    stateManager.GetPlayer()->GetClass().DecreaseSpeed(10);
+                    isSpeedDecreased = true;
+                }
+            }
+            else
+            {
+                androidHandicapSpeedButtonColor = GRAY;
+                if (isSpeedDecreased)
+                {
+                    stateManager.GetPlayer()->GetClass().IncreaseSpeed(10);
+                    isSpeedDecreased = false;
+                }
+            }
+
+            // android handicap intellect button logic
+
+            if (androidHandicapIntellectButton.IsHovered(render, false)) {
+                androidHandicapIntellectButtonColor = BLACK;
+                if (!isIntellectDecreased)
+                {
+                    stateManager.GetPlayer()->GetClass().DecreaseIntellect(10);
+                    isIntellectDecreased = true;
+                }
+            }
+            else
+            {
+                androidHandicapIntellectButtonColor = GRAY;
+                if (isIntellectDecreased)
+                {
+                    stateManager.GetPlayer()->GetClass().IncreaseIntellect(10);
+                    isIntellectDecreased = false;
+                }
+            }
+
+            // android handicap combat button logic
+
+            if (androidHandicapCombatButton.IsHovered(render, false)) {
+                androidHandicapCombatButtonColor = BLACK;
+                if (!isCombatDecreased)
+                {
+                    stateManager.GetPlayer()->GetClass().DecreaseCombat(10);
+                    isCombatDecreased = true;
+                }
+            }
+            else
+            {
+                androidHandicapCombatButtonColor = GRAY;
+                if (isCombatDecreased)
+                {
+                    stateManager.GetPlayer()->GetClass().IncreaseCombat(10);
+                    isCombatDecreased = false;
+                }
             }
         }
 
-
-        if (androidHandicapSpeedButton.IsHovered(render, false)) {
-            androidHandicapSpeedButtonColor = BLACK;
-        }
-        else androidHandicapSpeedButtonColor = GRAY;
-
-        if (androidHandicapIntellectButton.IsHovered(render, false)) {
-            androidHandicapIntellectButtonColor = BLACK;
-        }
-        else androidHandicapIntellectButtonColor = GRAY;
-
-        if (androidHandicapCombatButton.IsHovered(render, false)) {
-            androidHandicapCombatButtonColor = BLACK;
-        }
-        else androidHandicapCombatButtonColor = GRAY;
+        
     }
 
     }
@@ -760,7 +819,7 @@ void CharacterCreator::Draw(Renderer& render)
         incrementBodyButton.Draw(render, incrementBodyButtonColor);
 
 
-        if (classType == "Android")
+        if (classType == "Android" && androidDecisionRequired == true)
         {
             render.DrawRectangleWithBorder(
                 GetScreenWidth() / 2 - render.GridX(7),
