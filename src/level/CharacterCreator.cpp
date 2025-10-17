@@ -7,9 +7,9 @@
 #include <iostream>
 
 /*
---------------------------------
-plan for stats and saves screen: 
---------------------------------
+-----
+plan:
+-----
 
 -- add an aditional text box on the class select screen to let the player know how each class works mechanically
 
@@ -30,8 +30,9 @@ CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Rendere
 
     SelectClassAlignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
     SelectClassAlignmentRect02 = { { render.GridX(1), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
-    SelectClassAlignmentRect03 = { { render.GridX(4), render.GridY(4), render.GridX(8), render.GridY(9) }, false };
-    SelectClassAlignmentRect04 = { { render.GridX(12), render.GridY(4), render.GridX(8), render.GridY(9) }, false };
+    SelectClassAlignmentRect03 = { { render.GridX(8), render.GridY(4), render.GridX(8), render.GridY(9) }, true };
+    SelectClassAlignmentRect04 = { { render.GridX(16), render.GridY(4), render.GridX(7), render.GridY(9) }, true };
+    SelectClassAlignmentRect05 = { { render.GridX(1), render.GridY(4), render.GridX(7), render.GridY(9) }, true };
     LoadoutSelectAlignmentRect01 = { { render.GridX(1), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
     LoadoutSelectAlignmentRect02 = { { render.GridX(12), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
 }
@@ -595,6 +596,7 @@ void CharacterCreator::Draw(Renderer& render)
     render.DrawDebugRect(SelectClassAlignmentRect02);
     render.DrawDebugRect(SelectClassAlignmentRect03);
     render.DrawDebugRect(SelectClassAlignmentRect04);
+    render.DrawDebugRect(SelectClassAlignmentRect05);
 
     mainMenuButton.Draw(render, mainMenuButtonColor);
 
@@ -602,6 +604,9 @@ void CharacterCreator::Draw(Renderer& render)
     {
         render.DrawGrid(true);
     }
+
+
+    Rectangle mechanicsRec = { render.AlignCenterXInRect(SelectClassAlignmentRect05, 600), render.GridY(4) + 30, 600, 500 };
 
     switch (GetCurrentPage())
     {
@@ -617,6 +622,8 @@ void CharacterCreator::Draw(Renderer& render)
             TextAlign::Center,
             TextSize::SmallerTitle
         );
+
+        render.DrawRectangle(render.AlignCenterXInRect(SelectClassAlignmentRect05, 600), render.GridY(4)+30, 600, 500, LIGHTGRAY);
 
         switch (GetCurrentCharacter())
         {
@@ -643,7 +650,12 @@ void CharacterCreator::Draw(Renderer& render)
                 TextAlign::Center,
                 TextSize::Dialogue
             );
+
+            render.DrawTextListInRect(marine.GetMechanics(), mechanicsRec, TextAlign::Center, TextSize::Dialogue, 120);
+
             break;
+
+
 
         case CharacterSelect::Scientist:
 

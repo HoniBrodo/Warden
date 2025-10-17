@@ -24,6 +24,7 @@ public:
     int GetWounds() const { return wounds; }
     int GetStress() const { return stress; }
     virtual std::vector<std::string> GetLoadout(int loadoutNumber);
+    virtual std::vector<std::string> GetMechanics() const { return classMechanics; }
 
     // actions 
     virtual void IncreaseStrength(int amount);
@@ -53,6 +54,7 @@ protected:
 
     // bio
     std::string classBio{};
+    std::vector<std::string> classMechanics;
 
     // stats
     int strength{ 36 };
