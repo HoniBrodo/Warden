@@ -10,33 +10,14 @@
 --------------------------------
 plan for stats and saves screen: 
 --------------------------------
-all base stats start at 36
-all base saves are 21
 
-marine:
+-- add an aditional text box on the class select screen to let the player know how each class works mechanically
 
-* combat gets 46
-* body gets 31
-* fear gets 41
-* max wounds is 3
+-- swap the stats and loadout screen order (stats before loadout)
 
-android:
+-- implement the skills screen
 
-* choose a stat for a -10 handicap (that stat receives 26)
-* intellect gets 56
-* fear gets 81
-* max wounds is 3
-
-scientist:
-
-* intellect gets 46
-* choose a stat to recieve +5 (that stat receives 41, unless it's intellct, which would get 51)
-* sanity gets 51
-
-teamster: 
-
-* +5 to all stats (all stats recieve 41)
-* +10 to all saves (all saves recieve 31)
+-- implement hover over tool tips
 
 */
 
@@ -107,6 +88,7 @@ void CharacterCreator::HandleInput()
                 break;
             case CharacterSelect::Scientist:
                 chosenClass = std::make_unique<Scientist>();
+                scientistDecisionRequired = true;
                 break;
             case CharacterSelect::Android:
                 chosenClass = std::make_unique<Android>();
@@ -139,7 +121,7 @@ void CharacterCreator::HandleInput()
 
         // loadout 01 button logic
         if (loadout01Button.IsClicked(render, true)) {
-            currentPage = Page::SKILLS_SELECT;
+            currentPage = Page::STATS_SELECT;
         }
 
         if (loadout01Button.IsHovered(render, true)) {
@@ -149,7 +131,7 @@ void CharacterCreator::HandleInput()
 
         // loadout 02 button logic
         if (loadout02Button.IsClicked(render, true)) {
-            currentPage = Page::SKILLS_SELECT;
+            currentPage = Page::STATS_SELECT;
         }
 
         if (loadout02Button.IsHovered(render, true)) {
@@ -159,7 +141,7 @@ void CharacterCreator::HandleInput()
 
         // loadout 03 button logic
         if (loadout03Button.IsClicked(render, true)) {
-            currentPage = Page::SKILLS_SELECT;
+            currentPage = Page::STATS_SELECT;
         }
 
         if (loadout03Button.IsHovered(render, true)) {
@@ -169,7 +151,7 @@ void CharacterCreator::HandleInput()
 
         // loadout 04 button logic
         if (loadout04Button.IsClicked(render, true)) {
-            currentPage = Page::SKILLS_SELECT;
+            currentPage = Page::STATS_SELECT;
         }
 
         if (loadout04Button.IsHovered(render, true)) {
@@ -179,7 +161,7 @@ void CharacterCreator::HandleInput()
 
         break;
 
-    case Page::SKILLS_SELECT:
+    case Page::STATS_SELECT:
     {
         int strength = stateManager.GetPlayer()->GetClass().GetStrength();
         int speed = stateManager.GetPlayer()->GetClass().GetSpeed();
@@ -192,7 +174,7 @@ void CharacterCreator::HandleInput()
 
         // increment strength button logic
 
-        if (androidDecisionRequired == false)
+        if (!androidDecisionRequired && !scientistDecisionRequired)
         {
             if (incrementStrengthButton.IsClicked(render, false)) {
                 availableStatPoints--;
@@ -413,6 +395,10 @@ void CharacterCreator::HandleInput()
                 }
             }
 
+            if (androidHandicapSpeedButton.IsClicked(render, false)) {
+                androidDecisionRequired = false;
+            }
+
             // android handicap intellect button logic
 
             if (androidHandicapIntellectButton.IsHovered(render, false)) {
@@ -431,6 +417,10 @@ void CharacterCreator::HandleInput()
                     stateManager.GetPlayer()->GetClass().IncreaseIntellect(10);
                     isIntellectDecreased = false;
                 }
+            }
+
+            if (androidHandicapIntellectButton.IsClicked(render, false)) {
+                androidDecisionRequired = false;
             }
 
             // android handicap combat button logic
@@ -452,9 +442,115 @@ void CharacterCreator::HandleInput()
                     isCombatDecreased = false;
                 }
             }
+
+            if (androidHandicapCombatButton.IsClicked(render, false)) {
+                androidDecisionRequired = false;
+            }
         }
 
-        
+        if (scientistDecisionRequired)
+        {
+            static bool isStrengthIncreased = false;
+            static bool isSpeedIncreased = false;
+            static bool isIntellectIncreased = false;
+            static bool isCombatIncreased = false;
+
+            // scientist buff strength button logic
+
+            if (scientistBuffStrengthButton.IsHovered(render, false)) {
+                scientistBuffStrengthButtonColor = BLACK;
+                if (!isStrengthIncreased)
+                {
+                    stateManager.GetPlayer()->GetClass().IncreaseStrength(5);
+                    isStrengthIncreased = true;
+                }
+            }
+            else
+            {
+                scientistBuffStrengthButtonColor = GRAY;
+                if (isStrengthIncreased)
+                {
+                    stateManager.GetPlayer()->GetClass().DecreaseStrength(5);
+                    isStrengthIncreased = false;
+                }
+            }
+
+            if (scientistBuffStrengthButton.IsClicked(render, false)) {
+                scientistDecisionRequired = false;
+            }
+
+            // scientist buff speed button logic
+
+            if (scientistBuffSpeedButton.IsHovered(render, false)) {
+                scientistBuffSpeedButtonColor = BLACK;
+                if (!isSpeedIncreased)
+                {
+                    stateManager.GetPlayer()->GetClass().IncreaseSpeed(5);
+                    isSpeedIncreased = true;
+                }
+            }
+            else
+            {
+                scientistBuffSpeedButtonColor = GRAY;
+                if (isSpeedIncreased)
+                {
+                    stateManager.GetPlayer()->GetClass().DecreaseSpeed(5);
+                    isSpeedIncreased = false;
+                }
+            }
+
+            if (scientistBuffSpeedButton.IsClicked(render, false)) {
+                scientistDecisionRequired = false;
+            }
+
+            // scientist buff intellect button logic
+
+            if (scientistBuffIntellectButton.IsHovered(render, false)) {
+                scientistBuffIntellectButtonColor = BLACK;
+                if (!isIntellectIncreased)
+                {
+                    stateManager.GetPlayer()->GetClass().IncreaseIntellect(5);
+                    isIntellectIncreased = true;
+                }
+            }
+            else
+            {
+                scientistBuffIntellectButtonColor = GRAY;
+                if (isIntellectIncreased)
+                {
+                    stateManager.GetPlayer()->GetClass().DecreaseIntellect(5);
+                    isIntellectIncreased = false;
+                }
+            }
+
+            if (scientistBuffIntellectButton.IsClicked(render, false)) {
+                scientistDecisionRequired = false;
+            }
+
+            // scientist buff combat button logic
+
+            if (scientistBuffCombatButton.IsHovered(render, false)) {
+                scientistBuffCombatButtonColor = BLACK;
+                if (!isCombatIncreased)
+                {
+                    stateManager.GetPlayer()->GetClass().IncreaseCombat(5);
+                    isCombatIncreased = true;
+                }
+            }
+            else
+            {
+                scientistBuffCombatButtonColor = GRAY;
+                if (isCombatIncreased)
+                {
+                    stateManager.GetPlayer()->GetClass().DecreaseCombat(5);
+                    isCombatIncreased = false;
+                }
+            }
+
+            if (scientistBuffCombatButton.IsClicked(render, false)) {
+                scientistDecisionRequired = false;
+            }
+        }
     }
 
     }
@@ -668,7 +764,7 @@ void CharacterCreator::Draw(Renderer& render)
         break;
     }
 
-    case Page::SKILLS_SELECT:
+    case Page::STATS_SELECT:
 
     {
         int strength = stateManager.GetPlayer()->GetClass().GetStrength();
@@ -818,6 +914,69 @@ void CharacterCreator::Draw(Renderer& render)
         incrementFearButton.Draw(render, incrementFearButtonColor);
         incrementBodyButton.Draw(render, incrementBodyButtonColor);
 
+        if (classType == "Scientist" && scientistDecisionRequired == true)
+        {
+            render.DrawRectangleWithBorder(
+                GetScreenWidth() / 2 - render.GridX(7),
+                render.GridY(5),
+                render.GridX(14),
+                render.GridY(9),
+                LIGHTGRAY,
+                BLACK,
+                render.GridX(1) / 8);
+
+            render.DrawTextBlockNoPadding(
+                "As a scientist, you must choose a stat to recieve a +5 point buff",
+                render.TextScreenCenterX(0) / 2,
+                render.GridY(6),
+                render.GridX(12),
+                TextAlign::Center,
+                TextSize::MenuSmall
+            );
+
+            render.DrawTextBlockNoPadding(
+                std::to_string(strength),
+                render.GridX(6) + 35,
+                render.GridY(10),
+                render.GridX(12),
+                TextAlign::Left,
+                TextSize::MainTitle
+            );
+
+            render.DrawTextBlockNoPadding(
+                std::to_string(speed),
+                render.GridX(9) + 35,
+                render.GridY(10),
+                render.GridX(12),
+                TextAlign::Left,
+                TextSize::MainTitle
+            );
+
+            render.DrawTextBlockNoPadding(
+                std::to_string(intellect),
+                render.GridX(12) + 35,
+                render.GridY(10),
+                render.GridX(12),
+                TextAlign::Left,
+                TextSize::MainTitle
+            );
+
+            render.DrawTextBlockNoPadding(
+                std::to_string(combat),
+                render.GridX(15) + 35,
+                render.GridY(10),
+                render.GridX(12),
+                TextAlign::Left,
+                TextSize::MainTitle
+            );
+
+            scientistBuffStrengthButton.Draw(render, scientistBuffStrengthButtonColor);
+            scientistBuffSpeedButton.Draw(render, scientistBuffSpeedButtonColor);
+            scientistBuffIntellectButton.Draw(render, scientistBuffIntellectButtonColor);
+            scientistBuffCombatButton.Draw(render, scientistBuffCombatButtonColor);
+        }
+
+
 
         if (classType == "Android" && androidDecisionRequired == true)
         {
@@ -901,6 +1060,46 @@ void CharacterCreator::InitButtons()
     render.DrawDebugRect(alignmentRect02);
     render.DrawDebugRect(alignmentRect03);
     render.DrawDebugRect(alignmentRect04);
+
+    scientistBuffStrengthButton = UIButton(
+        "Strength",
+        render.GridX(6),
+        render.GridY(9),
+        render.GridX(3) - 10,
+        120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    scientistBuffSpeedButton = UIButton(
+        "Speed",
+        render.GridX(9),
+        render.GridY(9),
+        render.GridX(3) - 10,
+        120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    scientistBuffIntellectButton = UIButton(
+        "Intellect",
+        render.GridX(12),
+        render.GridY(9),
+        render.GridX(3) - 10,
+        120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
+
+    scientistBuffCombatButton = UIButton(
+        "Combat",
+        render.GridX(15),
+        render.GridY(9),
+        render.GridX(3) - 10,
+        120,
+        TextAlign::Center,
+        TextSize::Button02
+    );
 
     androidHandicapStrengthButton = UIButton(
         "Strength",

@@ -25,7 +25,7 @@ enum class CharacterSelect {
 enum class Page {
     CLASS_SELECT,
     LOADOUT_SELECT,
-    SKILLS_SELECT
+    STATS_SELECT
 };
 
 class CharacterCreator : public IGameState {
@@ -62,6 +62,7 @@ private:
     bool drawDebugGrid{ false };
     bool shouldDraw{ true }; 
     bool androidDecisionRequired{ false };
+    bool scientistDecisionRequired{ false };
 
     int availableStatPoints = 36;
     int availableSavePoints = 21;
@@ -137,4 +138,13 @@ private:
     Color androidHandicapIntellectButtonColor = GRAY;
     UIButton androidHandicapCombatButton;
     Color androidHandicapCombatButtonColor = GRAY;
+
+    UIButton scientistBuffStrengthButton;
+    Color scientistBuffStrengthButtonColor = GRAY;
+    UIButton scientistBuffSpeedButton;
+    Color scientistBuffSpeedButtonColor = GRAY;
+    UIButton scientistBuffIntellectButton;
+    Color scientistBuffIntellectButtonColor = GRAY;
+    UIButton scientistBuffCombatButton;
+    Color scientistBuffCombatButtonColor = GRAY;
 };  
