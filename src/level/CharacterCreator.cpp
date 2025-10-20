@@ -830,7 +830,7 @@ void CharacterCreator::Draw(Renderer& render)
             render.AlignCenterXInRect(LoadoutSelectAlignmentRect01, render.GridX(10)),
             render.GridY(6),
             render.GridX(10),
-            render.GridY(9),
+            render.GridY(7)+32,
             LIGHTGRAY
         );
 
@@ -838,7 +838,7 @@ void CharacterCreator::Draw(Renderer& render)
             render.AlignCenterXInRect(LoadoutSelectAlignmentRect02, render.GridX(10)),
             render.GridY(6),
             render.GridX(10),
-            render.GridY(9),
+            render.GridY(7)+32,
             LIGHTGRAY
         );
 
@@ -848,7 +848,7 @@ void CharacterCreator::Draw(Renderer& render)
         (
             "Strength: " + std::to_string(stateManager.GetPlayer()->GetClass().GetStrength()),
             render.GridX(2),
-            render.GridY(7)-10,
+            render.GridY(6),
             800,
             TextAlign::Left,
             TextSize::MenuSmall
@@ -858,7 +858,7 @@ void CharacterCreator::Draw(Renderer& render)
         (
             "Speed: " + std::to_string(speed),
             render.GridX(2),
-            render.GridY(9)-10,
+            render.GridY(8),
             800,
             TextAlign::Left,
             TextSize::MenuSmall
@@ -868,7 +868,7 @@ void CharacterCreator::Draw(Renderer& render)
         (
             "Intellect: " + std::to_string(intellect),
             render.GridX(2),
-            render.GridY(11)-10,
+            render.GridY(10),
             800,
             TextAlign::Left,
             TextSize::MenuSmall
@@ -878,7 +878,7 @@ void CharacterCreator::Draw(Renderer& render)
         (
             "Combat: " + std::to_string(combat),
             render.GridX(2),
-            render.GridY(13)-10,
+            render.GridY(12),
             800,
             TextAlign::Left,
             TextSize::MenuSmall
@@ -889,8 +889,8 @@ void CharacterCreator::Draw(Renderer& render)
         render.DrawTextBlockNoPadding
         (
             "Sanity: " + std::to_string(sanity),
-            render.GridX(13)-10,
-            render.GridY(8)-10,
+            render.GridX(13),
+            render.GridY(7),
             800,
             TextAlign::Left,
             TextSize::MenuSmall
@@ -900,7 +900,7 @@ void CharacterCreator::Draw(Renderer& render)
         (
             "Fear: " + std::to_string(fear),
             render.GridX(13),
-            render.GridY(10)-10,
+            render.GridY(9),
             800,
             TextAlign::Left,
             TextSize::MenuSmall
@@ -910,7 +910,7 @@ void CharacterCreator::Draw(Renderer& render)
         (
             "Body: " + std::to_string(body),
             render.GridX(13),
-            render.GridY(12)-10,
+            render.GridY(11),
             800,
             TextAlign::Left,
             TextSize::MenuSmall
@@ -1162,7 +1162,7 @@ void CharacterCreator::InitButtons()
     decrementStrengthButton = UIButton(
         "-",
         render.GridX(7),
-        render.GridY(7),
+        render.GridY(6)+10,
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -1171,7 +1171,7 @@ void CharacterCreator::InitButtons()
     decrementSpeedButton = UIButton(
         "-",
         render.GridX(7),
-        render.GridY(9),
+        render.GridY(8)+10,
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -1180,7 +1180,7 @@ void CharacterCreator::InitButtons()
     decrementIntellectButton = UIButton(
         "-",
         render.GridX(7),
-        render.GridY(11),
+        render.GridY(10)+10,
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -1189,7 +1189,7 @@ void CharacterCreator::InitButtons()
     decrementCombatButton = UIButton(
         "-",
         render.GridX(7),
-        render.GridY(13),
+        render.GridY(12)+10,
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -1198,7 +1198,7 @@ void CharacterCreator::InitButtons()
     incrementStrengthButton = UIButton(
         "+",
         render.GridX(9),
-        render.GridY(7),
+        render.GridY(6)+10,
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -1207,7 +1207,7 @@ void CharacterCreator::InitButtons()
     incrementSpeedButton = UIButton(
         "+",
         render.GridX(9),
-        render.GridY(9),
+        render.GridY(8)+10,
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -1216,7 +1216,7 @@ void CharacterCreator::InitButtons()
     incrementIntellectButton = UIButton(
         "+",
         render.GridX(9),
-        render.GridY(11),
+        render.GridY(10)+10,
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -1225,7 +1225,7 @@ void CharacterCreator::InitButtons()
     incrementCombatButton = UIButton(
         "+",
         render.GridX(9),
-        render.GridY(13),
+        render.GridY(12)+10,
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -1234,7 +1234,7 @@ void CharacterCreator::InitButtons()
     decrementSanityButton = UIButton(
         "-",
         render.GridX(18),
-        render.GridY(8),
+        render.GridY(7)+10,
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -1243,7 +1243,7 @@ void CharacterCreator::InitButtons()
     decrementFearButton = UIButton(
         "-",
         render.GridX(18),
-        render.GridY(10),
+        render.GridY(9)+10,
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -1252,7 +1252,7 @@ void CharacterCreator::InitButtons()
     decrementBodyButton = UIButton(
         "-",
         render.GridX(18),
-        render.GridY(12),
+        render.GridY(11)+10,
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -1261,7 +1261,7 @@ void CharacterCreator::InitButtons()
     incrementSanityButton = UIButton(
         "+",
         render.GridX(20),
-        render.GridY(8),
+        render.GridY(7)+10,
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -1270,7 +1270,7 @@ void CharacterCreator::InitButtons()
     incrementFearButton = UIButton(
         "+",
         render.GridX(20),
-        render.GridY(10),
+        render.GridY(9)+10,
         100, 120,
         TextAlign::Center,
         TextSize::Button02
@@ -1279,7 +1279,7 @@ void CharacterCreator::InitButtons()
     incrementBodyButton = UIButton(
         "+",
         render.GridX(20),
-        render.GridY(12),
+        render.GridY(11)+10,
         100, 120,
         TextAlign::Center,
         TextSize::Button02
