@@ -9,7 +9,7 @@ Marine::Marine() : BaseClass("Marine") {
 
     classBio = "Trained for combat in the harshest conditions, the Marine is a soldier bred for survival. Years of drills, deployments, and firefights have hardened them into a relentless fighter who can push through fear and pain where others would break.";
 
-    classMechanics = {"+10 to Combat", "+10 to Body Save", "+20 to Fear Save", "+1 Max Wounds"};
+    classMechanics = {"+10 to combat", "+10 to body save", "+20 to fear save", "+1 max wounds"};
 
     loadout01Items = { "Advanced Battle Dress (AP 10)", "Flamethrower (4 shots)", "Boarding Axe"};
     loadout02Items = { "Standard Battle Dress (AP 7)", "Pulse Rifle (3 mags)", "Infrared Goggles" };

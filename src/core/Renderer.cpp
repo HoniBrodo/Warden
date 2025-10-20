@@ -150,7 +150,7 @@ void Renderer::DrawTextBlockNoPadding(const std::string& text, int posX, int pos
 void Renderer::DrawTextListInRect(const std::vector<std::string>& items, const Rectangle rect, TextAlign alignment, TextSize size, float yOffset)
 {
 	int fontSize = GetFontSize(size);
-	int lineHeight = static_cast<int>(fontSize * 1.33f);
+	int lineHeight = static_cast<int>(fontSize * 1.66f);
 
 	int posY = static_cast<int>(rect.y) + fontSize / 2 + yOffset;
 
