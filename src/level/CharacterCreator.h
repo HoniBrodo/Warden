@@ -63,9 +63,10 @@ private:
     bool shouldDraw{ true }; 
     bool androidDecisionRequired{ false };
     bool scientistDecisionRequired{ false };
+    bool isAllocated{ false };
 
-    int availableStatPoints = 36;
-    int availableSavePoints = 21;
+    int availableStatPoints = 8;
+    int availableSavePoints = 4;
 
     int testInt = 10;
 
@@ -148,4 +149,9 @@ private:
     Color scientistBuffIntellectButtonColor = GRAY;
     UIButton scientistBuffCombatButton;
     Color scientistBuffCombatButtonColor = GRAY;
+
+    UIButton statsConfirmButton;
+    Color statsConfirmButtonColor = LIGHTGRAY;
+
+
 };  

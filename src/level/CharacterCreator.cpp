@@ -11,7 +11,15 @@
 plan:
 -----
 
--- swap the stats and loadout screen order (stats before loadout)
+-- for dynamic drawing of the minus stat/save buttons
+
+1. when we move from the class select screen, make a copy of the selected class points and save to new variables called 'starting stats'
+2. when we click any increment button, switch a variable (eg statAdded) to true
+3. implement a check at both the drawing and handle input steps of the decremenmt buttons that only proceeds when statAdded is true
+4. inside each decrement logic (isClicked), carry out a check that compares the current value of the stat/save (after the stat is adjusted),
+to the 'starting stat' variable of that specific stat. If they are equal, set that stats 'statAdded' variable to flase.
+
+-- make a check before incrementing a stat, if the stat/save points available == 0, do not increment 
 
 -- implement the skills screen
 
@@ -340,6 +348,23 @@ void CharacterCreator::HandleInput()
                 decrementBodyButtonColor = BLACK;
             }
             else decrementBodyButtonColor = GRAY;
+
+            if (availableSavePoints == 0 && availableStatPoints == 0)
+            {
+                isAllocated = true;
+            }
+
+            if (isAllocated) 
+            {
+                if (statsConfirmButton.IsClicked(render, false)) {
+                    currentPage = Page::LOADOUT_SELECT;
+                }
+
+                if (statsConfirmButton.IsHovered(render, false)) {
+                    statsConfirmButtonColor = GRAY;
+                }
+                else statsConfirmButtonColor = LIGHTGRAY;
+            }
 
         }  
 
@@ -932,6 +957,27 @@ void CharacterCreator::Draw(Renderer& render)
         incrementFearButton.Draw(render, incrementFearButtonColor);
         incrementBodyButton.Draw(render, incrementBodyButtonColor);
 
+
+
+        if (!isAllocated)
+        {
+            render.DrawTextBlock
+            (
+                "Please Allocate all Stats to Proceed",
+                render.TextScreenCenterX(1000),
+                render.GridY(14),
+                1000,
+                TextAlign::Center,
+                TextSize::MenuSmall
+            );
+        }
+        else
+        {
+            statsConfirmButton.Draw(render, statsConfirmButtonColor);
+        }
+
+
+
         if (classType == "Scientist" && scientistDecisionRequired == true)
         {
             render.DrawRectangleWithBorder(
@@ -1078,6 +1124,16 @@ void CharacterCreator::InitButtons()
     render.DrawDebugRect(alignmentRect02);
     render.DrawDebugRect(alignmentRect03);
     render.DrawDebugRect(alignmentRect04);
+
+    statsConfirmButton = UIButton(
+        "Confirm Allocation",
+        render.TextScreenCenterX(render.GridX(6) + 20),
+        render.GridY(14),
+        render.GridX(6)+20,
+        120,
+        TextAlign::Center,
+        TextSize::MenuSmall
+    );
 
     scientistBuffStrengthButton = UIButton(
         "Strength",
