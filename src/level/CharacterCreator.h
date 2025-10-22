@@ -64,9 +64,29 @@ private:
     bool androidDecisionRequired{ false };
     bool scientistDecisionRequired{ false };
     bool isAllocated{ false };
+    bool isStatsCopied{ false }; 
+
+    bool strengthAdded{ false };
+    bool speedAdded{ false };
+    bool intellectAdded{ false };
+    bool combatAdded{ false };
+    bool sanityAdded{ false };
+    bool fearAdded{ false };
+    bool bodyAdded{ false };
 
     int availableStatPoints = 8;
     int availableSavePoints = 4;
+
+    // stat copies
+    int strengthCopy{};
+    int speedCopy{};
+    int intellectCopy{};
+    int combatCopy{};
+
+    // save copies
+    int sanityCopy{};
+    int fearCopy{};
+    int bodyCopy{};
 
     int testInt = 10;
 

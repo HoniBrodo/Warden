@@ -15,7 +15,7 @@ plan:
 
 1. when we move from the class select screen, make a copy of the selected class points and save to new variables called 'starting stats'
 2. when we click any increment button, switch a variable (eg statAdded) to true
-3. implement a check at both the drawing and handle input steps of the decremenmt buttons that only proceeds when statAdded is true
+3. implement a check at decrement handle input, if statAdded is true, hover over turn the button red, else, black
 4. inside each decrement logic (isClicked), carry out a check that compares the current value of the stat/save (after the stat is adjusted),
 to the 'starting stat' variable of that specific stat. If they are equal, set that stats 'statAdded' variable to flase.
 
@@ -170,22 +170,25 @@ void CharacterCreator::HandleInput()
 
     case Page::STATS_SELECT:
     {
-        int strength = stateManager.GetPlayer()->GetClass().GetStrength();
-        int speed = stateManager.GetPlayer()->GetClass().GetSpeed();
-        int intellect = stateManager.GetPlayer()->GetClass().GetIntellect();
-        int combat = stateManager.GetPlayer()->GetClass().GetCombat();
-
-        int sanity = stateManager.GetPlayer()->GetClass().GetSanity();
-        int fear = stateManager.GetPlayer()->GetClass().GetFear();
-        int body = stateManager.GetPlayer()->GetClass().GetBody();
-
-        // increment strength button logic
+        if (!isStatsCopied)
+        {
+            strengthCopy = stateManager.GetPlayer()->GetClass().GetStrength();
+            speedCopy = stateManager.GetPlayer()->GetClass().GetSpeed();
+            intellectCopy = stateManager.GetPlayer()->GetClass().GetIntellect();
+            combatCopy = stateManager.GetPlayer()->GetClass().GetCombat();
+            sanityCopy = stateManager.GetPlayer()->GetClass().GetSanity();
+            fearCopy = stateManager.GetPlayer()->GetClass().GetFear();
+            bodyCopy = stateManager.GetPlayer()->GetClass().GetBody();
+            isStatsCopied = true;
+        }
 
         if (!androidDecisionRequired && !scientistDecisionRequired)
         {
+            // increment strength button logic
             if (incrementStrengthButton.IsClicked(render, false)) {
                 availableStatPoints--;
                 stateManager.GetPlayer()->GetClass().IncreaseStrength(1);
+                strengthAdded = true;
             }
 
             if (incrementStrengthButton.IsHovered(render, false)) {
@@ -201,7 +204,10 @@ void CharacterCreator::HandleInput()
             }
 
             if (decrementStrengthButton.IsHovered(render, false)) {
-                decrementStrengthButtonColor = BLACK;
+                if (strengthAdded)
+                    decrementStrengthButtonColor = BLACK;
+                else
+                    decrementStrengthButtonColor = RED;
             }
             else decrementStrengthButtonColor = GRAY;
 
@@ -210,6 +216,7 @@ void CharacterCreator::HandleInput()
             if (incrementSpeedButton.IsClicked(render, false)) {
                 availableStatPoints--;
                 stateManager.GetPlayer()->GetClass().IncreaseSpeed(1);
+                speedAdded = true;
             }
 
             if (incrementSpeedButton.IsHovered(render, false)) {
@@ -234,6 +241,7 @@ void CharacterCreator::HandleInput()
             if (incrementIntellectButton.IsClicked(render, false)) {
                 availableStatPoints--;
                 stateManager.GetPlayer()->GetClass().IncreaseIntellect(1);
+                intellectAdded = true;
             }
 
             if (incrementIntellectButton.IsHovered(render, false)) {
@@ -258,6 +266,7 @@ void CharacterCreator::HandleInput()
             if (incrementCombatButton.IsClicked(render, false)) {
                 availableStatPoints--;
                 stateManager.GetPlayer()->GetClass().IncreaseCombat(1);
+                combatAdded = true;
             }
 
             if (incrementCombatButton.IsHovered(render, false)) {
@@ -282,6 +291,7 @@ void CharacterCreator::HandleInput()
             if (incrementSanityButton.IsClicked(render, false)) {
                 availableSavePoints--;
                 stateManager.GetPlayer()->GetClass().IncreaseSanity(1);
+                sanityAdded = true;
             }
 
             if (incrementSanityButton.IsHovered(render, false)) {
@@ -306,6 +316,7 @@ void CharacterCreator::HandleInput()
             if (incrementFearButton.IsClicked(render, false)) {
                 availableSavePoints--;
                 stateManager.GetPlayer()->GetClass().IncreaseFear(1);
+                fearAdded = true;
             }
 
             if (incrementFearButton.IsHovered(render, false)) {
@@ -330,6 +341,7 @@ void CharacterCreator::HandleInput()
             if (incrementBodyButton.IsClicked(render, false)) {
                 availableSavePoints--;
                 stateManager.GetPlayer()->GetClass().IncreaseBody(1);
+                bodyAdded = true;
             }
 
             if (incrementBodyButton.IsHovered(render, false)) {
@@ -945,17 +957,19 @@ void CharacterCreator::Draw(Renderer& render)
         incrementSpeedButton.Draw(render, incrementSpeedButtonColor);
         incrementIntellectButton.Draw(render, incrementIntellectButtonColor);
         incrementCombatButton.Draw(render, incrementCombatButtonColor);
+
         decrementStrengthButton.Draw(render, decrementStrengthButtonColor);
         decrementSpeedButton.Draw(render, decrementSpeedButtonColor);
         decrementIntellectButton.Draw(render, decrementIntellectButtonColor);
         decrementCombatButton.Draw(render, decrementCombatButtonColor);
 
-        decrementSanityButton.Draw(render, decrementSanityButtonColor);
-        decrementFearButton.Draw(render, decrementFearButtonColor);
-        decrementBodyButton.Draw(render, decrementBodyButtonColor);
         incrementSanityButton.Draw(render, incrementSanityButtonColor);
         incrementFearButton.Draw(render, incrementFearButtonColor);
         incrementBodyButton.Draw(render, incrementBodyButtonColor);
+
+        decrementSanityButton.Draw(render, decrementSanityButtonColor);
+        decrementFearButton.Draw(render, decrementFearButtonColor);
+        decrementBodyButton.Draw(render, decrementBodyButtonColor);
 
 
 
