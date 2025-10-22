@@ -66,14 +66,6 @@ private:
     bool isAllocated{ false };
     bool isStatsCopied{ false }; 
 
-    bool strengthAdded{ false };
-    bool speedAdded{ false };
-    bool intellectAdded{ false };
-    bool combatAdded{ false };
-    bool sanityAdded{ false };
-    bool fearAdded{ false };
-    bool bodyAdded{ false };
-
     int availableStatPoints = 8;
     int availableSavePoints = 4;
 
@@ -87,6 +79,15 @@ private:
     int sanityCopy{};
     int fearCopy{};
     int bodyCopy{};
+
+    int addedToStrength = 0;
+    int addedToSpeed = 0;
+    int addedToIntellect = 0;
+    int addedToCombat = 0;
+
+    int addedToSanity = 0;
+    int addedToFear = 0;
+    int addedToBody = 0;
 
     int testInt = 10;
 

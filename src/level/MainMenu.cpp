@@ -12,6 +12,11 @@ void MainMenu::Run(Renderer& renderRef, bool& gameRunning)
         render.DrawGrid(true);
     }
 
+    if (IsKeyDown(KEY_D))
+    {
+        stateManager.SetState(StateManager::GameState::DEBUG_WINDOW);
+    }
+
     render.DrawTextBlock
     (
         "WARDEN", 

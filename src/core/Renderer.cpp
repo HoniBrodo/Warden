@@ -277,3 +277,32 @@ void Renderer::DrawDebugRect(const DebugRect& container, Color color) const
 		);
 	}
 }
+
+void Renderer::DrawPipsGrid(int filledCount, int startX, int startY)
+{
+	const int totalWidth = 80;
+	const int totalHeight = 40;
+	const int spacing = 1;
+
+	// Calculate square size based on available area and spacing
+	float cellWidth = (float)(totalWidth - (GRID_COLS - 1) * spacing) / GRID_COLS;
+	float cellHeight = (float)(totalHeight - (GRID_ROWS - 1) * spacing) / GRID_ROWS;
+
+	for (int row = 0; row < GRID_ROWS; row++)
+	{
+		for (int col = 0; col < GRID_COLS; col++)
+		{
+			int index = row * GRID_COLS + col;
+			float x = startX + col * (cellWidth + spacing);
+			float y = startY + row * (cellHeight + spacing);
+
+			Rectangle cell = { x, y, cellWidth, cellHeight };
+
+			// Filled squares only (no outlines)
+			if (index < filledCount)
+				DrawRectangleRec(cell, DARKGREEN);
+			else
+				DrawRectangleRec(cell, LIGHTGRAY);
+		}
+	}
+}

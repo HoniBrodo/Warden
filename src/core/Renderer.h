@@ -54,6 +54,8 @@ public:
     int AlignCenterXInRect(const DebugRect& container, int contentWidth) const;
     void DrawDebugRect(const DebugRect& container, Color color = RED) const;
 
+    void DrawPipsGrid(int filledCount, int startX, int startY);
+
 private:
 
     TextureManager& textureManager;
@@ -64,6 +66,11 @@ private:
     int screenWidth{};
     int screenHeight{};
     void UpdateCellSize();
+
+    static constexpr int GRID_ROWS = 2;
+    static constexpr int GRID_COLS = 4;
+    static constexpr int MAX_FILLED = 8;
+    static constexpr int MIN_FILLED = 0;
 
     std::vector<std::string> WrapText(const std::string& text, int maxWidth, int fontSize);
 
