@@ -162,7 +162,6 @@ void CharacterCreator::HandleInput()
     {
         if (!areStatsCopied)
         {
-            stateManager.GetPlayer()->GetClass().ResetDefaults();
             strengthCopy = stateManager.GetPlayer()->GetClass().GetStrength();
             speedCopy = stateManager.GetPlayer()->GetClass().GetSpeed();
             intellectCopy = stateManager.GetPlayer()->GetClass().GetIntellect();
@@ -463,11 +462,6 @@ void CharacterCreator::HandleInput()
 
         if (androidDecisionRequired)
         {
-            static bool isStrengthDecreased = false;
-            static bool isSpeedDecreased = false;
-            static bool isIntellectDecreased = false;
-            static bool isCombatDecreased = false;
-
             // android handicap strength button logic
 
             if (androidHandicapStrengthButton.IsHovered(render, false)) {
@@ -571,11 +565,6 @@ void CharacterCreator::HandleInput()
 
         if (scientistDecisionRequired)
         {
-            static bool isStrengthIncreased = false;
-            static bool isSpeedIncreased = false;
-            static bool isIntellectIncreased = false;
-            static bool isCombatIncreased = false;
-
             // scientist buff strength button logic
 
             if (scientistBuffStrengthButton.IsHovered(render, false)) {
@@ -597,6 +586,7 @@ void CharacterCreator::HandleInput()
             }
 
             if (scientistBuffStrengthButton.IsClicked(render, false)) {
+                strengthCopy += 5;
                 scientistDecisionRequired = false;
             }
 
@@ -621,6 +611,7 @@ void CharacterCreator::HandleInput()
             }
 
             if (scientistBuffSpeedButton.IsClicked(render, false)) {
+                speedCopy += 5;
                 scientistDecisionRequired = false;
             }
 
@@ -645,6 +636,7 @@ void CharacterCreator::HandleInput()
             }
 
             if (scientistBuffIntellectButton.IsClicked(render, false)) {
+                intellectCopy += 5;
                 scientistDecisionRequired = false;
             }
 
@@ -669,6 +661,7 @@ void CharacterCreator::HandleInput()
             }
 
             if (scientistBuffCombatButton.IsClicked(render, false)) {
+                combatCopy += 5;
                 scientistDecisionRequired = false;
             }
         }
@@ -969,7 +962,7 @@ void CharacterCreator::Draw(Renderer& render)
 
         render.DrawTextBlockNoPadding
         (
-            "Strength: " + std::to_string(stateManager.GetPlayer()->GetClass().GetStrength()),
+            "Strength: " + std::to_string(strength),
             render.GridX(2),
             render.GridY(6),
             800,
@@ -1170,7 +1163,7 @@ void CharacterCreator::Draw(Renderer& render)
             );
 
             render.DrawTextBlockNoPadding(
-                std::to_string(strength),
+                std::to_string(stateManager.GetPlayer()->GetClass().GetStrength()),
                 render.GridX(6) + 35,
                 render.GridY(10),
                 render.GridX(12),
@@ -1549,6 +1542,16 @@ void CharacterCreator::Reset()
 
     scientistDecisionRequired = false;
     androidDecisionRequired = false;
+
+    isStrengthIncreased = false;
+    isSpeedIncreased = false;
+    isIntellectIncreased = false;
+    isCombatIncreased = false;
+
+    isStrengthDecreased = false;
+    isSpeedDecreased = false;
+    isIntellectDecreased = false;
+    isCombatDecreased = false;
 
     addedToStrength = 0;
     addedToSpeed = 0;

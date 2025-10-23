@@ -41,8 +41,7 @@ public:
     virtual void DecreaseFear(int amount);
     virtual void IncreaseBody(int amount);
     virtual void DecreaseBody(int amount);
-    virtual void SetDefaults();
-    virtual void ResetDefaults();
+
 
 
     virtual void TakeDamage(int amount);
@@ -64,19 +63,10 @@ protected:
     int intellect{ 36 };
     int combat{ 36 };
 
-    int defaultStrength{ 36 };
-    int defaultSpeed{ 36 };
-    int defaultIntellect{ 36 };
-    int defaultCombat{ 36 };
-
     // saves
     int sanity{ 21 };
     int fear{ 21 };
     int body{ 21 };
-
-    int defsultSanity{ 21 };
-    int defaultFear{ 21 };
-    int defaultBody{ 21 };
 
     int maxHealth{ 16 };
     int health{ 16 };

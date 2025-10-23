@@ -66,6 +66,18 @@ private:
     bool isAllocated{ false };
     bool areStatsCopied{ false }; 
 
+    bool isStrengthIncreased = false;
+    bool isSpeedIncreased = false;
+    bool isIntellectIncreased = false;
+    bool isCombatIncreased = false;
+
+    bool isStrengthDecreased = false;
+    bool isSpeedDecreased = false;
+    bool isIntellectDecreased = false;
+    bool isCombatDecreased = false;
+
+
+
     int availableStatPoints = 8;
     int availableSavePoints = 4;
 

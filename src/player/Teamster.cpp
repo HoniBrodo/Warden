@@ -22,7 +22,7 @@ Teamster::Teamster() : BaseClass("Teamster") {
     loadout03Items = { "Standard Crew Attire (AP 1)", "Nail Gun (32 rounds)", "HeadLamp", "Toolbelt with Assorted Tools" };
     loadout04Items = { "Heavy Duty Work Clothes (AP 2)", "Drill (as Assorted Tools)", "Paracord (100m)", "Salvage Drone" };
 
-    SetDefaults();
+
 }
 
 
