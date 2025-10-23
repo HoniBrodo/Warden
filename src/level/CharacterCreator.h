@@ -64,7 +64,7 @@ private:
     bool androidDecisionRequired{ false };
     bool scientistDecisionRequired{ false };
     bool isAllocated{ false };
-    bool isStatsCopied{ false }; 
+    bool areStatsCopied{ false }; 
 
     int availableStatPoints = 8;
     int availableSavePoints = 4;

@@ -14,6 +14,8 @@ Android::Android() : BaseClass("Android") {
     loadout02Items = { "Standard Crew Attire (AP 1)", "Scalpel", "Bioscanner" };
     loadout03Items = { "Hazard Suit (AP 5)", "Revolver(6 rounds)", "Defibrillator", "First Aid Kit", "Flashlight" };
     loadout04Items = { "Hazard Suit (AP 5)", "Foam Gun(2 charges)", "Sample Collection Kit", "Screwdriver" };
+
+    SetDefaults();
 }
 
 

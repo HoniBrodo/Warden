@@ -15,4 +15,6 @@ Marine::Marine() : BaseClass("Marine") {
     loadout02Items = { "Standard Battle Dress (AP 7)", "Pulse Rifle (3 mags)", "Infrared Goggles" };
     loadout03Items = { "Standard Battle Dress (AP 7)", "Smart Rifle (3 mags)", "Binoculars", "Personal Locator"};
     loadout04Items = { "Advanced Battle Dress (AP 10)", "General Purpose Machine Gun (1 can of ammo)", "HUD" };
+
+    SetDefaults();
 }

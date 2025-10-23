@@ -93,6 +93,28 @@ void BaseClass::DecreaseBody(int amount)
     body -= amount;
 }
 
+void BaseClass::SetDefaults()
+{
+    defaultStrength = strength;
+    defaultSpeed = speed;
+    defaultIntellect = intellect;
+    defaultCombat = combat;
+    defsultSanity = sanity;
+    defaultFear = fear;
+    defaultBody = body;
+}
+
+void BaseClass::ResetDefaults()
+{
+    strength = defaultStrength;
+    speed = defaultSpeed;
+    intellect = defaultIntellect;
+    combat = defaultCombat;
+    sanity = defsultSanity;
+    fear = defaultFear;
+    body = defaultBody;
+}
+
 void BaseClass::TakeDamage(int amount)
 {
 }

@@ -13,4 +13,6 @@ Scientist::Scientist() : BaseClass("Scientist") {
     loadout02Items = { "Vaccsuit (AP 3)", "Foam Gun (2 charges)", "Foldable Stretcher", "First Aid Kit", "Radiation Pills (x5)" };
     loadout03Items = { "Hazard Suit(AP 5)", "Flamethrower(1 charge)", "Stimpak", "Electronic Tool Set" };
     loadout04Items = { "Lab Coat (AP 1)", "Cybernetic Diagnostic Scanner", "Portable Computer Terminal" };
+
+    SetDefaults();
 }

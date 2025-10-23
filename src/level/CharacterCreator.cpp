@@ -160,8 +160,9 @@ void CharacterCreator::HandleInput()
 
     case Page::STATS_SELECT:
     {
-        if (!isStatsCopied)
+        if (!areStatsCopied)
         {
+            stateManager.GetPlayer()->GetClass().ResetDefaults();
             strengthCopy = stateManager.GetPlayer()->GetClass().GetStrength();
             speedCopy = stateManager.GetPlayer()->GetClass().GetSpeed();
             intellectCopy = stateManager.GetPlayer()->GetClass().GetIntellect();
@@ -169,7 +170,7 @@ void CharacterCreator::HandleInput()
             sanityCopy = stateManager.GetPlayer()->GetClass().GetSanity();
             fearCopy = stateManager.GetPlayer()->GetClass().GetFear();
             bodyCopy = stateManager.GetPlayer()->GetClass().GetBody();
-            isStatsCopied = true;
+            areStatsCopied = true;
         }
 
         if (!androidDecisionRequired && !scientistDecisionRequired)
@@ -692,6 +693,7 @@ void CharacterCreator::Update(float dt)
     if (pendingMainMenu) {
         stateManager.SetState(StateManager::GameState::MAIN_MENU);
         shouldDraw = false;
+        //stateManager.GetPlayer()->GetClass().ResetDefaults();
         Reset();
         return;
     }
@@ -1063,10 +1065,6 @@ void CharacterCreator::Draw(Renderer& render)
         render.DrawPipsGrid(addedToSanity, render.GridX(21) + 30, render.GridY(7) + 30);
         render.DrawPipsGrid(addedToFear, render.GridX(21) + 30, render.GridY(9) + 30);
         render.DrawPipsGrid(addedToBody, render.GridX(21) + 30, render.GridY(11) + 30);
-
-
-
-
 
         if (!isAllocated)
         {
@@ -1545,7 +1543,24 @@ void CharacterCreator::Reset()
     pendingMainMenu = false;
     pendingDebugGrid = false;
 
+    areStatsCopied = false;
+
     drawDebugGrid = false;
+
+    scientistDecisionRequired = false;
+    androidDecisionRequired = false;
+
+    addedToStrength = 0;
+    addedToSpeed = 0;
+    addedToIntellect = 0;
+    addedToCombat = 0;
+
+    addedToSanity = 0;
+    addedToFear = 0;
+    addedToBody = 0;
+
+    availableStatPoints = 8;
+    availableSavePoints = 4;
 
     // Reset button colours too
     nextButtonColor = LIGHTGRAY;
