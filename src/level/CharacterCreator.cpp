@@ -53,6 +53,7 @@ void CharacterCreator::HandleInput()
     {
     case Page::CLASS_SELECT:
 
+    {
         // Previous button logic
         if (previousButton.IsClicked(render, false)) {
             PreviousCharacter();
@@ -113,12 +114,14 @@ void CharacterCreator::HandleInput()
         else selectClassButtonColor = LIGHTGRAY;
 
         break;
+    }
 
     case Page::LOADOUT_SELECT:
 
+    {
         // loadout 01 button logic
         if (loadout01Button.IsClicked(render, true)) {
-            currentPage = Page::STATS_SELECT;
+            currentPage = Page::SKILLS_SELECT;
         }
 
         if (loadout01Button.IsHovered(render, true)) {
@@ -128,7 +131,7 @@ void CharacterCreator::HandleInput()
 
         // loadout 02 button logic
         if (loadout02Button.IsClicked(render, true)) {
-            currentPage = Page::STATS_SELECT;
+            currentPage = Page::SKILLS_SELECT;
         }
 
         if (loadout02Button.IsHovered(render, true)) {
@@ -138,7 +141,7 @@ void CharacterCreator::HandleInput()
 
         // loadout 03 button logic
         if (loadout03Button.IsClicked(render, true)) {
-            currentPage = Page::STATS_SELECT;
+            currentPage = Page::SKILLS_SELECT;
         }
 
         if (loadout03Button.IsHovered(render, true)) {
@@ -148,7 +151,7 @@ void CharacterCreator::HandleInput()
 
         // loadout 04 button logic
         if (loadout04Button.IsClicked(render, true)) {
-            currentPage = Page::STATS_SELECT;
+            currentPage = Page::SKILLS_SELECT;
         }
 
         if (loadout04Button.IsHovered(render, true)) {
@@ -157,6 +160,7 @@ void CharacterCreator::HandleInput()
         else loadout04ButtonColor = LIGHTGRAY;
 
         break;
+    }
 
     case Page::STATS_SELECT:
     {
@@ -667,6 +671,11 @@ void CharacterCreator::HandleInput()
         }
     }
 
+    case Page::SKILLS_SELECT:
+    {
+
+    }
+
     }
 
 
@@ -726,6 +735,7 @@ void CharacterCreator::Draw(Renderer& render)
 
     case Page::CLASS_SELECT:
 
+    {
         render.DrawTextBlock
         (
             "Choose Your Class",
@@ -736,7 +746,7 @@ void CharacterCreator::Draw(Renderer& render)
             TextSize::SmallerTitle
         );
 
-        render.DrawRectangle(render.AlignCenterXInRect(SelectClassAlignmentRect05, 600), render.GridY(4)+30, 600, 500, LIGHTGRAY);
+        render.DrawRectangle(render.AlignCenterXInRect(SelectClassAlignmentRect05, 600), render.GridY(4) + 30, 600, 500, LIGHTGRAY);
 
         switch (GetCurrentCharacter())
         {
@@ -859,7 +869,8 @@ void CharacterCreator::Draw(Renderer& render)
         nextButton.Draw(render, nextButtonColor);
         selectClassButton.Draw(render, selectClassButtonColor);
 
-        break; 
+        break;
+    }
 
     case Page::LOADOUT_SELECT:
 
@@ -1205,6 +1216,17 @@ void CharacterCreator::Draw(Renderer& render)
         }
 
         break;
+
+    //case Page::SKILLS_SELECT:
+    //{
+
+    //}
+
+    }
+
+    case Page::SKILLS_SELECT:
+    {
+
     }
 
     }

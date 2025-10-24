@@ -25,7 +25,8 @@ enum class CharacterSelect {
 enum class Page {
     CLASS_SELECT,
     LOADOUT_SELECT,
-    STATS_SELECT
+    STATS_SELECT,
+    SKILLS_SELECT
 };
 
 class CharacterCreator : public IGameState {
