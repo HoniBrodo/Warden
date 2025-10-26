@@ -103,7 +103,8 @@ void CharacterCreator::HandleInput()
             auto player = std::make_unique<Player>(std::move(chosenClass));
             stateManager.SetPlayer(std::move(player));
 
-            currentPage = Page::STATS_SELECT;
+            // change back to stats once finished working on the skills screen
+            currentPage = Page::SKILLS_SELECT;
 
             break;
         }
@@ -921,7 +922,7 @@ void CharacterCreator::Draw(Renderer& render)
         int fear = stateManager.GetPlayer()->GetClass().GetFear();
         int body = stateManager.GetPlayer()->GetClass().GetBody();
 
-        std::string classType = stateManager.GetPlayer()->GetClass().GetName();
+        className = stateManager.GetPlayer()->GetClass().GetName();
 
         render.DrawTextBlock
         (
@@ -1089,7 +1090,7 @@ void CharacterCreator::Draw(Renderer& render)
 
 
 
-        if (classType == "Scientist" && scientistDecisionRequired == true)
+        if (className == "Scientist" && scientistDecisionRequired == true)
         {
             render.DrawRectangleWithBorder(
                 GetScreenWidth() / 2 - render.GridX(7),
@@ -1153,7 +1154,7 @@ void CharacterCreator::Draw(Renderer& render)
 
 
 
-        if (classType == "Android" && androidDecisionRequired == true)
+        if (className == "Android" && androidDecisionRequired == true)
         {
             render.DrawRectangleWithBorder(
                 GetScreenWidth() / 2 - render.GridX(7),
@@ -1226,7 +1227,25 @@ void CharacterCreator::Draw(Renderer& render)
 
     case Page::SKILLS_SELECT:
     {
+        className = stateManager.GetPlayer()->GetClass().GetName();
 
+        render.DrawTextBlock
+        (
+            "Choose " + className + " Skills",
+            render.TextScreenCenterX(1100),
+            render.GridY(1),
+            1100,
+            TextAlign::Center,
+            TextSize::SmallerTitle
+        );
+
+        render.DrawRectangle(
+            render.GridX(1),
+            render.GridY(4),
+            render.GridX(22),
+            render.GridY(11),
+            LIGHTGRAY
+        );
     }
 
     }
