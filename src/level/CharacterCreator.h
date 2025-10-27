@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "../ui/UIButton.h"
+#include "../ui/SkillTreeNode.h" 
 #include "../player/Marine.h"
 #include "../player/Scientist.h"
 #include "../player/Teamster.h"
@@ -186,6 +187,9 @@ private:
 
     UIButton statsConfirmButton;
     Color statsConfirmButtonColor = LIGHTGRAY;
+
+    //nodes
+    SkillTreeNode testNode;
 
 
 };  

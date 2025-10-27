@@ -4,7 +4,6 @@
 #include "../core/StateManager.h"
 #include "../assets/TextureManager.h"
 #include "../player/Player.h"
-#include "../ui/SkillTreeNode.h" 
 #include <iostream>
 
 /*
@@ -1247,6 +1246,25 @@ void CharacterCreator::Draw(Renderer& render)
             render.GridY(11),
             LIGHTGRAY
         );
+
+        testNode.Draw(render, render.GridX(2), render.GridY(5), DARKGREEN);
+        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65, DARKGREEN);
+        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 2, DARKGREEN);
+        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 3, DARKGREEN);
+        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 4, DARKGREEN);
+        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 5, DARKGREEN);
+        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 6, DARKGREEN);
+        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 7, DARKGREEN);
+        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 8, DARKGREEN);
+        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 9, DARKGREEN);
+        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 10, DARKGREEN);
+        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 11, DARKGREEN);
+        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 12, DARKGREEN);
+        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 13, DARKGREEN);
+        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 14, DARKGREEN);
+        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 15, DARKGREEN);
+
+
     }
 
     }

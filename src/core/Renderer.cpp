@@ -66,8 +66,8 @@ void Renderer::SetGrid(int cols, int rows)
 
 void Renderer::DrawNodeCircle(int centerX, int centerY, Color color)
 {
-	::DrawCircle(centerX, centerY, 40, color);
-	::DrawCircleLines(centerX, centerY, 40, BLACK);
+	::DrawCircle(centerX, centerY, 15, BLACK);
+	::DrawCircle(centerX, centerY, 12, color);
 }
 
 void Renderer::DrawRectangle(int x, int y, int width, int height, Color color)
