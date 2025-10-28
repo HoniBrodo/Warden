@@ -31,6 +31,7 @@ CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Rendere
     SelectClassAlignmentRect05 = { { render.GridX(1), render.GridY(4), render.GridX(7), render.GridY(9) }, false };
     LoadoutSelectAlignmentRect01 = { { render.GridX(1), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
     LoadoutSelectAlignmentRect02 = { { render.GridX(12), render.GridY(4), render.GridX(11), render.GridY(11) }, false };
+    SkillTreeAlignmentRect01 = { { render.GridX(2), render.GridY(7), render.GridX(20), render.GridY(06) }, false };
 }
 
 void CharacterCreator::HandleInput()
@@ -1227,6 +1228,8 @@ void CharacterCreator::Draw(Renderer& render)
 
     case Page::SKILLS_SELECT:
     {
+
+
         className = stateManager.GetPlayer()->GetClass().GetName();
 
         render.DrawTextBlock
@@ -1241,30 +1244,75 @@ void CharacterCreator::Draw(Renderer& render)
 
         render.DrawRectangle(
             render.GridX(1),
-            render.GridY(4),
+            render.GridY(6),
             render.GridX(22),
-            render.GridY(11),
+            render.GridY(9),
             LIGHTGRAY
         );
 
-        testNode.Draw(render, render.GridX(2), render.GridY(5), DARKGREEN);
-        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65, DARKGREEN);
-        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 2, DARKGREEN);
-        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 3, DARKGREEN);
-        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 4, DARKGREEN);
-        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 5, DARKGREEN);
-        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 6, DARKGREEN);
-        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 7, DARKGREEN);
-        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 8, DARKGREEN);
-        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 9, DARKGREEN);
-        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 10, DARKGREEN);
-        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 11, DARKGREEN);
-        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 12, DARKGREEN);
-        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 13, DARKGREEN);
-        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 14, DARKGREEN);
-        testNode.Draw(render, render.GridX(2), render.GridY(5) + render.GridY(10) / 16.65 * 15, DARKGREEN);
+        render.DrawRectangle(
+            render.GridX(1),
+            render.GridY(3) + render.GridY(1) / 2 + 6,
+            render.GridX(22),
+            render.GridY(2),
+            LIGHTGRAY
+        );
+
+        render.DrawDebugRect(SkillTreeAlignmentRect01);
+
+        float spacing = SkillTreeAlignmentRect01.rect.width / 15;
 
 
+        //nodes row 01
+
+        testNode.Draw(render, render.GridX(2), render.GridY(7), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) + spacing, render.GridY(7), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) + spacing * 2, render.GridY(7), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) + spacing * 3, render.GridY(7), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) + spacing * 4, render.GridY(7), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) + spacing * 5, render.GridY(7), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) + spacing * 6, render.GridY(7), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) + spacing * 7, render.GridY(7), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) + spacing * 8, render.GridY(7), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) + spacing * 9, render.GridY(7), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) + spacing * 10, render.GridY(7), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) + spacing * 11, render.GridY(7), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) + spacing * 12, render.GridY(7), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) + spacing * 13, render.GridY(7), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) + spacing * 14, render.GridY(7), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) + spacing * 15, render.GridY(7), DARKGREEN);
+
+        //nodes row 02
+
+        testNode.Draw(render, render.GridX(2) - spacing/2 + spacing, render.GridY(10), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 2, render.GridY(10), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 3, render.GridY(10), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 4, render.GridY(10), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 5, render.GridY(10), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 6, render.GridY(10), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 7, render.GridY(10), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 8, render.GridY(10), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 9, render.GridY(10), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 10, render.GridY(10), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 11, render.GridY(10), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 12, render.GridY(10), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 13, render.GridY(10), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 14, render.GridY(10), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 15, render.GridY(10), DARKGREEN);
+
+        //nodes row 03
+
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 3, render.GridY(13), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 4, render.GridY(13), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 5, render.GridY(13), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 6, render.GridY(13), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 7, render.GridY(13), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 8, render.GridY(13), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 9, render.GridY(13), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 10, render.GridY(13), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 11, render.GridY(13), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 12, render.GridY(13), DARKGREEN);
+        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 13, render.GridY(13), DARKGREEN);
     }
 
     }

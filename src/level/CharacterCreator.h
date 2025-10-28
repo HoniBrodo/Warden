@@ -118,6 +118,7 @@ private:
     DebugRect SelectClassAlignmentRect05;
     DebugRect LoadoutSelectAlignmentRect01;
     DebugRect LoadoutSelectAlignmentRect02;
+    DebugRect SkillTreeAlignmentRect01;
 
     // buttons
     UIButton decrementStrengthButton;
@@ -188,8 +189,59 @@ private:
     UIButton statsConfirmButton;
     Color statsConfirmButtonColor = LIGHTGRAY;
 
-    //nodes
+    //test node
     SkillTreeNode testNode;
+
+    //trained skill nodes 
+    SkillTreeNode linguisticsNode;
+    Color linguisticsNodeColor; // add color variables
+    SkillTreeNode zoologyNode;
+    SkillTreeNode botanyNode;
+    SkillTreeNode geologyNode;
+    SkillTreeNode industrialEquipmentNode;
+    SkillTreeNode juryRiggingNode;
+    SkillTreeNode chemistryNode;
+    SkillTreeNode computersNode;
+    SkillTreeNode zeroGNode;
+    SkillTreeNode mathematicsNode;
+    SkillTreeNode artNode;
+    SkillTreeNode archeologyNode;
+    SkillTreeNode theologyNode;
+    SkillTreeNode militaryTrainingNode;
+    SkillTreeNode rimwiseNode;
+    SkillTreeNode athleticsNode;
+
+    //expert skill nodes
+    SkillTreeNode psychologyNode;
+    SkillTreeNode pathologyNode;
+    SkillTreeNode fieldMedicineNode;
+    SkillTreeNode ecologyNode;
+    SkillTreeNode asteroidMiningNode;
+    SkillTreeNode mechanicalRepairNode;
+    SkillTreeNode explosivesNode;
+    SkillTreeNode pharmacologyNode;
+    SkillTreeNode hackingNode;
+    SkillTreeNode pilotingNode;
+    SkillTreeNode physicsNode;
+    SkillTreeNode mysticismNode;
+    SkillTreeNode wildernessSurvivalNode;
+    SkillTreeNode fireArmsNode;
+    SkillTreeNode handToHandCombatNode;
+
+    //master skill nodes
+    SkillTreeNode sophontologyNode;
+    SkillTreeNode exobiologyNode;
+    SkillTreeNode surgeryNode;
+    SkillTreeNode planetologyNode;
+    SkillTreeNode roboticsNode;
+    SkillTreeNode engineeringNode;
+    SkillTreeNode cyberneticsNode;
+    SkillTreeNode artificialIntelligenceNode;
+    SkillTreeNode hyperspaceNode;
+    SkillTreeNode xenoesotericismNode;
+    SkillTreeNode commandNode;
+
+
 
 
 };  
