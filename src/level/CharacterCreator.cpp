@@ -1265,54 +1265,54 @@ void CharacterCreator::Draw(Renderer& render)
 
         //nodes row 01
 
-        testNode.Draw(render, render.GridX(2), render.GridY(7), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) + spacing, render.GridY(7), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) + spacing * 2, render.GridY(7), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) + spacing * 3, render.GridY(7), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) + spacing * 4, render.GridY(7), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) + spacing * 5, render.GridY(7), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) + spacing * 6, render.GridY(7), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) + spacing * 7, render.GridY(7), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) + spacing * 8, render.GridY(7), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) + spacing * 9, render.GridY(7), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) + spacing * 10, render.GridY(7), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) + spacing * 11, render.GridY(7), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) + spacing * 12, render.GridY(7), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) + spacing * 13, render.GridY(7), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) + spacing * 14, render.GridY(7), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) + spacing * 15, render.GridY(7), DARKGREEN);
+        linguisticsNode.Draw(render, render.GridX(2), render.GridY(7), 18, 22, linguisticsNodeColor);
+        zoologyNode.Draw(render, render.GridX(2) + spacing, render.GridY(7), 18, 22, zoologyNodeColor);
+        botanyNode.Draw(render, render.GridX(2) + spacing * 2, render.GridY(7), 18, 22, botanyNodeColor);
+        geologyNode.Draw(render, render.GridX(2) + spacing * 3, render.GridY(7), 18, 22, geologyNodeColor);
+        industrialEquipmentNode.Draw(render, render.GridX(2) + spacing * 4, render.GridY(7), 18, 22, industrialodeColor);
+        juryRiggingNode.Draw(render, render.GridX(2) + spacing * 5, render.GridY(7), 18, 22, juryRiggingNodeColor);
+        chemistryNode.Draw(render, render.GridX(2) + spacing * 6, render.GridY(7), 18, 22, chemistryNodeColor);
+        computersNode.Draw(render, render.GridX(2) + spacing * 7, render.GridY(7), 18, 22, computersNodeColor);
+        zeroGNode.Draw(render, render.GridX(2) + spacing * 8, render.GridY(7), 18, 22, zeroGNodeColor);
+        mathematicsNode.Draw(render, render.GridX(2) + spacing * 9, render.GridY(7), 18, 22, mathematicsNodeColor);
+        artNode.Draw(render, render.GridX(2) + spacing * 10, render.GridY(7), 18, 22, artNodeColor);
+        archeologyNode.Draw(render, render.GridX(2) + spacing * 11, render.GridY(7), 18, 22, archeologyNodeColor);
+        theologyNode.Draw(render, render.GridX(2) + spacing * 12, render.GridY(7), 18, 22, theologyNodeColor);
+        militaryTrainingNode.Draw(render, render.GridX(2) + spacing * 13, render.GridY(7), 18, 22, militaryTrainingNodeColor);
+        rimwiseNode.Draw(render, render.GridX(2) + spacing * 14, render.GridY(7), 18, 22, rimwiseNodeColor);
+        athleticsNode.Draw(render, render.GridX(2) + spacing * 15, render.GridY(7), 18, 22, athleticsNodeColor);
 
         //nodes row 02
 
-        testNode.Draw(render, render.GridX(2) - spacing/2 + spacing, render.GridY(10), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 2, render.GridY(10), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 3, render.GridY(10), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 4, render.GridY(10), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 5, render.GridY(10), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 6, render.GridY(10), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 7, render.GridY(10), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 8, render.GridY(10), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 9, render.GridY(10), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 10, render.GridY(10), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 11, render.GridY(10), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 12, render.GridY(10), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 13, render.GridY(10), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 14, render.GridY(10), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 15, render.GridY(10), DARKGREEN);
+        psychologyNode.Draw(render, render.GridX(2) - spacing/2 + spacing, render.GridY(10), 18, 22, psychologyNodeColor);
+        pathologyNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 2, render.GridY(10), 18, 22, pathologyNodeColor);
+        fieldMedicineNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 3, render.GridY(10), 18, 22, fieldMedicineNodeColor);
+        ecologyNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 4, render.GridY(10), 18, 22, ecologyNodeColor);
+        asteroidMiningNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 5, render.GridY(10), 18, 22, asteroidMiningNodeColor);
+        mechanicalRepairNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 6, render.GridY(10), 18, 22, mechanicalRepairNodeColor);
+        explosivesNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 7, render.GridY(10), 18, 22, explosivesNodeColor);
+        pharmacologyNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 8, render.GridY(10), 18, 22, pharmacologyNodeColor);
+        hackingNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 9, render.GridY(10), 18, 22, hackingNodeColor);
+        pilotingNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 10, render.GridY(10), 18, 22, pilotingNodeColor);
+        physicsNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 11, render.GridY(10), 18, 22, physicsNodeColor);
+        mysticismNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 12, render.GridY(10), 18, 22, mysticismNodeColor);
+        wildernessSurvivalNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 13, render.GridY(10), 18, 22, wildernessSurvivalNodeColor);
+        fireArmsNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 14, render.GridY(10), 18, 22, fireArmsNodeColor);
+        handToHandCombatNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 15, render.GridY(10), 18, 22, handToHandCombatNodeColor);
 
         //nodes row 03
 
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 3, render.GridY(13), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 4, render.GridY(13), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 5, render.GridY(13), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 6, render.GridY(13), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 7, render.GridY(13), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 8, render.GridY(13), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 9, render.GridY(13), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 10, render.GridY(13), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 11, render.GridY(13), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 12, render.GridY(13), DARKGREEN);
-        testNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 13, render.GridY(13), DARKGREEN);
+        sophontologyNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 3, render.GridY(13), 18, 22, sophontologyNodeColor);
+        exobiologyNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 4, render.GridY(13), 18, 22, exobiologyNodeColor);
+        surgeryNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 5, render.GridY(13), 18, 22, surgeryNodeColor);
+        planetologyNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 6, render.GridY(13), 18, 22, planetologyNodeColor);
+        roboticsNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 7, render.GridY(13), 18, 22, roboticsNodeColor);
+        engineeringNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 8, render.GridY(13), 18, 22, engineeringNodeColor);
+        cyberneticsNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 9, render.GridY(13), 18, 22, cyberneticsNodeColor);
+        artificialIntelligenceNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 10, render.GridY(13), 18, 22, artificialIntelligenceNodeColor);
+        hyperspaceNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 11, render.GridY(13), 18, 22, hyperspaceNodeColor);
+        xenoesotericismNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 12, render.GridY(13), 18, 22, xenoesotericismNodeColor);
+        commandNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 13, render.GridY(13), 18, 22, commandNodeColor);
     }
 
     }

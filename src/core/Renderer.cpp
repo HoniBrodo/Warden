@@ -64,10 +64,10 @@ void Renderer::SetGrid(int cols, int rows)
 	UpdateCellSize();
 }
 
-void Renderer::DrawNodeCircle(int centerX, int centerY, Color color)
+void Renderer::DrawNodeCircle(int centerX, int centerY, int innerCircleSize, int outerCircleSize, Color color)
 {
-	::DrawCircle(centerX, centerY, 15, BLACK);
-	::DrawCircle(centerX, centerY, 12, color);
+	::DrawCircle(centerX, centerY, outerCircleSize, BLACK);
+	::DrawCircle(centerX, centerY, innerCircleSize, color);
 }
 
 void Renderer::DrawRectangle(int x, int y, int width, int height, Color color)

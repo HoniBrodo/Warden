@@ -194,52 +194,93 @@ private:
 
     //trained skill nodes 
     SkillTreeNode linguisticsNode;
-    Color linguisticsNodeColor; // add color variables
+    Color linguisticsNodeColor = DARKBLUE; 
     SkillTreeNode zoologyNode;
+    Color zoologyNodeColor = DARKBLUE;
     SkillTreeNode botanyNode;
+    Color botanyNodeColor = DARKBLUE;
     SkillTreeNode geologyNode;
+    Color geologyNodeColor = DARKBLUE;
     SkillTreeNode industrialEquipmentNode;
+    Color industrialodeColor = DARKBLUE;
     SkillTreeNode juryRiggingNode;
+    Color juryRiggingNodeColor = DARKBLUE;
     SkillTreeNode chemistryNode;
+    Color chemistryNodeColor = DARKBLUE;
     SkillTreeNode computersNode;
+    Color computersNodeColor = DARKBLUE;
     SkillTreeNode zeroGNode;
+    Color zeroGNodeColor = DARKBLUE;
     SkillTreeNode mathematicsNode;
+    Color mathematicsNodeColor = DARKBLUE;
     SkillTreeNode artNode;
+    Color artNodeColor = DARKBLUE;
     SkillTreeNode archeologyNode;
+    Color archeologyNodeColor = DARKBLUE;
     SkillTreeNode theologyNode;
+    Color theologyNodeColor = DARKBLUE;
     SkillTreeNode militaryTrainingNode;
+    Color militaryTrainingNodeColor = DARKBLUE;
     SkillTreeNode rimwiseNode;
+    Color rimwiseNodeColor = DARKBLUE;
     SkillTreeNode athleticsNode;
+    Color athleticsNodeColor = DARKBLUE;
 
     //expert skill nodes
     SkillTreeNode psychologyNode;
+    Color psychologyNodeColor = DARKBLUE;
     SkillTreeNode pathologyNode;
+    Color pathologyNodeColor = DARKBLUE;
     SkillTreeNode fieldMedicineNode;
+    Color fieldMedicineNodeColor = DARKBLUE;
     SkillTreeNode ecologyNode;
+    Color ecologyNodeColor = DARKBLUE;
     SkillTreeNode asteroidMiningNode;
+    Color asteroidMiningNodeColor = DARKBLUE;
     SkillTreeNode mechanicalRepairNode;
+    Color mechanicalRepairNodeColor = DARKBLUE;
     SkillTreeNode explosivesNode;
+    Color explosivesNodeColor = DARKBLUE;
     SkillTreeNode pharmacologyNode;
+    Color pharmacologyNodeColor = DARKBLUE;
     SkillTreeNode hackingNode;
+    Color hackingNodeColor = DARKBLUE;
     SkillTreeNode pilotingNode;
+    Color pilotingNodeColor = DARKBLUE;
     SkillTreeNode physicsNode;
+    Color physicsNodeColor = DARKBLUE;
     SkillTreeNode mysticismNode;
+    Color mysticismNodeColor = DARKBLUE;
     SkillTreeNode wildernessSurvivalNode;
+    Color wildernessSurvivalNodeColor = DARKBLUE;
     SkillTreeNode fireArmsNode;
+    Color fireArmsNodeColor = DARKBLUE;
     SkillTreeNode handToHandCombatNode;
+    Color handToHandCombatNodeColor = DARKBLUE;
 
     //master skill nodes
     SkillTreeNode sophontologyNode;
+    Color sophontologyNodeColor = DARKBLUE;
     SkillTreeNode exobiologyNode;
+    Color exobiologyNodeColor = DARKBLUE;
     SkillTreeNode surgeryNode;
+    Color surgeryNodeColor = DARKBLUE;
     SkillTreeNode planetologyNode;
+    Color planetologyNodeColor = DARKBLUE;
     SkillTreeNode roboticsNode;
+    Color roboticsNodeColor = DARKBLUE;
     SkillTreeNode engineeringNode;
+    Color engineeringNodeColor = DARKBLUE;
     SkillTreeNode cyberneticsNode;
+    Color cyberneticsNodeColor = DARKBLUE;
     SkillTreeNode artificialIntelligenceNode;
+    Color artificialIntelligenceNodeColor = DARKBLUE;
     SkillTreeNode hyperspaceNode;
+    Color hyperspaceNodeColor = DARKBLUE;
     SkillTreeNode xenoesotericismNode;
+    Color xenoesotericismNodeColor = DARKBLUE;
     SkillTreeNode commandNode;
+    Color commandNodeColor = DARKBLUE;
 
 
 

@@ -41,7 +41,7 @@ public:
     void DrawGrid(bool showCoords = false) const;
     void SetScreenSize(int width, int height);
     void SetGrid(int cols, int rows);
-    void DrawNodeCircle(int centerX, int centerY, Color color);
+    void DrawNodeCircle(int centerX, int centerY, int innerCircleSize, int outerCircleSize, Color color);
     void DrawRectangle(int x, int y, int width, int height, Color color);
     void DrawRectangleWithBorder(int posX, int posY, int width, int height, Color fillColor, Color borderColor, int borderThickness);
     void DrawTextBlock(const std::string& text, int posX, int posY, int maxWidth, TextAlign alignment, TextSize size);
