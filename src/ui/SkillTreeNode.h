@@ -7,8 +7,16 @@ class SkillTreeNode
 {
 public:
     SkillTreeNode();
-    void Draw(Renderer& render, int centerX, int centerY, int innerCircleSize, int outerCircleSize, Color color) const;
+    void Draw(Renderer& render, int centerX, int centerY, int innerCircleSize, int outerCircleSize, Color color);
+    bool IsHovered(Renderer& render) const;
+
+    int outerRadius{};
+    int cenX{};
+    int cenY{};
 
 private:
+    Rectangle GetBounds(Renderer& render, bool isFree) const;
+
+
 
 };
