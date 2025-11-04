@@ -675,7 +675,17 @@ void CharacterCreator::HandleInput()
 
     case Page::SKILLS_SELECT:
     {
-
+        if (linguisticsNode.IsHovered())
+        {
+            //currentPage = Page::CLASS_SELECT;
+            linguisticsNode.outerRadius = 24;
+            linguisticsNode.innerRadius = 20;
+        }
+        else
+        {
+            linguisticsNode.outerRadius = 22;
+            linguisticsNode.innerRadius = 18;
+        }
     }
 
     }
@@ -1265,7 +1275,7 @@ void CharacterCreator::Draw(Renderer& render)
 
         //nodes row 01
 
-        linguisticsNode.Draw(render, render.GridX(2), render.GridY(7), 18, 22, linguisticsNodeColor);
+        linguisticsNode.Draw(render, render.GridX(2), render.GridY(7), linguisticsNode.innerRadius, linguisticsNode.outerRadius, linguisticsNodeColor);
         zoologyNode.Draw(render, render.GridX(2) + spacing, render.GridY(7), 18, 22, zoologyNodeColor);
         botanyNode.Draw(render, render.GridX(2) + spacing * 2, render.GridY(7), 18, 22, botanyNodeColor);
         geologyNode.Draw(render, render.GridX(2) + spacing * 3, render.GridY(7), 18, 22, geologyNodeColor);
