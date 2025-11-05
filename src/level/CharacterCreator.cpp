@@ -675,17 +675,7 @@ void CharacterCreator::HandleInput()
 
     case Page::SKILLS_SELECT:
     {
-        if (linguisticsNode.IsHovered())
-        {
-            //currentPage = Page::CLASS_SELECT;
-            linguisticsNode.outerRadius = 24;
-            linguisticsNode.innerRadius = 20;
-        }
-        else
-        {
-            linguisticsNode.outerRadius = 22;
-            linguisticsNode.innerRadius = 18;
-        }
+        
     }
 
     }
