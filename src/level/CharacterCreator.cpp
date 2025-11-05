@@ -19,10 +19,59 @@ plan:
 
 CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render) : stateManager(sm), textureManager(tm), render(render)
 {
+    // load player images
     textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
     textureManager.LoadTextureFromFile("Scientist", "images/player/SFCP_1_38.png");
     textureManager.LoadTextureFromFile("Android", "images/player/SFCP_1_59.png");
     textureManager.LoadTextureFromFile("Teamster", "images/player/SFCP_1_27.png");
+
+    // load skill tree icons 
+    textureManager.LoadTextureFromFile("LinguisticsIcon", "images/placeholder_icons/0 - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("ZoologyIcon", "images/placeholder_icons/AI - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("BotanyIcon", "images/placeholder_icons/Airlock - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("GeologyIcon", "images/placeholder_icons/Armory - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("IndustrialEquipmentIcon", "images/placeholder_icons/Automed - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("JuryRiggingIcon", "images/placeholder_icons/Cabin - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("ChemistryIcon", "images/placeholder_icons/Cargo - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("ComputersIcon", "images/placeholder_icons/Command - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("ZeroGIcon", "images/placeholder_icons/Cryo - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("MathematicsIcon", "images/placeholder_icons/Docking bay - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("ArtIcon", "images/placeholder_icons/Door - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("ArcheologyIcon", "images/placeholder_icons/Duct access - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("TheologyIcon", "images/placeholder_icons/Elevator - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("MilitaryTrainingIcon", "images/placeholder_icons/Elevator to bottom - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("RimwiseIcon", "images/placeholder_icons/Elevator to top - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("AthleticsIcon", "images/placeholder_icons/Emergency capsule - Dark - 64x64.png");
+
+    textureManager.LoadTextureFromFile("PsychologyIcon", "images/placeholder_icons/Exit - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("PathologyIcon", "images/placeholder_icons/Fuel - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("FieldMedicineIcon", "images/placeholder_icons/Galley - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("EcologyIcon", "images/placeholder_icons/Intercom - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("AsteroidMiningIcon", "images/placeholder_icons/Jumpdrive - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("MechanicalRepairIcon", "images/placeholder_icons/Lab - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("ExplosivesIcon", "images/placeholder_icons/Ladder - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("PharmacologyIcon", "images/placeholder_icons/Ladder bottom - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("HackingIcon", "images/placeholder_icons/Ladder top - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("PilotingIcon", "images/placeholder_icons/Laser - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("PhysicsIcon", "images/placeholder_icons/Medbay - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("MysticismIcon", "images/placeholder_icons/Ramp - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("WildernessSurvivalIcon", "images/placeholder_icons/Reactor core - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("FireArmsIcon", "images/placeholder_icons/Sensors - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("HandToHandCombatIcon", "images/placeholder_icons/Shower - Dark - 64x64.png");
+
+    textureManager.LoadTextureFromFile("SophontologyIcon", "images/placeholder_icons/Supplies - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("ExobiologyIcon", "images/placeholder_icons/Terminal - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("SurgeryIcon", "images/placeholder_icons/Full - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("PlanetologyIcon", "images/placeholder_icons/Toilet - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("RoboticsIcon", "images/placeholder_icons/Toilets 2 - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("EngineeringIcon", "images/placeholder_icons/Vac suit - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("CyberneticsIcon", "images/placeholder_icons/Vault - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("ArtificialIntelligenceIcon", "images/placeholder_icons/Ventillation - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("HyperspaceIcon", "images/placeholder_icons/Weapon system - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("XenoesotericismIcon", "images/placeholder_icons/Workshop - Dark - 64x64.png");
+    textureManager.LoadTextureFromFile("CommandIcon", "images/placeholder_icons/Empty - Dark - 64x64.png");
+
+
 
     SelectClassAlignmentRect01 = { { render.GridX(13), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
     SelectClassAlignmentRect02 = { { render.GridX(1), render.GridY(4), render.GridX(10), render.GridY(11) }, false };
@@ -1246,7 +1295,7 @@ void CharacterCreator::Draw(Renderer& render)
             render.GridX(1),
             render.GridY(6),
             render.GridX(22),
-            render.GridY(9),
+            render.GridY(10) - 40,
             LIGHTGRAY
         );
 
@@ -1313,6 +1362,52 @@ void CharacterCreator::Draw(Renderer& render)
         hyperspaceNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 11, render.GridY(13), 18, 22, hyperspaceNodeColor);
         xenoesotericismNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 12, render.GridY(13), 18, 22, xenoesotericismNodeColor);
         commandNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 13, render.GridY(13), 18, 22, commandNodeColor);
+
+        //icons row 01
+        render.DrawLoadedTexture("LinguisticsIcon", { (float)linguisticsNode.cenX - 32, (float)linguisticsNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ZoologyIcon", { (float)zoologyNode.cenX - 32, (float)zoologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("BotanyIcon", { (float)botanyNode.cenX - 32, (float)botanyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("GeologyIcon", { (float)geologyNode.cenX - 32, (float)geologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("IndustrialEquipmentIcon", { (float)industrialEquipmentNode.cenX - 32, (float)industrialEquipmentNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("JuryRiggingIcon", { (float)juryRiggingNode.cenX - 32, (float)juryRiggingNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ChemistryIcon", { (float)chemistryNode.cenX - 32, (float)chemistryNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ComputersIcon", { (float)computersNode.cenX - 32, (float)computersNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ZeroGIcon", { (float)zeroGNode.cenX - 32, (float)zeroGNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("MathematicsIcon", { (float)mathematicsNode.cenX - 32, (float)mathematicsNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ArtIcon", { (float)artNode.cenX - 32, (float)artNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ArcheologyIcon", { (float)archeologyNode.cenX - 32, (float)archeologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("TheologyIcon", { (float)theologyNode.cenX - 32, (float)theologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("MilitaryTrainingIcon", { (float)militaryTrainingNode.cenX - 32, (float)militaryTrainingNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("RimwiseIcon", { (float)rimwiseNode.cenX - 32, (float)rimwiseNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("AthleticsIcon", { (float)athleticsNode.cenX - 32, (float)athleticsNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+
+        render.DrawLoadedTexture("PsychologyIcon", { (float)psychologyNode.cenX - 32, (float)psychologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("PathologyIcon", { (float)pathologyNode.cenX - 32, (float)pathologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("FieldMedicineIcon", { (float)fieldMedicineNode.cenX - 32, (float)fieldMedicineNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("EcologyIcon", { (float)ecologyNode.cenX - 32, (float)ecologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("AsteroidMiningIcon", { (float)asteroidMiningNode.cenX - 32, (float)asteroidMiningNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("MechanicalRepairIcon", { (float)mechanicalRepairNode.cenX - 32, (float)mechanicalRepairNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ExplosivesIcon", { (float)explosivesNode.cenX - 32, (float)explosivesNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("PharmacologyIcon", { (float)pharmacologyNode.cenX - 32, (float)pharmacologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("HackingIcon", { (float)hackingNode.cenX - 32, (float)hackingNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("PilotingIcon", { (float)pilotingNode.cenX - 32, (float)pilotingNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("PhysicsIcon", { (float)physicsNode.cenX - 32, (float)physicsNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("MysticismIcon", { (float)mysticismNode.cenX - 32, (float)mysticismNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("WildernessSurvivalIcon", { (float)wildernessSurvivalNode.cenX - 32, (float)wildernessSurvivalNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("FireArmsIcon", { (float)fireArmsNode.cenX - 32, (float)fireArmsNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("HandToHandCombatIcon", { (float)handToHandCombatNode.cenX - 32, (float)handToHandCombatNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+
+        render.DrawLoadedTexture("SophontologyIcon", { (float)sophontologyNode.cenX - 32, (float)sophontologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ExobiologyIcon", { (float)exobiologyNode.cenX - 32, (float)exobiologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("SurgeryIcon", { (float)surgeryNode.cenX - 32, (float)surgeryNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("PlanetologyIcon", { (float)planetologyNode.cenX - 32, (float)planetologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("RoboticsIcon", { (float)roboticsNode.cenX - 32, (float)roboticsNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("EngineeringIcon", { (float)engineeringNode.cenX - 32, (float)engineeringNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("CyberneticsIcon", { (float)cyberneticsNode.cenX - 32, (float)cyberneticsNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ArtificialIntelligenceIcon", { (float)artificialIntelligenceNode.cenX - 32, (float)artificialIntelligenceNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("HyperspaceIcon", { (float)hyperspaceNode.cenX - 32, (float)hyperspaceNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("XenoesotericismIcon", { (float)xenoesotericismNode.cenX - 32, (float)xenoesotericismNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("CommandIcon", { (float)commandNode.cenX - 32, (float)commandNode.cenY + 40 }, 0.f, 1.0f, WHITE);
     }
 
     }
