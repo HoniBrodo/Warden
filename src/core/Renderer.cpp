@@ -208,6 +208,8 @@ int Renderer::GetFontSize(TextSize size) const
 		return 75;
 	case TextSize::MenuSmall:
 		return 50;
+	case TextSize::SkillTreeNode:
+		return 20;
 	default:
 		return 30; // fallback to default
 	}

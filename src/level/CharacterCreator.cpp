@@ -1292,146 +1292,146 @@ void CharacterCreator::Draw(Renderer& render)
         );
 
         render.DrawRectangle(
-            render.GridX(1),
+            render.GridX(1) / 5,
             render.GridY(6),
-            render.GridX(22),
+            render.GridX(24) - render.GridX(1) / 2.5,
             render.GridY(10) - 40,
             LIGHTGRAY
         );
 
         render.DrawRectangle(
-            render.GridX(1),
+            render.GridX(1) / 5,
             render.GridY(3) + render.GridY(1) / 2 + 6,
-            render.GridX(22),
+            render.GridX(24) - render.GridX(1) / 2.5,
             render.GridY(2),
             LIGHTGRAY
         );
 
         render.DrawRectangle(
-            render.ScreenCenterX() - render.GridX(10) - (render.GridX(1)/2) - 15,
+            render.GridX(1) / 5,
             render.GridY(6) + 27,
-            render.GridX(21) + 30,
+            render.GridX(24) - render.GridX(1) / 2.5,
             render.GridY(3) - 20,
             SKYBLUE
         );
 
         render.DrawRectangle(
-            render.ScreenCenterX() - render.GridX(10) - 8,
+            render.GridX(1) / 5,
             render.GridY(9) + 27,
-            render.GridX(20) + 16,
+            render.GridX(24) - render.GridX(1) / 2.5,
             render.GridY(3) - 20,
             ORANGE
         );
 
         render.DrawRectangle(
-            render.ScreenCenterX() - render.GridX(7) - (render.GridX(1) / 2),
+            render.GridX(1) / 5,
             render.GridY(12) + 27,
-            render.GridX(15),
+            render.GridX(24) - render.GridX(1) / 2.5,
             render.GridY(3) - 20,
             MAGENTA
         );
 
         render.DrawDebugRect(SkillTreeAlignmentRect01);
 
-        float spacing = SkillTreeAlignmentRect01.rect.width / 15;
+        float spacing = SkillTreeAlignmentRect01.rect.width / 13.5;
 
 
         //nodes row 01
 
-        linguisticsNode.Draw(render, render.GridX(2), render.GridY(7), linguisticsNode.innerRadius, linguisticsNode.outerRadius, linguisticsNodeColor);
-        zoologyNode.Draw(render, render.GridX(2) + spacing, render.GridY(7), 18, 22, zoologyNodeColor);
-        botanyNode.Draw(render, render.GridX(2) + spacing * 2, render.GridY(7), 18, 22, botanyNodeColor);
-        geologyNode.Draw(render, render.GridX(2) + spacing * 3, render.GridY(7), 18, 22, geologyNodeColor);
-        industrialEquipmentNode.Draw(render, render.GridX(2) + spacing * 4, render.GridY(7), 18, 22, industrialodeColor);
-        juryRiggingNode.Draw(render, render.GridX(2) + spacing * 5, render.GridY(7), 18, 22, juryRiggingNodeColor);
-        chemistryNode.Draw(render, render.GridX(2) + spacing * 6, render.GridY(7), 18, 22, chemistryNodeColor);
-        computersNode.Draw(render, render.GridX(2) + spacing * 7, render.GridY(7), 18, 22, computersNodeColor);
-        zeroGNode.Draw(render, render.GridX(2) + spacing * 8, render.GridY(7), 18, 22, zeroGNodeColor);
-        mathematicsNode.Draw(render, render.GridX(2) + spacing * 9, render.GridY(7), 18, 22, mathematicsNodeColor);
-        artNode.Draw(render, render.GridX(2) + spacing * 10, render.GridY(7), 18, 22, artNodeColor);
-        archeologyNode.Draw(render, render.GridX(2) + spacing * 11, render.GridY(7), 18, 22, archeologyNodeColor);
-        theologyNode.Draw(render, render.GridX(2) + spacing * 12, render.GridY(7), 18, 22, theologyNodeColor);
-        militaryTrainingNode.Draw(render, render.GridX(2) + spacing * 13, render.GridY(7), 18, 22, militaryTrainingNodeColor);
-        rimwiseNode.Draw(render, render.GridX(2) + spacing * 14, render.GridY(7), 18, 22, rimwiseNodeColor);
-        athleticsNode.Draw(render, render.GridX(2) + spacing * 15, render.GridY(7), 18, 22, athleticsNodeColor);
+        linguisticsNode.Draw(render, render.GridX(1) - 9, render.GridY(7), linguisticsNode.innerRadius, linguisticsNode.outerRadius, linguisticsNodeColor, "Linguistics");
+        zoologyNode.Draw(render, render.GridX(1) - 9 + spacing, render.GridY(7), 18, 22, zoologyNodeColor, "Zoology");
+        botanyNode.Draw(render, render.GridX(1) - 9 + spacing * 2, render.GridY(7), 18, 22, botanyNodeColor, "Botany");
+        geologyNode.Draw(render, render.GridX(1) - 9 + spacing * 3, render.GridY(7), 18, 22, geologyNodeColor, "Geology");
+        industrialEquipmentNode.Draw(render, render.GridX(1) + spacing * 4, render.GridY(7), 18, 22, industrialodeColor, "Industrial Equipment");
+        juryRiggingNode.Draw(render, render.GridX(1) - 9 + spacing * 5, render.GridY(7), 18, 22, juryRiggingNodeColor, "Jury Rigging");
+        chemistryNode.Draw(render, render.GridX(1) - 9 + spacing * 6, render.GridY(7), 18, 22, chemistryNodeColor, "Chemistry");
+        computersNode.Draw(render, render.GridX(1) - 9 + spacing * 7, render.GridY(7), 18, 22, computersNodeColor, " Computers");
+        zeroGNode.Draw(render, render.GridX(1) - 9 + spacing * 8, render.GridY(7), 18, 22, zeroGNodeColor, "ZeroG");
+        mathematicsNode.Draw(render, render.GridX(1) - 9 + spacing * 9, render.GridY(7), 18, 22, mathematicsNodeColor, "Mathematics");
+        artNode.Draw(render, render.GridX(1) - 9 + spacing * 10, render.GridY(7), 18, 22, artNodeColor, "Art");
+        archeologyNode.Draw(render, render.GridX(1) - 9 + spacing * 11, render.GridY(7), 18, 22, archeologyNodeColor, "Archeology");
+        theologyNode.Draw(render, render.GridX(1) - 9 + spacing * 12, render.GridY(7), 18, 22, theologyNodeColor, "Theology");
+        militaryTrainingNode.Draw(render, render.GridX(1) - 9 + spacing * 13, render.GridY(7), 18, 22, militaryTrainingNodeColor, "Military Training");
+        rimwiseNode.Draw(render, render.GridX(1) - 9 + spacing * 14, render.GridY(7), 18, 22, rimwiseNodeColor, "Rimwise");
+        athleticsNode.Draw(render, render.GridX(1) - 9 + spacing * 15, render.GridY(7), 18, 22, athleticsNodeColor, "Athletics");
 
         //nodes row 02
 
-        psychologyNode.Draw(render, render.GridX(2) - spacing/2 + spacing, render.GridY(10), 18, 22, psychologyNodeColor);
-        pathologyNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 2, render.GridY(10), 18, 22, pathologyNodeColor);
-        fieldMedicineNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 3, render.GridY(10), 18, 22, fieldMedicineNodeColor);
-        ecologyNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 4, render.GridY(10), 18, 22, ecologyNodeColor);
-        asteroidMiningNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 5, render.GridY(10), 18, 22, asteroidMiningNodeColor);
-        mechanicalRepairNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 6, render.GridY(10), 18, 22, mechanicalRepairNodeColor);
-        explosivesNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 7, render.GridY(10), 18, 22, explosivesNodeColor);
-        pharmacologyNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 8, render.GridY(10), 18, 22, pharmacologyNodeColor);
-        hackingNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 9, render.GridY(10), 18, 22, hackingNodeColor);
-        pilotingNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 10, render.GridY(10), 18, 22, pilotingNodeColor);
-        physicsNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 11, render.GridY(10), 18, 22, physicsNodeColor);
-        mysticismNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 12, render.GridY(10), 18, 22, mysticismNodeColor);
-        wildernessSurvivalNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 13, render.GridY(10), 18, 22, wildernessSurvivalNodeColor);
-        fireArmsNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 14, render.GridY(10), 18, 22, fireArmsNodeColor);
-        handToHandCombatNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 15, render.GridY(10), 18, 22, handToHandCombatNodeColor);
+        psychologyNode.Draw(render, render.GridX(1) - 9 - spacing/2 + spacing, render.GridY(10), 18, 22, psychologyNodeColor, "Psychology");
+        pathologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 2, render.GridY(10), 18, 22, pathologyNodeColor, "Pathology");
+        fieldMedicineNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 3, render.GridY(10), 18, 22, fieldMedicineNodeColor, "Field Medicine");
+        ecologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 4, render.GridY(10), 18, 22, ecologyNodeColor, "Ecology");
+        asteroidMiningNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 5, render.GridY(10), 18, 22, asteroidMiningNodeColor, "Asteroid Mining");
+        mechanicalRepairNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 6, render.GridY(10), 18, 22, mechanicalRepairNodeColor, "Mechanical Repair");
+        explosivesNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 7, render.GridY(10), 18, 22, explosivesNodeColor, "Explosives");
+        pharmacologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 8, render.GridY(10), 18, 22, pharmacologyNodeColor, "Pharma- cology");
+        hackingNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 9, render.GridY(10), 18, 22, hackingNodeColor, "Hacking");
+        pilotingNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 10, render.GridY(10), 18, 22, pilotingNodeColor, "Piloting");
+        physicsNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 11, render.GridY(10), 18, 22, physicsNodeColor, "Physics");
+        mysticismNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 12, render.GridY(10), 18, 22, mysticismNodeColor, "Mysticism");
+        wildernessSurvivalNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 13, render.GridY(10), 18, 22, wildernessSurvivalNodeColor, "Wilderness Survival");
+        fireArmsNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 14, render.GridY(10), 18, 22, fireArmsNodeColor, "Fire Arms");
+        handToHandCombatNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 15, render.GridY(10), 18, 22, handToHandCombatNodeColor, "Hand To Hand");
 
         //nodes row 03
 
-        sophontologyNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 3, render.GridY(13), 18, 22, sophontologyNodeColor);
-        exobiologyNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 4, render.GridY(13), 18, 22, exobiologyNodeColor);
-        surgeryNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 5, render.GridY(13), 18, 22, surgeryNodeColor);
-        planetologyNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 6, render.GridY(13), 18, 22, planetologyNodeColor);
-        roboticsNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 7, render.GridY(13), 18, 22, roboticsNodeColor);
-        engineeringNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 8, render.GridY(13), 18, 22, engineeringNodeColor);
-        cyberneticsNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 9, render.GridY(13), 18, 22, cyberneticsNodeColor);
-        artificialIntelligenceNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 10, render.GridY(13), 18, 22, artificialIntelligenceNodeColor);
-        hyperspaceNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 11, render.GridY(13), 18, 22, hyperspaceNodeColor);
-        xenoesotericismNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 12, render.GridY(13), 18, 22, xenoesotericismNodeColor);
-        commandNode.Draw(render, render.GridX(2) - spacing / 2 + spacing * 13, render.GridY(13), 18, 22, commandNodeColor);
+        sophontologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 3, render.GridY(13), 18, 22, sophontologyNodeColor, "Sophon- tology");
+        exobiologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 4, render.GridY(13), 18, 22, exobiologyNodeColor, "Exobiology");
+        surgeryNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 5, render.GridY(13), 18, 22, surgeryNodeColor, "Surgery");
+        planetologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 6, render.GridY(13), 18, 22, planetologyNodeColor, "Planetology");
+        roboticsNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 7, render.GridY(13), 18, 22, roboticsNodeColor, "Robotics");
+        engineeringNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 8, render.GridY(13), 18, 22, engineeringNodeColor, "Engineering");
+        cyberneticsNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 9, render.GridY(13), 18, 22, cyberneticsNodeColor, "Cyber- netics");
+        artificialIntelligenceNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 10, render.GridY(13), 18, 22, artificialIntelligenceNodeColor, "Artificial Intelligence");
+        hyperspaceNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 11, render.GridY(13), 18, 22, hyperspaceNodeColor, "Hyperspace");
+        xenoesotericismNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 12, render.GridY(13), 18, 22, xenoesotericismNodeColor, "Xenoeso- tericism");
+        commandNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 13, render.GridY(13), 18, 22, commandNodeColor, "Command");
 
         //icons row 01
-        render.DrawLoadedTexture("LinguisticsIcon", { (float)linguisticsNode.cenX - 32, (float)linguisticsNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("ZoologyIcon", { (float)zoologyNode.cenX - 32, (float)zoologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("BotanyIcon", { (float)botanyNode.cenX - 32, (float)botanyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("GeologyIcon", { (float)geologyNode.cenX - 32, (float)geologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("IndustrialEquipmentIcon", { (float)industrialEquipmentNode.cenX - 32, (float)industrialEquipmentNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("JuryRiggingIcon", { (float)juryRiggingNode.cenX - 32, (float)juryRiggingNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("ChemistryIcon", { (float)chemistryNode.cenX - 32, (float)chemistryNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("ComputersIcon", { (float)computersNode.cenX - 32, (float)computersNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("ZeroGIcon", { (float)zeroGNode.cenX - 32, (float)zeroGNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("MathematicsIcon", { (float)mathematicsNode.cenX - 32, (float)mathematicsNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("ArtIcon", { (float)artNode.cenX - 32, (float)artNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("ArcheologyIcon", { (float)archeologyNode.cenX - 32, (float)archeologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("TheologyIcon", { (float)theologyNode.cenX - 32, (float)theologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("MilitaryTrainingIcon", { (float)militaryTrainingNode.cenX - 32, (float)militaryTrainingNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("RimwiseIcon", { (float)rimwiseNode.cenX - 32, (float)rimwiseNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("AthleticsIcon", { (float)athleticsNode.cenX - 32, (float)athleticsNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("LinguisticsIcon", { (float)linguisticsNode.cenX - 32, (float)linguisticsNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ZoologyIcon", { (float)zoologyNode.cenX - 32, (float)zoologyNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("BotanyIcon", { (float)botanyNode.cenX - 32, (float)botanyNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("GeologyIcon", { (float)geologyNode.cenX - 32, (float)geologyNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("IndustrialEquipmentIcon", { (float)industrialEquipmentNode.cenX - 32, (float)industrialEquipmentNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("JuryRiggingIcon", { (float)juryRiggingNode.cenX - 32, (float)juryRiggingNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ChemistryIcon", { (float)chemistryNode.cenX - 32, (float)chemistryNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ComputersIcon", { (float)computersNode.cenX - 32, (float)computersNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ZeroGIcon", { (float)zeroGNode.cenX - 32, (float)zeroGNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("MathematicsIcon", { (float)mathematicsNode.cenX - 32, (float)mathematicsNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ArtIcon", { (float)artNode.cenX - 32, (float)artNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ArcheologyIcon", { (float)archeologyNode.cenX - 32, (float)archeologyNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("TheologyIcon", { (float)theologyNode.cenX - 32, (float)theologyNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("MilitaryTrainingIcon", { (float)militaryTrainingNode.cenX - 32, (float)militaryTrainingNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("RimwiseIcon", { (float)rimwiseNode.cenX - 32, (float)rimwiseNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("AthleticsIcon", { (float)athleticsNode.cenX - 32, (float)athleticsNode.cenY + 20 }, 0.f, 1.0f, WHITE);
 
-        render.DrawLoadedTexture("PsychologyIcon", { (float)psychologyNode.cenX - 32, (float)psychologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("PathologyIcon", { (float)pathologyNode.cenX - 32, (float)pathologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("FieldMedicineIcon", { (float)fieldMedicineNode.cenX - 32, (float)fieldMedicineNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("EcologyIcon", { (float)ecologyNode.cenX - 32, (float)ecologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("AsteroidMiningIcon", { (float)asteroidMiningNode.cenX - 32, (float)asteroidMiningNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("MechanicalRepairIcon", { (float)mechanicalRepairNode.cenX - 32, (float)mechanicalRepairNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("ExplosivesIcon", { (float)explosivesNode.cenX - 32, (float)explosivesNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("PharmacologyIcon", { (float)pharmacologyNode.cenX - 32, (float)pharmacologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("HackingIcon", { (float)hackingNode.cenX - 32, (float)hackingNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("PilotingIcon", { (float)pilotingNode.cenX - 32, (float)pilotingNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("PhysicsIcon", { (float)physicsNode.cenX - 32, (float)physicsNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("MysticismIcon", { (float)mysticismNode.cenX - 32, (float)mysticismNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("WildernessSurvivalIcon", { (float)wildernessSurvivalNode.cenX - 32, (float)wildernessSurvivalNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("FireArmsIcon", { (float)fireArmsNode.cenX - 32, (float)fireArmsNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("HandToHandCombatIcon", { (float)handToHandCombatNode.cenX - 32, (float)handToHandCombatNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("PsychologyIcon", { (float)psychologyNode.cenX - 32, (float)psychologyNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("PathologyIcon", { (float)pathologyNode.cenX - 32, (float)pathologyNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("FieldMedicineIcon", { (float)fieldMedicineNode.cenX - 32, (float)fieldMedicineNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("EcologyIcon", { (float)ecologyNode.cenX - 32, (float)ecologyNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("AsteroidMiningIcon", { (float)asteroidMiningNode.cenX - 32, (float)asteroidMiningNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("MechanicalRepairIcon", { (float)mechanicalRepairNode.cenX - 32, (float)mechanicalRepairNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ExplosivesIcon", { (float)explosivesNode.cenX - 32, (float)explosivesNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("PharmacologyIcon", { (float)pharmacologyNode.cenX - 32, (float)pharmacologyNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("HackingIcon", { (float)hackingNode.cenX - 32, (float)hackingNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("PilotingIcon", { (float)pilotingNode.cenX - 32, (float)pilotingNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("PhysicsIcon", { (float)physicsNode.cenX - 32, (float)physicsNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("MysticismIcon", { (float)mysticismNode.cenX - 32, (float)mysticismNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("WildernessSurvivalIcon", { (float)wildernessSurvivalNode.cenX - 32, (float)wildernessSurvivalNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("FireArmsIcon", { (float)fireArmsNode.cenX - 32, (float)fireArmsNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("HandToHandCombatIcon", { (float)handToHandCombatNode.cenX - 32, (float)handToHandCombatNode.cenY + 20 }, 0.f, 1.0f, WHITE);
 
-        render.DrawLoadedTexture("SophontologyIcon", { (float)sophontologyNode.cenX - 32, (float)sophontologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("ExobiologyIcon", { (float)exobiologyNode.cenX - 32, (float)exobiologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("SurgeryIcon", { (float)surgeryNode.cenX - 32, (float)surgeryNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("PlanetologyIcon", { (float)planetologyNode.cenX - 32, (float)planetologyNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("RoboticsIcon", { (float)roboticsNode.cenX - 32, (float)roboticsNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("EngineeringIcon", { (float)engineeringNode.cenX - 32, (float)engineeringNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("CyberneticsIcon", { (float)cyberneticsNode.cenX - 32, (float)cyberneticsNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("ArtificialIntelligenceIcon", { (float)artificialIntelligenceNode.cenX - 32, (float)artificialIntelligenceNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("HyperspaceIcon", { (float)hyperspaceNode.cenX - 32, (float)hyperspaceNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("XenoesotericismIcon", { (float)xenoesotericismNode.cenX - 32, (float)xenoesotericismNode.cenY + 40 }, 0.f, 1.0f, WHITE);
-        render.DrawLoadedTexture("CommandIcon", { (float)commandNode.cenX - 32, (float)commandNode.cenY + 40 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("SophontologyIcon", { (float)sophontologyNode.cenX - 32, (float)sophontologyNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ExobiologyIcon", { (float)exobiologyNode.cenX - 32, (float)exobiologyNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("SurgeryIcon", { (float)surgeryNode.cenX - 32, (float)surgeryNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("PlanetologyIcon", { (float)planetologyNode.cenX - 32, (float)planetologyNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("RoboticsIcon", { (float)roboticsNode.cenX - 32, (float)roboticsNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("EngineeringIcon", { (float)engineeringNode.cenX - 32, (float)engineeringNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("CyberneticsIcon", { (float)cyberneticsNode.cenX - 32, (float)cyberneticsNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("ArtificialIntelligenceIcon", { (float)artificialIntelligenceNode.cenX - 32, (float)artificialIntelligenceNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("HyperspaceIcon", { (float)hyperspaceNode.cenX - 32, (float)hyperspaceNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("XenoesotericismIcon", { (float)xenoesotericismNode.cenX - 32, (float)xenoesotericismNode.cenY + 20 }, 0.f, 1.0f, WHITE);
+        render.DrawLoadedTexture("CommandIcon", { (float)commandNode.cenX - 32, (float)commandNode.cenY + 20 }, 0.f, 1.0f, WHITE);
     }
 
     }

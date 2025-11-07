@@ -5,7 +5,7 @@ SkillTreeNode::SkillTreeNode()
 
 }
 
-void SkillTreeNode::Draw(Renderer& render, int centerX, int centerY, int innerCircleSize, int outerCircleSize, Color color) 
+void SkillTreeNode::Draw(Renderer& render, int centerX, int centerY, int innerCircleSize, int outerCircleSize, Color color, std::string label)
 {
 	cenX = centerX;
 	cenY = centerY;
@@ -13,7 +13,9 @@ void SkillTreeNode::Draw(Renderer& render, int centerX, int centerY, int innerCi
     bool hovered = IsHovered();
     float scale = hovered ? 1.2f : 1.0f;
 
-	render.DrawNodeCircle(centerX, centerY, innerCircleSize * scale, outerCircleSize * scale, color);
+	render.DrawNodeCircle(centerX, centerY - 10, innerCircleSize * scale, outerCircleSize * scale, color);
+
+    render.DrawTextBlockNoPadding(label, centerX - 60, centerY + 80, 120, TextAlign::Center, TextSize::SkillTreeNode);
 }
 
 bool SkillTreeNode::IsHovered() const

@@ -7,7 +7,7 @@ class SkillTreeNode
 {
 public:
     SkillTreeNode();
-    void Draw(Renderer& render, int centerX, int centerY, int innerCircleSize, int outerCircleSize, Color color);
+    void Draw(Renderer& render, int centerX, int centerY, int innerCircleSize, int outerCircleSize, Color color, std::string label);
     bool IsHovered() const;
     void nodeHoverFunctionality();
 

@@ -19,6 +19,7 @@ enum class TextSize
     Button01,
     Dialogue,
     SmallerTitle,
+    SkillTreeNode,
     MenuSmall
 };
 
