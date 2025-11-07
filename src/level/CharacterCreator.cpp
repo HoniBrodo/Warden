@@ -1307,6 +1307,30 @@ void CharacterCreator::Draw(Renderer& render)
             LIGHTGRAY
         );
 
+        render.DrawRectangle(
+            render.ScreenCenterX() - render.GridX(10) - (render.GridX(1)/2) - 15,
+            render.GridY(6) + 27,
+            render.GridX(21) + 30,
+            render.GridY(3) - 20,
+            SKYBLUE
+        );
+
+        render.DrawRectangle(
+            render.ScreenCenterX() - render.GridX(10) - 8,
+            render.GridY(9) + 27,
+            render.GridX(20) + 16,
+            render.GridY(3) - 20,
+            ORANGE
+        );
+
+        render.DrawRectangle(
+            render.ScreenCenterX() - render.GridX(7) - (render.GridX(1) / 2),
+            render.GridY(12) + 27,
+            render.GridX(15),
+            render.GridY(3) - 20,
+            MAGENTA
+        );
+
         render.DrawDebugRect(SkillTreeAlignmentRect01);
 
         float spacing = SkillTreeAlignmentRect01.rect.width / 15;
