@@ -1315,6 +1315,17 @@ void CharacterCreator::Draw(Renderer& render)
             TextSize::MenuMedium
         );
 
+        render.DrawTextBlockNoPadding(
+            stateManager.GetPlayer()->GetClass().GetClassStatsInstructions(),
+            render.GridX(1) / 5,
+            render.GridY(3),
+            ((render.GridX(24) - (render.GridX(1) / 2.5)) / 2) - 10,
+            TextAlign::Center,
+            TextSize::Dialogue
+        );
+
+
+
         render.DrawDebugRect(SkillTreeAlignmentRect01);
 
         float spacing = SkillTreeAlignmentRect01.rect.width / 13.5;

@@ -12,6 +12,7 @@ public:
 
     // accessors
     std::string GetClassBio() const { return classBio; }
+    std::string GetClassStatsInstructions() const { return classStatsInstructions; }
     std::string GetName() const { return name; }
     int GetStrength() const { return strength; }
     int GetSpeed() const { return speed; }
@@ -53,9 +54,10 @@ protected:
 
     std::string name;
 
-    // bio
     std::string classBio{};
     std::vector<std::string> classMechanics;
+    std::string classStatsInstructions;
+
 
     // stats
     int strength{ 36 };
