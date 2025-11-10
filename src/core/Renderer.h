@@ -20,7 +20,8 @@ enum class TextSize
     Dialogue,
     SmallerTitle,
     SkillTreeNode,
-    MenuSmall
+    MenuSmall,
+    MenuMedium
 };
 
 struct DebugRect {

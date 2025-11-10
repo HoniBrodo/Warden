@@ -1306,7 +1306,14 @@ void CharacterCreator::Draw(Renderer& render)
             LIGHTGRAY
         );
 
-
+        render.DrawTextBlockNoPadding(
+            "Select skills for " + className,
+            render.GridX(1) / 5,
+            render.GridY(1) + render.GridX(1) / 7,
+            ((render.GridX(24) - (render.GridX(1) / 2.5)) / 2) - 10,
+            TextAlign::Center,
+            TextSize::MenuMedium
+        );
 
         render.DrawDebugRect(SkillTreeAlignmentRect01);
 
