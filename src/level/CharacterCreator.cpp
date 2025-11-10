@@ -1279,16 +1279,23 @@ void CharacterCreator::Draw(Renderer& render)
     {
 
 
+
         className = stateManager.GetPlayer()->GetClass().GetName();
 
-        render.DrawTextBlock
-        (
-            "Choose " + className + " Skills",
-            render.TextScreenCenterX(1100),
-            render.GridY(1),
-            1100,
-            TextAlign::Center,
-            TextSize::SmallerTitle
+        render.DrawRectangle(
+            render.GridX(1) / 5,
+            render.GridY(1) + render.GridX(1) / 7,
+            ((render.GridX(24) - (render.GridX(1) / 2.5)) / 2) - 10,
+            render.GridY(5 ) - render.GridX(1) / 2.5,
+            LIGHTGRAY
+        );
+
+        render.DrawRectangle(
+            render.GridX(12) + 10,
+            render.GridY(1) + render.GridX(1) / 7,
+            ((render.GridX(24) - (render.GridX(1) / 2.5)) / 2) - 10,
+            render.GridY(5) - render.GridX(1) / 2.5,
+            LIGHTGRAY
         );
 
         render.DrawRectangle(
@@ -1299,13 +1306,7 @@ void CharacterCreator::Draw(Renderer& render)
             LIGHTGRAY
         );
 
-        render.DrawRectangle(
-            render.GridX(1) / 5,
-            render.GridY(3) + render.GridY(1) / 2 + 6,
-            render.GridX(24) - render.GridX(1) / 2.5,
-            render.GridY(2),
-            LIGHTGRAY
-        );
+
 
         render.DrawDebugRect(SkillTreeAlignmentRect01);
 
