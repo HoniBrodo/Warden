@@ -52,6 +52,7 @@ public:
     int ScreenCenterX() { return screenWidth / 2; }
     int TextScreenCenterX(int paddingWidth) { return (screenWidth / 2) - (paddingWidth / 2); }
     int GetPaddingHeight(const std::string& text, TextSize size, int maxWidth);
+    void DrawSkillTreeIcon(std::string image, Vector2 pos, float rotation, float scale, Color tint, Color background);
 
     int AlignCenterXInRect(const DebugRect& container, int contentWidth) const;
     void DrawDebugRect(const DebugRect& container, Color color = RED) const;

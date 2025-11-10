@@ -227,6 +227,14 @@ int Renderer::GetPaddingHeight(const std::string& text, TextSize size, int maxWi
 	return wrappedText.size() * lineSpacing + indent;
 }
 
+void Renderer::DrawSkillTreeIcon(std::string image, Vector2 pos, float rotation, float scale, Color tint, Color background)
+{
+	Texture2D& texture = textureManager.GetTexture(image);
+	DrawRectangle((int)pos.x + 4, (int)pos.y + 4, 58, 58, background);
+	DrawTextureEx(texture, pos, rotation, scale, tint);
+
+}
+
 
 void Renderer::UpdateCellSize()
 {
