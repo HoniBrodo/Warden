@@ -11,7 +11,7 @@ Marine::Marine() : BaseClass("Marine") {
 
     classMechanics = {"+10 to combat", "+10 to body save", "+20 to fear save", "+1 max wounds"};
 
-    classStatsInstructions = "This is a test";
+    classStatsInstructions = "MANDATORY: Military training, Aethletics. BONUS: 1 expert skill OR 2 trained skills.";
 
     loadout01Items = { "Advanced Battle Dress (AP 10)", "Flamethrower (4 shots)", "Boarding Axe"};
     loadout02Items = { "Standard Battle Dress (AP 7)", "Pulse Rifle (3 mags)", "Infrared Goggles" };

@@ -9,6 +9,8 @@ Scientist::Scientist() : BaseClass("Scientist") {
    
     classMechanics = { "+10 to Intellect", "+5 to any 1 stat", "+30 to Sanity Save"};
 
+    classStatsInstructions = "1 Expert Skill along with the necessary expert and tarined prerequisites, as well as one additional trained skill";
+
     loadout01Items = { "Hazard Suit (AP 5)", "Tranq Pistol (3 shots)","Bioscanner", "Sample Collection Kit" };
     loadout02Items = { "Vaccsuit (AP 3)", "Foam Gun (2 charges)", "Foldable Stretcher", "First Aid Kit", "Radiation Pills (x5)" };
     loadout03Items = { "Hazard Suit(AP 5)", "Flamethrower(1 charge)", "Stimpak", "Electronic Tool Set" };

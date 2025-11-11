@@ -1324,6 +1324,23 @@ void CharacterCreator::Draw(Renderer& render)
             TextSize::Dialogue
         );
 
+        render.DrawTextBlockNoPadding(
+            "Rules for skill selection:",
+            render.GridX(12) + 10,
+            render.GridY(1) + render.GridX(1) / 7,
+            ((render.GridX(24) - (render.GridX(1) / 2.5)) / 2) - 10,
+            TextAlign::Center,
+            TextSize::MenuMedium
+        );
+
+        render.DrawTextBlockNoPadding(
+            "To take a Master or Expert skill you must first take at least one of its prerequisite skills. Hover over a node to see the skill paths. Hover over an skill icon for a description.",
+            render.GridX(12) + 10,
+            render.GridY(3),
+            ((render.GridX(24) - (render.GridX(1) / 2.5)) / 2) - 10,
+            TextAlign::Center,
+            TextSize::Dialogue
+        );
 
 
         render.DrawDebugRect(SkillTreeAlignmentRect01);
