@@ -11,8 +11,8 @@
 plan:
 -----
 
--- when hovering over any of the nodes, make all icons transparent 
-
+-- on isHovering, run a function that accepts the object as an argument. The function will 
+iterate through all of the objects except the object that is being hovered over and will make the icon transparent 
 */
 
 CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render) : stateManager(sm), textureManager(tm), render(render)
