@@ -285,5 +285,17 @@ private:
 
 
 
+    // skill tree icon colors
+
+    Color skillTreeTrainedColor = SKYBLUE;
+    Color skillTreeTrainedFaded = { 102, 191, 255, 80 };
+    Color skillTreeMasterColor = ORANGE;
+    Color skillTreeMasterFaded = { 255, 161, 0, 80 };
+    Color skillTreeExpertColor = MAGENTA;
+    Color skillTreeExpertFaded = { 255, 161, 0, 80 };
+    Color skillTreeIconOpaque = WHITE;
+    Color SkillTreeIconTransparent = Fade(WHITE, 0.5f);
+
+
 
 };  

@@ -154,7 +154,7 @@ void CharacterCreator::HandleInput()
             stateManager.SetPlayer(std::move(player));
 
             // change back to stats once finished working on the skills screen
-            currentPage = Page::SKILLS_SELECT;
+            currentPage = Page::STATS_SELECT;
 
             break;
         }
@@ -1350,6 +1350,7 @@ void CharacterCreator::Draw(Renderer& render)
 
         //nodes row 01
 
+
         linguisticsNode.Draw(render, render.GridX(1) - 9, render.GridY(7), linguisticsNode.innerRadius, linguisticsNode.outerRadius, linguisticsNodeColor, "Linguistics");
         zoologyNode.Draw(render, render.GridX(1) - 9 + spacing, render.GridY(7), 18, 22, zoologyNodeColor, "Zoology");
         botanyNode.Draw(render, render.GridX(1) - 9 + spacing * 2, render.GridY(7), 18, 22, botanyNodeColor, "Botany");
@@ -1400,7 +1401,7 @@ void CharacterCreator::Draw(Renderer& render)
         commandNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 13, render.GridY(13), 18, 22, commandNodeColor, "Command");
 
         //icons row 01
-        render.DrawSkillTreeIcon("LinguisticsIcon", { (float)linguisticsNode.cenX - 32, (float)linguisticsNode.cenY + 20 }, 0.f, 1.0f, WHITE, SKYBLUE);
+        render.DrawSkillTreeIcon("LinguisticsIcon", { (float)linguisticsNode.cenX - 32, (float)linguisticsNode.cenY + 20 }, 0.f, 1.0f, Fade(WHITE, 0.5f), { 102, 191, 255, 80 });
         render.DrawSkillTreeIcon("ZoologyIcon", { (float)zoologyNode.cenX - 32, (float)zoologyNode.cenY + 20 }, 0.f, 1.0f, WHITE, SKYBLUE);
         render.DrawSkillTreeIcon("BotanyIcon", { (float)botanyNode.cenX - 32, (float)botanyNode.cenY + 20 }, 0.f, 1.0f, WHITE, SKYBLUE);
         render.DrawSkillTreeIcon("GeologyIcon", { (float)geologyNode.cenX - 32, (float)geologyNode.cenY + 20 }, 0.f, 1.0f, WHITE, SKYBLUE);
