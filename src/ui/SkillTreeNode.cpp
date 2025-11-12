@@ -1,8 +1,9 @@
 #include "SkillTreeNode.h"
 
+
+
 SkillTreeNode::SkillTreeNode()
 {
-
 }
 
 void SkillTreeNode::Draw(Renderer& render, int centerX, int centerY, int innerCircleSize, int outerCircleSize, Color color, std::string label)
