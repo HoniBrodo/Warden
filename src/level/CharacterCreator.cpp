@@ -11,8 +11,37 @@
 plan:
 -----
 
--- on isHovering, run a function that accepts the object as an argument. The function will 
-iterate through all of the objects except the object that is being hovered over and will make the icon transparent 
+skillTreeTrainedColor = SKYBLUE;
+skillTreeMasterColor = ORANGE;
+skillTreeExpertColor = MAGENTA;
+skillTreeIconOpacity = WHITE;
+
+skillTreeTrainedTaintedColor = { 102, 191, 255, 80 };
+skillTreeMasterTaintedColor = { 255, 161, 0, 80 };
+skillTreeExpertTaintedColor = { 255, 0, 255, 80 };
+skillTreeIconTaintedOpacity = Fade(WHITE, 0.5f);
+
+
+-- create constructor in the SkillTreeNode class that can initialize a value do indicate what level og skill the object is
+
+-- create a function in that each node object can call in order to draw the icon to the screen, in place of the current 
+non-object based set-up. 
+
+-- in the draw fucntion use an if statement to check if the bool 'isTransparent' is true and 
+set the color of the icon based on the result of the check. Consdider using nested if statements to check what type of skill
+the node if for.
+
+-- in CharacterCreator, create a vector of all of the SkillTreeNode objects called allNodes. These should be references not copies.
+
+-- in CharacterCreator, create a function that accepts two vectors of SkillTreeNode objects. One vector will be the allNodes
+vector and the other will be a list of nodes spcific to what node the player is hovering over. 
+the function will iterate through the vectors and compre. It will change the color of the nodes icon to transparent if the name 
+of the object DOESNT appear in both vectors. 
+
+-- in the isHovering function for each node, create a vector that is specific to that node. The vector will contain all of the 
+node that are to NOT be changed to their transparent color. run the above function and pass in the vector as well as the allNodes 
+vector
+
 */
 
 CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render) : stateManager(sm), textureManager(tm), render(render)
@@ -152,7 +181,7 @@ void CharacterCreator::HandleInput()
             stateManager.SetPlayer(std::move(player));
 
             // change back to stats once finished working on the skills screen
-            currentPage = Page::STATS_SELECT;
+            currentPage = Page::SKILLS_SELECT;
 
             break;
         }
@@ -728,7 +757,6 @@ void CharacterCreator::HandleInput()
             skillTreeMasterColor = ORANGE;
             skillTreeExpertColor = MAGENTA;
             skillTreeIconOpacity = WHITE;
-
         }
 
         else
@@ -742,7 +770,6 @@ void CharacterCreator::HandleInput()
         if (zoologyNode.IsHovered()) 
         {
             isHoveringOverNode = true;
-
         }
         else
         {
@@ -1291,11 +1318,6 @@ void CharacterCreator::Draw(Renderer& render)
 
         break;
 
-    //case Page::SKILLS_SELECT:
-    //{
-
-    //}
-
     }
 
     case Page::SKILLS_SELECT:
@@ -1428,7 +1450,7 @@ void CharacterCreator::Draw(Renderer& render)
         //render.DrawSkillTreeIcon("LinguisticsIcon", { (float)linguisticsNode.cenX - 32, (float)linguisticsNode.cenY + 20 }, 0.f, 1.0f, Fade(WHITE, 0.5f), { 102, 191, 255, 80 });
 
         render.DrawSkillTreeIcon("LinguisticsIcon", { (float)linguisticsNode.cenX - 32, (float)linguisticsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("ZoologyIcon", { (float)zoologyNode.cenX - 32, (float)zoologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, zoologyNode.iconColor);
+        render.DrawSkillTreeIcon("ZoologyIcon", { (float)zoologyNode.cenX - 32, (float)zoologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
         render.DrawSkillTreeIcon("BotanyIcon", { (float)botanyNode.cenX - 32, (float)botanyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
         render.DrawSkillTreeIcon("GeologyIcon", { (float)geologyNode.cenX - 32, (float)geologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
         render.DrawSkillTreeIcon("IndustrialEquipmentIcon", { (float)industrialEquipmentNode.cenX - 32, (float)industrialEquipmentNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
