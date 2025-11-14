@@ -26,6 +26,8 @@ public:
     int cenX{};
     int cenY{};
 
+    bool isTransparent = false;
+
     Color iconColor{ SKYBLUE };
 
 

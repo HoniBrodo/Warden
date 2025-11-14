@@ -24,7 +24,7 @@ skillTreeIconTaintedOpacity = Fade(WHITE, 0.5f);
 
 -- ***DONE*** create constructor in the SkillTreeNode class that can initialize a value to indicate what level or skill the object is 
 
--- create a function that each node object can call in order to draw the icon to the screen, in place of the current 
+-- ***DONE*** create a function that each node object can call in order to draw the icon to the screen, in place of the current 
 non-object based set-up. 
 
 -- in the draw fucntion use an if statement to check if the bool 'isTransparent' is true and 
@@ -798,29 +798,13 @@ void CharacterCreator::HandleInput()
 
     case Page::SKILLS_SELECT:
     {
-        if (!isHoveringOverNode)
-        {
-            skillTreeTrainedColor = SKYBLUE;
-            skillTreeMasterColor = ORANGE;
-            skillTreeExpertColor = MAGENTA;
-            skillTreeIconOpacity = WHITE;
-        }
-
-        else
-        {
-            skillTreeTrainedColor = { 102, 191, 255, 80 };
-            skillTreeMasterColor = { 255, 161, 0, 80 };
-            skillTreeExpertColor = { 255, 0, 255, 80 };
-            skillTreeIconOpacity = Fade(WHITE, 0.5f);
-        }
-
         if (zoologyNode.IsHovered()) 
         {
-            isHoveringOverNode = true;
+            zoologyNode.isTransparent = true;
         }
         else
         {
-            isHoveringOverNode = false;
+            zoologyNode.isTransparent = false;
         }
     }
 
@@ -1496,51 +1480,51 @@ void CharacterCreator::Draw(Renderer& render)
 
         //render.DrawSkillTreeIcon("LinguisticsIcon", { (float)linguisticsNode.cenX - 32, (float)linguisticsNode.cenY + 20 }, 0.f, 1.0f, Fade(WHITE, 0.5f), { 102, 191, 255, 80 });
 
-        //render.DrawSkillTreeIcon("LinguisticsIcon", { (float)linguisticsNode.cenX - 32, (float)linguisticsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
         linguisticsNode.DrawIcon(render, "LinguisticsIcon", { (float)linguisticsNode.cenX - 32, (float)linguisticsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("ZoologyIcon", { (float)zoologyNode.cenX - 32, (float)zoologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("BotanyIcon", { (float)botanyNode.cenX - 32, (float)botanyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("GeologyIcon", { (float)geologyNode.cenX - 32, (float)geologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("IndustrialEquipmentIcon", { (float)industrialEquipmentNode.cenX - 32, (float)industrialEquipmentNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("JuryRiggingIcon", { (float)juryRiggingNode.cenX - 32, (float)juryRiggingNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("ChemistryIcon", { (float)chemistryNode.cenX - 32, (float)chemistryNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("ComputersIcon", { (float)computersNode.cenX - 32, (float)computersNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("ZeroGIcon", { (float)zeroGNode.cenX - 32, (float)zeroGNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("MathematicsIcon", { (float)mathematicsNode.cenX - 32, (float)mathematicsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("ArtIcon", { (float)artNode.cenX - 32, (float)artNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("ArcheologyIcon", { (float)archeologyNode.cenX - 32, (float)archeologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("TheologyIcon", { (float)theologyNode.cenX - 32, (float)theologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("MilitaryTrainingIcon", { (float)militaryTrainingNode.cenX - 32, (float)militaryTrainingNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("RimwiseIcon", { (float)rimwiseNode.cenX - 32, (float)rimwiseNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
-        render.DrawSkillTreeIcon("AthleticsIcon", { (float)athleticsNode.cenX - 32, (float)athleticsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        zoologyNode.DrawIcon(render, "ZoologyIcon", { (float)zoologyNode.cenX - 32, (float)zoologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        botanyNode.DrawIcon(render, "BotanyIcon", { (float)botanyNode.cenX - 32, (float)botanyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        geologyNode.DrawIcon(render, "GeologyIcon", { (float)geologyNode.cenX - 32, (float)geologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        industrialEquipmentNode.DrawIcon(render, "IndustrialEquipmentIcon", { (float)industrialEquipmentNode.cenX - 32, (float)industrialEquipmentNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        juryRiggingNode.DrawIcon(render, "JuryRiggingIcon", { (float)juryRiggingNode.cenX - 32, (float)juryRiggingNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        chemistryNode.DrawIcon(render, "ChemistryIcon", { (float)chemistryNode.cenX - 32, (float)chemistryNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        computersNode.DrawIcon(render, "ComputersIcon", { (float)computersNode.cenX - 32, (float)computersNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        zeroGNode.DrawIcon(render, "ZeroGIcon", { (float)zeroGNode.cenX - 32, (float)zeroGNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        mathematicsNode.DrawIcon(render, "MathematicsIcon", { (float)mathematicsNode.cenX - 32, (float)mathematicsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        artNode.DrawIcon(render, "ArtIcon", { (float)artNode.cenX - 32, (float)artNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        archeologyNode.DrawIcon(render, "ArcheologyIcon", { (float)archeologyNode.cenX - 32, (float)archeologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        theologyNode.DrawIcon(render, "TheologyIcon", { (float)theologyNode.cenX - 32, (float)theologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        militaryTrainingNode.DrawIcon(render, "MilitaryTrainingIcon", { (float)militaryTrainingNode.cenX - 32, (float)militaryTrainingNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        rimwiseNode.DrawIcon(render, "RimwiseIcon", { (float)rimwiseNode.cenX - 32, (float)rimwiseNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        athleticsNode.DrawIcon(render, "AthleticsIcon", { (float)athleticsNode.cenX - 32, (float)athleticsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
 
-        render.DrawSkillTreeIcon("PsychologyIcon", { (float)psychologyNode.cenX - 32, (float)psychologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
-        render.DrawSkillTreeIcon("PathologyIcon", { (float)pathologyNode.cenX - 32, (float)pathologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
-        render.DrawSkillTreeIcon("FieldMedicineIcon", { (float)fieldMedicineNode.cenX - 32, (float)fieldMedicineNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
-        render.DrawSkillTreeIcon("EcologyIcon", { (float)ecologyNode.cenX - 32, (float)ecologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
-        render.DrawSkillTreeIcon("AsteroidMiningIcon", { (float)asteroidMiningNode.cenX - 32, (float)asteroidMiningNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
-        render.DrawSkillTreeIcon("MechanicalRepairIcon", { (float)mechanicalRepairNode.cenX - 32, (float)mechanicalRepairNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
-        render.DrawSkillTreeIcon("ExplosivesIcon", { (float)explosivesNode.cenX - 32, (float)explosivesNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
-        render.DrawSkillTreeIcon("PharmacologyIcon", { (float)pharmacologyNode.cenX - 32, (float)pharmacologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
-        render.DrawSkillTreeIcon("HackingIcon", { (float)hackingNode.cenX - 32, (float)hackingNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
-        render.DrawSkillTreeIcon("PilotingIcon", { (float)pilotingNode.cenX - 32, (float)pilotingNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
-        render.DrawSkillTreeIcon("PhysicsIcon", { (float)physicsNode.cenX - 32, (float)physicsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
-        render.DrawSkillTreeIcon("MysticismIcon", { (float)mysticismNode.cenX - 32, (float)mysticismNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
-        render.DrawSkillTreeIcon("WildernessSurvivalIcon", { (float)wildernessSurvivalNode.cenX - 32, (float)wildernessSurvivalNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
-        render.DrawSkillTreeIcon("FireArmsIcon", { (float)fireArmsNode.cenX - 32, (float)fireArmsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
-        render.DrawSkillTreeIcon("HandToHandCombatIcon", { (float)handToHandCombatNode.cenX - 32, (float)handToHandCombatNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
+        psychologyNode.DrawIcon(render, "PsychologyIcon", { (float)psychologyNode.cenX - 32, (float)psychologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
+        pathologyNode.DrawIcon(render, "PathologyIcon", { (float)pathologyNode.cenX - 32, (float)pathologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
+        fieldMedicineNode.DrawIcon(render, "FieldMedicineIcon", { (float)fieldMedicineNode.cenX - 32, (float)fieldMedicineNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
+        ecologyNode.DrawIcon(render, "EcologyIcon", { (float)ecologyNode.cenX - 32, (float)ecologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
+        asteroidMiningNode.DrawIcon(render, "AsteroidMiningIcon", { (float)asteroidMiningNode.cenX - 32, (float)asteroidMiningNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
+        mechanicalRepairNode.DrawIcon(render, "MechanicalRepairIcon", { (float)mechanicalRepairNode.cenX - 32, (float)mechanicalRepairNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
+        explosivesNode.DrawIcon(render, "ExplosivesIcon", { (float)explosivesNode.cenX - 32, (float)explosivesNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
+        pharmacologyNode.DrawIcon(render, "PharmacologyIcon", { (float)pharmacologyNode.cenX - 32, (float)pharmacologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
+        hackingNode.DrawIcon(render, "HackingIcon", { (float)hackingNode.cenX - 32, (float)hackingNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
+        pilotingNode.DrawIcon(render, "PilotingIcon", { (float)pilotingNode.cenX - 32, (float)pilotingNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
+        physicsNode.DrawIcon(render, "PhysicsIcon", { (float)physicsNode.cenX - 32, (float)physicsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
+        mysticismNode.DrawIcon(render, "MysticismIcon", { (float)mysticismNode.cenX - 32, (float)mysticismNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
+        wildernessSurvivalNode.DrawIcon(render, "WildernessSurvivalIcon", { (float)wildernessSurvivalNode.cenX - 32, (float)wildernessSurvivalNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
+        fireArmsNode.DrawIcon(render, "FireArmsIcon", { (float)fireArmsNode.cenX - 32, (float)fireArmsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
+        handToHandCombatNode.DrawIcon(render, "HandToHandCombatIcon", { (float)handToHandCombatNode.cenX - 32, (float)handToHandCombatNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeMasterColor);
 
-        render.DrawSkillTreeIcon("SophontologyIcon", { (float)sophontologyNode.cenX - 32, (float)sophontologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
-        render.DrawSkillTreeIcon("ExobiologyIcon", { (float)exobiologyNode.cenX - 32, (float)exobiologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
-        render.DrawSkillTreeIcon("SurgeryIcon", { (float)surgeryNode.cenX - 32, (float)surgeryNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
-        render.DrawSkillTreeIcon("PlanetologyIcon", { (float)planetologyNode.cenX - 32, (float)planetologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
-        render.DrawSkillTreeIcon("RoboticsIcon", { (float)roboticsNode.cenX - 32, (float)roboticsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
-        render.DrawSkillTreeIcon("EngineeringIcon", { (float)engineeringNode.cenX - 32, (float)engineeringNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
-        render.DrawSkillTreeIcon("CyberneticsIcon", { (float)cyberneticsNode.cenX - 32, (float)cyberneticsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
-        render.DrawSkillTreeIcon("ArtificialIntelligenceIcon", { (float)artificialIntelligenceNode.cenX - 32, (float)artificialIntelligenceNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
-        render.DrawSkillTreeIcon("HyperspaceIcon", { (float)hyperspaceNode.cenX - 32, (float)hyperspaceNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
-        render.DrawSkillTreeIcon("XenoesotericismIcon", { (float)xenoesotericismNode.cenX - 32, (float)xenoesotericismNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
-        render.DrawSkillTreeIcon("CommandIcon", { (float)commandNode.cenX - 32, (float)commandNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
+        sophontologyNode.DrawIcon(render, "SophontologyIcon", { (float)sophontologyNode.cenX - 32, (float)sophontologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
+        exobiologyNode.DrawIcon(render, "ExobiologyIcon", { (float)exobiologyNode.cenX - 32, (float)exobiologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
+        surgeryNode.DrawIcon(render, "SurgeryIcon", { (float)surgeryNode.cenX - 32, (float)surgeryNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
+        planetologyNode.DrawIcon(render, "PlanetologyIcon", { (float)planetologyNode.cenX - 32, (float)planetologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
+        roboticsNode.DrawIcon(render, "RoboticsIcon", { (float)roboticsNode.cenX - 32, (float)roboticsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
+        engineeringNode.DrawIcon(render, "EngineeringIcon", { (float)engineeringNode.cenX - 32, (float)engineeringNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
+        cyberneticsNode.DrawIcon(render, "CyberneticsIcon", { (float)cyberneticsNode.cenX - 32, (float)cyberneticsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
+        artificialIntelligenceNode.DrawIcon(render, "ArtificialIntelligenceIcon", { (float)artificialIntelligenceNode.cenX - 32, (float)artificialIntelligenceNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
+        hyperspaceNode.DrawIcon(render, "HyperspaceIcon", { (float)hyperspaceNode.cenX - 32, (float)hyperspaceNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
+        xenoesotericismNode.DrawIcon(render, "XenoesotericismIcon", { (float)xenoesotericismNode.cenX - 32, (float)xenoesotericismNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
+        commandNode.DrawIcon(render, "CommandIcon", { (float)commandNode.cenX - 32, (float)commandNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
+
     }
 
     }

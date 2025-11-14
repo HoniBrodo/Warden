@@ -68,8 +68,6 @@ private:
     bool isAllocated{ false };
     bool areStatsCopied{ false }; 
 
-    bool isHoveringOverNode{ false };
-
     bool isStrengthIncreased = false;
     bool isSpeedIncreased = false;
     bool isIntellectIncreased = false;
@@ -289,9 +287,9 @@ private:
 
     // skill tree icon colors
 
-    Color skillTreeTrainedColor = WHITE;
-    Color skillTreeMasterColor = WHITE;
-    Color skillTreeExpertColor = WHITE;
+    Color skillTreeTrainedColor = SKYBLUE;
+    Color skillTreeMasterColor = ORANGE;
+    Color skillTreeExpertColor = MAGENTA;
 
     Color skillTreeIconOpacity = WHITE;
     //Color SkillTreeIconTransparent = Fade(WHITE, 0.5f);

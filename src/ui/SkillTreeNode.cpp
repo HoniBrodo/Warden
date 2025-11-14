@@ -34,6 +34,26 @@ bool SkillTreeNode::IsHovered() const
 
 void SkillTreeNode::DrawIcon(Renderer& render, std::string image, Vector2 pos, float rotation, float scale, Color tint, Color background)
 {
+
+	if (isTransparent)
+	{
+		switch (skillLevel)
+		{
+		case SkillLevel::TRAINED:
+			background = BLACK;
+			break;
+		case SkillLevel::EXPERT:
+			background = BLACK;
+			break;
+		case SkillLevel::MASTER:
+			background = BLACK;
+			break;
+		default:
+			background;
+			break;
+		}
+	}
+
 	render.DrawSkillTreeIcon(image, pos, rotation, scale, tint, background);
 }
 
