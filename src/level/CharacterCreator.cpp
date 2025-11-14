@@ -22,9 +22,9 @@ skillTreeExpertTaintedColor = { 255, 0, 255, 80 };
 skillTreeIconTaintedOpacity = Fade(WHITE, 0.5f);
 
 
--- create constructor in the SkillTreeNode class that can initialize a value do indicate what level og skill the object is
+-- ***DONE*** create constructor in the SkillTreeNode class that can initialize a value to indicate what level or skill the object is 
 
--- create a function in that each node object can call in order to draw the icon to the screen, in place of the current 
+-- create a function that each node object can call in order to draw the icon to the screen, in place of the current 
 non-object based set-up. 
 
 -- in the draw fucntion use an if statement to check if the bool 'isTransparent' is true and 
@@ -44,7 +44,54 @@ vector
 
 */
 
-CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render) : stateManager(sm), textureManager(tm), render(render)
+CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render) : stateManager(sm), textureManager(tm), render(render),
+
+// Skill initialisers
+linguisticsNode(SkillLevel::TRAINED),
+zoologyNode(SkillLevel::TRAINED),
+botanyNode(SkillLevel::TRAINED),
+geologyNode(SkillLevel::TRAINED),
+industrialEquipmentNode(SkillLevel::TRAINED),
+juryRiggingNode(SkillLevel::TRAINED),
+chemistryNode(SkillLevel::TRAINED),
+computersNode(SkillLevel::TRAINED),
+zeroGNode(SkillLevel::TRAINED),
+mathematicsNode(SkillLevel::TRAINED),
+artNode(SkillLevel::TRAINED),
+archeologyNode(SkillLevel::TRAINED),
+theologyNode(SkillLevel::TRAINED),
+militaryTrainingNode(SkillLevel::TRAINED),
+rimwiseNode(SkillLevel::TRAINED),
+athleticsNode(SkillLevel::TRAINED),
+
+psychologyNode(SkillLevel::EXPERT),
+pathologyNode(SkillLevel::EXPERT),
+fieldMedicineNode(SkillLevel::EXPERT),
+ecologyNode(SkillLevel::EXPERT),
+asteroidMiningNode(SkillLevel::EXPERT),
+mechanicalRepairNode(SkillLevel::EXPERT),
+explosivesNode(SkillLevel::EXPERT),
+pharmacologyNode(SkillLevel::EXPERT),
+hackingNode(SkillLevel::EXPERT),
+pilotingNode(SkillLevel::EXPERT),
+physicsNode(SkillLevel::EXPERT),
+mysticismNode(SkillLevel::EXPERT),
+wildernessSurvivalNode(SkillLevel::EXPERT),
+fireArmsNode(SkillLevel::EXPERT),
+handToHandCombatNode(SkillLevel::EXPERT),
+
+sophontologyNode(SkillLevel::MASTER),
+exobiologyNode(SkillLevel::MASTER),
+surgeryNode(SkillLevel::MASTER),
+planetologyNode(SkillLevel::MASTER),
+roboticsNode(SkillLevel::MASTER),
+engineeringNode(SkillLevel::MASTER),
+cyberneticsNode(SkillLevel::MASTER),
+artificialIntelligenceNode(SkillLevel::MASTER),
+hyperspaceNode(SkillLevel::MASTER),
+xenoesotericismNode(SkillLevel::MASTER),
+commandNode(SkillLevel::MASTER)
+
 {
     // load player images
     textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
@@ -1449,7 +1496,8 @@ void CharacterCreator::Draw(Renderer& render)
 
         //render.DrawSkillTreeIcon("LinguisticsIcon", { (float)linguisticsNode.cenX - 32, (float)linguisticsNode.cenY + 20 }, 0.f, 1.0f, Fade(WHITE, 0.5f), { 102, 191, 255, 80 });
 
-        render.DrawSkillTreeIcon("LinguisticsIcon", { (float)linguisticsNode.cenX - 32, (float)linguisticsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        //render.DrawSkillTreeIcon("LinguisticsIcon", { (float)linguisticsNode.cenX - 32, (float)linguisticsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
+        linguisticsNode.DrawIcon(render, "LinguisticsIcon", { (float)linguisticsNode.cenX - 32, (float)linguisticsNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
         render.DrawSkillTreeIcon("ZoologyIcon", { (float)zoologyNode.cenX - 32, (float)zoologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
         render.DrawSkillTreeIcon("BotanyIcon", { (float)botanyNode.cenX - 32, (float)botanyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);
         render.DrawSkillTreeIcon("GeologyIcon", { (float)geologyNode.cenX - 32, (float)geologyNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeTrainedColor);

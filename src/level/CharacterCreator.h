@@ -289,9 +289,9 @@ private:
 
     // skill tree icon colors
 
-    Color skillTreeTrainedColor;
-    Color skillTreeMasterColor;
-    Color skillTreeExpertColor;
+    Color skillTreeTrainedColor = WHITE;
+    Color skillTreeMasterColor = WHITE;
+    Color skillTreeExpertColor = WHITE;
 
     Color skillTreeIconOpacity = WHITE;
     //Color SkillTreeIconTransparent = Fade(WHITE, 0.5f);

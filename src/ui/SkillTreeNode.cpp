@@ -2,6 +2,11 @@
 
 
 
+SkillTreeNode::SkillTreeNode(SkillLevel level)
+{
+    skillLevel = level;
+}
+
 SkillTreeNode::SkillTreeNode()
 {
 }
@@ -27,18 +32,10 @@ bool SkillTreeNode::IsHovered() const
 	return CheckCollisionPointCircle(mouse, center, (float)outerRadius);
 }
 
-void SkillTreeNode::nodeHoverFunctionality()
+void SkillTreeNode::DrawIcon(Renderer& render, std::string image, Vector2 pos, float rotation, float scale, Color tint, Color background)
 {
-    if (IsHovered())
-    {
-        //currentPage = Page::CLASS_SELECT;
-        outerRadius = 24;
-        innerRadius = 20;
-    }
-    else
-    {
-        outerRadius = 22;
-        innerRadius = 18;
-    }
+	render.DrawSkillTreeIcon(image, pos, rotation, scale, tint, background);
 }
+
+
 
