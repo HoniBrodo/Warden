@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 #include "../ui/UIButton.h"
 #include "../ui/SkillTreeNode.h" 
 #include "../player/Marine.h"
@@ -283,15 +284,14 @@ private:
     SkillTreeNode commandNode;
     Color commandNodeColor = GRAY;
 
-
+    std::vector<SkillTreeNode*> allNodes{};
 
     // skill tree icon colors
-
     Color skillTreeTrainedColor = SKYBLUE;
     Color skillTreeMasterColor = ORANGE;
     Color skillTreeExpertColor = MAGENTA;
-
     Color skillTreeIconOpacity = WHITE;
-    //Color SkillTreeIconTransparent = Fade(WHITE, 0.5f);
+
+
 
 };  

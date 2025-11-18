@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include <string>
 #include "../core/Renderer.h"
 #include "raylib.h" 
@@ -16,6 +17,7 @@ public:
 
     SkillTreeNode(SkillLevel level);
     SkillTreeNode();
+    //void MakeNodesTransparent(std::vector<SkillTreeNode>& allNodes);
     void Draw(Renderer& render, int centerX, int centerY, int innerCircleSize, int outerCircleSize, Color color, std::string label);
     bool IsHovered() const;
     void DrawIcon(Renderer& render, std::string image, Vector2 pos, float rotation, float scale, Color tint, Color background);

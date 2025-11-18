@@ -27,6 +27,8 @@ skillTreeIconTaintedOpacity = Fade(WHITE, 0.5f);
 -- ***DONE*** create a function that each node object can call in order to draw the icon to the screen, in place of the current 
 non-object based set-up. 
 
+-- for each node: in the logic for isHovering, set the appropriate isTransparent 'true' states for itself and the associated skills.
+
 -- in the draw fucntion use an if statement to check if the bool 'isTransparent' is true and 
 set the color of the icon based on the result of the check. Consdider using nested if statements to check what type of skill
 the node if for.
@@ -93,6 +95,52 @@ xenoesotericismNode(SkillLevel::MASTER),
 commandNode(SkillLevel::MASTER)
 
 {
+    // add nodes to allNodes vector
+    allNodes.push_back(&linguisticsNode);
+    allNodes.push_back(&zoologyNode);
+    allNodes.push_back(&botanyNode);
+    allNodes.push_back(&geologyNode);
+    allNodes.push_back(&industrialEquipmentNode);
+    allNodes.push_back(&juryRiggingNode);
+    allNodes.push_back(&chemistryNode);
+    allNodes.push_back(&computersNode);
+    allNodes.push_back(&zeroGNode);
+    allNodes.push_back(&mathematicsNode);
+    allNodes.push_back(&artNode);
+    allNodes.push_back(&archeologyNode);
+    allNodes.push_back(&theologyNode);
+    allNodes.push_back(&militaryTrainingNode);
+    allNodes.push_back(&rimwiseNode);
+    allNodes.push_back(&athleticsNode);
+
+    allNodes.push_back(&psychologyNode);
+    allNodes.push_back(&pathologyNode);
+    allNodes.push_back(&fieldMedicineNode);
+    allNodes.push_back(&ecologyNode);
+    allNodes.push_back(&asteroidMiningNode);
+    allNodes.push_back(&mechanicalRepairNode);
+    allNodes.push_back(&explosivesNode);
+    allNodes.push_back(&pharmacologyNode);
+    allNodes.push_back(&hackingNode);
+    allNodes.push_back(&pilotingNode);
+    allNodes.push_back(&physicsNode);
+    allNodes.push_back(&mysticismNode);
+    allNodes.push_back(&wildernessSurvivalNode);
+    allNodes.push_back(&fireArmsNode);
+    allNodes.push_back(&handToHandCombatNode);
+
+    allNodes.push_back(&sophontologyNode);
+    allNodes.push_back(&exobiologyNode);
+    allNodes.push_back(&surgeryNode);
+    allNodes.push_back(&planetologyNode);
+    allNodes.push_back(&roboticsNode);
+    allNodes.push_back(&engineeringNode);
+    allNodes.push_back(&cyberneticsNode);
+    allNodes.push_back(&artificialIntelligenceNode);
+    allNodes.push_back(&hyperspaceNode);
+    allNodes.push_back(&xenoesotericismNode);
+    allNodes.push_back(&commandNode);
+
     // load player images
     textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
     textureManager.LoadTextureFromFile("Scientist", "images/player/SFCP_1_38.png");
@@ -800,11 +848,26 @@ void CharacterCreator::HandleInput()
     {
         if (zoologyNode.IsHovered()) 
         {
-            zoologyNode.isTransparent = true;
+            for (SkillTreeNode* node : allNodes)
+            {
+                node->isTransparent = true;
+            }
+
+            zoologyNode.isTransparent = false;
+            psychologyNode.isTransparent = false;
+            pathologyNode.isTransparent = false;
+            fieldMedicineNode.isTransparent = false;
+            sophontologyNode.isTransparent = false;
+            exobiologyNode.isTransparent = false;
+            surgeryNode.isTransparent = false;
+
         }
         else
         {
-            zoologyNode.isTransparent = false;
+            for (SkillTreeNode* node : allNodes)
+            {
+                node->isTransparent = false;
+            }
         }
     }
 
@@ -1353,9 +1416,6 @@ void CharacterCreator::Draw(Renderer& render)
 
     case Page::SKILLS_SELECT:
     {
-
-
-
         className = stateManager.GetPlayer()->GetClass().GetName();
 
         render.DrawRectangle(

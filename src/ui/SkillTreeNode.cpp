@@ -40,18 +40,20 @@ void SkillTreeNode::DrawIcon(Renderer& render, std::string image, Vector2 pos, f
 		switch (skillLevel)
 		{
 		case SkillLevel::TRAINED:
-			background = BLACK;
+			background = { 102, 191, 255, 40 };
 			break;
 		case SkillLevel::EXPERT:
-			background = BLACK;
+			background = { 255, 161, 0, 40 };
 			break;
 		case SkillLevel::MASTER:
-			background = BLACK;
+			background = { 255, 0, 255, 40 };
 			break;
 		default:
 			background;
 			break;
 		}
+
+		tint = Fade(WHITE, 0.2f);
 	}
 
 	render.DrawSkillTreeIcon(image, pos, rotation, scale, tint, background);
