@@ -623,7 +623,7 @@ void CharacterCreator::HandleInput()
             else
                 isAllocated = false;
 
-            if (isAllocated) 
+            if (isAllocated)
             {
                 if (statsConfirmButton.IsClicked(render, false)) {
                     currentPage = Page::LOADOUT_SELECT;
@@ -635,7 +635,7 @@ void CharacterCreator::HandleInput()
                 else statsConfirmButtonColor = LIGHTGRAY;
             }
 
-        }  
+        }
 
         if (androidDecisionRequired)
         {
@@ -846,6 +846,28 @@ void CharacterCreator::HandleInput()
 
     case Page::SKILLS_SELECT:
     {
+        if (linguisticsNode.IsHovered())
+        {
+            for (SkillTreeNode* node : allNodes)
+            {
+                node->isTransparent = true;
+            }
+
+            linguisticsNode.isTransparent = false;
+            psychologyNode.isTransparent = false;
+            sophontologyNode.isTransparent = false;
+
+        }
+
+        // why does the else only need to be called once, and why here? (moving it to the end wil break it)
+        else
+        {
+            for (SkillTreeNode* node : allNodes)
+            {
+                node->isTransparent = false;
+            }
+        }
+
         if (zoologyNode.IsHovered()) 
         {
             for (SkillTreeNode* node : allNodes)
@@ -862,17 +884,103 @@ void CharacterCreator::HandleInput()
             surgeryNode.isTransparent = false;
 
         }
-        else
+
+        if (botanyNode.IsHovered())
         {
             for (SkillTreeNode* node : allNodes)
             {
-                node->isTransparent = false;
+                node->isTransparent = true;
             }
+
+            botanyNode.isTransparent = false;
+            ecologyNode.isTransparent = false;
+            planetologyNode.isTransparent = false;
+            wildernessSurvivalNode.isTransparent = false;
         }
-    }
+
+        if (geologyNode.IsHovered())
+        {
+            for (SkillTreeNode* node : allNodes)
+            {
+                node->isTransparent = true;
+            }
+
+            geologyNode.isTransparent = false;
+            asteroidMiningNode.isTransparent = false;
+            ecologyNode.isTransparent = false;
+            planetologyNode.isTransparent = false;
+        }
+
+        if (industrialEquipmentNode.IsHovered())
+        {
+            for (SkillTreeNode* node : allNodes)
+            {
+                node->isTransparent = true;
+            }
+
+            industrialEquipmentNode.isTransparent = false;
+            asteroidMiningNode.isTransparent = false;
+            mechanicalRepairNode.isTransparent = false;
+            roboticsNode.isTransparent = false;
+            engineeringNode.isTransparent = false;
+            cyberneticsNode.isTransparent = false;
+        }
+
+        if (juryRiggingNode.IsHovered())
+        {
+            for (SkillTreeNode* node : allNodes)
+            {
+                node->isTransparent = true;
+            }
+
+            juryRiggingNode.isTransparent = false;
+            mechanicalRepairNode.isTransparent = false;
+            roboticsNode.isTransparent = false;
+            engineeringNode.isTransparent = false;
+            cyberneticsNode.isTransparent = false;
+            explosivesNode.isTransparent = false;
+        }
+
+        if (chemistryNode.IsHovered())
+        {
+            for (SkillTreeNode* node : allNodes)
+            {
+                node->isTransparent = true;
+            }
+
+            chemistryNode.isTransparent = false;
+            explosivesNode.isTransparent = false;
+            pharmacologyNode.isTransparent = false;
+        }
+
+        if (computersNode.IsHovered())
+        {
+            for (SkillTreeNode* node : allNodes)
+            {
+                node->isTransparent = true;
+            }
+
+            computersNode.isTransparent = false;
+            hackingNode.isTransparent = false;
+            artificialIntelligenceNode.isTransparent = false;
+        }
+
+        if (zeroGNode.IsHovered())
+        {
+            for (SkillTreeNode* node : allNodes)
+            {
+                node->isTransparent = true;
+            }
+
+            zeroGNode.isTransparent = false;
+            pilotingNode.isTransparent = false;
+            hyperspaceNode.isTransparent = false;
+            commandNode.isTransparent = false;
+        }
 
     }
 
+    }
 
 
 }
