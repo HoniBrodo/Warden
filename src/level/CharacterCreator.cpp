@@ -223,763 +223,1057 @@ void CharacterCreator::HandleInput()
 
     switch (GetCurrentPage())
     {
-    case Page::CLASS_SELECT:
+        case Page::CLASS_SELECT:
 
-    {
-        // Previous button logic
-        if (previousButton.IsClicked(render, false)) {
-            PreviousCharacter();
-        }
-
-        if (previousButton.IsHovered(render, false)) {
-            previousButtonColor = GRAY;
-        }
-        else previousButtonColor = LIGHTGRAY;
-
-        // Next button logic
-        if (nextButton.IsClicked(render, false)) {
-            NextCharacter();
-        }
-
-        if (nextButton.IsHovered(render, false)) {
-            nextButtonColor = GRAY;
-        }
-        else nextButtonColor = LIGHTGRAY;
-
-        // SelectClass button logic
-        if (selectClassButton.IsClicked(render, false)) {
-
-            std::unique_ptr<BaseClass> chosenClass;
-
-            switch (GetCurrentCharacter())
-            {
-            case CharacterSelect::Marine:
-                chosenClass = std::make_unique<Marine>();
-                break;
-            case CharacterSelect::Scientist:
-                chosenClass = std::make_unique<Scientist>();
-                scientistDecisionRequired = true;
-                break;
-            case CharacterSelect::Android:
-                chosenClass = std::make_unique<Android>();
-                androidDecisionRequired = true;
-                break;
-            case CharacterSelect::Teamster:
-                chosenClass = std::make_unique<Teamster>();
-                break;
-            default:
-                chosenClass = std::make_unique<Scientist>(); // fallback
+        {
+            // Previous button logic
+            if (previousButton.IsClicked(render, false)) {
+                PreviousCharacter();
             }
 
-            // wrap into Player and pass to StateManager
-            auto player = std::make_unique<Player>(std::move(chosenClass));
-            stateManager.SetPlayer(std::move(player));
+            if (previousButton.IsHovered(render, false)) {
+                previousButtonColor = GRAY;
+            }
+            else previousButtonColor = LIGHTGRAY;
 
-            // change back to stats once finished working on the skills screen
-            currentPage = Page::SKILLS_SELECT;
+            // Next button logic
+            if (nextButton.IsClicked(render, false)) {
+                NextCharacter();
+            }
+
+            if (nextButton.IsHovered(render, false)) {
+                nextButtonColor = GRAY;
+            }
+            else nextButtonColor = LIGHTGRAY;
+
+            // SelectClass button logic
+            if (selectClassButton.IsClicked(render, false)) {
+
+                std::unique_ptr<BaseClass> chosenClass;
+
+                switch (GetCurrentCharacter())
+                {
+                case CharacterSelect::Marine:
+                    chosenClass = std::make_unique<Marine>();
+                    break;
+                case CharacterSelect::Scientist:
+                    chosenClass = std::make_unique<Scientist>();
+                    scientistDecisionRequired = true;
+                    break;
+                case CharacterSelect::Android:
+                    chosenClass = std::make_unique<Android>();
+                    androidDecisionRequired = true;
+                    break;
+                case CharacterSelect::Teamster:
+                    chosenClass = std::make_unique<Teamster>();
+                    break;
+                default:
+                    chosenClass = std::make_unique<Scientist>(); // fallback
+                }
+
+                // wrap into Player and pass to StateManager
+                auto player = std::make_unique<Player>(std::move(chosenClass));
+                stateManager.SetPlayer(std::move(player));
+
+                // change back to stats once finished working on the skills screen
+                currentPage = Page::SKILLS_SELECT;
+
+                break;
+            }
+
+            if (selectClassButton.IsHovered(render, false)) {
+                selectClassButtonColor = GRAY;
+            }
+            else selectClassButtonColor = LIGHTGRAY;
 
             break;
         }
 
-        if (selectClassButton.IsHovered(render, false)) {
-            selectClassButtonColor = GRAY;
-        }
-        else selectClassButtonColor = LIGHTGRAY;
+        case Page::LOADOUT_SELECT:
 
-        break;
-    }
-
-    case Page::LOADOUT_SELECT:
-
-    {
-        // loadout 01 button logic
-        if (loadout01Button.IsClicked(render, true)) {
-            currentPage = Page::SKILLS_SELECT;
-        }
-
-        if (loadout01Button.IsHovered(render, true)) {
-            loadout01ButtonColor = GRAY;
-        }
-        else loadout01ButtonColor = LIGHTGRAY;
-
-        // loadout 02 button logic
-        if (loadout02Button.IsClicked(render, true)) {
-            currentPage = Page::SKILLS_SELECT;
-        }
-
-        if (loadout02Button.IsHovered(render, true)) {
-            loadout02ButtonColor = GRAY;
-        }
-        else loadout02ButtonColor = LIGHTGRAY;
-
-        // loadout 03 button logic
-        if (loadout03Button.IsClicked(render, true)) {
-            currentPage = Page::SKILLS_SELECT;
-        }
-
-        if (loadout03Button.IsHovered(render, true)) {
-            loadout03ButtonColor = GRAY;
-        }
-        else loadout03ButtonColor = LIGHTGRAY;
-
-        // loadout 04 button logic
-        if (loadout04Button.IsClicked(render, true)) {
-            currentPage = Page::SKILLS_SELECT;
-        }
-
-        if (loadout04Button.IsHovered(render, true)) {
-            loadout04ButtonColor = GRAY;
-        }
-        else loadout04ButtonColor = LIGHTGRAY;
-
-        break;
-    }
-
-    case Page::STATS_SELECT:
-    {
-        if (!areStatsCopied)
         {
-            strengthCopy = stateManager.GetPlayer()->GetClass().GetStrength();
-            speedCopy = stateManager.GetPlayer()->GetClass().GetSpeed();
-            intellectCopy = stateManager.GetPlayer()->GetClass().GetIntellect();
-            combatCopy = stateManager.GetPlayer()->GetClass().GetCombat();
-            sanityCopy = stateManager.GetPlayer()->GetClass().GetSanity();
-            fearCopy = stateManager.GetPlayer()->GetClass().GetFear();
-            bodyCopy = stateManager.GetPlayer()->GetClass().GetBody();
-            areStatsCopied = true;
+            // loadout 01 button logic
+            if (loadout01Button.IsClicked(render, true)) {
+                currentPage = Page::SKILLS_SELECT;
+            }
+
+            if (loadout01Button.IsHovered(render, true)) {
+                loadout01ButtonColor = GRAY;
+            }
+            else loadout01ButtonColor = LIGHTGRAY;
+
+            // loadout 02 button logic
+            if (loadout02Button.IsClicked(render, true)) {
+                currentPage = Page::SKILLS_SELECT;
+            }
+
+            if (loadout02Button.IsHovered(render, true)) {
+                loadout02ButtonColor = GRAY;
+            }
+            else loadout02ButtonColor = LIGHTGRAY;
+
+            // loadout 03 button logic
+            if (loadout03Button.IsClicked(render, true)) {
+                currentPage = Page::SKILLS_SELECT;
+            }
+
+            if (loadout03Button.IsHovered(render, true)) {
+                loadout03ButtonColor = GRAY;
+            }
+            else loadout03ButtonColor = LIGHTGRAY;
+
+            // loadout 04 button logic
+            if (loadout04Button.IsClicked(render, true)) {
+                currentPage = Page::SKILLS_SELECT;
+            }
+
+            if (loadout04Button.IsHovered(render, true)) {
+                loadout04ButtonColor = GRAY;
+            }
+            else loadout04ButtonColor = LIGHTGRAY;
+
+            break;
         }
 
-        if (!androidDecisionRequired && !scientistDecisionRequired)
+        case Page::STATS_SELECT:
         {
-            // increment strength button logic
-            if (incrementStrengthButton.IsClicked(render, false)) {
-                if (availableStatPoints != 0)
-                {
-                    availableStatPoints--;
-                    addedToStrength++;
-                    stateManager.GetPlayer()->GetClass().IncreaseStrength(1);
-                }
-            }
-
-            if (incrementStrengthButton.IsHovered(render, false)) {
-                if (availableStatPoints != 0)
-                    incrementStrengthButtonColor = BLACK;
-                else
-                    incrementStrengthButtonColor = MAROON;
-            }
-            else incrementStrengthButtonColor = GRAY;
-
-            // decrement strength button logic
-
-            if (decrementStrengthButton.IsClicked(render, false)) {
-                if (strengthCopy != stateManager.GetPlayer()->GetClass().GetStrength())
-                {
-                    availableStatPoints++;
-                    addedToStrength--;
-                    stateManager.GetPlayer()->GetClass().DecreaseStrength(1);
-                }
-            }
-
-            if (decrementStrengthButton.IsHovered(render, false)) {
-                if (strengthCopy != stateManager.GetPlayer()->GetClass().GetStrength())
-                    decrementStrengthButtonColor = BLACK;
-                else
-                    decrementStrengthButtonColor = MAROON;
-            }
-            else decrementStrengthButtonColor = GRAY;
-
-            // increment speed button logic
-
-            if (incrementSpeedButton.IsClicked(render, false)) {
-                if (availableStatPoints != 0)
-                {
-                    availableStatPoints--;
-                    addedToSpeed++;
-                    stateManager.GetPlayer()->GetClass().IncreaseSpeed(1);
-                }
-            }
-
-            if (incrementSpeedButton.IsHovered(render, false)) {
-                if (availableStatPoints != 0)
-                    incrementSpeedButtonColor = BLACK;
-                else
-                    incrementSpeedButtonColor = MAROON;
-            }
-            else incrementSpeedButtonColor = GRAY;
-
-            // decrement speed button logic
-
-            if (decrementSpeedButton.IsClicked(render, false)) {
-                if (speedCopy != stateManager.GetPlayer()->GetClass().GetSpeed())
-                {
-                    availableStatPoints++;
-                    addedToSpeed--;
-                    stateManager.GetPlayer()->GetClass().DecreaseSpeed(1);
-                }
-            }
-
-            if (decrementSpeedButton.IsHovered(render, false)) {
-                if (speedCopy != stateManager.GetPlayer()->GetClass().GetSpeed())
-                    decrementSpeedButtonColor = BLACK;
-                else
-                    decrementSpeedButtonColor = MAROON;
-            }
-            else decrementSpeedButtonColor = GRAY;
-
-            // increment intellect button logic
-
-            if (incrementIntellectButton.IsClicked(render, false)) {
-                if (availableStatPoints != 0)
-                {
-                    availableStatPoints--;
-                    addedToIntellect++;
-                    stateManager.GetPlayer()->GetClass().IncreaseIntellect(1);
-                }
-            }
-
-            if (incrementIntellectButton.IsHovered(render, false)) {
-                if (availableStatPoints != 0)
-                    incrementIntellectButtonColor = BLACK;
-                else
-                    incrementIntellectButtonColor = MAROON;
-            }
-            else incrementIntellectButtonColor = GRAY;
-
-            // decrement intellect button logic
-
-            if (decrementIntellectButton.IsClicked(render, false)) {
-                if (intellectCopy != stateManager.GetPlayer()->GetClass().GetIntellect())
-                {
-                    availableStatPoints++;
-                    addedToIntellect--;
-                    stateManager.GetPlayer()->GetClass().DecreaseIntellect(1);
-                }
-            }
-
-            if (decrementIntellectButton.IsHovered(render, false)) {
-                if (intellectCopy != stateManager.GetPlayer()->GetClass().GetIntellect())
-                    decrementIntellectButtonColor = BLACK;
-                else
-                    decrementIntellectButtonColor = MAROON;
-            }
-            else decrementIntellectButtonColor = GRAY;
-
-            // increment combat button logic
-
-            if (incrementCombatButton.IsClicked(render, false)) {
-                if (availableStatPoints != 0)
-                {
-                    availableStatPoints--;
-                    addedToCombat++;
-                    stateManager.GetPlayer()->GetClass().IncreaseCombat(1);
-                }
-            }
-
-            if (incrementCombatButton.IsHovered(render, false)) {
-                if (availableStatPoints != 0)
-                    incrementCombatButtonColor = BLACK;
-                else
-                    incrementCombatButtonColor = MAROON;
-            }
-            else incrementCombatButtonColor = GRAY;
-
-            // decrement combat button logic
-
-            if (decrementCombatButton.IsClicked(render, false)) {
-                if (combatCopy != stateManager.GetPlayer()->GetClass().GetCombat())
-                {
-                    availableStatPoints++;
-                    addedToCombat--;
-                    stateManager.GetPlayer()->GetClass().DecreaseCombat(1);
-                }
-            }
-
-            if (decrementCombatButton.IsHovered(render, false)) {
-                if (combatCopy != stateManager.GetPlayer()->GetClass().GetCombat())
-                    decrementCombatButtonColor = BLACK;
-                else
-                    decrementCombatButtonColor = MAROON;
-            }
-            else decrementCombatButtonColor = GRAY;
-
-            // increment sanity button logic
-
-            if (incrementSanityButton.IsClicked(render, false)) {
-                if (availableSavePoints != 0)
-                {
-                    availableSavePoints--;
-                    addedToSanity++;
-                    stateManager.GetPlayer()->GetClass().IncreaseSanity(1);
-                }
-            }
-
-            if (incrementSanityButton.IsHovered(render, false)) {
-                if (availableSavePoints != 0)
-                    incrementSanityButtonColor = BLACK;
-                else
-                    incrementSanityButtonColor = MAROON;
-            }
-            else incrementSanityButtonColor = GRAY;
-
-            // decrement sanity button logic
-
-            if (decrementSanityButton.IsClicked(render, false)) {
-                if (sanityCopy != stateManager.GetPlayer()->GetClass().GetSanity())
-                {
-                    availableSavePoints++;
-                    addedToSanity--;
-                    stateManager.GetPlayer()->GetClass().DecreaseSanity(1);
-                }
-            }
-
-            if (decrementSanityButton.IsHovered(render, false)) {
-                if (sanityCopy != stateManager.GetPlayer()->GetClass().GetSanity())
-                    decrementSanityButtonColor = BLACK;
-                else
-                    decrementSanityButtonColor = MAROON;
-            }
-            else decrementSanityButtonColor = GRAY;
-
-            // increment fear button logic
-
-            if (incrementFearButton.IsClicked(render, false)) {
-                if (availableSavePoints != 0)
-                {
-                    availableSavePoints--;
-                    addedToFear++;
-                    stateManager.GetPlayer()->GetClass().IncreaseFear(1);
-                }
-            }
-
-            if (incrementFearButton.IsHovered(render, false)) {
-                if (availableSavePoints != 0)
-                    incrementFearButtonColor = BLACK;
-                else
-                    incrementFearButtonColor = MAROON;
-            }
-            else incrementFearButtonColor = GRAY;
-
-            // decrement fear button logic
-
-            if (decrementFearButton.IsClicked(render, false)) {
-                if (fearCopy != stateManager.GetPlayer()->GetClass().GetFear())
-                {
-                    availableSavePoints++;
-                    addedToFear--;
-                    stateManager.GetPlayer()->GetClass().DecreaseFear(1);
-                }
-            }
-
-            if (decrementFearButton.IsHovered(render, false)) {
-                if (fearCopy != stateManager.GetPlayer()->GetClass().GetFear())
-                    decrementFearButtonColor = BLACK;
-                else
-                    decrementFearButtonColor = MAROON;
-            }
-            else decrementFearButtonColor = GRAY;
-
-            // increment body button logic
-
-            if (incrementBodyButton.IsClicked(render, false)) {
-                if (availableSavePoints != 0)
-                {
-                    availableSavePoints--;
-                    addedToBody++;
-                    stateManager.GetPlayer()->GetClass().IncreaseBody(1);
-                }
-            }
-
-            if (incrementBodyButton.IsHovered(render, false)) {
-                if (availableSavePoints != 0)
-                    incrementBodyButtonColor = BLACK;
-                else
-                    incrementBodyButtonColor = MAROON;
-            }
-            else incrementBodyButtonColor = GRAY;
-
-            // decrement body button logic
-
-            if (decrementBodyButton.IsClicked(render, false)) {
-                if (bodyCopy != stateManager.GetPlayer()->GetClass().GetBody())
-                {
-                    availableSavePoints++;
-                    addedToBody--;
-                    stateManager.GetPlayer()->GetClass().DecreaseBody(1);
-                }
-            }
-
-            if (decrementBodyButton.IsHovered(render, false)) {
-                if (bodyCopy != stateManager.GetPlayer()->GetClass().GetBody())
-                    decrementBodyButtonColor = BLACK;
-                else
-                    decrementBodyButtonColor = MAROON;
-            }
-            else decrementBodyButtonColor = GRAY;
-
-            if (availableSavePoints == 0 && availableStatPoints == 0)
+            if (!areStatsCopied)
             {
-                isAllocated = true;
+                strengthCopy = stateManager.GetPlayer()->GetClass().GetStrength();
+                speedCopy = stateManager.GetPlayer()->GetClass().GetSpeed();
+                intellectCopy = stateManager.GetPlayer()->GetClass().GetIntellect();
+                combatCopy = stateManager.GetPlayer()->GetClass().GetCombat();
+                sanityCopy = stateManager.GetPlayer()->GetClass().GetSanity();
+                fearCopy = stateManager.GetPlayer()->GetClass().GetFear();
+                bodyCopy = stateManager.GetPlayer()->GetClass().GetBody();
+                areStatsCopied = true;
             }
+
+            if (!androidDecisionRequired && !scientistDecisionRequired)
+            {
+                // increment strength button logic
+                if (incrementStrengthButton.IsClicked(render, false)) {
+                    if (availableStatPoints != 0)
+                    {
+                        availableStatPoints--;
+                        addedToStrength++;
+                        stateManager.GetPlayer()->GetClass().IncreaseStrength(1);
+                    }
+                }
+
+                if (incrementStrengthButton.IsHovered(render, false)) {
+                    if (availableStatPoints != 0)
+                        incrementStrengthButtonColor = BLACK;
+                    else
+                        incrementStrengthButtonColor = MAROON;
+                }
+                else incrementStrengthButtonColor = GRAY;
+
+                // decrement strength button logic
+
+                if (decrementStrengthButton.IsClicked(render, false)) {
+                    if (strengthCopy != stateManager.GetPlayer()->GetClass().GetStrength())
+                    {
+                        availableStatPoints++;
+                        addedToStrength--;
+                        stateManager.GetPlayer()->GetClass().DecreaseStrength(1);
+                    }
+                }
+
+                if (decrementStrengthButton.IsHovered(render, false)) {
+                    if (strengthCopy != stateManager.GetPlayer()->GetClass().GetStrength())
+                        decrementStrengthButtonColor = BLACK;
+                    else
+                        decrementStrengthButtonColor = MAROON;
+                }
+                else decrementStrengthButtonColor = GRAY;
+
+                // increment speed button logic
+
+                if (incrementSpeedButton.IsClicked(render, false)) {
+                    if (availableStatPoints != 0)
+                    {
+                        availableStatPoints--;
+                        addedToSpeed++;
+                        stateManager.GetPlayer()->GetClass().IncreaseSpeed(1);
+                    }
+                }
+
+                if (incrementSpeedButton.IsHovered(render, false)) {
+                    if (availableStatPoints != 0)
+                        incrementSpeedButtonColor = BLACK;
+                    else
+                        incrementSpeedButtonColor = MAROON;
+                }
+                else incrementSpeedButtonColor = GRAY;
+
+                // decrement speed button logic
+
+                if (decrementSpeedButton.IsClicked(render, false)) {
+                    if (speedCopy != stateManager.GetPlayer()->GetClass().GetSpeed())
+                    {
+                        availableStatPoints++;
+                        addedToSpeed--;
+                        stateManager.GetPlayer()->GetClass().DecreaseSpeed(1);
+                    }
+                }
+
+                if (decrementSpeedButton.IsHovered(render, false)) {
+                    if (speedCopy != stateManager.GetPlayer()->GetClass().GetSpeed())
+                        decrementSpeedButtonColor = BLACK;
+                    else
+                        decrementSpeedButtonColor = MAROON;
+                }
+                else decrementSpeedButtonColor = GRAY;
+
+                // increment intellect button logic
+
+                if (incrementIntellectButton.IsClicked(render, false)) {
+                    if (availableStatPoints != 0)
+                    {
+                        availableStatPoints--;
+                        addedToIntellect++;
+                        stateManager.GetPlayer()->GetClass().IncreaseIntellect(1);
+                    }
+                }
+
+                if (incrementIntellectButton.IsHovered(render, false)) {
+                    if (availableStatPoints != 0)
+                        incrementIntellectButtonColor = BLACK;
+                    else
+                        incrementIntellectButtonColor = MAROON;
+                }
+                else incrementIntellectButtonColor = GRAY;
+
+                // decrement intellect button logic
+
+                if (decrementIntellectButton.IsClicked(render, false)) {
+                    if (intellectCopy != stateManager.GetPlayer()->GetClass().GetIntellect())
+                    {
+                        availableStatPoints++;
+                        addedToIntellect--;
+                        stateManager.GetPlayer()->GetClass().DecreaseIntellect(1);
+                    }
+                }
+
+                if (decrementIntellectButton.IsHovered(render, false)) {
+                    if (intellectCopy != stateManager.GetPlayer()->GetClass().GetIntellect())
+                        decrementIntellectButtonColor = BLACK;
+                    else
+                        decrementIntellectButtonColor = MAROON;
+                }
+                else decrementIntellectButtonColor = GRAY;
+
+                // increment combat button logic
+
+                if (incrementCombatButton.IsClicked(render, false)) {
+                    if (availableStatPoints != 0)
+                    {
+                        availableStatPoints--;
+                        addedToCombat++;
+                        stateManager.GetPlayer()->GetClass().IncreaseCombat(1);
+                    }
+                }
+
+                if (incrementCombatButton.IsHovered(render, false)) {
+                    if (availableStatPoints != 0)
+                        incrementCombatButtonColor = BLACK;
+                    else
+                        incrementCombatButtonColor = MAROON;
+                }
+                else incrementCombatButtonColor = GRAY;
+
+                // decrement combat button logic
+
+                if (decrementCombatButton.IsClicked(render, false)) {
+                    if (combatCopy != stateManager.GetPlayer()->GetClass().GetCombat())
+                    {
+                        availableStatPoints++;
+                        addedToCombat--;
+                        stateManager.GetPlayer()->GetClass().DecreaseCombat(1);
+                    }
+                }
+
+                if (decrementCombatButton.IsHovered(render, false)) {
+                    if (combatCopy != stateManager.GetPlayer()->GetClass().GetCombat())
+                        decrementCombatButtonColor = BLACK;
+                    else
+                        decrementCombatButtonColor = MAROON;
+                }
+                else decrementCombatButtonColor = GRAY;
+
+                // increment sanity button logic
+
+                if (incrementSanityButton.IsClicked(render, false)) {
+                    if (availableSavePoints != 0)
+                    {
+                        availableSavePoints--;
+                        addedToSanity++;
+                        stateManager.GetPlayer()->GetClass().IncreaseSanity(1);
+                    }
+                }
+
+                if (incrementSanityButton.IsHovered(render, false)) {
+                    if (availableSavePoints != 0)
+                        incrementSanityButtonColor = BLACK;
+                    else
+                        incrementSanityButtonColor = MAROON;
+                }
+                else incrementSanityButtonColor = GRAY;
+
+                // decrement sanity button logic
+
+                if (decrementSanityButton.IsClicked(render, false)) {
+                    if (sanityCopy != stateManager.GetPlayer()->GetClass().GetSanity())
+                    {
+                        availableSavePoints++;
+                        addedToSanity--;
+                        stateManager.GetPlayer()->GetClass().DecreaseSanity(1);
+                    }
+                }
+
+                if (decrementSanityButton.IsHovered(render, false)) {
+                    if (sanityCopy != stateManager.GetPlayer()->GetClass().GetSanity())
+                        decrementSanityButtonColor = BLACK;
+                    else
+                        decrementSanityButtonColor = MAROON;
+                }
+                else decrementSanityButtonColor = GRAY;
+
+                // increment fear button logic
+
+                if (incrementFearButton.IsClicked(render, false)) {
+                    if (availableSavePoints != 0)
+                    {
+                        availableSavePoints--;
+                        addedToFear++;
+                        stateManager.GetPlayer()->GetClass().IncreaseFear(1);
+                    }
+                }
+
+                if (incrementFearButton.IsHovered(render, false)) {
+                    if (availableSavePoints != 0)
+                        incrementFearButtonColor = BLACK;
+                    else
+                        incrementFearButtonColor = MAROON;
+                }
+                else incrementFearButtonColor = GRAY;
+
+                // decrement fear button logic
+
+                if (decrementFearButton.IsClicked(render, false)) {
+                    if (fearCopy != stateManager.GetPlayer()->GetClass().GetFear())
+                    {
+                        availableSavePoints++;
+                        addedToFear--;
+                        stateManager.GetPlayer()->GetClass().DecreaseFear(1);
+                    }
+                }
+
+                if (decrementFearButton.IsHovered(render, false)) {
+                    if (fearCopy != stateManager.GetPlayer()->GetClass().GetFear())
+                        decrementFearButtonColor = BLACK;
+                    else
+                        decrementFearButtonColor = MAROON;
+                }
+                else decrementFearButtonColor = GRAY;
+
+                // increment body button logic
+
+                if (incrementBodyButton.IsClicked(render, false)) {
+                    if (availableSavePoints != 0)
+                    {
+                        availableSavePoints--;
+                        addedToBody++;
+                        stateManager.GetPlayer()->GetClass().IncreaseBody(1);
+                    }
+                }
+
+                if (incrementBodyButton.IsHovered(render, false)) {
+                    if (availableSavePoints != 0)
+                        incrementBodyButtonColor = BLACK;
+                    else
+                        incrementBodyButtonColor = MAROON;
+                }
+                else incrementBodyButtonColor = GRAY;
+
+                // decrement body button logic
+
+                if (decrementBodyButton.IsClicked(render, false)) {
+                    if (bodyCopy != stateManager.GetPlayer()->GetClass().GetBody())
+                    {
+                        availableSavePoints++;
+                        addedToBody--;
+                        stateManager.GetPlayer()->GetClass().DecreaseBody(1);
+                    }
+                }
+
+                if (decrementBodyButton.IsHovered(render, false)) {
+                    if (bodyCopy != stateManager.GetPlayer()->GetClass().GetBody())
+                        decrementBodyButtonColor = BLACK;
+                    else
+                        decrementBodyButtonColor = MAROON;
+                }
+                else decrementBodyButtonColor = GRAY;
+
+                if (availableSavePoints == 0 && availableStatPoints == 0)
+                {
+                    isAllocated = true;
+                }
+                else
+                    isAllocated = false;
+
+                if (isAllocated)
+                {
+                    if (statsConfirmButton.IsClicked(render, false)) {
+                        currentPage = Page::LOADOUT_SELECT;
+                    }
+
+                    if (statsConfirmButton.IsHovered(render, false)) {
+                        statsConfirmButtonColor = GRAY;
+                    }
+                    else statsConfirmButtonColor = LIGHTGRAY;
+                }
+
+            }
+
+            if (androidDecisionRequired)
+            {
+                // android handicap strength button logic
+
+                if (androidHandicapStrengthButton.IsHovered(render, false)) {
+                    androidHandicapStrengthButtonColor = BLACK;
+                    if (!isStrengthDecreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().DecreaseStrength(10);
+                        isStrengthDecreased = true;
+                    }
+                }
+                else
+                {
+                    androidHandicapStrengthButtonColor = GRAY;
+                    if (isStrengthDecreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().IncreaseStrength(10);
+                        isStrengthDecreased = false;
+                    }
+                }
+
+                if (androidHandicapStrengthButton.IsClicked(render, false)) {
+                    strengthCopy -= 10;
+                    androidDecisionRequired = false;
+                }
+
+                // android handicap speed button logic
+
+                if (androidHandicapSpeedButton.IsHovered(render, false)) {
+                    androidHandicapSpeedButtonColor = BLACK;
+                    if (!isSpeedDecreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().DecreaseSpeed(10);
+                        isSpeedDecreased = true;
+                    }
+                }
+                else
+                {
+                    androidHandicapSpeedButtonColor = GRAY;
+                    if (isSpeedDecreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().IncreaseSpeed(10);
+                        isSpeedDecreased = false;
+                    }
+                }
+
+                if (androidHandicapSpeedButton.IsClicked(render, false)) {
+                    speedCopy -= 10;
+                    androidDecisionRequired = false;
+                }
+
+                // android handicap intellect button logic
+
+                if (androidHandicapIntellectButton.IsHovered(render, false)) {
+                    androidHandicapIntellectButtonColor = BLACK;
+                    if (!isIntellectDecreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().DecreaseIntellect(10);
+                        isIntellectDecreased = true;
+                    }
+                }
+                else
+                {
+                    androidHandicapIntellectButtonColor = GRAY;
+                    if (isIntellectDecreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().IncreaseIntellect(10);
+                        isIntellectDecreased = false;
+                    }
+                }
+
+                if (androidHandicapIntellectButton.IsClicked(render, false)) {
+                    intellectCopy -= 10;
+                    androidDecisionRequired = false;
+                }
+
+                // android handicap combat button logic
+
+                if (androidHandicapCombatButton.IsHovered(render, false)) {
+                    androidHandicapCombatButtonColor = BLACK;
+                    if (!isCombatDecreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().DecreaseCombat(10);
+                        isCombatDecreased = true;
+                    }
+                }
+                else
+                {
+                    androidHandicapCombatButtonColor = GRAY;
+                    if (isCombatDecreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().IncreaseCombat(10);
+                        isCombatDecreased = false;
+                    }
+                }
+
+                if (androidHandicapCombatButton.IsClicked(render, false)) {
+                    combatCopy -= 10;
+                    androidDecisionRequired = false;
+                }
+            }
+
+            if (scientistDecisionRequired)
+            {
+                // scientist buff strength button logic
+
+                if (scientistBuffStrengthButton.IsHovered(render, false)) {
+                    scientistBuffStrengthButtonColor = BLACK;
+                    if (!isStrengthIncreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().IncreaseStrength(5);
+                        isStrengthIncreased = true;
+                    }
+                }
+                else
+                {
+                    scientistBuffStrengthButtonColor = GRAY;
+                    if (isStrengthIncreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().DecreaseStrength(5);
+                        isStrengthIncreased = false;
+                    }
+                }
+
+                if (scientistBuffStrengthButton.IsClicked(render, false)) {
+                    strengthCopy += 5;
+                    scientistDecisionRequired = false;
+                }
+
+                // scientist buff speed button logic
+
+                if (scientistBuffSpeedButton.IsHovered(render, false)) {
+                    scientistBuffSpeedButtonColor = BLACK;
+                    if (!isSpeedIncreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().IncreaseSpeed(5);
+                        isSpeedIncreased = true;
+                    }
+                }
+                else
+                {
+                    scientistBuffSpeedButtonColor = GRAY;
+                    if (isSpeedIncreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().DecreaseSpeed(5);
+                        isSpeedIncreased = false;
+                    }
+                }
+
+                if (scientistBuffSpeedButton.IsClicked(render, false)) {
+                    speedCopy += 5;
+                    scientistDecisionRequired = false;
+                }
+
+                // scientist buff intellect button logic
+
+                if (scientistBuffIntellectButton.IsHovered(render, false)) {
+                    scientistBuffIntellectButtonColor = BLACK;
+                    if (!isIntellectIncreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().IncreaseIntellect(5);
+                        isIntellectIncreased = true;
+                    }
+                }
+                else
+                {
+                    scientistBuffIntellectButtonColor = GRAY;
+                    if (isIntellectIncreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().DecreaseIntellect(5);
+                        isIntellectIncreased = false;
+                    }
+                }
+
+                if (scientistBuffIntellectButton.IsClicked(render, false)) {
+                    intellectCopy += 5;
+                    scientistDecisionRequired = false;
+                }
+
+                // scientist buff combat button logic
+
+                if (scientistBuffCombatButton.IsHovered(render, false)) {
+                    scientistBuffCombatButtonColor = BLACK;
+                    if (!isCombatIncreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().IncreaseCombat(5);
+                        isCombatIncreased = true;
+                    }
+                }
+                else
+                {
+                    scientistBuffCombatButtonColor = GRAY;
+                    if (isCombatIncreased)
+                    {
+                        stateManager.GetPlayer()->GetClass().DecreaseCombat(5);
+                        isCombatIncreased = false;
+                    }
+                }
+
+                if (scientistBuffCombatButton.IsClicked(render, false)) {
+                    combatCopy += 5;
+                    scientistDecisionRequired = false;
+                }
+            }
+        }
+
+        case Page::SKILLS_SELECT:
+        {
+            // trained
+             
+            if (linguisticsNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                linguisticsNode.isTransparent = false;
+                psychologyNode.isTransparent = false;
+                sophontologyNode.isTransparent = false;
+
+            }
+
+            // why does the else only need to be called once, and why here? (moving it to the end wil break it)
             else
-                isAllocated = false;
-
-            if (isAllocated)
             {
-                if (statsConfirmButton.IsClicked(render, false)) {
-                    currentPage = Page::LOADOUT_SELECT;
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = false;
                 }
-
-                if (statsConfirmButton.IsHovered(render, false)) {
-                    statsConfirmButtonColor = GRAY;
-                }
-                else statsConfirmButtonColor = LIGHTGRAY;
             }
 
+            if (zoologyNode.IsHovered()) 
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                zoologyNode.isTransparent = false;
+                psychologyNode.isTransparent = false;
+                pathologyNode.isTransparent = false;
+                fieldMedicineNode.isTransparent = false;
+                sophontologyNode.isTransparent = false;
+                exobiologyNode.isTransparent = false;
+                surgeryNode.isTransparent = false;
+
+            }
+
+            if (botanyNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                botanyNode.isTransparent = false;
+                pathologyNode.isTransparent = false;
+                exobiologyNode.isTransparent = false;
+                surgeryNode.isTransparent = false;
+                sophontologyNode.isTransparent = false;
+                psychologyNode.isTransparent = false;
+                fieldMedicineNode.isTransparent = false;
+                ecologyNode.isTransparent = false;
+                planetologyNode.isTransparent = false;
+                wildernessSurvivalNode.isTransparent = false;
+            }
+
+            if (geologyNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                geologyNode.isTransparent = false;
+                asteroidMiningNode.isTransparent = false;
+                ecologyNode.isTransparent = false;
+                planetologyNode.isTransparent = false;
+            }
+
+            if (industrialEquipmentNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                industrialEquipmentNode.isTransparent = false;
+                asteroidMiningNode.isTransparent = false;
+                mechanicalRepairNode.isTransparent = false;
+                roboticsNode.isTransparent = false;
+                engineeringNode.isTransparent = false;
+                cyberneticsNode.isTransparent = false;
+            }
+
+            if (juryRiggingNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                juryRiggingNode.isTransparent = false;
+                mechanicalRepairNode.isTransparent = false;
+                roboticsNode.isTransparent = false;
+                engineeringNode.isTransparent = false;
+                cyberneticsNode.isTransparent = false;
+                explosivesNode.isTransparent = false;
+            }
+
+            if (chemistryNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                chemistryNode.isTransparent = false;
+                explosivesNode.isTransparent = false;
+                pharmacologyNode.isTransparent = false;
+            }
+
+            if (computersNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                computersNode.isTransparent = false;
+                hackingNode.isTransparent = false;
+                artificialIntelligenceNode.isTransparent = false;
+            }
+
+            if (zeroGNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                zeroGNode.isTransparent = false;
+                pilotingNode.isTransparent = false;
+                hyperspaceNode.isTransparent = false;
+                commandNode.isTransparent = false;
+            }
+
+            if (mathematicsNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                mathematicsNode.isTransparent = false;
+                physicsNode.isTransparent = false;
+                hyperspaceNode.isTransparent = false;
+            }
+
+            if (artNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                artNode.isTransparent = false;
+                mysticismNode.isTransparent = false;
+                xenoesotericismNode.isTransparent = false;
+                hyperspaceNode.isTransparent = false;
+            }
+
+            if (archeologyNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                archeologyNode.isTransparent = false;
+                mysticismNode.isTransparent = false;
+                xenoesotericismNode.isTransparent = false;
+                hyperspaceNode.isTransparent = false;
+            }
+
+            if (theologyNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                theologyNode.isTransparent = false;
+                mysticismNode.isTransparent = false;
+                xenoesotericismNode.isTransparent = false;
+                hyperspaceNode.isTransparent = false;
+            }
+
+            if (militaryTrainingNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                militaryTrainingNode.isTransparent = false;
+                explosivesNode.isTransparent = false;
+                wildernessSurvivalNode.isTransparent = false;
+                fireArmsNode.isTransparent = false;
+                handToHandCombatNode.isTransparent = false;
+                commandNode.isTransparent = false;
+            }
+
+            if (rimwiseNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                rimwiseNode.isTransparent = false;
+                fireArmsNode.isTransparent = false;
+                handToHandCombatNode.isTransparent = false;
+                commandNode.isTransparent = false;
+            }
+
+            if (athleticsNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                athleticsNode.isTransparent = false;
+                handToHandCombatNode.isTransparent = false;
+            }
+
+            // expert
+
+            if (psychologyNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                linguisticsNode.isTransparent = false;
+                zoologyNode.isTransparent = false;
+                psychologyNode.isTransparent = false;
+                sophontologyNode.isTransparent = false;
+
+            }
+
+            if (pathologyNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                zoologyNode.isTransparent = false;
+                botanyNode.isTransparent = false;
+                pathologyNode.isTransparent = false;
+                exobiologyNode.isTransparent = false;
+                surgeryNode.isTransparent = false;
+            }
+
+            if (fieldMedicineNode.IsHovered()) 
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                fieldMedicineNode.isTransparent = false;
+                zoologyNode.isTransparent = false;
+                botanyNode.isTransparent = false;
+                surgeryNode.isTransparent = false;
+            }
+
+            if (ecologyNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                geologyNode.isTransparent = false;
+                botanyNode.isTransparent = false;
+                ecologyNode.isTransparent = false;
+                planetologyNode.isTransparent = false;
+            }
+
+            if (asteroidMiningNode.IsHovered()) 
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                industrialEquipmentNode.isTransparent = false;
+                asteroidMiningNode.isTransparent = false;
+                geologyNode.isTransparent = false;
+                planetologyNode.isTransparent = false;
+            }
+
+            if (mechanicalRepairNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                juryRiggingNode.isTransparent = false;
+                industrialEquipmentNode.isTransparent = false;
+                mechanicalRepairNode.isTransparent = false;
+                roboticsNode.isTransparent = false;
+                engineeringNode.isTransparent = false;
+                cyberneticsNode.isTransparent = false;
+            }
+
+            if (explosivesNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                chemistryNode.isTransparent = false;
+                explosivesNode.isTransparent = false;
+                militaryTrainingNode.isTransparent = false;
+                juryRiggingNode.isTransparent = false;
+            }
+
+            if (pharmacologyNode.IsHovered()) 
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                pharmacologyNode.isTransparent = false;
+                chemistryNode.isTransparent = false;
+            }
+
+            if (hackingNode.IsHovered()) 
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                hackingNode.isTransparent = false;
+                computersNode.isTransparent = false;
+                artificialIntelligenceNode.isTransparent = false;
+            }
+
+            if (pilotingNode.IsHovered()) 
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                pilotingNode.isTransparent = false;
+                zeroGNode.isTransparent = false;
+                commandNode.isTransparent = false;
+                hyperspaceNode.isTransparent = false;
+            }
+
+            if (physicsNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                physicsNode.isTransparent = false;
+                mathematicsNode.isTransparent = false;
+                hyperspaceNode.isTransparent = false;
+            }
+
+            if (mysticismNode.IsHovered()) 
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                archeologyNode.isTransparent = false;
+                mysticismNode.isTransparent = false;
+                xenoesotericismNode.isTransparent = false;
+                hyperspaceNode.isTransparent = false;
+                artNode.isTransparent = false;
+                theologyNode.isTransparent = false;
+            }
+
+            if (wildernessSurvivalNode.IsHovered()) 
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                wildernessSurvivalNode.isTransparent = false;
+                botanyNode.isTransparent = false;
+                militaryTrainingNode.isTransparent = false;
+            }
+
+            if (fireArmsNode.IsHovered()) 
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                militaryTrainingNode.isTransparent = false;
+                rimwiseNode.isTransparent = false;
+                fireArmsNode.isTransparent = false;
+                commandNode.isTransparent = false;
+            }
+
+            if (handToHandCombatNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                rimwiseNode.isTransparent = false;
+                militaryTrainingNode.isTransparent = false;
+                handToHandCombatNode.isTransparent = false;
+                athleticsNode.isTransparent = false;
+            }
         }
-
-        if (androidDecisionRequired)
-        {
-            // android handicap strength button logic
-
-            if (androidHandicapStrengthButton.IsHovered(render, false)) {
-                androidHandicapStrengthButtonColor = BLACK;
-                if (!isStrengthDecreased)
-                {
-                    stateManager.GetPlayer()->GetClass().DecreaseStrength(10);
-                    isStrengthDecreased = true;
-                }
-            }
-            else
-            {
-                androidHandicapStrengthButtonColor = GRAY;
-                if (isStrengthDecreased)
-                {
-                    stateManager.GetPlayer()->GetClass().IncreaseStrength(10);
-                    isStrengthDecreased = false;
-                }
-            }
-
-            if (androidHandicapStrengthButton.IsClicked(render, false)) {
-                strengthCopy -= 10;
-                androidDecisionRequired = false;
-            }
-
-            // android handicap speed button logic
-
-            if (androidHandicapSpeedButton.IsHovered(render, false)) {
-                androidHandicapSpeedButtonColor = BLACK;
-                if (!isSpeedDecreased)
-                {
-                    stateManager.GetPlayer()->GetClass().DecreaseSpeed(10);
-                    isSpeedDecreased = true;
-                }
-            }
-            else
-            {
-                androidHandicapSpeedButtonColor = GRAY;
-                if (isSpeedDecreased)
-                {
-                    stateManager.GetPlayer()->GetClass().IncreaseSpeed(10);
-                    isSpeedDecreased = false;
-                }
-            }
-
-            if (androidHandicapSpeedButton.IsClicked(render, false)) {
-                speedCopy -= 10;
-                androidDecisionRequired = false;
-            }
-
-            // android handicap intellect button logic
-
-            if (androidHandicapIntellectButton.IsHovered(render, false)) {
-                androidHandicapIntellectButtonColor = BLACK;
-                if (!isIntellectDecreased)
-                {
-                    stateManager.GetPlayer()->GetClass().DecreaseIntellect(10);
-                    isIntellectDecreased = true;
-                }
-            }
-            else
-            {
-                androidHandicapIntellectButtonColor = GRAY;
-                if (isIntellectDecreased)
-                {
-                    stateManager.GetPlayer()->GetClass().IncreaseIntellect(10);
-                    isIntellectDecreased = false;
-                }
-            }
-
-            if (androidHandicapIntellectButton.IsClicked(render, false)) {
-                intellectCopy -= 10;
-                androidDecisionRequired = false;
-            }
-
-            // android handicap combat button logic
-
-            if (androidHandicapCombatButton.IsHovered(render, false)) {
-                androidHandicapCombatButtonColor = BLACK;
-                if (!isCombatDecreased)
-                {
-                    stateManager.GetPlayer()->GetClass().DecreaseCombat(10);
-                    isCombatDecreased = true;
-                }
-            }
-            else
-            {
-                androidHandicapCombatButtonColor = GRAY;
-                if (isCombatDecreased)
-                {
-                    stateManager.GetPlayer()->GetClass().IncreaseCombat(10);
-                    isCombatDecreased = false;
-                }
-            }
-
-            if (androidHandicapCombatButton.IsClicked(render, false)) {
-                combatCopy -= 10;
-                androidDecisionRequired = false;
-            }
-        }
-
-        if (scientistDecisionRequired)
-        {
-            // scientist buff strength button logic
-
-            if (scientistBuffStrengthButton.IsHovered(render, false)) {
-                scientistBuffStrengthButtonColor = BLACK;
-                if (!isStrengthIncreased)
-                {
-                    stateManager.GetPlayer()->GetClass().IncreaseStrength(5);
-                    isStrengthIncreased = true;
-                }
-            }
-            else
-            {
-                scientistBuffStrengthButtonColor = GRAY;
-                if (isStrengthIncreased)
-                {
-                    stateManager.GetPlayer()->GetClass().DecreaseStrength(5);
-                    isStrengthIncreased = false;
-                }
-            }
-
-            if (scientistBuffStrengthButton.IsClicked(render, false)) {
-                strengthCopy += 5;
-                scientistDecisionRequired = false;
-            }
-
-            // scientist buff speed button logic
-
-            if (scientistBuffSpeedButton.IsHovered(render, false)) {
-                scientistBuffSpeedButtonColor = BLACK;
-                if (!isSpeedIncreased)
-                {
-                    stateManager.GetPlayer()->GetClass().IncreaseSpeed(5);
-                    isSpeedIncreased = true;
-                }
-            }
-            else
-            {
-                scientistBuffSpeedButtonColor = GRAY;
-                if (isSpeedIncreased)
-                {
-                    stateManager.GetPlayer()->GetClass().DecreaseSpeed(5);
-                    isSpeedIncreased = false;
-                }
-            }
-
-            if (scientistBuffSpeedButton.IsClicked(render, false)) {
-                speedCopy += 5;
-                scientistDecisionRequired = false;
-            }
-
-            // scientist buff intellect button logic
-
-            if (scientistBuffIntellectButton.IsHovered(render, false)) {
-                scientistBuffIntellectButtonColor = BLACK;
-                if (!isIntellectIncreased)
-                {
-                    stateManager.GetPlayer()->GetClass().IncreaseIntellect(5);
-                    isIntellectIncreased = true;
-                }
-            }
-            else
-            {
-                scientistBuffIntellectButtonColor = GRAY;
-                if (isIntellectIncreased)
-                {
-                    stateManager.GetPlayer()->GetClass().DecreaseIntellect(5);
-                    isIntellectIncreased = false;
-                }
-            }
-
-            if (scientistBuffIntellectButton.IsClicked(render, false)) {
-                intellectCopy += 5;
-                scientistDecisionRequired = false;
-            }
-
-            // scientist buff combat button logic
-
-            if (scientistBuffCombatButton.IsHovered(render, false)) {
-                scientistBuffCombatButtonColor = BLACK;
-                if (!isCombatIncreased)
-                {
-                    stateManager.GetPlayer()->GetClass().IncreaseCombat(5);
-                    isCombatIncreased = true;
-                }
-            }
-            else
-            {
-                scientistBuffCombatButtonColor = GRAY;
-                if (isCombatIncreased)
-                {
-                    stateManager.GetPlayer()->GetClass().DecreaseCombat(5);
-                    isCombatIncreased = false;
-                }
-            }
-
-            if (scientistBuffCombatButton.IsClicked(render, false)) {
-                combatCopy += 5;
-                scientistDecisionRequired = false;
-            }
-        }
-    }
-
-    case Page::SKILLS_SELECT:
-    {
-        if (linguisticsNode.IsHovered())
-        {
-            for (SkillTreeNode* node : allNodes)
-            {
-                node->isTransparent = true;
-            }
-
-            linguisticsNode.isTransparent = false;
-            psychologyNode.isTransparent = false;
-            sophontologyNode.isTransparent = false;
-
-        }
-
-        // why does the else only need to be called once, and why here? (moving it to the end wil break it)
-        else
-        {
-            for (SkillTreeNode* node : allNodes)
-            {
-                node->isTransparent = false;
-            }
-        }
-
-        if (zoologyNode.IsHovered()) 
-        {
-            for (SkillTreeNode* node : allNodes)
-            {
-                node->isTransparent = true;
-            }
-
-            zoologyNode.isTransparent = false;
-            psychologyNode.isTransparent = false;
-            pathologyNode.isTransparent = false;
-            fieldMedicineNode.isTransparent = false;
-            sophontologyNode.isTransparent = false;
-            exobiologyNode.isTransparent = false;
-            surgeryNode.isTransparent = false;
-
-        }
-
-        if (botanyNode.IsHovered())
-        {
-            for (SkillTreeNode* node : allNodes)
-            {
-                node->isTransparent = true;
-            }
-
-            botanyNode.isTransparent = false;
-            ecologyNode.isTransparent = false;
-            planetologyNode.isTransparent = false;
-            wildernessSurvivalNode.isTransparent = false;
-        }
-
-        if (geologyNode.IsHovered())
-        {
-            for (SkillTreeNode* node : allNodes)
-            {
-                node->isTransparent = true;
-            }
-
-            geologyNode.isTransparent = false;
-            asteroidMiningNode.isTransparent = false;
-            ecologyNode.isTransparent = false;
-            planetologyNode.isTransparent = false;
-        }
-
-        if (industrialEquipmentNode.IsHovered())
-        {
-            for (SkillTreeNode* node : allNodes)
-            {
-                node->isTransparent = true;
-            }
-
-            industrialEquipmentNode.isTransparent = false;
-            asteroidMiningNode.isTransparent = false;
-            mechanicalRepairNode.isTransparent = false;
-            roboticsNode.isTransparent = false;
-            engineeringNode.isTransparent = false;
-            cyberneticsNode.isTransparent = false;
-        }
-
-        if (juryRiggingNode.IsHovered())
-        {
-            for (SkillTreeNode* node : allNodes)
-            {
-                node->isTransparent = true;
-            }
-
-            juryRiggingNode.isTransparent = false;
-            mechanicalRepairNode.isTransparent = false;
-            roboticsNode.isTransparent = false;
-            engineeringNode.isTransparent = false;
-            cyberneticsNode.isTransparent = false;
-            explosivesNode.isTransparent = false;
-        }
-
-        if (chemistryNode.IsHovered())
-        {
-            for (SkillTreeNode* node : allNodes)
-            {
-                node->isTransparent = true;
-            }
-
-            chemistryNode.isTransparent = false;
-            explosivesNode.isTransparent = false;
-            pharmacologyNode.isTransparent = false;
-        }
-
-        if (computersNode.IsHovered())
-        {
-            for (SkillTreeNode* node : allNodes)
-            {
-                node->isTransparent = true;
-            }
-
-            computersNode.isTransparent = false;
-            hackingNode.isTransparent = false;
-            artificialIntelligenceNode.isTransparent = false;
-        }
-
-        if (zeroGNode.IsHovered())
-        {
-            for (SkillTreeNode* node : allNodes)
-            {
-                node->isTransparent = true;
-            }
-
-            zeroGNode.isTransparent = false;
-            pilotingNode.isTransparent = false;
-            hyperspaceNode.isTransparent = false;
-            commandNode.isTransparent = false;
-        }
-
-    }
-
     }
 
 
