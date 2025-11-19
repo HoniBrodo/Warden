@@ -11,38 +11,11 @@
 plan:
 -----
 
-skillTreeTrainedColor = SKYBLUE;
-skillTreeMasterColor = ORANGE;
-skillTreeExpertColor = MAGENTA;
-skillTreeIconOpacity = WHITE;
+- create a 'state' (probably an enum) for the SkillTreeNode class that will change depending on whether it is possible 
+to choose the associated skill.
 
-skillTreeTrainedTaintedColor = { 102, 191, 255, 80 };
-skillTreeMasterTaintedColor = { 255, 161, 0, 80 };
-skillTreeExpertTaintedColor = { 255, 0, 255, 80 };
-skillTreeIconTaintedOpacity = Fade(WHITE, 0.5f);
-
-
--- ***DONE*** create constructor in the SkillTreeNode class that can initialize a value to indicate what level or skill the object is 
-
--- ***DONE*** create a function that each node object can call in order to draw the icon to the screen, in place of the current 
-non-object based set-up. 
-
--- for each node: in the logic for isHovering, set the appropriate isTransparent 'true' states for itself and the associated skills.
-
--- in the draw fucntion use an if statement to check if the bool 'isTransparent' is true and 
-set the color of the icon based on the result of the check. Consdider using nested if statements to check what type of skill
-the node if for.
-
--- in CharacterCreator, create a vector of all of the SkillTreeNode objects called allNodes. These should be references not copies.
-
--- in CharacterCreator, create a function that accepts two vectors of SkillTreeNode objects. One vector will be the allNodes
-vector and the other will be a list of nodes spcific to what node the player is hovering over. 
-the function will iterate through the vectors and compre. It will change the color of the nodes icon to transparent if the name 
-of the object DOESNT appear in both vectors. 
-
--- in the isHovering function for each node, create a vector that is specific to that node. The vector will contain all of the 
-node that are to NOT be changed to their transparent color. run the above function and pass in the vector as well as the allNodes 
-vector
+- set up a system where the node for each skill is a different color depending on the state. Green for available, red
+for unavailable, white for selected and black for mandatory
 
 */
 
@@ -1272,6 +1245,160 @@ void CharacterCreator::HandleInput()
                 militaryTrainingNode.isTransparent = false;
                 handToHandCombatNode.isTransparent = false;
                 athleticsNode.isTransparent = false;
+            }
+
+             // master
+
+            if (sophontologyNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                linguisticsNode.isTransparent = false;
+                zoologyNode.isTransparent = false;
+                psychologyNode.isTransparent = false;
+                sophontologyNode.isTransparent = false;
+
+            }
+
+            if (exobiologyNode.IsHovered()) 
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                zoologyNode.isTransparent = false;
+                botanyNode.isTransparent = false;
+                pathologyNode.isTransparent = false;
+                exobiologyNode.isTransparent = false;
+            }
+
+            if (surgeryNode.IsHovered()) 
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                pathologyNode.isTransparent = false;
+                fieldMedicineNode.isTransparent = false;
+                zoologyNode.isTransparent = false;
+                botanyNode.isTransparent = false;
+                surgeryNode.isTransparent = false;
+            }
+
+            if (planetologyNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                geologyNode.isTransparent = false;
+                botanyNode.isTransparent = false;
+                ecologyNode.isTransparent = false;
+                planetologyNode.isTransparent = false;
+                industrialEquipmentNode.isTransparent = false;
+                asteroidMiningNode.isTransparent = false;
+            }
+
+            if (roboticsNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes) 
+                {
+                    node->isTransparent = true;
+                }
+
+                roboticsNode.isTransparent = false;
+                mechanicalRepairNode.isTransparent = false;
+                industrialEquipmentNode.isTransparent = false;
+                juryRiggingNode.isTransparent = false;
+            }
+
+            if (engineeringNode.IsHovered()) 
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                engineeringNode.isTransparent = false;
+                mechanicalRepairNode.isTransparent = false;
+                industrialEquipmentNode.isTransparent = false;
+                juryRiggingNode.isTransparent = false;
+            }
+
+            if (cyberneticsNode.IsHovered()) 
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                cyberneticsNode.isTransparent = false;
+                mechanicalRepairNode.isTransparent = false;
+                industrialEquipmentNode.isTransparent = false;
+                juryRiggingNode.isTransparent = false;
+            }
+
+            if (artificialIntelligenceNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                artificialIntelligenceNode.isTransparent = false;
+                hackingNode.isTransparent = false;
+                computersNode.isTransparent = false;
+            }
+
+            if (hyperspaceNode.IsHovered()) 
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                hyperspaceNode.isTransparent = false;
+                physicsNode.isTransparent = false;
+                pilotingNode.isTransparent = false;
+                mysticismNode.isTransparent = false;
+                zeroGNode.isTransparent = false;
+                mathematicsNode.isTransparent = false;
+                artificialIntelligenceNode.isTransparent = false;
+                archeologyNode.isTransparent = false;
+                theologyNode.isTransparent = false;
+            }
+
+            if (xenoesotericismNode.IsHovered()) 
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                xenoesotericismNode.isTransparent = false;
+                mysticismNode.isTransparent = false;
+                artificialIntelligenceNode.isTransparent = false;
+                archeologyNode.isTransparent = false;
+                theologyNode.isTransparent = false;
+            }
+
+            if (commandNode.IsHovered())
+            {
+                for (SkillTreeNode* node : allNodes)
+                {
+                    node->isTransparent = true;
+                }
+
+                commandNode.isTransparent = false;
+                fireArmsNode.isTransparent = false;
+                militaryTrainingNode.isTransparent = false;
+                rimwiseNode.isTransparent = false;
             }
         }
     }
