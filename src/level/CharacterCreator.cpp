@@ -857,6 +857,9 @@ void CharacterCreator::HandleInput()
                 sophontologyNode.isTransparent = false;
                 exobiologyNode.isTransparent = false;
                 surgeryNode.isTransparent = false;
+            }
+            else
+            {
 
             }
 
@@ -2016,54 +2019,54 @@ void CharacterCreator::Draw(Renderer& render)
         //nodes row 01
 
 
-        linguisticsNode.Draw(render, render.GridX(1) - 9, render.GridY(7), linguisticsNode.innerRadius, linguisticsNode.outerRadius, linguisticsNodeColor, "Linguistics");
-        zoologyNode.Draw(render, render.GridX(1) - 9 + spacing, render.GridY(7), 18, 22, zoologyNodeColor, "Zoology");
-        botanyNode.Draw(render, render.GridX(1) - 9 + spacing * 2, render.GridY(7), 18, 22, botanyNodeColor, "Botany");
-        geologyNode.Draw(render, render.GridX(1) - 9 + spacing * 3, render.GridY(7), 18, 22, geologyNodeColor, "Geology");
-        industrialEquipmentNode.Draw(render, render.GridX(1) + spacing * 4, render.GridY(7), 18, 22, industrialodeColor, "Industrial Equipment");
-        juryRiggingNode.Draw(render, render.GridX(1) - 9 + spacing * 5, render.GridY(7), 18, 22, juryRiggingNodeColor, "Jury Rigging");
-        chemistryNode.Draw(render, render.GridX(1) - 9 + spacing * 6, render.GridY(7), 18, 22, chemistryNodeColor, "Chemistry");
-        computersNode.Draw(render, render.GridX(1) - 9 + spacing * 7, render.GridY(7), 18, 22, computersNodeColor, " Computers");
-        zeroGNode.Draw(render, render.GridX(1) - 9 + spacing * 8, render.GridY(7), 18, 22, zeroGNodeColor, "ZeroG");
-        mathematicsNode.Draw(render, render.GridX(1) - 9 + spacing * 9, render.GridY(7), 18, 22, mathematicsNodeColor, "Mathematics");
-        artNode.Draw(render, render.GridX(1) - 9 + spacing * 10, render.GridY(7), 18, 22, artNodeColor, "Art");
-        archeologyNode.Draw(render, render.GridX(1) - 9 + spacing * 11, render.GridY(7), 18, 22, archeologyNodeColor, "Archeology");
-        theologyNode.Draw(render, render.GridX(1) - 9 + spacing * 12, render.GridY(7), 18, 22, theologyNodeColor, "Theology");
-        militaryTrainingNode.Draw(render, render.GridX(1) - 9 + spacing * 13, render.GridY(7), 18, 22, militaryTrainingNodeColor, "Military Training");
-        rimwiseNode.Draw(render, render.GridX(1) - 9 + spacing * 14, render.GridY(7), 18, 22, rimwiseNodeColor, "Rimwise");
-        athleticsNode.Draw(render, render.GridX(1) - 9 + spacing * 15, render.GridY(7), 18, 22, athleticsNodeColor, "Athletics");
+        linguisticsNode.Draw(render, render.GridX(1) - 9, render.GridY(7), linguisticsNode.innerRadius, linguisticsNode.outerRadius, "Linguistics");
+        zoologyNode.Draw(render, render.GridX(1) - 9 + spacing, render.GridY(7), 18, 22, "Zoology");
+        botanyNode.Draw(render, render.GridX(1) - 9 + spacing * 2, render.GridY(7), 18, 22, "Botany");
+        geologyNode.Draw(render, render.GridX(1) - 9 + spacing * 3, render.GridY(7), 18, 22, "Geology");
+        industrialEquipmentNode.Draw(render, render.GridX(1) + spacing * 4, render.GridY(7), 18, 22, "Industrial Equipment");
+        juryRiggingNode.Draw(render, render.GridX(1) - 9 + spacing * 5, render.GridY(7), 18, 22, "Jury Rigging");
+        chemistryNode.Draw(render, render.GridX(1) - 9 + spacing * 6, render.GridY(7), 18, 22, "Chemistry");
+        computersNode.Draw(render, render.GridX(1) - 9 + spacing * 7, render.GridY(7), 18, 22, " Computers");
+        zeroGNode.Draw(render, render.GridX(1) - 9 + spacing * 8, render.GridY(7), 18, 22, "ZeroG");
+        mathematicsNode.Draw(render, render.GridX(1) - 9 + spacing * 9, render.GridY(7), 18, 22, "Mathematics");
+        artNode.Draw(render, render.GridX(1) - 9 + spacing * 10, render.GridY(7), 18, 22, "Art");
+        archeologyNode.Draw(render, render.GridX(1) - 9 + spacing * 11, render.GridY(7), 18, 22, "Archeology");
+        theologyNode.Draw(render, render.GridX(1) - 9 + spacing * 12, render.GridY(7), 18, 22, "Theology");
+        militaryTrainingNode.Draw(render, render.GridX(1) - 9 + spacing * 13, render.GridY(7), 18, 22, "Military Training");
+        rimwiseNode.Draw(render, render.GridX(1) - 9 + spacing * 14, render.GridY(7), 18, 22, "Rimwise");
+        athleticsNode.Draw(render, render.GridX(1) - 9 + spacing * 15, render.GridY(7), 18, 22, "Athletics");
 
         //nodes row 02
 
-        psychologyNode.Draw(render, render.GridX(1) - 9 - spacing/2 + spacing, render.GridY(10), 18, 22, psychologyNodeColor, "Psychology");
-        pathologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 2, render.GridY(10), 18, 22, pathologyNodeColor, "Pathology");
-        fieldMedicineNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 3, render.GridY(10), 18, 22, fieldMedicineNodeColor, "Field Medicine");
-        ecologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 4, render.GridY(10), 18, 22, ecologyNodeColor, "Ecology");
-        asteroidMiningNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 5, render.GridY(10), 18, 22, asteroidMiningNodeColor, "Asteroid Mining");
-        mechanicalRepairNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 6, render.GridY(10), 18, 22, mechanicalRepairNodeColor, "Mechanical Repair");
-        explosivesNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 7, render.GridY(10), 18, 22, explosivesNodeColor, "Explosives");
-        pharmacologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 8, render.GridY(10), 18, 22, pharmacologyNodeColor, "Pharma- cology");
-        hackingNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 9, render.GridY(10), 18, 22, hackingNodeColor, "Hacking");
-        pilotingNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 10, render.GridY(10), 18, 22, pilotingNodeColor, "Piloting");
-        physicsNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 11, render.GridY(10), 18, 22, physicsNodeColor, "Physics");
-        mysticismNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 12, render.GridY(10), 18, 22, mysticismNodeColor, "Mysticism");
-        wildernessSurvivalNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 13, render.GridY(10), 18, 22, wildernessSurvivalNodeColor, "Wilderness Survival");
-        fireArmsNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 14, render.GridY(10), 18, 22, fireArmsNodeColor, "Fire Arms");
-        handToHandCombatNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 15, render.GridY(10), 18, 22, handToHandCombatNodeColor, "Hand To Hand");
+        psychologyNode.Draw(render, render.GridX(1) - 9 - spacing/2 + spacing, render.GridY(10), 18, 22, "Psychology");
+        pathologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 2, render.GridY(10), 18, 22, "Pathology");
+        fieldMedicineNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 3, render.GridY(10), 18, 22, "Field Medicine");
+        ecologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 4, render.GridY(10), 18, 22, "Ecology");
+        asteroidMiningNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 5, render.GridY(10), 18, 22, "Asteroid Mining");
+        mechanicalRepairNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 6, render.GridY(10), 18, 22, "Mechanical Repair");
+        explosivesNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 7, render.GridY(10), 18, 22, "Explosives");
+        pharmacologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 8, render.GridY(10), 18, 22, "Pharma- cology");
+        hackingNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 9, render.GridY(10), 18, 22, "Hacking");
+        pilotingNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 10, render.GridY(10), 18, 22, "Piloting");
+        physicsNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 11, render.GridY(10), 18, 22, "Physics");
+        mysticismNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 12, render.GridY(10), 18, 22, "Mysticism");
+        wildernessSurvivalNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 13, render.GridY(10), 18, 22, "Wilderness Survival");
+        fireArmsNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 14, render.GridY(10), 18, 22, "Fire Arms");
+        handToHandCombatNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 15, render.GridY(10), 18, 22, "Hand To Hand");
 
         //nodes row 03
 
-        sophontologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 3, render.GridY(13), 18, 22, sophontologyNodeColor, "Sophon- tology");
-        exobiologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 4, render.GridY(13), 18, 22, exobiologyNodeColor, "Exobiology");
-        surgeryNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 5, render.GridY(13), 18, 22, surgeryNodeColor, "Surgery");
-        planetologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 6, render.GridY(13), 18, 22, planetologyNodeColor, "Planetology");
-        roboticsNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 7, render.GridY(13), 18, 22, roboticsNodeColor, "Robotics");
-        engineeringNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 8, render.GridY(13), 18, 22, engineeringNodeColor, "Engineering");
-        cyberneticsNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 9, render.GridY(13), 18, 22, cyberneticsNodeColor, "Cyber- netics");
-        artificialIntelligenceNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 10, render.GridY(13), 18, 22, artificialIntelligenceNodeColor, "Artificial Intelligence");
-        hyperspaceNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 11, render.GridY(13), 18, 22, hyperspaceNodeColor, "Hyperspace");
-        xenoesotericismNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 12, render.GridY(13), 18, 22, xenoesotericismNodeColor, "Xenoeso- tericism");
-        commandNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 13, render.GridY(13), 18, 22, commandNodeColor, "Command");
+        sophontologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 3, render.GridY(13), 18, 22, "Sophon- tology");
+        exobiologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 4, render.GridY(13), 18, 22, "Exobiology");
+        surgeryNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 5, render.GridY(13), 18, 22, "Surgery");
+        planetologyNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 6, render.GridY(13), 18, 22, "Planetology");
+        roboticsNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 7, render.GridY(13), 18, 22, "Robotics");
+        engineeringNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 8, render.GridY(13), 18, 22, "Engineering");
+        cyberneticsNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 9, render.GridY(13), 18, 22, "Cyber- netics");
+        artificialIntelligenceNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 10, render.GridY(13), 18, 22, "Artificial Intelligence");
+        hyperspaceNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 11, render.GridY(13), 18, 22, "Hyperspace");
+        xenoesotericismNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 12, render.GridY(13), 18, 22, "Xenoeso- tericism");
+        commandNode.Draw(render, render.GridX(1) - 9 - spacing / 2 + spacing * 13, render.GridY(13), 18, 22, "Command");
 
         //icons row 01
 

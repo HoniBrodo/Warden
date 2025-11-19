@@ -11,7 +11,7 @@ SkillTreeNode::SkillTreeNode()
 {
 }
 
-void SkillTreeNode::Draw(Renderer& render, int centerX, int centerY, int innerCircleSize, int outerCircleSize, Color color, std::string label)
+void SkillTreeNode::Draw(Renderer& render, int centerX, int centerY, int innerCircleSize, int outerCircleSize, std::string label)
 {
 	cenX = centerX;
 	cenY = centerY;
@@ -19,7 +19,39 @@ void SkillTreeNode::Draw(Renderer& render, int centerX, int centerY, int innerCi
     bool hovered = IsHovered();
     float scale = hovered ? 1.2f : 1.0f;
 
-	render.DrawNodeCircle(centerX, centerY - 10, innerCircleSize * scale, outerCircleSize * scale, color);
+	switch (availability)
+	{
+		case NodeAvailability::AVAILABLE:
+		{
+			nodeColor = DARKGREEN;
+
+			break;
+		}
+
+		case NodeAvailability::UNAVAILABLE:
+		{
+			nodeColor = RED;
+
+			break;
+		}
+
+		case NodeAvailability::SELECTED:
+		{
+			nodeColor = WHITE;
+
+			break;
+		}
+
+		case NodeAvailability::MANDATORY:
+		{
+			nodeColor = BLACK;
+
+			break;
+		}
+
+	}
+
+	render.DrawNodeCircle(centerX, centerY - 10, innerCircleSize * scale, outerCircleSize * scale, nodeColor);
 
     render.DrawTextBlockNoPadding(label, centerX - 60, centerY + 80, 120, TextAlign::Center, TextSize::SkillTreeNode);
 }

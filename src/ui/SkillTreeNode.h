@@ -11,6 +11,14 @@ enum class SkillLevel
     MASTER
 };
 
+enum class NodeAvailability
+{
+    AVAILABLE,
+    UNAVAILABLE, 
+    SELECTED,
+    MANDATORY
+};
+
 class SkillTreeNode
 {
 public:
@@ -18,11 +26,12 @@ public:
     SkillTreeNode(SkillLevel level);
     SkillTreeNode();
     //void MakeNodesTransparent(std::vector<SkillTreeNode>& allNodes);
-    void Draw(Renderer& render, int centerX, int centerY, int innerCircleSize, int outerCircleSize, Color color, std::string label);
+    void Draw(Renderer& render, int centerX, int centerY, int innerCircleSize, int outerCircleSize, std::string label);
     bool IsHovered() const;
     void DrawIcon(Renderer& render, std::string image, Vector2 pos, float rotation, float scale, Color tint, Color background);
 
     SkillLevel skillLevel = SkillLevel::TRAINED;
+    NodeAvailability availability = NodeAvailability::AVAILABLE;
     int outerRadius{ 22 };
     int innerRadius{ 18 };
     int cenX{};
@@ -30,6 +39,7 @@ public:
 
     bool isTransparent = false;
 
+    Color nodeColor = DARKGREEN;
     Color iconColor{ SKYBLUE };
 
 
