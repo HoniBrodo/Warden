@@ -19,7 +19,7 @@ void SkillTreeNode::Draw(Renderer& render, int centerX, int centerY, int innerCi
     bool hovered = IsHovered();
     float scale = hovered ? 1.2f : 1.0f;
 
-	switch (availability)
+	switch (nodeAvailability)
 	{
 		case NodeAvailability::AVAILABLE:
 		{
@@ -89,6 +89,38 @@ void SkillTreeNode::DrawIcon(Renderer& render, std::string image, Vector2 pos, f
 	}
 
 	render.DrawSkillTreeIcon(image, pos, rotation, scale, tint, background);
+}
+
+void SkillTreeNode::SetNodeAvailability(const std::string& availability)
+{
+	static const std::unordered_map<std::string, NodeAvailability> lookup = {
+		{"available",   NodeAvailability::AVAILABLE},
+		{"unavailable", NodeAvailability::UNAVAILABLE},
+		{"selected",    NodeAvailability::SELECTED},
+		{"mandatory",   NodeAvailability::MANDATORY},
+	};
+
+	auto it = lookup.find(availability);
+	nodeAvailability = (it != lookup.end())
+		? it->second
+		: NodeAvailability::AVAILABLE; // default
+
+	/*
+	note to future self... I'm struggling to make sense of this. Here is a longer form of the same code,
+	for visualisation purposes...
+
+	auto it = lookup.find(availability);
+
+	if (it != lookup.end())
+	{
+		nodeAvailability = it->second; // use mapped enum
+	}
+	else
+	{
+		nodeAvailability = NodeAvailability::AVAILABLE; // default
+	}
+
+	*/
 }
 
 
