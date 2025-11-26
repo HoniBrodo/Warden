@@ -863,6 +863,11 @@ void CharacterCreator::HandleInput()
 
             }
 
+            if (zoologyNode.IsClicked())
+            {
+                zoologyNode.nodeAvailability = NodeAvailability::SELECTED;
+            }
+
             if (botanyNode.IsHovered())
             {
                 for (SkillTreeNode* node : allNodes)

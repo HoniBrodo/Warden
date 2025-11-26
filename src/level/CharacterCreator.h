@@ -284,7 +284,7 @@ private:
     SkillTreeNode commandNode;
     Color commandNodeColor = GRAY;
 
-    std::vector<SkillTreeNode*> allNodes{};
+    std::vector<SkillTreeNode* > allNodes{};
 
     // skill tree icon colors
     Color skillTreeTrainedColor = SKYBLUE;
