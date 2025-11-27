@@ -248,6 +248,13 @@ void CharacterCreator::HandleInput()
                 auto player = std::make_unique<Player>(std::move(chosenClass));
                 stateManager.SetPlayer(std::move(player));
 
+                className = stateManager.GetPlayer()->GetClass().GetName();
+
+                if (className == "Marine")
+                {
+                    ecologyNode.nodeAvailability = NodeAvailability::MANDATORY;
+                }
+
                 // change back to stats once finished working on the skills screen
                 currentPage = Page::SKILLS_SELECT;
 

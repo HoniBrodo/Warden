@@ -39,6 +39,7 @@ public:
     void Update(float dt) override;
     void Draw(Renderer& render) override;
     void HandleInput() override;
+    
     CharacterSelect GetCurrentCharacter() const { return currentCharacter; }
     Page GetCurrentPage() const { return currentPage; }
     Marine marine;
