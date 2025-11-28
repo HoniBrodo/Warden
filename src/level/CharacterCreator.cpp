@@ -11,11 +11,7 @@
 plan:
 -----
 
-- create a 'state' (probably an enum) for the SkillTreeNode class that will change depending on whether it is possible 
-to choose the associated skill.
-
-- set up a system where the node for each skill is a different color depending on the state. Green for available, red
-for unavailable, white for selected and black for mandatory
+- create 
 
 */
 
@@ -252,7 +248,21 @@ void CharacterCreator::HandleInput()
 
                 if (className == "Marine")
                 {
-                    ecologyNode.nodeAvailability = NodeAvailability::MANDATORY;
+                    militaryTrainingNode.nodeAvailability = NodeAvailability::MANDATORY;
+                    athleticsNode.nodeAvailability = NodeAvailability::MANDATORY;
+                }
+
+                if (className == "Android")
+                {
+                    linguisticsNode.nodeAvailability = NodeAvailability::MANDATORY;
+                    computersNode.nodeAvailability = NodeAvailability::MANDATORY;
+                    mathematicsNode.nodeAvailability = NodeAvailability::MANDATORY;
+                }
+
+                if (className == "Teamster")
+                {
+                    industrialEquipmentNode.nodeAvailability = NodeAvailability::MANDATORY;
+                    zeroGNode.nodeAvailability = NodeAvailability::MANDATORY;
                 }
 
                 // change back to stats once finished working on the skills screen
@@ -920,6 +930,7 @@ void CharacterCreator::HandleInput()
                 roboticsNode.isTransparent = false;
                 engineeringNode.isTransparent = false;
                 cyberneticsNode.isTransparent = false;
+                planetologyNode.isTransparent = false;
             }
 
             if (juryRiggingNode.IsHovered())
@@ -2499,6 +2510,9 @@ void CharacterCreator::Reset()
     loadout03ButtonColor = LIGHTGRAY;
     loadout04ButtonColor = LIGHTGRAY;
 
-       
+    for (auto n : allNodes)
+    {
+        n->nodeAvailability = NodeAvailability::AVAILABLE;
+    }
 }
 
