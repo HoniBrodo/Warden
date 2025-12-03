@@ -141,8 +141,6 @@
     <ClCompile Include="..\..\src\core\Game.cpp" />
     <ClCompile Include="..\..\src\core\InputManager.cpp" />
     <ClCompile Include="..\..\src\core\Renderer.cpp" />
-    <ClCompile Include="..\..\src\core\Skill.cpp" />
-    <ClCompile Include="..\..\src\core\SkillManager.cpp" />
     <ClCompile Include="..\..\src\core\StateManager.cpp" />
     <ClCompile Include="..\..\src\level\CharacterCreator.cpp" />
     <ClCompile Include="..\..\src\level\DebugLevel.cpp" />
@@ -167,8 +165,6 @@
     <ClInclude Include="..\..\src\core\IGameState.h" />
     <ClInclude Include="..\..\src\core\InputManager.h" />
     <ClInclude Include="..\..\src\core\Renderer.h" />
-    <ClInclude Include="..\..\src\core\Skill.h" />
-    <ClInclude Include="..\..\src\core\SkillManager.h" />
     <ClInclude Include="..\..\src\core\StateManager.h" />
     <ClInclude Include="..\..\src\level\CharacterCreator.h" />
     <ClInclude Include="..\..\src\level\DebugLevel.h" />
@@ -183,9 +179,6 @@
     <ClInclude Include="..\..\src\player\Teamster.h" />
     <ClInclude Include="..\..\src\ui\SkillTreeNode.h" />
     <ClInclude Include="..\..\src\UI\UIButton.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\src\assets\Skills.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

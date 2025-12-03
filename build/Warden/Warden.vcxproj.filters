@@ -93,12 +93,6 @@
     <ClCompile Include="..\..\src\ui\SkillTreeNode.cpp">
       <Filter>Source Files\ui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\core\Skill.cpp">
-      <Filter>Source Files\core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\core\SkillManager.cpp">
-      <Filter>Source Files\core</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\core\Game.h">
@@ -164,16 +158,5 @@
     <ClInclude Include="..\..\src\ui\SkillTreeNode.h">
       <Filter>Source Files\ui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\core\Skill.h">
-      <Filter>Source Files\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\core\SkillManager.h">
-      <Filter>Source Files\core</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\src\assets\Skills.json">
-      <Filter>Source Files\assets</Filter>
-    </None>
   </ItemGroup>
 </Project>
