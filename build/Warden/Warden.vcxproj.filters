@@ -28,6 +28,9 @@
     <Filter Include="Source Files\assets">
       <UniqueIdentifier>{c30b6f9a-ce4a-4c6a-ab1b-d88014c34c7f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\external">
+      <UniqueIdentifier>{85efb362-b7b8-48d4-8f73-cfdc0a0f8faf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp">
@@ -158,5 +161,13 @@
     <ClInclude Include="..\..\src\ui\SkillTreeNode.h">
       <Filter>Source Files\ui</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\external\json.hpp">
+      <Filter>Source Files\external</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\src\player\SkillTree.json">
+      <Filter>Source Files\player</Filter>
+    </None>
   </ItemGroup>
 </Project>

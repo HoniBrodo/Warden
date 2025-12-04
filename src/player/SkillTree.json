@@ -1,0 +1,17 @@
+{
+  "Linguistics": {
+    "prerequisites": [],
+    "unlocks": [ "Psychology" ],
+    "node name": [ "linguistics Node" ]
+  },
+  "Psychology": {
+    "prerequisites": [ "Linguistics" ],
+    "unlocks": [ "Sophontology" ],
+    "node name": [ "psychologyNode" ]
+  },
+  "Sophontology": {
+    "prerequisites": [ "Psychology" ],
+    "unlocks": [],
+    "node name": [ "sophontologyNode" ]
+  }
+}

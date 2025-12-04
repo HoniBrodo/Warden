@@ -166,6 +166,7 @@
     <ClInclude Include="..\..\src\core\InputManager.h" />
     <ClInclude Include="..\..\src\core\Renderer.h" />
     <ClInclude Include="..\..\src\core\StateManager.h" />
+    <ClInclude Include="..\..\src\external\json.hpp" />
     <ClInclude Include="..\..\src\level\CharacterCreator.h" />
     <ClInclude Include="..\..\src\level\DebugLevel.h" />
     <ClInclude Include="..\..\src\level\MainMenu.h" />
@@ -179,6 +180,9 @@
     <ClInclude Include="..\..\src\player\Teamster.h" />
     <ClInclude Include="..\..\src\ui\SkillTreeNode.h" />
     <ClInclude Include="..\..\src\UI\UIButton.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\src\player\SkillTree.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
