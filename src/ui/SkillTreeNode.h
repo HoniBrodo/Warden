@@ -26,11 +26,12 @@ public:
 
     SkillTreeNode(SkillLevel level);
     SkillTreeNode();
-    //void MakeNodesTransparent(std::vector<SkillTreeNode>& allNodes);
     void Draw(Renderer& render, int centerX, int centerY, int innerCircleSize, int outerCircleSize, std::string label);
     bool IsHovered() const;
     bool IsClicked() const;
     void DrawIcon(Renderer& render, std::string image, Vector2 pos, float rotation, float scale, Color tint, Color background);
+    NodeAvailability GetNodeAvailability() { return nodeAvailability; }
+
 
     SkillLevel skillLevel = SkillLevel::TRAINED;
     NodeAvailability nodeAvailability = NodeAvailability::AVAILABLE;

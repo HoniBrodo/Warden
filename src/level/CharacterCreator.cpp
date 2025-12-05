@@ -4,6 +4,7 @@
 #include "../core/StateManager.h"
 #include "../assets/TextureManager.h"
 #include "../player/Player.h"
+#include "../player/SkillManager.h"
 #include <iostream>
 
 /*
@@ -109,6 +110,16 @@ commandNode(SkillLevel::MASTER)
     allNodes.push_back(&hyperspaceNode);
     allNodes.push_back(&xenoesotericismNode);
     allNodes.push_back(&commandNode);
+
+
+    for (auto n : allNodes)
+    {
+        if (n->skillLevel == SkillLevel::EXPERT || n->skillLevel == SkillLevel::MASTER)
+        {
+            n->nodeAvailability = NodeAvailability::UNAVAILABLE;
+        }
+    }
+   
 
     // load player images
     textureManager.LoadTextureFromFile("Marine", "images/player/SFCP_1_01.png");
@@ -849,7 +860,17 @@ void CharacterCreator::HandleInput()
                 psychologyNode.isTransparent = false;
                 sophontologyNode.isTransparent = false;
 
+                if (linguisticsNode.IsClicked())
+                {
+                    if (linguisticsNode.GetNodeAvailability() == NodeAvailability::AVAILABLE)
+                    {
+                        linguisticsNode.nodeAvailability = NodeAvailability::SELECTED;
+                    }
+                }
+
             }
+
+
 
             // why does the else only need to be called once, and why here? (moving it to the end wil break it)
             else
@@ -874,16 +895,10 @@ void CharacterCreator::HandleInput()
                 sophontologyNode.isTransparent = false;
                 exobiologyNode.isTransparent = false;
                 surgeryNode.isTransparent = false;
-            }
-            else
-            {
 
             }
 
-            if (zoologyNode.IsClicked())
-            {
-                zoologyNode.nodeAvailability = NodeAvailability::SELECTED;
-            }
+
 
             if (botanyNode.IsHovered())
             {
