@@ -96,6 +96,9 @@
     <ClCompile Include="..\..\src\ui\SkillTreeNode.cpp">
       <Filter>Source Files\ui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\player\SkillManager.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\core\Game.h">
@@ -163,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\external\json.hpp">
       <Filter>Source Files\external</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\player\SkillManager.h">
+      <Filter>Source Files\player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

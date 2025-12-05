@@ -153,6 +153,7 @@
     <ClCompile Include="..\..\src\player\Marine.cpp" />
     <ClCompile Include="..\..\src\player\Player.cpp" />
     <ClCompile Include="..\..\src\player\Scientist.cpp" />
+    <ClCompile Include="..\..\src\player\SkillManager.cpp" />
     <ClCompile Include="..\..\src\player\Teamster.cpp" />
     <ClCompile Include="..\..\src\ui\SkillTreeNode.cpp" />
     <ClCompile Include="..\..\src\UI\UIButton.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="..\..\src\player\Marine.h" />
     <ClInclude Include="..\..\src\player\Player.h" />
     <ClInclude Include="..\..\src\player\Scientist.h" />
+    <ClInclude Include="..\..\src\player\SkillManager.h" />
     <ClInclude Include="..\..\src\player\Teamster.h" />
     <ClInclude Include="..\..\src\ui\SkillTreeNode.h" />
     <ClInclude Include="..\..\src\UI\UIButton.h" />
