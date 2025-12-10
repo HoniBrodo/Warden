@@ -865,6 +865,12 @@ void CharacterCreator::HandleInput()
                     if (linguisticsNode.GetNodeAvailability() == NodeAvailability::AVAILABLE)
                     {
                         linguisticsNode.nodeAvailability = NodeAvailability::SELECTED;
+                        hasNodeBeenClicked = true;
+                    }
+
+                    if (linguisticsNode.GetNodeAvailability() == NodeAvailability::SELECTED && hasNodeBeenClicked == false)
+                    {
+                        linguisticsNode.nodeAvailability = NodeAvailability::AVAILABLE;
                     }
                 }
 
@@ -877,7 +883,7 @@ void CharacterCreator::HandleInput()
             {
                 for (SkillTreeNode* node : allNodes)
                 {
-                    node->isTransparent = false;
+                    node->isTransparent = true;
                 }
             }
 
@@ -2155,6 +2161,7 @@ void CharacterCreator::Draw(Renderer& render)
         xenoesotericismNode.DrawIcon(render, "XenoesotericismIcon", { (float)xenoesotericismNode.cenX - 32, (float)xenoesotericismNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
         commandNode.DrawIcon(render, "CommandIcon", { (float)commandNode.cenX - 32, (float)commandNode.cenY + 20 }, 0.f, 1.0f, skillTreeIconOpacity, skillTreeExpertColor);
 
+        hasNodeBeenClicked = false;
     }
 
     }

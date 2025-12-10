@@ -69,6 +69,7 @@ private:
     bool scientistDecisionRequired{ false };
     bool isAllocated{ false };
     bool areStatsCopied{ false }; 
+    bool hasNodeBeenClicked{ false };
 
     bool isStrengthIncreased = false;
     bool isSpeedIncreased = false;

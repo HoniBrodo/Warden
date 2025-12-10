@@ -30,7 +30,8 @@ void SkillTreeNode::Draw(Renderer& render, int centerX, int centerY, int innerCi
 
 		case NodeAvailability::UNAVAILABLE:
 		{
-			nodeColor = RED;
+			nodeColor = WHITE;
+
 
 			break;
 		}
@@ -38,6 +39,7 @@ void SkillTreeNode::Draw(Renderer& render, int centerX, int centerY, int innerCi
 		case NodeAvailability::SELECTED:
 		{
 			nodeColor = DARKGREEN;
+			isTransparent = false;
 
 			break;
 		}
@@ -45,6 +47,7 @@ void SkillTreeNode::Draw(Renderer& render, int centerX, int centerY, int innerCi
 		case NodeAvailability::MANDATORY:
 		{
 			nodeColor = BLACK;
+			isTransparent = false;
 
 			break;
 		}
