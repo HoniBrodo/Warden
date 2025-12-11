@@ -32,6 +32,7 @@ public:
     void DrawIcon(Renderer& render, std::string image, Vector2 pos, float rotation, float scale, Color tint, Color background);
     NodeAvailability GetNodeAvailability() { return nodeAvailability; }
     // make the function here
+    void NodeUnlocksAvailable(std::string& skillName, std::unordered_map<std::string, SkillTreeNode*>& allSkills);
 
 
     SkillLevel skillLevel = SkillLevel::TRAINED;

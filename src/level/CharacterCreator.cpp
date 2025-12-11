@@ -12,7 +12,7 @@
 plan:
 -----
 
-- 
+- change the allNodes vector to an unordered map
 
 */
 
