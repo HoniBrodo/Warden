@@ -851,11 +851,6 @@ void CharacterCreator::HandleInput()
              
             if (linguisticsNode.IsHovered())
             {
-                for (SkillTreeNode* node : allNodes)
-                {
-                    node->isTransparent = true;
-                }
-
                 linguisticsNode.isTransparent = false;
                 psychologyNode.isTransparent = false;
                 sophontologyNode.isTransparent = false;
@@ -864,6 +859,7 @@ void CharacterCreator::HandleInput()
                 {
                     if (linguisticsNode.GetNodeAvailability() == NodeAvailability::AVAILABLE)
                     {
+                        // a function here that uses the json data to check for 'unlocks' and sets those skills to 'available'
                         linguisticsNode.nodeAvailability = NodeAvailability::SELECTED;
                         hasNodeBeenClicked = true;
                     }
@@ -876,8 +872,6 @@ void CharacterCreator::HandleInput()
 
             }
 
-
-
             // why does the else only need to be called once, and why here? (moving it to the end wil break it)
             else
             {
@@ -889,9 +883,18 @@ void CharacterCreator::HandleInput()
 
             if (zoologyNode.IsHovered()) 
             {
-                for (SkillTreeNode* node : allNodes)
+                if (zoologyNode.IsClicked())
                 {
-                    node->isTransparent = true;
+                    if (zoologyNode.GetNodeAvailability() == NodeAvailability::AVAILABLE)
+                    {
+                        zoologyNode.nodeAvailability = NodeAvailability::SELECTED;
+                        hasNodeBeenClicked = true;
+                    }
+
+                    if (zoologyNode.GetNodeAvailability() == NodeAvailability::SELECTED && hasNodeBeenClicked == false)
+                    {
+                        zoologyNode.nodeAvailability = NodeAvailability::AVAILABLE;
+                    }
                 }
 
                 zoologyNode.isTransparent = false;
@@ -1100,9 +1103,18 @@ void CharacterCreator::HandleInput()
 
             if (psychologyNode.IsHovered())
             {
-                for (SkillTreeNode* node : allNodes)
+                if (psychologyNode.IsClicked())
                 {
-                    node->isTransparent = true;
+                    if (psychologyNode.GetNodeAvailability() == NodeAvailability::AVAILABLE)
+                    {
+                        psychologyNode.nodeAvailability = NodeAvailability::SELECTED;
+                        hasNodeBeenClicked = true;
+                    }
+
+                    if (psychologyNode.GetNodeAvailability() == NodeAvailability::SELECTED && hasNodeBeenClicked == false)
+                    {
+                        psychologyNode.nodeAvailability = NodeAvailability::AVAILABLE;
+                    }
                 }
 
                 linguisticsNode.isTransparent = false;

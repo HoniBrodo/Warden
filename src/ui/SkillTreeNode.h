@@ -31,6 +31,7 @@ public:
     bool IsClicked() const;
     void DrawIcon(Renderer& render, std::string image, Vector2 pos, float rotation, float scale, Color tint, Color background);
     NodeAvailability GetNodeAvailability() { return nodeAvailability; }
+    // make the function here
 
 
     SkillLevel skillLevel = SkillLevel::TRAINED;
