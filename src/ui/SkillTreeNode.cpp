@@ -99,6 +99,17 @@ void SkillTreeNode::DrawIcon(Renderer& render, std::string image, Vector2 pos, f
 	render.DrawSkillTreeIcon(image, pos, rotation, scale, tint, background);
 }
 
+void SkillTreeNode::NodeUnlocksAvailable(std::string& skillName, std::unordered_map<std::string, SkillTreeNode*>& allSkills)
+{
+
+	json skillsJson = skillManager.LoadSkillTree("player/SkillTree.json");
+
+	std::vector<std::string> skillsVector;
+
+
+
+}
+
 
 
 

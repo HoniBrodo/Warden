@@ -3,6 +3,7 @@
 #include <string>
 #include <unordered_map>
 #include "../core/Renderer.h"
+#include "../player/SkillManager.h"
 #include "raylib.h" 
 
 enum class SkillLevel
@@ -34,6 +35,7 @@ public:
     // make the function here
     void NodeUnlocksAvailable(std::string& skillName, std::unordered_map<std::string, SkillTreeNode*>& allSkills);
 
+    SkillManager skillManager;
 
     SkillLevel skillLevel = SkillLevel::TRAINED;
     NodeAvailability nodeAvailability = NodeAvailability::AVAILABLE;

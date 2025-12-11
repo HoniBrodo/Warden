@@ -16,6 +16,7 @@ class Renderer;
 class StateManager;
 class TextureManager;
 
+
 enum class CharacterSelect {
     Marine = 0,
     Scientist,
@@ -287,6 +288,8 @@ private:
     Color commandNodeColor = GRAY;
 
     std::vector<SkillTreeNode* > allNodes{};
+    std::unordered_map<std::string, SkillTreeNode*> allSkills;
+
 
     // skill tree icon colors
     Color skillTreeTrainedColor = SKYBLUE;

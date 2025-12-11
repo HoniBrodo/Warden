@@ -111,6 +111,13 @@ commandNode(SkillLevel::MASTER)
     allNodes.push_back(&xenoesotericismNode);
     allNodes.push_back(&commandNode);
 
+    // add nodes to allSkills unordered map
+
+    allSkills.emplace("Linguistics", &linguisticsNode);
+
+    allSkills.emplace("Psychology", &psychologyNode);
+
+    allSkills.emplace("Sophontology", &sophontologyNode);
 
     for (auto n : allNodes)
     {
