@@ -867,6 +867,7 @@ void CharacterCreator::HandleInput()
                     if (linguisticsNode.GetNodeAvailability() == NodeAvailability::AVAILABLE)
                     {
                         // a function here that uses the json data to check for 'unlocks' and sets those skills to 'available'
+                        linguisticsNode.NodeUnlocksAvailable("Linguistics", allSkills);
                         linguisticsNode.nodeAvailability = NodeAvailability::SELECTED;
                         hasNodeBeenClicked = true;
                     }

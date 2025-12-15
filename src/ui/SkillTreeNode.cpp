@@ -1,4 +1,5 @@
 #include "SkillTreeNode.h"
+#include <iostream>
 
 
 
@@ -99,14 +100,25 @@ void SkillTreeNode::DrawIcon(Renderer& render, std::string image, Vector2 pos, f
 	render.DrawSkillTreeIcon(image, pos, rotation, scale, tint, background);
 }
 
-void SkillTreeNode::NodeUnlocksAvailable(std::string& skillName, std::unordered_map<std::string, SkillTreeNode*>& allSkills)
+void SkillTreeNode::NodeUnlocksAvailable(const std::string& skillName, const std::unordered_map<std::string, SkillTreeNode*>& allSkills)
 {
+	std::vector<std::string> skillsUnlocks = skillsJson[skillName]["unlocks"];
 
-	json skillsJson = skillManager.LoadSkillTree("player/SkillTree.json");
+	std::vector<SkillTreeNode*> unlockedNodes;
 
-	std::vector<std::string> skillsVector;
+	for (const std::string& unlockName : skillsUnlocks)
+	{
+		auto it = allSkills.find(unlockName);
+		if (it != allSkills.end())
+		{
+			unlockedNodes.push_back(it->second);
+		}
+	}
 
-
+	for (auto n : unlockedNodes)
+	{
+		n->nodeAvailability = NodeAvailability::AVAILABLE;
+	}
 
 }
 

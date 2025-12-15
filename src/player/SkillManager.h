@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../external/json.hpp"
 #include <fstream>
 
