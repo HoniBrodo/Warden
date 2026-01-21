@@ -13,7 +13,8 @@ plan:
 -----
 
 - change the allNodes vector to an unordered map
-
+- After clicking on linguistics and the psychology, we need to be able to remove both selections by
+  clicking on linguistics again. Then we shouldn't be able to select psychology until we re-select linguistics.
 */
 
 CharacterCreator::CharacterCreator(StateManager& sm, TextureManager& tm, Renderer& render) : stateManager(sm), textureManager(tm), render(render),
@@ -864,6 +865,7 @@ void CharacterCreator::HandleInput()
 
                 if (linguisticsNode.IsClicked())
                 {
+
                     if (linguisticsNode.GetNodeAvailability() == NodeAvailability::AVAILABLE)
                     {
                         // a function here that uses the json data to check for 'unlocks' and sets those skills to 'available'
@@ -875,6 +877,7 @@ void CharacterCreator::HandleInput()
                     if (linguisticsNode.GetNodeAvailability() == NodeAvailability::SELECTED && hasNodeBeenClicked == false)
                     {
                         linguisticsNode.nodeAvailability = NodeAvailability::AVAILABLE;
+                        // a function here that uses the json data to check for 'unlocks' and sets those skills to 'unavailable'
                     }
                 }
 
@@ -919,6 +922,19 @@ void CharacterCreator::HandleInput()
 
             if (botanyNode.IsHovered())
             {
+                if (botanyNode.IsClicked())
+                {
+                    if (botanyNode.GetNodeAvailability() == NodeAvailability::AVAILABLE)
+                    {
+                        botanyNode.nodeAvailability = NodeAvailability::SELECTED;
+                        hasNodeBeenClicked = true;
+                    }
+
+                    if (botanyNode.GetNodeAvailability() == NodeAvailability::SELECTED && hasNodeBeenClicked == false)
+                    {
+                        botanyNode.nodeAvailability = NodeAvailability::AVAILABLE;
+                    }
+                }
                 for (SkillTreeNode* node : allNodes)
                 {
                     node->isTransparent = true;
